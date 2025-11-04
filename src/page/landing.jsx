@@ -9,6 +9,9 @@ import image6 from "../image/original.png";
 import image7 from "../image/ia.png";
 import image8 from "../image/artisanal.png";
 import image9 from "../image/anniverssaire.png";
+import baliImage from "../image/bali.png";
+import plageImage from "../image/plage.png";
+import sunImage from "../image/sun.png";
 
 export default function ScentienceLanding() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -796,6 +799,29 @@ function MultiSensoryDiarySection() {
                 diary.
               </p>
             </div>
+
+            {/* Client Testimonial */}
+            <div className="mt-12">
+              <div className="bg-ivory-mist/30 backdrop-blur-sm p-8 border border-slate-taupe/10">
+                <div className="space-y-6">
+                  <p className="text-sm sm:text-base text-text-primary leading-relaxed font-light italic font-serif">
+                    "I offered this to my wife for our honeymoon, and it was
+                    incredible. The way the scent captured our memories is
+                    beyond words."
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-soft-beige/40 flex items-center justify-center">
+                      <span className="text-text-primary text-xs font-light font-serif">
+                        T
+                      </span>
+                    </div>
+                    <p className="text-xs text-steel-blue font-light">
+                      Thomas, 30 ans
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Diary Card */}
@@ -834,13 +860,27 @@ function MultiSensoryDiarySection() {
                   Photos
                 </label>
                 <div className="grid grid-cols-3 gap-2">
-                  {[1, 2, 3].map((i) => (
-                    <div key={i} className="aspect-square bg-frosted-silver/50">
-                      <div className="w-full h-full flex items-center justify-center text-steel-blue">
-                        <IconImage className="w-6 h-6 opacity-30" />
-                      </div>
-                    </div>
-                  ))}
+                  <div className="aspect-square overflow-hidden">
+                    <img
+                      src={plageImage}
+                      alt="Plage"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="aspect-square overflow-hidden">
+                    <img
+                      src={baliImage}
+                      alt="Bali"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="aspect-square overflow-hidden">
+                    <img
+                      src={sunImage}
+                      alt="Sun"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
               </div>
               <div>
