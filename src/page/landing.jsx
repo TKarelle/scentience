@@ -372,12 +372,12 @@ function HowItWorksSection() {
       number: "Step 2",
       title:
         "Create your memory. LIVE and let your subconscious form an association between scent and your special event.",
-      image: image3,
+      image: image4,
     },
     {
       number: "Step 3",
       title: "Relive the moment. Relieve stress and travel back in time.",
-      image: image4,
+      image: image3,
     },
   ];
 
