@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400&display=swap');
+      .s-text {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 80px;
+        fill: #1E1E1E;
+      }
+    </style>
+  </defs>
+  <text x="50" y="75" text-anchor="middle" class="s-text">S</text>
+</svg>

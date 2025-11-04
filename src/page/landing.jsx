@@ -285,9 +285,8 @@ function HeroSection({ setIsModalOpen }) {
       <div className="absolute inset-0 z-0">
         <img
           src={landingImage}
-          alt=""
+          alt="Personalized perfume Scentience - Custom fragrance for creating olfactory memories and honeymoon memories"
           className="w-full h-full object-cover"
-          aria-hidden="true"
         />
         {/* Overlay pour améliorer le contraste et l'accessibilité */}
         <div
@@ -330,7 +329,7 @@ function StorySection({ setIsModalOpen }) {
         <div className="relative w-full h-full min-h-[50vh] md:min-h-[80vh]">
           <img
             src={image1}
-            alt="Scentience Perfume - ACCORDIA"
+            alt="Scentience personalized perfume - Custom fragrance for olfactory memory creation"
             className="w-full h-full object-cover"
           />
         </div>
@@ -397,7 +396,7 @@ function HowItWorksSection() {
               <div className="aspect-[3/4] mb-8 overflow-hidden">
                 <img
                   src={step.image}
-                  alt={`${step.number} - ${step.title}`}
+                  alt={`${step.number} - ${step.title} - Personalized perfume creation process - Custom fragrance for memories`}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -467,7 +466,7 @@ function NeuropsychologicalProofSection() {
         <div className="relative w-full h-full min-h-[50vh] md:min-h-[80vh]">
           <img
             src={image5}
-            alt="Neuropsychological Proof - Scentience Perfume"
+            alt="Neuropsychological proof - Science of olfactory memory and emotional memory - Personalized perfume Scentience"
             className="w-full h-full object-cover"
           />
         </div>
@@ -512,7 +511,7 @@ function OurCollectionSection() {
               <div className="aspect-[3/4] mb-8 overflow-hidden">
                 <img
                   src={product.image}
-                  alt={product.title}
+                  alt={`${product.title} - Personalized perfume Scentience - Custom fragrance for memories`}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -552,7 +551,7 @@ function AnniversarySubscriptionSection() {
         <div className="relative w-full h-full min-h-[50vh] md:min-h-[80vh]">
           <img
             src={image9}
-            alt="Anniversary Subscription"
+            alt="Anniversary subscription - Personalized perfume Scentience for celebrating precious moments"
             className="w-full h-full object-cover"
           />
         </div>
@@ -863,21 +862,21 @@ function MultiSensoryDiarySection() {
                   <div className="aspect-square overflow-hidden">
                     <img
                       src={plageImage}
-                      alt="Plage"
+                      alt="Bali beach - Honeymoon olfactory memory - Personalized perfume Scentience"
                       className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="aspect-square overflow-hidden">
                     <img
                       src={baliImage}
-                      alt="Bali"
+                      alt="Bali honeymoon - Memory perfume souvenir - Custom fragrance for olfactory memories"
                       className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="aspect-square overflow-hidden">
                     <img
                       src={sunImage}
-                      alt="Sun"
+                      alt="Sunset memory - Emotional memory perfume - Personalized fragrance Scentience"
                       className="w-full h-full object-cover"
                     />
                   </div>
