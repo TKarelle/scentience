@@ -645,19 +645,31 @@ function JoinWaitingListSection({ setIsModalOpen, emailSent, setEmailSent }) {
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid sm:grid-cols-2 gap-6">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
-                required
-                className="px-0 py-3 border-b border-slate-taupe/20 focus:outline-none focus:border-slate-taupe/40 text-text-primary bg-transparent text-sm font-light"
-              />
+              <div>
+                <label htmlFor="email-join" className="sr-only">
+                  Email address
+                </label>
+                <input
+                  id="email-join"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email"
+                  required
+                  aria-label="Email address"
+                  className="px-0 py-3 border-b border-slate-taupe/20 focus:outline-none focus:border-slate-taupe/40 text-text-primary bg-transparent text-sm font-light w-full"
+                />
+              </div>
               <div className="relative">
+                <label htmlFor="country-join" className="sr-only">
+                  Country
+                </label>
                 <select
+                  id="country-join"
                   value={country}
                   onChange={(e) => setCountry(e.target.value)}
                   required
+                  aria-label="Country"
                   className="w-full px-0 py-3 border-b border-slate-taupe/20 focus:outline-none focus:border-slate-taupe/40 text-text-primary appearance-none bg-transparent text-sm font-light"
                 >
                   <option value="">Country</option>
@@ -735,19 +747,31 @@ function JoinWaitingListModal({ setIsModalOpen, emailSent, setEmailSent }) {
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid sm:grid-cols-2 gap-4">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
-                required
-                className="px-4 py-3 border-b border-slate-taupe/20 focus:outline-none focus:border-slate-taupe/40 text-text-primary bg-transparent text-sm"
-              />
+              <div>
+                <label htmlFor="email-modal" className="sr-only">
+                  Email address
+                </label>
+                <input
+                  id="email-modal"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email"
+                  required
+                  aria-label="Email address"
+                  className="px-4 py-3 border-b border-slate-taupe/20 focus:outline-none focus:border-slate-taupe/40 text-text-primary bg-transparent text-sm w-full"
+                />
+              </div>
               <div className="relative">
+                <label htmlFor="country-modal" className="sr-only">
+                  Country
+                </label>
                 <select
+                  id="country-modal"
                   value={country}
                   onChange={(e) => setCountry(e.target.value)}
                   required
+                  aria-label="Country"
                   className="w-full px-4 py-3 border-b border-slate-taupe/20 focus:outline-none focus:border-slate-taupe/40 text-text-primary appearance-none bg-transparent text-sm"
                 >
                   <option value="">Country</option>
@@ -983,6 +1007,7 @@ function Footer() {
   return (
     <footer className="bg-steel-blue text-ivory-mist py-20 sm:py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="sr-only">Footer Navigation</h2>
         {/* Brand Section */}
         <div className="mb-16 sm:mb-20">
           <div className="flex flex-col mb-4">
@@ -1001,9 +1026,9 @@ function Footer() {
         {/* Links Grid */}
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-12 mb-16 sm:mb-20">
           <div>
-            <h4 className="font-light mb-6 text-xs uppercase tracking-wider text-ivory-mist/80">
+            <h3 className="font-light mb-6 text-xs uppercase tracking-wider text-ivory-mist/80">
               About
-            </h4>
+            </h3>
             <ul className="space-y-3 text-xs text-ivory-mist/60 font-light">
               <li>
                 <a
@@ -1032,9 +1057,9 @@ function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="font-light mb-6 text-xs uppercase tracking-wider text-ivory-mist/80">
+            <h3 className="font-light mb-6 text-xs uppercase tracking-wider text-ivory-mist/80">
               Support
-            </h4>
+            </h3>
             <ul className="space-y-3 text-xs text-ivory-mist/60 font-light">
               <li>
                 <a
@@ -1057,9 +1082,9 @@ function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="font-light mb-6 text-xs uppercase tracking-wider text-ivory-mist/80">
+            <h3 className="font-light mb-6 text-xs uppercase tracking-wider text-ivory-mist/80">
               Legal
-            </h4>
+            </h3>
             <ul className="space-y-3 text-xs text-ivory-mist/60 font-light">
               <li>
                 <a href="#" className="hover:text-ivory-mist transition-colors">
