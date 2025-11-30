@@ -764,7 +764,7 @@ function JoinWaitingListSection({ setIsModalOpen, emailSent, setEmailSent }) {
 
     try {
       const res = await fetch(
-        "https://script.google.com/macros/s/AKfycbydhxy1INQb-GE3u39ROajVOek9mtfzlAVf1zv9VP7TEL1sJYoBnG9QvBCn6qwPiVXmyQ/exec",
+        "https://script.google.com/macros/s/AKfycbxmrGDTd75NId_FiABsSljKQwEGB1nW7xTVUgOShXdd861MUDm12DJA7KXooguFpuIH9w/exec",
         {
           method: "POST",
           mode: "no-cors",
@@ -882,7 +882,7 @@ function JoinWaitingListModal({ setIsModalOpen, emailSent, setEmailSent }) {
 
     try {
       const res = await fetch(
-        "https://script.google.com/macros/s/AKfycbydhxy1INQb-GE3u39ROajVOek9mtfzlAVf1zv9VP7TEL1sJYoBnG9QvBCn6qwPiVXmyQ/exec",
+        "https://script.google.com/macros/s/AKfycbxmrGDTd75NId_FiABsSljKQwEGB1nW7xTVUgOShXdd861MUDm12DJA7KXooguFpuIH9w/exec",
         {
           method: "POST",
           mode: "no-cors",
