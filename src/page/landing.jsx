@@ -763,14 +763,17 @@ function JoinWaitingListSection({ setIsModalOpen, emailSent, setEmailSent }) {
     setStatus("Submitting...");
 
     try {
-      const res = await fetch("YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL", {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, country }),
-      });
+      const res = await fetch(
+        "https://script.google.com/macros/s/AKfycbydhxy1INQb-GE3u39ROajVOek9mtfzlAVf1zv9VP7TEL1sJYoBnG9QvBCn6qwPiVXmyQ/exec",
+        {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, country }),
+        }
+      );
 
       setStatus("You're on the list! ✨");
       setEmailSent(true);
@@ -879,7 +882,7 @@ function JoinWaitingListModal({ setIsModalOpen, emailSent, setEmailSent }) {
 
     try {
       const res = await fetch(
-        "https://script.google.com/a/macros/scentience.uk/s/AKfycbwr9OoaMT8uf3lP7uPjx9u4jx7_a5VxDVeuH5_Y-I5-2uG00jq3GblkTIxvjvXitqvlpA/exec",
+        "https://script.google.com/macros/s/AKfycbydhxy1INQb-GE3u39ROajVOek9mtfzlAVf1zv9VP7TEL1sJYoBnG9QvBCn6qwPiVXmyQ/exec",
         {
           method: "POST",
           mode: "no-cors",
