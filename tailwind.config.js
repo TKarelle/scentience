@@ -18,7 +18,7 @@ export default {
         'text-secondary': '#4B4B4B',
       },
       fontFamily: {
-        'serif': ['Playfair Display', 'serif'],
+        'serif': ['Canela', 'Cormorant Garamond', 'serif'],
         'sans': ['Inter', 'sans-serif'],
       },
     },

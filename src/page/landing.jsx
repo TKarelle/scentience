@@ -32,11 +32,17 @@ export default function ScentienceLanding() {
         {/* How it Works Section */}
         <HowItWorksSection />
 
+        {/* Why Scentience Is Different Section */}
+        <WhyScentienceIsDifferentSection />
+
         {/* Neuropsychological Proof Section */}
         <NeuropsychologicalProofSection />
 
         {/* Our Collection Section */}
         <OurCollectionSection />
+
+        {/* Your Multi-Sensory Diary Section */}
+        <MultiSensoryDiarySection />
 
         {/* Upgrade to Anniversary Subscription Section */}
         <AnniversarySubscriptionSection />
@@ -59,9 +65,6 @@ export default function ScentienceLanding() {
             setEmailSent={setEmailSent}
           />
         )}
-
-        {/* Your Multi-Sensory Diary Section */}
-        <MultiSensoryDiarySection />
 
         {/* FAQ Section */}
         <FAQSection />
@@ -106,7 +109,7 @@ function Header({ setIsModalOpen }) {
                   isScrolled ? "text-text-primary" : "text-white drop-shadow-lg"
                 }`}
               >
-                Scentience
+                Scentience Original
               </span>
               <span
                 className={`text-xs font-sans transition-colors ${
@@ -298,11 +301,11 @@ function HeroSection({ setIsModalOpen }) {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 w-full">
         <div className="max-w-2xl space-y-6 sm:space-y-8">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif italic text-white leading-tight drop-shadow-lg">
-            CAPTURE YOUR MEMORIES
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl  font-serif italic text-white leading-tight drop-shadow-lg">
+            CAPTURE YOUR NEXT MEMORY
           </h1>
           <p className="text-lg sm:text-xl lg:text-2xl text-white/95 font-light tracking-wide drop-shadow-md">
-            SCIENCE. MEMORY. EMOTION.
+            SCENT. EVENT. MEMORY
           </p>
           <a
             href="#"
@@ -312,7 +315,7 @@ function HeroSection({ setIsModalOpen }) {
             }}
             className="mt-8 text-sm sm:text-base font-light text-white/90 hover:text-white underline underline-offset-4 transition-colors inline-block"
           >
-            Create our perfume →
+            Create your own perfume →
           </a>
         </div>
       </div>
@@ -338,12 +341,12 @@ function StorySection({ setIsModalOpen }) {
         <div className="flex items-center justify-center p-12 sm:p-16 lg:p-20 xl:p-24">
           <div className="max-w-xl space-y-8">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif italic text-text-primary leading-tight font-light">
-              Most perfumes tell someone else's story. Scentience helps you
-              write your own.
+              Scentience crafts the scent you’ll wear for your next moment. That
+              scent will become the memory.
             </h2>
             <p className="text-sm sm:text-base text-text-secondary leading-relaxed font-light">
-              Designed not to decorate you, but to anchor your most precious
-              moments - in scent, emotion and time.
+              Designed for your weddings, your honeymoons, your holidays, your
+              next milestones.
             </p>
             <a
               href="#"
@@ -353,7 +356,7 @@ function StorySection({ setIsModalOpen }) {
               }}
               className="text-xs sm:text-sm font-light text-text-secondary hover:text-text-primary underline underline-offset-4 transition-colors inline-block"
             >
-              Create our perfume →
+              Create your own perfume →
             </a>
           </div>
         </div>
@@ -416,6 +419,142 @@ function HowItWorksSection() {
   );
 }
 
+/* ---------------- Why Scentience Is Different Section ---------------- */
+function WhyScentienceIsDifferentSection() {
+  const cards = [
+    {
+      icon: (
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          strokeWidth="1"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      ),
+      title: "No recreation",
+      description: "We do not replicate old memories, we create new ones",
+    },
+    {
+      icon: (
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          strokeWidth="1"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+          />
+        </svg>
+      ),
+      title: "Milestone Curation",
+      description:
+        "Each scent is intentionally paired with the moment you’re about to live",
+    },
+    {
+      icon: (
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          strokeWidth="1"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+          />
+        </svg>
+      ),
+      title: "Olfactory Memory Science",
+      description: "Powered by the cognitive science of scent & recall.",
+    },
+    {
+      icon: (
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          strokeWidth="1"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      ),
+      title: "Timeless Selection",
+      description: "Only iconic, meaningful, emotion-driven fragrances.",
+    },
+    {
+      icon: (
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          strokeWidth="1"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M13 10V3L4 14h7v7l9-11h-7z"
+          />
+        </svg>
+      ),
+      title: "For What's Coming",
+      description: "Life chapters deserve their own scent.",
+    },
+  ];
+
+  return (
+    <section className="bg-ivory-mist py-24 sm:py-32 lg:py-40">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif italic text-text-primary text-center mb-20 sm:mb-24 font-light tracking-wider">
+          Why Scentience Is Different
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6">
+          {cards.map((card, index) => (
+            <div
+              key={index}
+              className="bg-white border border-[#ECECEC] rounded-sm p-8 lg:p-6 xl:p-8 space-y-6 transition-all duration-500 hover:-translate-y-1 opacity-0 animate-fade-in"
+              style={{
+                animationDelay: `${index * 100}ms`,
+              }}
+            >
+              {/* Icon */}
+              <div className="text-steel-blue/60">{card.icon}</div>
+
+              {/* Content */}
+              <div className="space-y-3">
+                <h3 className="text-sm sm:text-base font-sans text-text-primary font-medium tracking-wide">
+                  {card.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-light">
+                  {card.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------- Neuropsychological Proof Section ---------------- */
 function NeuropsychologicalProofSection() {
   return (
@@ -456,7 +595,7 @@ function NeuropsychologicalProofSection() {
                 href="#"
                 className="text-xs sm:text-sm font-light text-text-secondary hover:text-text-primary underline underline-offset-4 transition-colors inline-block"
               >
-                Create our perfume →
+                Create your own perfume →
               </a>
             </div>
           </div>
@@ -480,19 +619,19 @@ function OurCollectionSection() {
   const products = [
     {
       title: "Scentience Original",
-      price: "$65",
+      price: "£65",
       type: "Chose from Scentience Collection of curated memory blends",
       image: image6,
     },
     {
       title: "AI Bespoke",
-      price: "$160",
+      price: "£160",
       type: "Complete our online questionnaire ",
       image: image7,
     },
     {
       title: "Artisanal Bespoke",
-      price: "$230",
+      price: "£230",
       type: "created uniquely for you by our independent artisanal perfumery experts",
       image: image8,
     },
@@ -569,7 +708,7 @@ function AnniversarySubscriptionSection() {
               href="#"
               className="text-xs sm:text-sm font-light text-text-secondary hover:text-text-primary underline underline-offset-4 transition-colors inline-block"
             >
-              Create our perfume →
+              Create your ownperfume →
             </a>
           </div>
         </div>
@@ -617,16 +756,37 @@ function ProofTrustSection() {
 function JoinWaitingListSection({ setIsModalOpen, emailSent, setEmailSent }) {
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("");
+  const [status, setStatus] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    setEmailSent(true);
-    setTimeout(() => {
-      setEmailSent(false);
+    setStatus("Submitting...");
+
+    try {
+      const res = await fetch("YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, country }),
+      });
+
+      setStatus("You're on the list! ✨");
+      setEmailSent(true);
       setEmail("");
       setCountry("");
-    }, 3000);
+
+      setTimeout(() => {
+        setEmailSent(false);
+        setStatus("");
+      }, 3000);
+    } catch (err) {
+      setStatus("Something went wrong. Please try again.");
+      setTimeout(() => {
+        setStatus("");
+      }, 3000);
+    }
   };
 
   return (
@@ -688,10 +848,18 @@ function JoinWaitingListSection({ setIsModalOpen, emailSent, setEmailSent }) {
             </div>
             <button
               type="submit"
-              className="w-full px-6 py-3 bg-soft-beige text-text-primary text-sm font-light hover:bg-soft-beige/90 transition-all duration-200"
+              disabled={status === "Submitting..."}
+              className="w-full px-6 py-3 bg-soft-beige text-text-primary text-sm font-light hover:bg-soft-beige/90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Get early access
+              {status === "Submitting..."
+                ? "Submitting..."
+                : "Get early access"}
             </button>
+            {status && (
+              <p className="text-sm text-text-secondary font-light text-center">
+                {status}
+              </p>
+            )}
           </form>
         )}
       </div>
@@ -703,17 +871,41 @@ function JoinWaitingListSection({ setIsModalOpen, emailSent, setEmailSent }) {
 function JoinWaitingListModal({ setIsModalOpen, emailSent, setEmailSent }) {
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("");
+  const [status, setStatus] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    setEmailSent(true);
-    setTimeout(() => {
-      setIsModalOpen(false);
-      setEmailSent(false);
+    setStatus("Submitting...");
+
+    try {
+      const res = await fetch(
+        "https://script.google.com/a/macros/scentience.uk/s/AKfycbwr9OoaMT8uf3lP7uPjx9u4jx7_a5VxDVeuH5_Y-I5-2uG00jq3GblkTIxvjvXitqvlpA/exec",
+        {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, country }),
+        }
+      );
+
+      setStatus("You're on the list! ✨");
+      setEmailSent(true);
       setEmail("");
       setCountry("");
-    }, 2000);
+
+      setTimeout(() => {
+        setIsModalOpen(false);
+        setEmailSent(false);
+        setStatus("");
+      }, 2000);
+    } catch (err) {
+      setStatus("Something went wrong. Please try again.");
+      setTimeout(() => {
+        setStatus("");
+      }, 3000);
+    }
   };
 
   return (
@@ -790,10 +982,18 @@ function JoinWaitingListModal({ setIsModalOpen, emailSent, setEmailSent }) {
             </div>
             <button
               type="submit"
-              className="w-full px-6 py-3 bg-soft-beige text-text-primary text-sm font-light hover:bg-soft-beige/90 transition-all duration-200"
+              disabled={status === "Submitting..."}
+              className="w-full px-6 py-3 bg-soft-beige text-text-primary text-sm font-light hover:bg-soft-beige/90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Get early access
+              {status === "Submitting..."
+                ? "Submitting..."
+                : "Get early access"}
             </button>
+            {status && (
+              <p className="text-sm text-text-secondary font-light text-center">
+                {status}
+              </p>
+            )}
           </form>
         )}
       </div>
@@ -1019,7 +1219,7 @@ function Footer() {
             </span>
           </div>
           <p className="text-xs text-ivory-mist/60 font-light tracking-wide">
-            Science. Memory. Emotion.
+            Scent. Event. Memory.
           </p>
         </div>
 
