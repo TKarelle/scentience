@@ -1216,7 +1216,7 @@ function MultiSensoryDiarySection() {
                       </span>
                     </div>
                     <p className="text-sm text-steel-blue font-light">
-                      Thomas, 30 ans
+                      Thomas, 30 years old
                     </p>
                   </div>
                 </div>
