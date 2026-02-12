@@ -20,6 +20,7 @@ export default {
       fontFamily: {
         'serif': ['Canela', 'Cormorant Garamond', 'serif'],
         'sans': ['Inter', 'sans-serif'],
+        'mono': ['Courier Prime', 'IBM Plex Mono', 'Courier New', 'monospace'],
       },
     },
   },

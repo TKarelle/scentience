@@ -1,6 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* Typographie luxueuse style machine à écrire - Inspirée d'Aman */
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
 
-/* Canela Font - Activez ces règles une fois les fichiers ajoutés dans public/fonts/ */
+/* Canela Font pour les titres élégants */
 @font-face {
   font-family: 'Canela';
   src: url('/fonts/Canela-Light.woff2') format('woff2'),
@@ -46,20 +48,27 @@
   font-display: swap;
 }
 
-/* Alternative temporaire : Cormorant Garamond (similaire à Canela) */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   body {
-    @apply font-sans text-text-primary bg-ivory-mist;
+    @apply font-mono text-text-primary bg-ivory-mist;
+    letter-spacing: 0.01em;
   }
   
-  h1, h2, h3 {
+  h1 {
+    @apply font-serif italic;
+  }
+  
+  h2, h3, h4, h5, h6 {
     @apply font-serif;
+  }
+  
+  /* Style machine à écrire luxueux pour le texte */
+  p, span, div, a, button, input, textarea, select {
+    font-family: 'Courier Prime', 'IBM Plex Mono', 'Courier New', monospace;
   }
 }
 
@@ -89,5 +98,39 @@
 
   .animate-fade-in {
     animation: fade-in 0.6s ease-out forwards;
+  }
+
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+
+  /* Style luxueux pour les paragraphes d'article */
+  .first-paragraph {
+    text-indent: 0;
+    text-align: justify;
+  }
+
+  /* Espacement élégant entre sections */
+  article p + blockquote,
+  article blockquote + p,
+  article figure + p,
+  article blockquote + p.first-paragraph {
+    margin-top: 2.5rem;
+  }
+
+  /* Style pour les paragraphes dans les articles */
+  article p {
+    orphans: 3;
+    widows: 3;
+    text-align: left;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+  }
+
+  /* Espacement élégant entre paragraphes */
+  article p + p {
+    margin-top: 1.5rem;
   }
 }

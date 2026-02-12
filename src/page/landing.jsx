@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import landingImage from "../image/landing.png";
 import image1 from "../image/1.png";
 import image2 from "../image/3.png";
@@ -12,6 +13,9 @@ import image9 from "../image/anniverssaire.png";
 import baliImage from "../image/bali.png";
 import plageImage from "../image/plage.png";
 import sunImage from "../image/sun.png";
+import memoriesImage from "../image/memories.png";
+import parisImage from "../image/paris.png";
+import listImage from "../image/list.png";
 
 export default function ScentienceLanding() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,6 +29,9 @@ export default function ScentienceLanding() {
       <main>
         {/* Hero Section */}
         <HeroSection setIsModalOpen={setIsModalOpen} />
+
+        {/* Articles Banner with Projector Effect */}
+        <ArticlesBanner />
 
         {/* Story Section */}
         <StorySection setIsModalOpen={setIsModalOpen} />
@@ -95,7 +102,7 @@ function Header({ setIsModalOpen }) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white backdrop-blur-md border-b border-slate-taupe/20 shadow-sm"
+          ? "bg-ivory-mist backdrop-blur-md border-b border-slate-taupe/20 shadow-sm"
           : "bg-transparent backdrop-blur-md border-b border-white/20"
       }`}
     >
@@ -210,7 +217,7 @@ function Header({ setIsModalOpen }) {
           <div
             className={`md:hidden mt-4 pb-4 space-y-3 border-t pt-4 backdrop-blur-md p-4 ${
               isScrolled
-                ? "border-slate-taupe/20 bg-white/95"
+                ? "border-slate-taupe/20 bg-ivory-mist/95"
                 : "border-white/20 bg-black/30 rounded-lg"
             }`}
           >
@@ -283,7 +290,7 @@ function Header({ setIsModalOpen }) {
 /* ---------------- Hero Section ---------------- */
 function HeroSection({ setIsModalOpen }) {
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-0">
+    <section className="relative w-full h-[85vh] flex items-center justify-center overflow-hidden pt-0">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
@@ -299,13 +306,13 @@ function HeroSection({ setIsModalOpen }) {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 w-full">
-        <div className="max-w-2xl space-y-6 sm:space-y-8">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl  font-serif italic text-white leading-tight drop-shadow-lg">
-            CAPTURE YOUR NEXT MEMORY
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 w-full">
+        <div className="max-w-2xl space-y-3 sm:space-y-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif italic text-white leading-[1.1] font-light tracking-tight">
+            Capture your next memory
           </h1>
-          <p className="text-lg sm:text-xl lg:text-2xl text-white/95 font-light tracking-wide drop-shadow-md">
-            SCENT. EVENT. MEMORY
+          <p className="text-xs sm:text-sm text-white/80 font-light tracking-[0.15em] uppercase">
+            Scent. Event. Memory.
           </p>
           <a
             href="#"
@@ -313,7 +320,7 @@ function HeroSection({ setIsModalOpen }) {
               e.preventDefault();
               setIsModalOpen(true);
             }}
-            className="mt-8 text-sm sm:text-base font-light text-white/90 hover:text-white underline underline-offset-4 transition-colors inline-block"
+            className="mt-4 text-xs sm:text-sm font-light text-white/85 hover:text-white underline underline-offset-4 transition-colors inline-block"
           >
             Create your own perfume →
           </a>
@@ -323,10 +330,156 @@ function HeroSection({ setIsModalOpen }) {
   );
 }
 
+/* ---------------- Articles Banner with Projector Effect ---------------- */
+function ArticlesBanner() {
+  const navigate = useNavigate();
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const articles = [
+    {
+      id: "why-we-always-wanted-to-bottle-our-memories",
+      title: "Why we always wanted to bottle our memories",
+      subtitle: "I once looked at a photo of a trip I loved and felt absolutely nothing.",
+      image: memoriesImage,
+      excerpt: "Long perceived as a romantic reverie, the desire to preserve memories through scent reveals today an intuition of troubling accuracy.",
+      category: "Editorial",
+    },
+    {
+      id: "bali-honeymoon",
+      title: "Bali Honeymoon",
+      subtitle: "When Scent Becomes Memory",
+      image: baliImage,
+      excerpt: "A journey through the olfactory memories of a honeymoon in Bali, where each fragrance became a portal to moments of pure bliss.",
+      category: "Memory Stories",
+    },
+    {
+      id: "paris-first-kiss",
+      title: "Paris, First Kiss",
+      subtitle: "The Scent of a Moment",
+      image: parisImage,
+      excerpt: "How a bespoke fragrance became the anchor for a memory that would define a relationship.",
+      category: "Memory Stories",
+    },
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % articles.length);
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [articles.length]);
+
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+  };
+
+  return (
+    <section className="relative w-full bg-ivory-mist border-y border-slate-taupe/10">
+      {/* Bannière minimaliste et luxueuse */}
+      <div className="relative h-[240px] sm:h-[280px] overflow-hidden">
+        {/* Slides Container */}
+        <div className="relative w-full h-full">
+          {articles.map((article, index) => (
+            <div
+              key={article.id}
+              className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                index === currentIndex ? "opacity-100 z-20" : "opacity-0 z-10"
+              }`}
+            >
+              <div className="relative h-full flex items-center">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                  <div className="flex items-center gap-6 sm:gap-10">
+                    {/* Image - Format portrait élégant et luxueux */}
+                    <div className="flex-shrink-0 w-28 sm:w-36 lg:w-44 aspect-[3/4] overflow-hidden group cursor-pointer"
+                      onClick={() => navigate(`/article/${article.id}`)}
+                    >
+                      <div className="relative w-full h-full">
+                        <img
+                          src={article.image}
+                          alt={article.title}
+                          className="w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-[1.02]"
+                        />
+                        {/* Vignette subtile */}
+                        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/10" />
+                        {/* Overlay subtil au hover */}
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500" />
+                        {/* Bordure élégante et fine */}
+                        <div className="absolute inset-0 border border-slate-taupe/15" />
+                        {/* Ombre subtile pour profondeur */}
+                        <div className="absolute -inset-px bg-gradient-to-br from-transparent via-transparent to-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-1 min-w-0">
+                      <div className="mb-2">
+                        <span className="text-[10px] text-steel-blue font-light tracking-[0.15em] uppercase">
+                          {article.category || "Memory Stories"}
+                        </span>
+                      </div>
+                      <h3 className="text-base sm:text-lg lg:text-xl font-serif text-text-primary leading-tight mb-3 font-light">
+                        {article.title}
+                      </h3>
+                      {article.subtitle && (
+                        <p className="text-sm sm:text-base font-serif  text-text-primary font-light mb-3 leading-relaxed">
+                          {article.subtitle}
+                        </p>
+                      )}
+                      <p className="text-xs text-text-secondary font-light leading-relaxed mb-4 line-clamp-2 max-w-2xl">
+                        {article.excerpt}
+                      </p>
+                      <button
+                        onClick={() => navigate(`/article/${article.id}`)}
+                        className="text-xs sm:text-sm font-light text-steel-blue hover:text-text-primary underline underline-offset-4 transition-colors inline-flex items-center gap-1 group"
+                      >
+                        Read the story
+                        <svg
+                          className="w-3 h-3 transition-transform group-hover:translate-x-1"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={1.5}
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Slide Indicators - Minimalistes */}
+        <div className="absolute bottom-4 right-4 z-40 flex gap-2">
+          {articles.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`transition-all duration-300 ${
+                index === currentIndex
+                  ? "w-6 h-px bg-text-primary"
+                  : "w-6 h-px bg-slate-taupe/30 hover:bg-slate-taupe/50"
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------- Story Section ---------------- */
 function StorySection({ setIsModalOpen }) {
   return (
-    <section className="w-full bg-white">
+    <section className="w-full bg-ivory-mist">
       <div className="grid md:grid-cols-2 min-h-[80vh] sm:min-h-[90vh]">
         {/* Image - Left Side */}
         <div className="relative w-full h-full min-h-[50vh] md:min-h-[80vh]">
@@ -340,11 +493,11 @@ function StorySection({ setIsModalOpen }) {
         {/* Content - Right Side */}
         <div className="flex items-center justify-center p-12 sm:p-16 lg:p-20 xl:p-24">
           <div className="max-w-xl space-y-8">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif italic text-text-primary leading-tight font-light">
-              Scentience crafts the scent you’ll wear for your next moment. That
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif text-text-primary leading-tight font-light">
+              Scentience crafts the scent you'll wear for your next moment. That
               scent will become the memory.
             </h2>
-            <p className="text-sm sm:text-base text-text-secondary leading-relaxed font-light">
+            <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-light">
               Designed for your weddings, your honeymoons, your holidays, your
               next milestones.
             </p>
@@ -387,9 +540,9 @@ function HowItWorksSection() {
   ];
 
   return (
-    <section id="how-it-works" className="bg-white py-24 sm:py-32 lg:py-40">
+    <section id="how-it-works" className="bg-ivory-mist py-24 sm:py-32 lg:py-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif italic text-text-primary text-center mb-20 sm:mb-24 font-light tracking-wider">
+        <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif text-text-primary text-center mb-20 sm:mb-24 font-light tracking-wider">
           How it works
         </h2>
         <div className="grid md:grid-cols-3 gap-20 lg:gap-24">
@@ -407,7 +560,7 @@ function HowItWorksSection() {
                 <h3 className="text-sm sm:text-base font-sans text-text-primary font-light tracking-wider uppercase">
                   {step.number}
                 </h3>
-                <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-light">
+                <p className="text-xs text-text-secondary leading-relaxed font-light">
                   {step.title}
                 </p>
               </div>
@@ -521,29 +674,29 @@ function WhyScentienceIsDifferentSection() {
   ];
 
   return (
-    <section className="bg-ivory-mist py-24 sm:py-32 lg:py-40">
+    <section className="bg-ivory-mist mb-24 sm:mb-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif italic text-text-primary text-center mb-20 sm:mb-24 font-light tracking-wider">
+        <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif text-text-primary text-center mb-16 sm:mb-20 font-light tracking-wider">
           Why Scentience Is Different
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-5">
           {cards.map((card, index) => (
             <div
               key={index}
-              className="bg-white border border-[#ECECEC] rounded-sm p-8 lg:p-6 xl:p-8 space-y-6 transition-all duration-500 hover:-translate-y-1 opacity-0 animate-fade-in"
+              className="bg-white/80 backdrop-blur-sm border border-slate-taupe/20 rounded-sm p-8 lg:p-7 xl:p-8 space-y-6 transition-all duration-500 hover:-translate-y-1 hover:shadow-lg opacity-0 animate-fade-in shadow-sm"
               style={{
                 animationDelay: `${index * 100}ms`,
               }}
             >
               {/* Icon */}
-              <div className="text-steel-blue/60">{card.icon}</div>
+              <div className="text-steel-blue/70">{card.icon}</div>
 
               {/* Content */}
               <div className="space-y-3">
                 <h3 className="text-sm sm:text-base font-sans text-text-primary font-medium tracking-wide">
                   {card.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-light">
+                <p className="text-xs text-text-secondary leading-relaxed font-light">
                   {card.description}
                 </p>
               </div>
@@ -558,15 +711,15 @@ function WhyScentienceIsDifferentSection() {
 /* ---------------- Neuropsychological Proof Section ---------------- */
 function NeuropsychologicalProofSection() {
   return (
-    <section id="proof" className="bg-frosted-silver w-full">
-      <div className="grid md:grid-cols-2 min-h-[80vh] sm:min-h-[90vh]">
+    <section id="proof" className="bg-ivory-mist w-full">
+      <div className="grid md:grid-cols-[55%_45%] gap-0">
         {/* Content - Left Side */}
         <div className="flex items-center justify-center p-12 sm:p-16 lg:p-20 xl:p-24">
           <div className="max-w-xl space-y-8">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif italic text-text-primary font-light">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif text-text-primary font-light">
               Neuropsychological Proof
             </h2>
-            <div className="space-y-6 text-sm sm:text-base text-text-secondary leading-relaxed font-light">
+            <div className="space-y-6 text-xs sm:text-sm text-text-secondary leading-relaxed font-light">
               <p>
                 Memories evoked by smells are{" "}
                 <strong className="text-text-primary font-normal">
@@ -602,7 +755,7 @@ function NeuropsychologicalProofSection() {
         </div>
 
         {/* Image - Right Side */}
-        <div className="relative w-full h-full min-h-[50vh] md:min-h-[80vh]">
+        <div className="relative w-full h-[60vh] md:h-[70vh] lg:h-[75vh]">
           <img
             src={image5}
             alt="Neuropsychological proof - Science of olfactory memory and emotional memory - Personalized perfume Scentience"
@@ -640,7 +793,7 @@ function OurCollectionSection() {
   return (
     <section id="collection" className="bg-ivory-mist py-24 sm:py-32 lg:py-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif italic text-text-primary text-center mb-20 sm:mb-24 font-light tracking-wider">
+        <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif text-text-primary text-center mb-20 sm:mb-24 font-light tracking-wider">
           Our Collection
         </h2>
         <div className="grid md:grid-cols-3 gap-20 lg:gap-24">
@@ -684,7 +837,7 @@ function OurCollectionSection() {
 /* ---------------- Anniversary Subscription Section ---------------- */
 function AnniversarySubscriptionSection() {
   return (
-    <section className="bg-white w-full">
+    <section className="bg-ivory-mist w-full">
       <div className="grid md:grid-cols-2 min-h-[80vh] sm:min-h-[90vh]">
         {/* Image - Left Side */}
         <div className="relative w-full h-full min-h-[50vh] md:min-h-[80vh]">
@@ -698,7 +851,7 @@ function AnniversarySubscriptionSection() {
         {/* Content - Right Side */}
         <div className="flex items-center justify-center p-12 sm:p-16 lg:p-20 xl:p-24">
           <div className="max-w-xl space-y-8">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif italic text-text-primary font-light">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif text-text-primary font-light">
               Upgrade to Anniversary Subscription
             </h2>
             <p className="text-sm sm:text-base text-text-secondary leading-relaxed font-light">
@@ -729,7 +882,7 @@ function ProofTrustSection() {
   return (
     <section className="bg-ivory-mist py-24 sm:py-32 lg:py-40">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif italic text-text-primary text-center mb-20 sm:mb-24 font-light tracking-wider">
+        <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif text-text-primary text-center mb-20 sm:mb-24 font-light tracking-wider">
           Proof & Trust
         </h2>
         <div className="grid sm:grid-cols-2 gap-8 sm:gap-12 mb-16">
@@ -742,10 +895,15 @@ function ProofTrustSection() {
           ))}
         </div>
         <div className="text-center border-t border-slate-taupe/20 pt-12">
-          <p className="text-sm sm:text-base text-text-secondary italic leading-relaxed max-w-2xl mx-auto font-light">
-            "Smell is a potent wizard that transports you across thousands of
-            miles and all the years you have lived" ~ Helen Keller
-          </p>
+          <blockquote className="max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl font-serif italic text-text-primary leading-relaxed mb-3 font-light">
+              "Smell is a potent wizard that transports you across thousands of
+              miles and all the years you have lived"
+            </p>
+            <p className="text-xs sm:text-sm text-steel-blue font-light tracking-wide">
+              — Helen Keller
+            </p>
+          </blockquote>
         </div>
       </div>
     </section>
@@ -793,20 +951,33 @@ function JoinWaitingListSection({ setIsModalOpen, emailSent, setEmailSent }) {
   };
 
   return (
-    <section className="bg-white py-24 sm:py-32 lg:py-40">
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif italic text-text-primary text-center mb-12 sm:mb-16 font-light tracking-wider">
-          Join the waiting List.
-        </h2>
+    <section className="relative py-24 sm:py-32 lg:py-40 overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src={listImage}
+          alt=""
+          className="w-full h-full object-cover"
+        />
+        {/* Overlay pour la lisibilité */}
+        <div className="absolute inset-0 bg-ivory-mist/85" />
+      </div>
+      
+      {/* Content */}
+      <div className="relative z-10 max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white/95 backdrop-blur-sm p-10 sm:p-12 lg:p-16 border border-slate-taupe/20 shadow-lg">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif text-text-primary text-center mb-12 sm:mb-16 font-light tracking-wider">
+            Join the waiting List.
+          </h2>
 
-        {emailSent ? (
-          <div className="text-center py-8">
-            <p className="text-sm text-text-secondary font-light">
-              Thank you! We'll be in touch soon.
-            </p>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-6">
+          {emailSent ? (
+            <div className="text-center py-8">
+              <p className="text-sm text-text-secondary font-light">
+                Thank you! We'll be in touch soon.
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid sm:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="email-join" className="sr-only">
@@ -852,7 +1023,7 @@ function JoinWaitingListSection({ setIsModalOpen, emailSent, setEmailSent }) {
             <button
               type="submit"
               disabled={status === "Submitting..."}
-              className="w-full px-6 py-3 bg-soft-beige text-text-primary text-sm font-light hover:bg-soft-beige/90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full border border-text-primary/30 px-10 py-3.5 text-xs sm:text-sm font-light text-text-primary hover:border-text-primary hover:bg-text-primary hover:text-white transition-all duration-300 tracking-wide disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-text-primary disabled:hover:border-text-primary/30"
             >
               {status === "Submitting..."
                 ? "Submitting..."
@@ -863,8 +1034,9 @@ function JoinWaitingListSection({ setIsModalOpen, emailSent, setEmailSent }) {
                 {status}
               </p>
             )}
-          </form>
-        )}
+            </form>
+          )}
+        </div>
       </div>
     </section>
   );
@@ -917,11 +1089,11 @@ function JoinWaitingListModal({ setIsModalOpen, emailSent, setEmailSent }) {
       onClick={() => setIsModalOpen(false)}
     >
       <div
-        className="bg-white p-12 sm:p-16 max-w-md w-full"
+        className="bg-ivory-mist p-12 sm:p-16 max-w-md w-full"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-start mb-8">
-          <h2 className="text-xl sm:text-2xl font-serif italic text-text-primary font-light">
+          <h2 className="text-xl sm:text-2xl font-serif text-text-primary font-light">
             Join the waiting List.
           </h2>
           <button
@@ -986,7 +1158,7 @@ function JoinWaitingListModal({ setIsModalOpen, emailSent, setEmailSent }) {
             <button
               type="submit"
               disabled={status === "Submitting..."}
-              className="w-full px-6 py-3 bg-soft-beige text-text-primary text-sm font-light hover:bg-soft-beige/90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full border border-text-primary/30 px-10 py-3.5 text-xs sm:text-sm font-light text-text-primary hover:border-text-primary hover:bg-text-primary hover:text-white transition-all duration-300 tracking-wide disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-text-primary disabled:hover:border-text-primary/30"
             >
               {status === "Submitting..."
                 ? "Submitting..."
@@ -1007,41 +1179,43 @@ function JoinWaitingListModal({ setIsModalOpen, emailSent, setEmailSent }) {
 /* ---------------- Multi-Sensory Diary Section ---------------- */
 function MultiSensoryDiarySection() {
   return (
-    <section id="diary" className="bg-mist-blue py-24 sm:py-32 lg:py-40">
+    <section id="diary" className="bg-ivory-mist pb-24 sm:pb-32 lg:pb-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-[60%_40%] gap-16 lg:gap-20">
+        <div className="grid md:grid-cols-[55%_45%] gap-12 lg:gap-16">
           {/* Content */}
-          <div className="space-y-8">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif italic text-text-primary font-light">
-              Your multi-sensory diary
-            </h2>
-            <div className="space-y-6 text-sm sm:text-base text-text-secondary leading-relaxed font-light">
-              <p>
-                Research shows that combining a scent memory with music, food,
-                and other stimuli increases emotional recall.
-              </p>
-              <p>
-                You can store your multisensory experience in our secure digital
-                diary.
-              </p>
+          <div className="space-y-10">
+            <div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif text-text-primary font-light mb-6">
+                Your multi-sensory diary
+              </h2>
+              <div className="space-y-5 text-xs sm:text-sm text-text-secondary leading-relaxed font-light">
+                <p>
+                  Research shows that combining a scent memory with music, food,
+                  and other stimuli increases emotional recall.
+                </p>
+                <p>
+                  You can store your multisensory experience in our secure digital
+                  diary.
+                </p>
+              </div>
             </div>
 
-            {/* Client Testimonial */}
-            <div className="mt-12">
-              <div className="bg-ivory-mist/30 backdrop-blur-sm p-8 border border-slate-taupe/10">
+            {/* Client Testimonial - Mise en avant */}
+            <div className="mt-16 pt-8 border-t border-slate-taupe/20">
+              <div className="bg-white/60 backdrop-blur-sm p-10 border border-slate-taupe/20 shadow-sm">
                 <div className="space-y-6">
-                  <p className="text-sm sm:text-base text-text-primary leading-relaxed font-light italic font-serif">
+                  <p className="text-base sm:text-lg text-text-primary leading-relaxed font-light italic font-serif">
                     "I offered this to my wife for our honeymoon, and it was
                     incredible. The way the scent captured our memories is
                     beyond words."
                   </p>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-soft-beige/40 flex items-center justify-center">
-                      <span className="text-text-primary text-xs font-light font-serif">
+                  <div className="flex items-center gap-4 pt-2">
+                    <div className="w-12 h-12 rounded-full bg-soft-beige/50 flex items-center justify-center border border-slate-taupe/20">
+                      <span className="text-text-primary text-sm font-light font-serif">
                         T
                       </span>
                     </div>
-                    <p className="text-xs text-steel-blue font-light">
+                    <p className="text-sm text-steel-blue font-light">
                       Thomas, 30 ans
                     </p>
                   </div>
@@ -1050,8 +1224,8 @@ function MultiSensoryDiarySection() {
             </div>
           </div>
 
-          {/* Diary Card */}
-          <div className="bg-white p-8">
+          {/* Diary Card - Mise en avant */}
+          <div className="bg-white/80 backdrop-blur-sm p-8 border border-slate-taupe/20 shadow-lg">
             <div className="flex gap-6 mb-8 border-b border-slate-taupe/20 pb-4">
               <button className="text-xs font-light text-text-primary border-b border-text-primary pb-2">
                 Your Memories
@@ -1063,7 +1237,7 @@ function MultiSensoryDiarySection() {
             <div className="space-y-6">
               <div>
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-base sm:text-lg font-serif italic text-text-primary font-light">
+                  <h3 className="text-base sm:text-lg font-serif text-text-primary font-light">
                     Bali Honeymoon
                   </h3>
                   <span className="text-xs text-steel-blue font-light">
@@ -1072,7 +1246,7 @@ function MultiSensoryDiarySection() {
                 </div>
               </div>
               <div>
-                <label className="text-xs font-light text-steel-blue mb-2 block">
+                <label className="text-xs font-light text-steel-blue mb-2 block uppercase tracking-wide">
                   Description
                 </label>
                 <p className="text-xs text-text-secondary leading-relaxed font-light">
@@ -1082,25 +1256,25 @@ function MultiSensoryDiarySection() {
                 </p>
               </div>
               <div>
-                <label className="text-xs font-light text-steel-blue mb-2 block">
+                <label className="text-xs font-light text-steel-blue mb-2 block uppercase tracking-wide">
                   Photos
                 </label>
                 <div className="grid grid-cols-3 gap-2">
-                  <div className="aspect-square overflow-hidden">
+                  <div className="aspect-square overflow-hidden border border-slate-taupe/10">
                     <img
                       src={plageImage}
                       alt="Bali beach - Honeymoon olfactory memory - Personalized perfume Scentience"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="aspect-square overflow-hidden">
+                  <div className="aspect-square overflow-hidden border border-slate-taupe/10">
                     <img
                       src={baliImage}
                       alt="Bali honeymoon - Memory perfume souvenir - Custom fragrance for olfactory memories"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="aspect-square overflow-hidden">
+                  <div className="aspect-square overflow-hidden border border-slate-taupe/10">
                     <img
                       src={sunImage}
                       alt="Sunset memory - Emotional memory perfume - Personalized fragrance Scentience"
@@ -1110,7 +1284,7 @@ function MultiSensoryDiarySection() {
                 </div>
               </div>
               <div>
-                <label className="text-xs font-light text-steel-blue mb-2 block">
+                <label className="text-xs font-light text-steel-blue mb-2 block uppercase tracking-wide">
                   Songs
                 </label>
                 <p className="text-xs text-text-secondary font-light">
@@ -1118,7 +1292,7 @@ function MultiSensoryDiarySection() {
                 </p>
               </div>
               <div>
-                <label className="text-xs font-light text-steel-blue mb-2 block">
+                <label className="text-xs font-light text-steel-blue mb-2 block uppercase tracking-wide">
                   Favorite Foods
                 </label>
                 <p className="text-xs text-text-secondary font-light">
@@ -1166,9 +1340,9 @@ function FAQSection() {
   ];
 
   return (
-    <section id="faq" className="bg-white py-24 sm:py-32 lg:py-40">
+    <section id="faq" className="bg-ivory-mist py-24 sm:py-32 lg:py-40">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif italic text-text-primary text-center mb-20 sm:mb-24 font-light tracking-wider">
+        <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif text-text-primary text-center mb-20 sm:mb-24 font-light tracking-wider">
           Frequently Asked Questions
         </h2>
         <div className="space-y-0">
@@ -1208,108 +1382,112 @@ function FAQSection() {
 /* ---------------- Footer ---------------- */
 function Footer() {
   return (
-    <footer className="bg-steel-blue text-ivory-mist py-20 sm:py-24 lg:py-32">
+    <footer className="bg-steel-blue text-ivory-mist py-12 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="sr-only">Footer Navigation</h2>
-        {/* Brand Section */}
-        <div className="mb-16 sm:mb-20">
-          <div className="flex flex-col mb-4">
-            <span className="text-xl sm:text-2xl font-serif italic text-ivory-mist font-light">
-              Scentience
-            </span>
-            <span className="text-xs font-sans text-ivory-mist/70 font-light mt-1">
-              x Project Proust
-            </span>
+        
+        {/* Main Content - Aligned horizontally */}
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 md:gap-12 mb-8">
+          {/* Brand Section */}
+          <div className="flex-shrink-0">
+            <div className="flex flex-col mb-2">
+              <span className="text-xl sm:text-2xl font-serif italic text-ivory-mist font-light">
+                Scentience
+              </span>
+              <span className="text-xs font-sans text-ivory-mist/70 font-light mt-1">
+                x Project Proust
+              </span>
+            </div>
+            <p className="text-xs text-ivory-mist/60 font-light tracking-wide">
+              Scent. Event. Memory.
+            </p>
           </div>
-          <p className="text-xs text-ivory-mist/60 font-light tracking-wide">
-            Scent. Event. Memory.
-          </p>
-        </div>
 
-        {/* Links Grid */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-12 mb-16 sm:mb-20">
-          <div>
-            <h3 className="font-light mb-6 text-xs uppercase tracking-wider text-ivory-mist/80">
-              About
-            </h3>
-            <ul className="space-y-3 text-xs text-ivory-mist/60 font-light">
-              <li>
-                <a
-                  href="#proof"
-                  className="hover:text-ivory-mist transition-colors"
-                >
-                  Our Story
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#collection"
-                  className="hover:text-ivory-mist transition-colors"
-                >
-                  Products
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#how-it-works"
-                  className="hover:text-ivory-mist transition-colors"
-                >
-                  How it Works
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-light mb-6 text-xs uppercase tracking-wider text-ivory-mist/80">
-              Support
-            </h3>
-            <ul className="space-y-3 text-xs text-ivory-mist/60 font-light">
-              <li>
-                <a
-                  href="#faq"
-                  className="hover:text-ivory-mist transition-colors"
-                >
-                  FAQ
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-ivory-mist transition-colors">
-                  Contact
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-ivory-mist transition-colors">
-                  Shipping
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-light mb-6 text-xs uppercase tracking-wider text-ivory-mist/80">
-              Legal
-            </h3>
-            <ul className="space-y-3 text-xs text-ivory-mist/60 font-light">
-              <li>
-                <a href="#" className="hover:text-ivory-mist transition-colors">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-ivory-mist transition-colors">
-                  Terms of Service
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-ivory-mist transition-colors">
-                  GDPR
-                </a>
-              </li>
-            </ul>
+          {/* Links Grid */}
+          <div className="grid grid-cols-3 gap-8 md:gap-12 flex-1">
+            <div>
+              <h3 className="font-light mb-4 text-xs uppercase tracking-wider text-ivory-mist/80">
+                About
+              </h3>
+              <ul className="space-y-2 text-xs text-ivory-mist/60 font-light">
+                <li>
+                  <a
+                    href="#proof"
+                    className="hover:text-ivory-mist transition-colors"
+                  >
+                    Our Story
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#collection"
+                    className="hover:text-ivory-mist transition-colors"
+                  >
+                    Products
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#how-it-works"
+                    className="hover:text-ivory-mist transition-colors"
+                  >
+                    How it Works
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-light mb-4 text-xs uppercase tracking-wider text-ivory-mist/80">
+                Support
+              </h3>
+              <ul className="space-y-2 text-xs text-ivory-mist/60 font-light">
+                <li>
+                  <a
+                    href="#faq"
+                    className="hover:text-ivory-mist transition-colors"
+                  >
+                    FAQ
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-ivory-mist transition-colors">
+                    Contact
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-ivory-mist transition-colors">
+                    Shipping
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-light mb-4 text-xs uppercase tracking-wider text-ivory-mist/80">
+                Legal
+              </h3>
+              <ul className="space-y-2 text-xs text-ivory-mist/60 font-light">
+                <li>
+                  <a href="#" className="hover:text-ivory-mist transition-colors">
+                    Privacy Policy
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-ivory-mist transition-colors">
+                    Terms of Service
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-ivory-mist transition-colors">
+                    GDPR
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-ivory-mist/20 pt-8">
+        <div className="border-t border-ivory-mist/20 pt-6">
           <p className="text-xs text-ivory-mist/50 font-light">
             © {new Date().getFullYear()} Scentience x Project Proust. All rights
             reserved.
