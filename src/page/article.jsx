@@ -40,9 +40,8 @@ const articles = {
         text: "Each morning, I would apply the same fragrance. The ritual became as important as the scent itself. Wake up. Open the bottle. Inhale. Apply. And then, step into the day. By the end of our week in Bali, the fragrance had become inseparable from the experience.",
       },
       {
-        type: "quote",
+        type: "paragraph",
         text: "A scent is not just a fragrance—it's a time machine. One spray, and I'm back on that beach, watching the sun set over the Indian Ocean.",
-        author: "Sophie Laurent",
       },
       {
         type: "paragraph",
@@ -78,9 +77,8 @@ const articles = {
         text: "The perfumer had crafted something extraordinary: notes of bergamot and blackcurrant, grounded in vetiver and patchouli. It was sophisticated, yet approachable. Complex, yet immediate. Much like the city itself.",
       },
       {
-        type: "quote",
+        type: "paragraph",
         text: "I didn't know it then, but I was creating a memory anchor. Every spray was a commitment to presence, to being fully in the moment.",
-        author: "Thomas Dubois",
       },
       {
         type: "paragraph",
