@@ -16,6 +16,7 @@ import sunImage from "../image/sun.png";
 import memoriesImage from "../image/memories.png";
 import parisImage from "../image/paris.png";
 import listImage from "../image/list.png";
+import worldImage from "../image/world.png";
 
 export default function ScentienceLanding() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -35,6 +36,9 @@ export default function ScentienceLanding() {
 
         {/* Story Section */}
         <StorySection setIsModalOpen={setIsModalOpen} />
+
+        {/* Scentience Around the World Section */}
+        <ScentienceAroundTheWorldSection />
 
         {/* How it Works Section */}
         <HowItWorksSection />
@@ -512,6 +516,46 @@ function StorySection({ setIsModalOpen }) {
               Create your own perfume →
             </a>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- Scentience Around the World Section ---------------- */
+function ScentienceAroundTheWorldSection() {
+  return (
+    <section className="w-full bg-ivory-mist pt-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Content - Centered */}
+        <div className="max-w-4xl mx-auto mb-16 sm:mb-20">
+          <div className="text-center space-y-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif text-text-primary leading-tight font-light">
+              Scentience around the world
+            </h2>
+            <p className="text-xs sm:text-sm text-text-secondary leading-relaxed font-light max-w-xl mx-auto">
+              Pick the right perfume for the right moment.
+            </p>
+          </div>
+        </div>
+
+        {/* Image */}
+        <div className="relative w-full h-[50vh] sm:h-[60vh] lg:h-[70vh] mb-12 sm:mb-16">
+          <img
+            src={worldImage}
+            alt="Scentience around the world - Every event deserves its own perfume"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* CTA */}
+        <div className="text-center">
+          <a
+            href="#collection"
+            className="inline-block border border-text-primary/30 px-10 py-3.5 text-xs sm:text-sm font-light text-text-primary hover:border-text-primary hover:bg-text-primary hover:text-white transition-all duration-300 tracking-wide"
+          >
+            Explore Our Collection →
+          </a>
         </div>
       </div>
     </section>
