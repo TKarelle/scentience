@@ -41,7 +41,7 @@ export const THE_PROCESS_SEO = {
 export const BESPOKE_PRODUCT_SEO = {
   title: "Original Bespoke — 30 ml memory fragrance | Scentience",
   description:
-    "Original Bespoke: 30 ml journey-built formula, optional 20-page journal, from €100. Free delivery · 5–7 business days. 247+ commissions · 4.9★.",
+    "Original Bespoke: 30 ml journey-built formula, optional 20-page journal, from £100. Free delivery · 5–7 business days. 247+ commissions · 4.9★.",
   keywords:
     "Scentience Original Bespoke, bespoke fragrance 30ml, memory perfume, custom fragrance UK, honeymoon perfume, personalized perfume, luxury custom perfume",
   canonicalPath: "/product/original-bespoke",

@@ -35,7 +35,7 @@ function buildProductJsonLd(product) {
       "@type": "Offer",
       url: `${SITE_ORIGIN}${product.path}`,
       priceCurrency: product.pricing.currency,
-      price: product.pricing.baseEur,
+      price: product.pricing.baseGbp,
       availability: "https://schema.org/InStock",
     },
   });
@@ -61,7 +61,7 @@ function ProductBespokeMain() {
   const [modalOpen, setModalOpen] = useState(false);
   const [orderOpts, setOrderOpts] = useState({
     withJournal: true,
-    totalEur: product.pricing.baseEur,
+    totalEur: product.pricing.baseGbp,
   });
 
   const productJsonLd = useMemo(() => buildProductJsonLd(product), [product]);

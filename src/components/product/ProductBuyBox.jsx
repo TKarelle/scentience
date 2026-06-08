@@ -1,7 +1,7 @@
 import { createContext, useContext, useId, useMemo, useState } from "react";
 import {
   BESPOKE_PRODUCT,
-  formatEur,
+  formatPrice,
   getBespokePrice,
 } from "../../config/bespokeProduct";
 
@@ -45,13 +45,13 @@ export function ProductBuyCheckout({ className = "" }) {
   const product = BESPOKE_PRODUCT;
   const journalId = useId();
   const { withJournal, setWithJournal, total, onPersonalise } = useProductBuy();
-  const { journalAddOnEur, bundleDiscountEur } = product.pricing;
-  const showSavings = withJournal && bundleDiscountEur > 0;
+  const { journalAddOnGbp, bundleDiscountGbp } = product.pricing;
+  const showSavings = withJournal && bundleDiscountGbp > 0;
 
   return (
     <div className={className}>
       <p className="font-body text-3xl font-light tabular-nums text-wine sm:text-4xl">
-        {formatEur(total)}
+        {formatPrice(total)}
       </p>
       
 
@@ -69,8 +69,8 @@ export function ProductBuyCheckout({ className = "" }) {
           </span>
           <span className="landing-meta-caption mt-0.5 block">
             {withJournal
-              ? `${formatEur(journalAddOnEur - bundleDiscountEur)} in bundle`
-              : `+${formatEur(journalAddOnEur)}`}
+              ? `${formatPrice(journalAddOnGbp - bundleDiscountGbp)} in bundle`
+              : `+${formatPrice(journalAddOnGbp)}`}
           </span>
         </label>
       </div>

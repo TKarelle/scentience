@@ -1,120 +1,26 @@
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import CloseIcon from "../icons/CloseIcon";
-import { BESPOKE_PRODUCT, formatEur } from "../../config/bespokeProduct";
+import { BESPOKE_PRODUCT, formatPrice } from "../../config/bespokeProduct";
+import { BESPOKE_ORDER_CONFIRMATION } from "../../config/bespokeOrderForm";
 import {
-  BESPOKE_JOURNEY_FIELDS,
-  BESPOKE_ORDER_CONFIRMATION,
-  BESPOKE_ORDER_MOMENT_MIN_CHARS,
-  BESPOKE_ORDER_STEPS,
-  BESPOKE_SCENT_FIELDS,
-} from "../../config/bespokeOrderForm";
+  BESPOKE_DESTINATION_COUNTRIES,
+  BESPOKE_QUESTIONNAIRE_STEPS,
+} from "../../config/bespokeQuestionnaire";
 import { buildBespokeOrderMailto } from "../../lib/buildBespokeOrderMailto";
+import { FORM_INPUT_CLASS, FORM_LABEL_CLASS } from "../../lib/formInputClass";
 import {
-  FORM_INPUT_CLASS as inputClass,
-  FORM_TEXTAREA_CLASS,
-} from "../../lib/formInputClass";
-
-function isValidEmail(value) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
-}
-
-function formatJourneyDate(isoDate) {
-  if (!isoDate) return "";
-  try {
-    return new Intl.DateTimeFormat("en-GB", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    }).format(new Date(`${isoDate}T12:00:00`));
-  } catch {
-    return isoDate;
-  }
-}
-
-function OrderStepper({ step, steps }) {
-  const current = steps[step];
-
-  return (
-    <nav aria-label="Order progress" className="mt-5">
-      <div className="relative px-2">
-        <div
-          className="absolute left-1/4 right-1/4 top-3.5 h-px bg-wine/20"
-          aria-hidden
-        />
-        <div
-          className="absolute left-1/4 top-3.5 h-px bg-wine transition-[width] duration-300 ease-out"
-          style={{ width: step >= 1 ? "50%" : "0%" }}
-          aria-hidden
-        />
-        <ol className="relative grid grid-cols-2">
-          {steps.map((s, i) => {
-            const done = i < step;
-            const active = i === step;
-            return (
-              <li key={s.id} className="flex flex-col items-center">
-                <span
-                  className={`flex h-7 w-7 items-center justify-center rounded-full border text-[11px] font-medium transition-colors duration-300 ${
-                    active || done
-                      ? "border-wine bg-wine text-paper"
-                      : "border-wine/25 bg-paper text-wine/40"
-                  }`}
-                  aria-current={active ? "step" : undefined}
-                >
-                  {done ? (
-                    <svg
-                      className="h-3.5 w-3.5"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      aria-hidden
-                    >
-                      <path
-                        d="M2 6l3 3 5-5"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  ) : (
-                    i + 1
-                  )}
-                </span>
-                <span
-                  className={`mt-2 text-center font-subtitle text-[10px] uppercase tracking-[0.14em] transition-colors duration-300 ${
-                    active
-                      ? "text-wine"
-                      : done
-                        ? "text-ink/75"
-                        : "text-ink/40"
-                  }`}
-                >
-                  {s.navLabel}
-                </span>
-              </li>
-            );
-          })}
-        </ol>
-      </div>
-      <p className="sr-only">
-        {current.navLabel} — step {step + 1} of {steps.length}
-      </p>
-    </nav>
-  );
-}
-
-const initialFormState = () => ({
-  labelNames: "",
-  journey: "",
-  journeyDate: "",
-  moment: "",
-  mood: BESPOKE_SCENT_FIELDS.mood.options[0],
-  references: "",
-  email: "",
-});
+  createInitialQuestionnaireAnswers,
+  isQuestionnaireStepValid,
+} from "../../lib/questionnaireState";
+import IngredientPreferenceQuestion from "./questionnaire/IngredientPreferenceQuestion";
+import MultiSelectQuestion from "./questionnaire/MultiSelectQuestion";
+import QuestionnaireOrderStrip from "./questionnaire/QuestionnaireOrderStrip";
+import QuestionnaireProgress from "./questionnaire/QuestionnaireProgress";
+import QuestionnaireSummary from "./questionnaire/QuestionnaireSummary";
+import RankImportanceQuestion from "./questionnaire/RankImportanceQuestion";
 
 /**
- * Questionnaire 2 étapes — voyage puis senteur.
- * UX : sheet mobile, barre de progression, récap voyage, focus auto, état conservé si fermeture accidentelle.
+ * Questionnaire Original Bespoke — une question par écran, progression visible.
  */
 export default function BespokeOrderModal({
   open,
@@ -123,17 +29,17 @@ export default function BespokeOrderModal({
   totalEur,
 }) {
   const formId = useId();
-  const panelRef = useRef(null);
+  const bodyRef = useRef(null);
   const [step, setStep] = useState(0);
-  const [form, setForm] = useState(initialFormState);
+  const [answers, setAnswers] = useState(createInitialQuestionnaireAnswers);
   const [ordered, setOrdered] = useState(false);
-  const [attemptedStep, setAttemptedStep] = useState(null);
+  const [attempted, setAttempted] = useState(false);
 
   const resetAll = useCallback(() => {
     setStep(0);
-    setForm(initialFormState());
+    setAnswers(createInitialQuestionnaireAnswers());
     setOrdered(false);
-    setAttemptedStep(null);
+    setAttempted(false);
   }, []);
 
   const handleClose = useCallback(() => {
@@ -161,58 +67,193 @@ export default function BespokeOrderModal({
 
   useEffect(() => {
     if (!open) return;
+    const stepType = BESPOKE_QUESTIONNAIRE_STEPS[step]?.type;
     const t = window.setTimeout(() => {
-      const focusId =
-        step === 0 ? `${formId}-names` : `${formId}-moment`;
-      document.getElementById(focusId)?.focus();
-      panelRef.current?.scrollTo({ top: 0, behavior: "smooth" });
-    }, 50);
+      if (step === 0) {
+        document.getElementById(`${formId}-names`)?.focus();
+      } else if (stepType === "contact") {
+        document.getElementById(`${formId}-email`)?.focus();
+      }
+      bodyRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+      setAttempted(false);
+    }, 40);
     return () => window.clearTimeout(t);
   }, [open, step, formId]);
 
   if (!open) return null;
 
-  const journeyValid =
-    form.labelNames.trim().length > 0 &&
-    form.journey.trim().length > 0 &&
-    form.journeyDate.trim().length > 0;
-
-  const momentLen = form.moment.trim().length;
-  const scentValid =
-    momentLen >= BESPOKE_ORDER_MOMENT_MIN_CHARS && isValidEmail(form.email);
-
-  const current = BESPOKE_ORDER_STEPS[step];
+  const current = BESPOKE_QUESTIONNAIRE_STEPS[step];
   const product = BESPOKE_PRODUCT;
+  const stepValid = isQuestionnaireStepValid(step, answers);
+  const isLast = step === BESPOKE_QUESTIONNAIRE_STEPS.length - 1;
 
-  function patchForm(updates) {
-    setForm((prev) => ({ ...prev, ...updates }));
+  function patchAnswers(updates) {
+    setAnswers((prev) => ({ ...prev, ...updates }));
   }
 
-  function handleContinue(e) {
-    e.preventDefault();
-    setAttemptedStep(0);
-    if (!journeyValid) return;
-    setStep(1);
-    setAttemptedStep(null);
+  function goNext() {
+    setAttempted(true);
+    if (!stepValid) return;
+    if (isLast) {
+      const href = buildBespokeOrderMailto({
+        answers,
+        withJournal,
+        totalEur,
+      });
+      window.location.href = href;
+      setOrdered(true);
+      return;
+    }
+    setStep((s) => s + 1);
+    setAttempted(false);
   }
 
-  function handlePlaceOrder(e) {
+  function goBack() {
+    if (step === 0) return;
+    setStep((s) => s - 1);
+    setAttempted(false);
+  }
+
+  function handleSubmit(e) {
     e.preventDefault();
-    setAttemptedStep(1);
-    if (!scentValid) return;
-    const href = buildBespokeOrderMailto({
-      labelNames: form.labelNames.trim(),
-      journey: form.journey.trim(),
-      journeyDate: form.journeyDate,
-      moment: form.moment.trim(),
-      mood: form.mood,
-      references: form.references.trim(),
-      email: form.email.trim(),
-      withJournal,
-      totalEur,
-    });
-    window.location.href = href;
-    setOrdered(true);
+    goNext();
+  }
+
+  function renderStep() {
+    switch (current.type) {
+      case "rank":
+        return (
+          <RankImportanceQuestion
+            ranks={answers.influenceRanks}
+            onChange={(influenceRanks) => patchAnswers({ influenceRanks })}
+          />
+        );
+      case "countries":
+        return (
+          <MultiSelectQuestion
+            options={BESPOKE_DESTINATION_COUNTRIES}
+            selected={answers.countries}
+            onChange={(countries) => patchAnswers({ countries })}
+            min={1}
+            searchable
+            searchPlaceholder="Search countries…"
+          />
+        );
+      case "multi":
+        return (
+          <MultiSelectQuestion
+            options={current.options}
+            selected={
+              current.id === "q3-emotions"
+                ? answers.emotions
+                : current.id === "q4-experiences"
+                  ? answers.experiences
+                  : current.id === "q5-families-enjoy"
+                    ? answers.familiesEnjoy
+                    : answers.familiesAvoid
+            }
+            onChange={(value) => {
+              if (current.id === "q3-emotions") patchAnswers({ emotions: value });
+              else if (current.id === "q4-experiences")
+                patchAnswers({ experiences: value });
+              else if (current.id === "q5-families-enjoy")
+                patchAnswers({ familiesEnjoy: value });
+              else patchAnswers({ familiesAvoid: value });
+            }}
+            min={current.min}
+            max={current.max}
+          />
+        );
+      case "ingredients":
+        return (
+          <IngredientPreferenceQuestion
+            prefs={answers.ingredientPrefs}
+            onChange={(ingredientPrefs) => patchAnswers({ ingredientPrefs })}
+          />
+        );
+      case "journey":
+        return (
+          <div className="space-y-5">
+            <div>
+              <label htmlFor={`${formId}-names`} className={FORM_LABEL_CLASS}>
+                Name(s) for the label
+              </label>
+              <input
+                id={`${formId}-names`}
+                type="text"
+                value={answers.labelNames}
+                onChange={(e) =>
+                  patchAnswers({ labelNames: e.target.value })
+                }
+                placeholder="e.g. Elena & Marco"
+                autoComplete="name"
+                enterKeyHint="next"
+                className={FORM_INPUT_CLASS}
+              />
+            </div>
+            <div>
+              <label htmlFor={`${formId}-journey`} className={FORM_LABEL_CLASS}>
+                Journey
+              </label>
+              <input
+                id={`${formId}-journey`}
+                type="text"
+                value={answers.journey}
+                onChange={(e) => patchAnswers({ journey: e.target.value })}
+                placeholder="e.g. Honeymoon — Amalfi Coast"
+                enterKeyHint="next"
+                className={FORM_INPUT_CLASS}
+              />
+            </div>
+            <div>
+              <label htmlFor={`${formId}-date`} className={FORM_LABEL_CLASS}>
+                Date of the journey
+              </label>
+              <input
+                id={`${formId}-date`}
+                type="date"
+                value={answers.journeyDate}
+                onChange={(e) =>
+                  patchAnswers({ journeyDate: e.target.value })
+                }
+                enterKeyHint="next"
+                className={FORM_INPUT_CLASS}
+              />
+            </div>
+          </div>
+        );
+      case "summary":
+        return (
+          <QuestionnaireSummary
+            answers={answers}
+            productName={product.name}
+            totalEur={totalEur}
+            withJournal={withJournal}
+          />
+        );
+      case "contact":
+        return (
+          <div>
+            <label htmlFor={`${formId}-email`} className={FORM_LABEL_CLASS}>
+              Email for order confirmation
+            </label>
+            <input
+              id={`${formId}-email`}
+              type="email"
+              inputMode="email"
+              value={answers.email}
+              onChange={(e) => patchAnswers({ email: e.target.value })}
+              placeholder="you@example.com"
+              autoComplete="email"
+              enterKeyHint="done"
+              className={FORM_INPUT_CLASS}
+              aria-invalid={attempted && !stepValid}
+            />
+          </div>
+        );
+      default:
+        return null;
+    }
   }
 
   return (
@@ -222,49 +263,55 @@ export default function BespokeOrderModal({
       onClick={handleClose}
     >
       <div
-        ref={panelRef}
-        className="max-h-[92vh] w-full max-w-lg overflow-y-auto bg-paper p-6 shadow-xl sm:max-h-[90vh] sm:rounded-none sm:p-10"
+        className="flex max-h-[92dvh] w-full max-w-lg flex-col overflow-hidden bg-paper shadow-xl sm:max-h-[90dvh] sm:rounded-none"
         role="dialog"
         aria-modal="true"
         aria-labelledby={`${formId}-modal-title`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="mb-2 flex items-start justify-between gap-4">
-          <div className="min-w-0 flex-1">
-            <p className="font-subtitle text-[10px] uppercase tracking-[0.18em] text-wine/70">
-              {product.name} · {formatEur(totalEur)}
-              {withJournal ? " · incl. journal" : ""}
-            </p>
-            {!ordered && (
-              <OrderStepper step={step} steps={BESPOKE_ORDER_STEPS} />
-            )}
-            <h2
-              id={`${formId}-modal-title`}
-              className="waiting-list-modal-title mt-5"
-            >
-              {ordered ? BESPOKE_ORDER_CONFIRMATION.title : current.title}
-            </h2>
-            {!ordered && (
-              <p
-                id={`${formId}-modal-desc`}
-                className="typo-body-lead mt-2 text-sm text-ink/80"
+        {!ordered && (
+          <QuestionnaireOrderStrip
+            productName={product.name}
+            totalEur={totalEur}
+            withJournal={withJournal}
+            onClose={handleClose}
+          />
+        )}
+
+        <div className="shrink-0 border-b border-wine/10 px-6 pb-5 pt-5 sm:px-10 sm:pt-6">
+          {ordered && (
+            <div className="mb-4 flex justify-end">
+              <button
+                type="button"
+                onClick={handleClose}
+                className="p-1 text-ink/60 hover:text-ink"
+                aria-label="Close"
               >
-                {current.subtitle}
-              </p>
-            )}
-          </div>
-          <button
-            type="button"
-            onClick={handleClose}
-            className="shrink-0 p-1 text-ink/60 hover:text-ink"
-            aria-label="Close"
+                <CloseIcon className="h-5 w-5" />
+              </button>
+            </div>
+          )}
+
+          {!ordered && <QuestionnaireProgress stepIndex={step} />}
+
+          <h2
+            id={`${formId}-modal-title`}
+            className="waiting-list-modal-title mt-5"
           >
-            <CloseIcon className="h-5 w-5" />
-          </button>
+            {ordered ? BESPOKE_ORDER_CONFIRMATION.title : current.title}
+          </h2>
+          {!ordered && (
+            <p
+              id={`${formId}-modal-desc`}
+              className="typo-body-lead mt-2 text-sm text-ink/80"
+            >
+              {current.subtitle}
+            </p>
+          )}
         </div>
 
         {ordered ? (
-          <div className="py-6 text-center">
+          <div className="px-6 py-8 text-center sm:px-10">
             <p className="typo-body-lead text-sm text-ink/88">
               {BESPOKE_ORDER_CONFIRMATION.body}
             </p>
@@ -278,188 +325,25 @@ export default function BespokeOrderModal({
           </div>
         ) : (
           <form
-            onSubmit={step === 0 ? handleContinue : handlePlaceOrder}
-            aria-describedby={`${formId}-modal-desc`}
+            onSubmit={handleSubmit}
+            className="flex min-h-0 flex-1 flex-col"
             noValidate
+            aria-describedby={`${formId}-modal-desc`}
           >
-            {step === 0 && (
-              <div className="mt-6 space-y-5">
-                <div>
-                  <label
-                    htmlFor={`${formId}-names`}
-                    className="font-subtitle text-[10px] uppercase tracking-[0.16em] text-wine"
-                  >
-                    {BESPOKE_JOURNEY_FIELDS.labelNames.label}
-                  </label>
-                  <input
-                    id={`${formId}-names`}
-                    type="text"
-                    value={form.labelNames}
-                    onChange={(e) => patchForm({ labelNames: e.target.value })}
-                    placeholder={
-                      BESPOKE_JOURNEY_FIELDS.labelNames.placeholder
-                    }
-                    className={inputClass}
-                    autoComplete="name"
-                    enterKeyHint="next"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor={`${formId}-journey`}
-                    className="font-subtitle text-[10px] uppercase tracking-[0.16em] text-wine"
-                  >
-                    {BESPOKE_JOURNEY_FIELDS.journey.label}
-                  </label>
-                  <input
-                    id={`${formId}-journey`}
-                    type="text"
-                    value={form.journey}
-                    onChange={(e) => patchForm({ journey: e.target.value })}
-                    placeholder={BESPOKE_JOURNEY_FIELDS.journey.placeholder}
-                    className={inputClass}
-                    enterKeyHint="next"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor={`${formId}-date`}
-                    className="font-subtitle text-[10px] uppercase tracking-[0.16em] text-wine"
-                  >
-                    {BESPOKE_JOURNEY_FIELDS.journeyDate.label}
-                  </label>
-                  <input
-                    id={`${formId}-date`}
-                    type="date"
-                    value={form.journeyDate}
-                    onChange={(e) =>
-                      patchForm({ journeyDate: e.target.value })
-                    }
-                    className={inputClass}
-                    enterKeyHint="go"
-                  />
-                </div>
+            <div
+              ref={bodyRef}
+              className="questionnaire-modal__body min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 py-5 sm:px-10 sm:py-6"
+            >
+              <div key={current.id} className="questionnaire-step-enter">
+                {renderStep()}
               </div>
-            )}
+            </div>
 
-            {step === 1 && (
-              <div className="mt-6 space-y-5">
-                {journeyValid && (
-                  <div className="border border-wine/15 bg-paper/80 px-4 py-3">
-                    <p className="font-subtitle text-[10px] uppercase tracking-[0.14em] text-wine/70">
-                      Your label
-                    </p>
-                    <p className="typo-body-lead mt-1 text-sm text-ink">
-                      {form.labelNames.trim()} · {form.journey.trim()}
-                    </p>
-                    <p className="landing-meta-caption mt-0.5">
-                      {formatJourneyDate(form.journeyDate)}
-                    </p>
-                  </div>
-                )}
-
-                <div>
-                  <label
-                    htmlFor={`${formId}-moment`}
-                    className="font-subtitle text-[10px] uppercase tracking-[0.16em] text-wine"
-                  >
-                    {BESPOKE_SCENT_FIELDS.moment.label}
-                  </label>
-                  <textarea
-                    id={`${formId}-moment`}
-                    rows={4}
-                    value={form.moment}
-                    onChange={(e) => patchForm({ moment: e.target.value })}
-                    placeholder={BESPOKE_SCENT_FIELDS.moment.placeholder}
-                    className={FORM_TEXTAREA_CLASS}
-                    enterKeyHint="next"
-                    aria-describedby={`${formId}-moment-hint`}
-                  />
-                  <p
-                    id={`${formId}-moment-hint`}
-                    className={`landing-meta-caption mt-1.5 ${
-                      attemptedStep === 1 &&
-                      momentLen < BESPOKE_ORDER_MOMENT_MIN_CHARS
-                        ? "text-wine"
-                        : ""
-                    }`}
-                  >
-                    {momentLen}/{BESPOKE_ORDER_MOMENT_MIN_CHARS} characters
-                    minimum
-                  </p>
-                </div>
-                <div>
-                  <label
-                    htmlFor={`${formId}-mood`}
-                    className="font-subtitle text-[10px] uppercase tracking-[0.16em] text-wine"
-                  >
-                    {BESPOKE_SCENT_FIELDS.mood.label}
-                  </label>
-                  <select
-                    id={`${formId}-mood`}
-                    value={form.mood}
-                    onChange={(e) => patchForm({ mood: e.target.value })}
-                    className={inputClass}
-                  >
-                    {BESPOKE_SCENT_FIELDS.mood.options.map((opt) => (
-                      <option key={opt} value={opt}>
-                        {opt}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label
-                    htmlFor={`${formId}-refs`}
-                    className="font-subtitle text-[10px] uppercase tracking-[0.16em] text-wine"
-                  >
-                    {BESPOKE_SCENT_FIELDS.references.label}
-                  </label>
-                  <textarea
-                    id={`${formId}-refs`}
-                    rows={2}
-                    value={form.references}
-                    onChange={(e) => patchForm({ references: e.target.value })}
-                    placeholder={BESPOKE_SCENT_FIELDS.references.placeholder}
-                    className={FORM_TEXTAREA_CLASS}
-                    enterKeyHint="next"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor={`${formId}-email`}
-                    className="font-subtitle text-[10px] uppercase tracking-[0.16em] text-wine"
-                  >
-                    {BESPOKE_SCENT_FIELDS.email.label}
-                  </label>
-                  <input
-                    id={`${formId}-email`}
-                    type="email"
-                    inputMode="email"
-                    value={form.email}
-                    onChange={(e) => patchForm({ email: e.target.value })}
-                    placeholder={BESPOKE_SCENT_FIELDS.email.placeholder}
-                    className={inputClass}
-                    autoComplete="email"
-                    enterKeyHint="done"
-                    aria-invalid={
-                      attemptedStep === 1 &&
-                      form.email.length > 0 &&
-                      !isValidEmail(form.email)
-                    }
-                  />
-                </div>
-              </div>
-            )}
-
-            <div className="sticky bottom-0 mt-8 flex gap-3 border-t border-wine/10 bg-paper pt-4 pb-[max(0px,env(safe-area-inset-bottom))]">
+            <div className="shrink-0 flex gap-3 border-t border-wine/10 bg-paper px-6 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-10">
               {step > 0 && (
                 <button
                   type="button"
-                  onClick={() => {
-                    setStep(0);
-                    setAttemptedStep(null);
-                  }}
+                  onClick={goBack}
                   className="cta-parchment flex-1 rounded-none tracking-wide"
                 >
                   Back
@@ -467,12 +351,14 @@ export default function BespokeOrderModal({
               )}
               <button
                 type="submit"
-                disabled={step === 0 ? !journeyValid : !scentValid}
+                disabled={!stepValid}
                 className="cta-primary flex-1 rounded-none tracking-[0.14em] disabled:cursor-not-allowed disabled:opacity-45"
               >
-                {step === 0
-                  ? BESPOKE_ORDER_STEPS[0].continueLabel
-                  : BESPOKE_ORDER_STEPS[1].submitLabel}
+                {isLast
+                  ? "Place order"
+                  : current.type === "summary"
+                    ? "Looks good"
+                    : "Continue"}
               </button>
             </div>
           </form>

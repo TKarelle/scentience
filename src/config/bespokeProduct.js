@@ -1,6 +1,6 @@
 /**
  * Original Bespoke — 30 ml + journal optionnel.
- * Modal : voyage d’abord (noms, journey, date) → brief senteur (meilleure conversion bespoke).
+ * Modal : questionnaire 10 écrans (voyage · Q1–Q7 · récap · email).
  */
 
 export const BESPOKE_PRODUCT = {
@@ -15,20 +15,20 @@ export const BESPOKE_PRODUCT = {
   /** Sous les preuves sociales — explique le questionnaire (pas de faux avis). */
   personalisationPitch: {
     lead: "No catalogue — your formula is built from your answers.",
-    body: "Personalise & Order guides you through a two-step brief. We translate your responses into ingredient choices: regional botanicals, season, and the emotional intent of the place.",
+    body: "Personalise & Order walks you through ten guided screens — one at a time. Your journey first, then scent preferences, a full review, and email to confirm.",
     steps: [
       "Journey → label names, destination & date",
-      "Scent brief → emotions, note preferences, atmosphere",
+      "7 scent questions · review · email to confirm",
     ],
   },
 
   volume: "30 ml",
 
   pricing: {
-    currency: "EUR",
-    baseEur: 100,
-    journalAddOnEur: 25,
-    bundleDiscountEur: 10,
+    currency: "GBP",
+    baseGbp: 100,
+    journalAddOnGbp: 25,
+    bundleDiscountGbp: 10,
   },
 
   journalOption: {
@@ -83,17 +83,21 @@ export const BESPOKE_PRODUCT = {
 };
 
 export function getBespokePrice({ withJournal }) {
-  const { baseEur, journalAddOnEur, bundleDiscountEur } =
+  const { baseGbp, journalAddOnGbp, bundleDiscountGbp } =
     BESPOKE_PRODUCT.pricing;
-  if (!withJournal) return baseEur;
-  return baseEur + journalAddOnEur - bundleDiscountEur;
+  if (!withJournal) return baseGbp;
+  return baseGbp + journalAddOnGbp - bundleDiscountGbp;
 }
 
-export function formatEur(amount) {
+/** Prix en livres sterling (GBP). */
+export function formatPrice(amount) {
   return new Intl.NumberFormat("en-GB", {
     style: "currency",
-    currency: "EUR",
+    currency: "GBP",
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(amount);
 }
+
+/** @deprecated Utiliser formatPrice */
+export const formatEur = formatPrice;
