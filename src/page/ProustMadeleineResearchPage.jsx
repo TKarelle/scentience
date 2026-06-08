@@ -7,6 +7,7 @@ import { PROUST_MADELEINE_SEO, absoluteUrl } from "../config/seoMeta";
 import { PROUST_MADELEINE_PAGE_COPY } from "../config/proustMadeleineResearch";
 import { SHARED_STORIES_COPY } from "../config/landingSharedStories";
 import SharedStoryCard from "../components/landing/SharedStoryCard";
+import ProustResearchStatBanner from "../components/proust/ProustResearchStatBanner";
 import bagImg from "../image/bag.png";
 import bottleImg from "../image/bottle.png";
 
@@ -134,28 +135,14 @@ export default function ProustMadeleineResearchPage() {
             <div className="flex flex-1 flex-col items-center justify-center py-14 sm:py-16 lg:py-20">
               <a
                 href={hero.ctaHref}
-                className="cta-primary rounded-none px-12 py-4 text-xs uppercase tracking-[0.18em] sm:px-14 sm:text-sm sm:tracking-[0.2em]"
+                className="cta-parchment rounded-none px-12 py-4 text-xs uppercase tracking-[0.18em] sm:px-14 sm:text-sm sm:tracking-[0.2em]"
               >
                 {hero.ctaLabel}
               </a>
             </div>
           </div>
 
-          <div className="relative z-10 bg-wine px-4 py-6 sm:px-6 sm:py-7 lg:px-10">
-            <div className="mx-auto w-full max-w-4xl text-left">
-              <p className="flex flex-wrap items-baseline justify-start gap-x-1.5 gap-y-2 text-paper">
-                <span className="font-body text-4xl font-light tabular-nums leading-none sm:text-5xl md:text-6xl">
-                  {hero.bannerValue}
-                </span>
-                <span className="typewriter-face max-w-[min(100%,52rem)] text-[10px] font-normal uppercase leading-snug tracking-[0.12em] sm:text-xs sm:tracking-[0.14em] md:text-sm md:tracking-[0.16em]">
-                  {hero.bannerSuffix}
-                </span>
-              </p>
-              <p className="mt-3 max-w-2xl font-body text-xs font-light italic leading-relaxed text-paper/80 sm:text-sm">
-                {hero.bannerDisclaimer}
-              </p>
-            </div>
-          </div>
+          <ProustResearchStatBanner className="relative z-10" />
         </header>
 
         {/* Field stories — mêmes cartes que « They share their stories » */}

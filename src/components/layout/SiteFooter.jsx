@@ -48,10 +48,10 @@ export default function SiteFooter() {
                 </li>
                 <li>
                   <Link
-                    to={{ pathname: "/", hash: "collection" }}
+                    to="/product/original-bespoke"
                     className="hover:text-paper transition-colors"
                   >
-                    Products
+                    Original Bespoke
                   </Link>
                 </li>
                 <li>

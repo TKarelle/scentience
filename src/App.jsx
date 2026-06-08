@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Landing from "./page/landing";
 import ArticlePage from "./page/article";
 import TheProcessPage from "./page/TheProcessPage";
@@ -6,12 +6,15 @@ import TheSciencePage from "./page/TheSciencePage";
 import ProustMadeleineResearchPage from "./page/ProustMadeleineResearchPage";
 import JournalPage from "./page/JournalPage";
 import TermsPage from "./page/TermsPage";
+import ProductOriginePage from "./page/ProductOriginePage";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/product/original-bespoke" element={<ProductOriginePage />} />
+        <Route path="/product/origine" element={<Navigate to="/product/original-bespoke" replace />} />
         <Route path="/the-process" element={<TheProcessPage />} />
         <Route path="/the-science" element={<TheSciencePage />} />
         <Route

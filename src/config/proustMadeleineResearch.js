@@ -4,7 +4,7 @@
  */
 
 export const PROUST_MADELEINE_PAGE_COPY = {
-  /** Hero plein écran : fond bag.png, titres, CTA, bandeau wine. */
+  /** Hero plein écran : fond bag.png, titres, CTA paper, bandeau wine. */
   hero: {
     kicker: "The Proust Project",
     titleLine1: "HAS A SCENT EVER BROUGT BACK A MEMORY ?",
@@ -13,10 +13,6 @@ export const PROUST_MADELEINE_PAGE_COPY = {
       "At Scentience our purpose is to contribute to the rich literature on the Proust Phenomenon, know as involuntary autobiographical memory. We intend to gather survey data about people’s smell memories to better understand how episodic memory is encoded ",
     ctaLabel: "SHARE MY STORY",
     ctaHref: "#proust-contribute",
-    bannerValue: "95%",
-    bannerSuffix:
-      ": OF RESPONDENTS HAVE EXPERIENCED A MEMORY TRIGGED BY SCENT.",
-    bannerDisclaimer: "*Sourced from internal questionnaire.",
   },
 
   /** Titre de section ; le contenu des cartes = `SHARED_STORIES_COPY.stories`. */

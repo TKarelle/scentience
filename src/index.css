@@ -81,6 +81,36 @@
     @apply typewriter-face text-sm font-normal normal-case leading-relaxed text-paper sm:text-base;
   }
 
+  /** Titres TLWG sur fond wine — jamais wine/ink. */
+  .typo-title-on-wine {
+    font-family: var(--font-subtitle);
+    letter-spacing: var(--tracking-subtitle);
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--color-paper);
+  }
+
+  /** Corps Times sur fond wine — jamais ink. */
+  .typo-body-lead-on-wine {
+    font-family: var(--font-body);
+    font-weight: var(--font-body-weight);
+    font-size: 0.875rem;
+    line-height: 1.625;
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--color-paper);
+  }
+
+  @media (min-width: 640px) {
+    .typo-body-lead-on-wine {
+      font-size: 1rem;
+    }
+  }
+
+  .typo-body-lead-on-wine-muted {
+    color: color-mix(in srgb, var(--color-paper) 88%, transparent);
+  }
+
   .typo-body-lead {
     @apply typo-body text-sm leading-relaxed sm:text-base;
   }
@@ -266,6 +296,76 @@
     max-height: var(--split-media-img-max-h);
     overflow: hidden;
     flex-shrink: 0;
+  }
+
+  /** Galerie PDP — miniatures gauche + média principal (Le Labo). */
+  .product-gallery {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .product-gallery {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+  }
+
+  .product-gallery-thumbs {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .product-gallery-thumbs {
+      flex-direction: column;
+      flex-shrink: 0;
+      width: 4.5rem;
+      overflow-x: visible;
+      padding-bottom: 0;
+    }
+  }
+
+  .product-gallery-thumb {
+    flex-shrink: 0;
+    width: 3.5rem;
+    height: 3.5rem;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--color-ink) 15%, transparent);
+    background-color: color-mix(in srgb, var(--color-ink) 3%, transparent);
+    padding: 0;
+    cursor: pointer;
+    transition: border-color 200ms;
+  }
+
+  @media (min-width: 640px) {
+    .product-gallery-thumb {
+      width: 4.5rem;
+      height: 4.5rem;
+    }
+  }
+
+  .product-gallery-thumb-active {
+    border-color: var(--color-wine);
+  }
+
+  .product-gallery-main {
+    flex: 1;
+    min-width: 0;
+    aspect-ratio: 4 / 5;
+    max-height: min(85vh, 40rem);
+  }
+
+  @media (min-width: 1024px) {
+    .product-gallery-main {
+      aspect-ratio: 3 / 4;
+      max-height: min(90vh, 44rem);
+    }
   }
 
   @media (min-width: 1024px) {

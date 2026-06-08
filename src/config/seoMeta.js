@@ -38,12 +38,21 @@ export const THE_PROCESS_SEO = {
   canonicalPath: "/the-process",
 };
 
-export const THE_SCIENCE_SEO = {
-  title: "The science | Scentience",
+export const BESPOKE_PRODUCT_SEO = {
+  title: "Original Bespoke — 30 ml memory fragrance | Scentience",
   description:
-    "Why smell reaches the limbic system fast, how olfactory memory compares to other senses, and how Scentience aligns with IFRA / EU / UK guidance.",
+    "Original Bespoke: 30 ml journey-built formula, optional 20-page journal, from €100. Free delivery · 5–7 business days. 247+ commissions · 4.9★.",
   keywords:
-    "olfactory memory science, limbic system smell, amygdala scent, smell and emotions, IFRA UK, emotional memory fragrance",
+    "Scentience Original Bespoke, bespoke fragrance 30ml, memory perfume, custom fragrance UK, honeymoon perfume, personalized perfume, luxury custom perfume",
+  canonicalPath: "/product/original-bespoke",
+};
+
+export const THE_SCIENCE_SEO = {
+  title: "The science | Scentience — Alchemists of Memory",
+  description:
+    "Neuroscience behind olfactory memory: limbic bypass, the Proustian effect, Scent-Mapping, and IFRA-aligned bespoke fragrance — proof that scent encodes what photography cannot.",
+  keywords:
+    "olfactory memory science, limbic system smell, amygdala scent, Proustian memory effect, Scent-Mapping, smell and emotions, IFRA UK, emotional memory fragrance, bespoke fragrance UK",
   canonicalPath: "/the-science",
 };
 

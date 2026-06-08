@@ -38,7 +38,7 @@ export default function YourCollectionSection() {
       description={description}
       reverse
       headingCentered
-      cta={{ label: copy.ctaLabel, href: "#collection" }}
+      cta={{ label: copy.ctaLabel, href: copy.ctaHref ?? "#collection" }}
     />
   );
 }
