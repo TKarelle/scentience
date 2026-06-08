@@ -132,14 +132,14 @@ function TheProcessMain() {
         }
       />
 
-      {/* The label */}
+      {/* The ritual — journal */}
       <SplitMediaSection
         titleId="process-label-heading"
         title={label.title}
         titleClassName="split-media-heading-lg"
         image={{
           src: bottlePaperImg,
-          alt: "Hands applying a handwritten paper label to a Scentience bottle",
+          alt: "Scentience bottle beside the memory journal after a journey",
         }}
         overlay={<SectionLogoWatermark variant="paper" />}
         reverse

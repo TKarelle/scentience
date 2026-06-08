@@ -1,17 +1,29 @@
 /** Questionnaire commande — étape 1 : voyage · étape 2 : senteur. */
 
+export const BESPOKE_ORDER_MOMENT_MIN_CHARS = 20;
+
 export const BESPOKE_ORDER_STEPS = [
   {
     id: "journey",
+    navLabel: "Journey",
     title: "Your journey",
-    subtitle: "Encoded on the label — start with the moment itself.",
+    subtitle: "These details are engraved on your label.",
+    continueLabel: "Continue",
   },
   {
     id: "scent",
+    navLabel: "Scent brief",
     title: "Your scent brief",
-    subtitle: "Emotions, note preferences, and atmosphere guide the blend.",
+    subtitle: "We compose from your answers — not a catalogue.",
+    submitLabel: "Place order",
   },
 ];
+
+export const BESPOKE_ORDER_CONFIRMATION = {
+  title: "Almost done",
+  body: "Your email app will open with your order summary. Tap send to confirm your commission.",
+  closeLabel: "Close",
+};
 
 export const BESPOKE_JOURNEY_FIELDS = {
   labelNames: {

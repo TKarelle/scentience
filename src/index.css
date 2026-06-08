@@ -138,6 +138,115 @@
     @apply typewriter-face grid max-w-xl place-items-center text-3xl font-normal normal-case leading-tight text-paper drop-shadow-[0_1px_3px_rgba(0,0,0,0.65)] sm:text-4xl [&>*]:col-start-1 [&>*]:row-start-1;
   }
 
+  /**
+   * Our Philosophy — album pleine largeur, hauteur auto (cadrage dans l’asset).
+   */
+  .philosophy-section {
+    position: relative;
+    isolation: isolate;
+    background-color: var(--color-paper);
+  }
+
+  .philosophy-section__stage {
+    position: relative;
+    width: 100%;
+  }
+
+  .philosophy-section__image-wrap {
+    line-height: 0;
+  }
+
+  .philosophy-section__image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /** Mobile — rogne le fondu blanc gauche, texte sous l’image. */
+  @media (max-width: 1023px) {
+    .philosophy-section__stage {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .philosophy-section__image-wrap {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .philosophy-section__image {
+      width: 172%;
+      max-width: none;
+      margin-left: -38%;
+    }
+
+    .philosophy-section__pin {
+      position: static;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      padding: 2.5rem 1.25rem 3rem;
+    }
+
+    .philosophy-section__sheet {
+      max-width: none;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .philosophy-section__pin {
+      padding: 3rem 2rem 3.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .philosophy-section__pin {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      width: 42%;
+      max-width: 32rem;
+      padding: 3.5rem 2.5rem;
+      pointer-events: none;
+    }
+
+    .philosophy-section__pin > * {
+      pointer-events: auto;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .philosophy-section__pin {
+      padding-inline: 3.5rem;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .philosophy-section__pin {
+      padding-inline: 5rem;
+    }
+  }
+
+  .philosophy-section__sheet {
+    position: relative;
+    width: 100%;
+    max-width: 24rem;
+  }
+
+  @media (min-width: 1024px) {
+    .philosophy-section__sheet {
+      max-width: 22rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .philosophy-section__sheet {
+      max-width: 24rem;
+    }
+  }
+
   .philosophy-card-title {
     @apply typo-subtitle text-sm leading-snug sm:text-base;
   }
@@ -146,11 +255,60 @@
     @apply typewriter-face mx-auto mt-12 max-w-xl px-2 text-center text-base font-normal normal-case leading-snug text-paper drop-shadow-[0_2px_8px_rgba(0,0,0,0.75)] sm:mt-16 sm:text-lg;
   }
 
-  /** Les `p` ont corps + couleur ink en base — aligner sur la citation. */
   .philosophy-quote p {
     color: var(--color-paper);
     font-family: inherit;
     letter-spacing: inherit;
+  }
+
+  /** Citation sur fondu blanc (album) — même face, lisibilité ink. */
+  .philosophy-quote--on-paper {
+    @apply mx-0 mt-10 max-w-sm px-0 text-left text-sm sm:mt-12 sm:text-base;
+    color: color-mix(in srgb, var(--color-ink) 88%, transparent);
+    filter: none;
+  }
+
+  .philosophy-quote--on-paper p {
+    color: inherit;
+  }
+
+  /** Bandeau 95 % — tout le texte en paper sur wine (jamais ink). */
+  .proust-stat-banner p {
+    color: var(--color-paper);
+  }
+
+  .proust-stat-banner__eyebrow {
+    font-family: var(--font-subtitle);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: color-mix(in srgb, var(--color-paper) 55%, transparent);
+  }
+
+  .proust-stat-banner__value {
+    font-size: clamp(3.75rem, 14vw, 6.5rem);
+    color: var(--color-paper);
+  }
+
+  .proust-stat-banner__stat-line {
+    font-family: var(--font-typewriter);
+    font-size: 10px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    line-height: 1.375;
+    color: color-mix(in srgb, var(--color-paper) 92%, transparent);
+  }
+
+  @media (min-width: 640px) {
+    .proust-stat-banner__stat-line {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+    }
+  }
+
+  .proust-stat-banner__disclaimer {
+    color: color-mix(in srgb, var(--color-paper) 55%, transparent);
   }
 
   .banner-wine-title {

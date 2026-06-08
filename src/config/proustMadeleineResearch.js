@@ -20,11 +20,22 @@ export const PROUST_MADELEINE_PAGE_COPY = {
 
   storyForm: {
     title: "Share your story",
-    intro: "",
+    subtitle:
+      "Three fields — same structure as the field stories above. A few lines are enough.",
     fields: {
-      name: "Name",
-      place: "Scent",
-      excerpt: "Story",
+      name: {
+        label: "Your name",
+        placeholder: "e.g. Elena — or first name only",
+      },
+      scent: {
+        label: "The scent",
+        placeholder: "e.g. violet soap, rain on hot pavement, his cedar cologne…",
+      },
+      story: {
+        label: "What came back",
+        placeholder:
+          "Where were you? What returned — a room, a face, a whole journey?",
+      },
       consent:
         "I agree Scentience may contact me about research use. I have read the",
     },

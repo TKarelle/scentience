@@ -13,9 +13,9 @@ export const THE_PROCESS_FAQ_INTRO =
 export const THE_PROCESS_FAQ_ITEMS = [
   {
     id: "five-steps",
-    question: "What are the five steps from my journey to the bottle?",
+    question: "What are the five steps from order to encoded memory?",
     answerParagraphs: [
-      "The process moves from your journey (destination, date, and what you refuse to forget) through a personal consultation, the distillation of your unique formula, the ritual where you complete the label by hand, and finally the living memory you keep — one breath can bring the whole journey back years later.",
+      "Order your bottle before you leave, complete your consultation online (emotions, local raw materials, preferences), wear your bespoke fragrance through the journey, write in the memory journal when you return, and keep an encoded memory — years later, a single inhalation can bring the whole journey back.",
     ],
   },
   {
@@ -37,15 +37,15 @@ export const THE_PROCESS_FAQ_ITEMS = [
     id: "consultation",
     question: "What happens during the Scentience consultation?",
     answerParagraphs: [
-      "It is a direct exchange: we read your brief carefully and shape the formula from your story. There is no generic questionnaire — the dialogue steers the blend.",
+      "You complete your brief on the website: destination, emotions, note preferences, and the raw materials of the place. We read every answer and shape your unique formula around the trip — not a catalogue.",
     ],
   },
   {
-    id: "incomplete-label",
-    question: "Why does the bottle arrive with an “incomplete” label?",
+    id: "memory-journal",
+    question: "What is the memory journal ritual?",
     answerParagraphs: [
-      "The clock face is intentional; you complete it after the journey — drawing the hands to the date and adding ink when the moment has truly ended.",
-      "The memory is then encoded twice: in the scent and in your handwriting on the label.",
+      "After your journey, you write in the journal — anchoring what photographs cannot hold in your own hand.",
+      "The memory is encoded twice: in the bespoke fragrance you wore through the trip, and in the words you leave on the page.",
     ],
   },
   {

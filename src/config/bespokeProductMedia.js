@@ -12,7 +12,7 @@ export const BESPOKE_PRODUCT_MEDIA = [
   {
     type: "image",
     src: bottlePaperImg,
-    alt: "Completing the handwritten label ritual",
+    alt: "The memory journal ritual — Scentience bottle after the journey",
   },
   {
     type: "image",

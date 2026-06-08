@@ -53,11 +53,7 @@ export function ProductBuyCheckout({ className = "" }) {
       <p className="font-body text-3xl font-light tabular-nums text-wine sm:text-4xl">
         {formatEur(total)}
       </p>
-      {showSavings && (
-        <p className="mt-0.5 font-subtitle text-[10px] uppercase tracking-[0.14em] text-mist">
-          Journal bundle — save {formatEur(bundleDiscountEur)}
-        </p>
-      )}
+      
 
       <div className="mt-5 flex gap-3 border-t border-wine/15 pt-5">
         <input

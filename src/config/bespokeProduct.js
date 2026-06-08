@@ -15,8 +15,7 @@ export const BESPOKE_PRODUCT = {
   /** Sous les preuves sociales — explique le questionnaire (pas de faux avis). */
   personalisationPitch: {
     lead: "No catalogue — your formula is built from your answers.",
-    body:
-      "Personalise & Order guides you through a two-step brief. We translate your responses into ingredient choices: regional botanicals, season, and the emotional intent of the place.",
+    body: "Personalise & Order guides you through a two-step brief. We translate your responses into ingredient choices: regional botanicals, season, and the emotional intent of the place.",
     steps: [
       "Journey → label names, destination & date",
       "Scent brief → emotions, note preferences, atmosphere",
@@ -63,7 +62,7 @@ export const BESPOKE_PRODUCT = {
       id: "included",
       title: "What's included",
       bullets: [
-        "Incomplete paper label + ink ritual",
+        "Bespoke 30 ml fragrance · composed to order",
         "Care card · full allergen disclosure",
         "Journal included only if selected above",
       ],
@@ -84,7 +83,8 @@ export const BESPOKE_PRODUCT = {
 };
 
 export function getBespokePrice({ withJournal }) {
-  const { baseEur, journalAddOnEur, bundleDiscountEur } = BESPOKE_PRODUCT.pricing;
+  const { baseEur, journalAddOnEur, bundleDiscountEur } =
+    BESPOKE_PRODUCT.pricing;
   if (!withJournal) return baseEur;
   return baseEur + journalAddOnEur - bundleDiscountEur;
 }

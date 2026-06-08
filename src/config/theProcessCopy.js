@@ -2,39 +2,39 @@
 
 export const THE_PROCESS_HERO = {
   title: "The process",
-  subtitle: "5 steps, from the journey to the bottle",
+  subtitle: "Five steps — from order to encoded memory",
 };
 
 export const THE_PROCESS_STEPS = [
   {
     n: 1,
-    title: "Your journey",
+    title: "The trip is getting ready",
     body:
-      "You tell us where you are going. The destination, the date, the moment you refuse to forget.",
+      "The destination is chosen. Order your Scentience bottle before you leave — the formula begins with the journey ahead.",
   },
   {
     n: 2,
     title: "The consultation",
     body:
-      "A personal exchange. We read every brief. The formula is built from your journey — not from a catalogue.",
+      "On the website, share the emotions you want to carry and the local raw materials that move you. Your formula is built around the trip — and your preferences.",
   },
   {
     n: 3,
-    title: "The alchemy",
+    title: "Alchemy",
     body:
-      "Your fragrance is distilled. One formula. It will never be replicated for anyone else.",
+      "Create your memory. Live in the moment while wearing your bespoke perfume — one formula, never replicated.",
   },
   {
     n: 4,
     title: "The ritual",
     body:
-      "You draw the clock hands at the exact hour. You write what you never want to forget. The label becomes yours.",
+      "Write in the journal. Anchor the journey in your own hand when the moment has truly ended.",
   },
   {
     n: 5,
-    title: "The memory",
+    title: "Encoded memory",
     body:
-      "In 20 years, one breath is enough. The journey returns, entire. The Proust Project accomplished.",
+      "In twenty years, a single inhalation is enough. The journey comes back in full. The Proust Project — accomplished.",
   },
 ];
 
@@ -51,14 +51,13 @@ export const THE_PROCESS_INGREDIENTS = {
 };
 
 export const THE_PROCESS_LABEL = {
-  title: "The label",
-  subtitle: "The bottle arrives incomplete. Intentionally.",
+  title: "The ritual",
+  subtitle: "Wear it through the journey. Write it when you return.",
   paragraphs: [
-    "The clockface is there. But the hands are missing.",
-    "When the journey is over — when the candle has burned low, when the last guests have gone, when you are still there because leaving would mean it is finished — you pick up an ink pen.",
-    "You draw the hands to the date of that journey.",
-    "The memory is now encoded twice — once in the scent, once in ink, once in you.",
-    "Wait, what if you forget?",
-    "You won't.",
+    "Your bespoke perfume travels with you — worn in the moment, not kept for later.",
+    "When the journey has settled, you open the memory journal.",
+    "You write what photographs cannot hold: the light, the air, the feeling you refuse to lose.",
+    "The memory is encoded twice — in the fragrance on your skin, and in your own words on the page.",
+    "Years later, one inhalation. One page turned open. The journey returns in full.",
   ],
 };

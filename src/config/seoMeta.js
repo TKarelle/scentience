@@ -32,7 +32,7 @@ export const JOURNAL_INDEX_SEO = {
 export const THE_PROCESS_SEO = {
   title: "The process | Scentience",
   description:
-    "How Scent-Mapping works—from your destination and intention to a unique formula, hand-labelled ritual, and the memory you keep.",
+    "How Scent-Mapping works—from order before you leave to bespoke alchemy, the journal ritual, and encoded memory you keep for life.",
   keywords:
     "Scent-Mapping, bespoke fragrance UK, personalised perfume travel, honeymoon perfume, custom fragrance process",
   canonicalPath: "/the-process",

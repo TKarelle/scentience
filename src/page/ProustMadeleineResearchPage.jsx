@@ -8,6 +8,11 @@ import { PROUST_MADELEINE_PAGE_COPY } from "../config/proustMadeleineResearch";
 import { SHARED_STORIES_COPY } from "../config/landingSharedStories";
 import SharedStoryCard from "../components/landing/SharedStoryCard";
 import ProustResearchStatBanner from "../components/proust/ProustResearchStatBanner";
+import {
+  FORM_INPUT_CLASS,
+  FORM_LABEL_CLASS,
+  FORM_TEXTAREA_CLASS,
+} from "../lib/formInputClass";
 import bagImg from "../image/bag.png";
 import bottleImg from "../image/bottle.png";
 
@@ -15,7 +20,7 @@ function buildMailtoHref({
   emailTo,
   subject,
   name,
-  place,
+  scent,
   excerpt,
   consent,
   proustTag,
@@ -26,8 +31,8 @@ function buildMailtoHref({
     "Name (footer, wine line):",
     name || "(not provided)",
     "",
-    "Place (caption under name):",
-    place || "(not provided)",
+    "Scent (caption under name):",
+    scent || "(not provided)",
     "",
     "Story (italic quote between curly quotes on the card):",
     excerpt || "(not provided)",
@@ -52,42 +57,36 @@ export default function ProustMadeleineResearchPage() {
   const formId = useId();
 
   const [name, setName] = useState("");
-  const [place, setPlace] = useState("");
+  const [scent, setScent] = useState("");
   const [excerpt, setExcerpt] = useState("");
   const [consent, setConsent] = useState(false);
+  const [attemptedSubmit, setAttemptedSubmit] = useState(false);
 
   const excerptMin = form.excerptMinChars ?? 20;
+  const excerptLen = excerpt.trim().length;
   const canSubmit =
     consent &&
     name.trim().length > 0 &&
-    place.trim().length > 0 &&
-    excerpt.trim().length >= excerptMin;
+    scent.trim().length > 0 &&
+    excerptLen >= excerptMin;
 
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
+      setAttemptedSubmit(true);
       if (!canSubmit) return;
       const href = buildMailtoHref({
         emailTo: form.emailTo,
         subject: form.emailSubject,
         name: name.trim(),
-        place: place.trim(),
+        scent: scent.trim(),
         excerpt: excerpt.trim(),
         consent,
         proustTag: SHARED_STORIES_COPY.proustTag,
       });
       window.location.href = href;
     },
-    [
-      canSubmit,
-      consent,
-      excerpt,
-      excerptMin,
-      form.emailSubject,
-      form.emailTo,
-      name,
-      place,
-    ],
+    [canSubmit, consent, excerpt, form.emailSubject, form.emailTo, name, scent],
   );
 
   return (
@@ -181,71 +180,88 @@ export default function ProustMadeleineResearchPage() {
               <Card tone="paper" className="p-6 sm:p-8">
                 <h2
                   id={`${formId}-form-h`}
-                  className="typo-title text-lg font-light text-ink sm:text-xl"
+                  className="waiting-list-modal-title"
                 >
                   {form.title}
                 </h2>
-                <p className="typo-body-lead mt-2 text-sm text-ink/80">
-                  {form.intro}
-                </p>
+                {form.subtitle ? (
+                  <p
+                    id={`${formId}-form-desc`}
+                    className="typo-body-lead mt-2 text-sm text-ink/80"
+                  >
+                    {form.subtitle}
+                  </p>
+                ) : null}
 
                 <form
                   onSubmit={handleSubmit}
                   className="mt-8 space-y-5"
                   noValidate
+                  aria-describedby={
+                    form.subtitle ? `${formId}-form-desc` : undefined
+                  }
                 >
                   <div>
                     <label
                       htmlFor={`${formId}-name`}
-                      className="font-subtitle text-[10px] uppercase tracking-[0.16em] text-wine"
+                      className={FORM_LABEL_CLASS}
                     >
-                      {form.fields.name}
+                      {form.fields.name.label}
                     </label>
                     <input
                       id={`${formId}-name`}
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      required
+                      placeholder={form.fields.name.placeholder}
                       autoComplete="name"
-                      className="mt-1.5 w-full border border-wine/20 bg-paper/80 px-3 py-2 text-sm text-ink outline-none focus:border-wine/45 focus:ring-1 focus:ring-wine/25"
+                      enterKeyHint="next"
+                      className={FORM_INPUT_CLASS}
                     />
                   </div>
                   <div>
                     <label
-                      htmlFor={`${formId}-place`}
-                      className="font-subtitle text-[10px] uppercase tracking-[0.16em] text-wine"
+                      htmlFor={`${formId}-scent`}
+                      className={FORM_LABEL_CLASS}
                     >
-                      {form.fields.place}
+                      {form.fields.scent.label}
                     </label>
                     <input
-                      id={`${formId}-place`}
+                      id={`${formId}-scent`}
                       type="text"
-                      value={place}
-                      onChange={(e) => setPlace(e.target.value)}
-                      required
-                      autoComplete="address-level2"
-                      className="mt-1.5 w-full border border-wine/20 bg-paper/80 px-3 py-2 text-sm text-ink outline-none focus:border-wine/45 focus:ring-1 focus:ring-wine/25"
+                      value={scent}
+                      onChange={(e) => setScent(e.target.value)}
+                      placeholder={form.fields.scent.placeholder}
+                      enterKeyHint="next"
+                      className={FORM_INPUT_CLASS}
                     />
                   </div>
                   <div>
                     <label
-                      htmlFor={`${formId}-excerpt`}
-                      className="font-subtitle text-[10px] uppercase tracking-[0.16em] text-wine"
+                      htmlFor={`${formId}-story`}
+                      className={FORM_LABEL_CLASS}
                     >
-                      {form.fields.excerpt}
+                      {form.fields.story.label}
                     </label>
                     <textarea
-                      id={`${formId}-excerpt`}
+                      id={`${formId}-story`}
                       value={excerpt}
                       onChange={(e) => setExcerpt(e.target.value)}
                       rows={5}
-                      required
-                      minLength={excerptMin}
-                      className="mt-1.5 w-full resize-y border border-wine/20 bg-paper/80 px-3 py-2 text-sm leading-relaxed text-ink outline-none focus:border-wine/45 focus:ring-1 focus:ring-wine/25"
+                      placeholder={form.fields.story.placeholder}
+                      enterKeyHint="next"
+                      aria-describedby={`${formId}-story-hint`}
+                      className={FORM_TEXTAREA_CLASS}
                     />
-                    <p className="landing-muted-text mt-1.5 text-xs">
-                      Minimum {excerptMin} characters
+                    <p
+                      id={`${formId}-story-hint`}
+                      className={`landing-meta-caption mt-1.5 ${
+                        attemptedSubmit && excerptLen < excerptMin
+                          ? "text-wine"
+                          : ""
+                      }`}
+                    >
+                      {excerptLen}/{excerptMin} characters minimum
                     </p>
                   </div>
                   <div className="flex gap-3">

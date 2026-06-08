@@ -1,5 +1,5 @@
 /**
- * Section plein écran « Our Philosophy » — fond lemon+perfume, carte + citation.
+ * Section « Our Philosophy » — album.png pleine largeur (hauteur auto), texte sur fondu blanc.
  */
 export const PHILOSOPHY_SECTION_COPY = {
   title: "OUR PHILOSOPHY— THE PROUST PROJECT",
@@ -8,7 +8,7 @@ export const PHILOSOPHY_SECTION_COPY = {
     "The only perfume you buy before you smell it - created for what it will carry forever. A blank canvas upon which you can give meaning to the scent through association with your experience. ",
   ],
   quote: {
-    line1: "They'll tell you to find your signature scent.",
-    line2: "We'll ask you which moment you refuse to forget.",
+    line1: "One fragrance for one journey.",
+  
   },
 };

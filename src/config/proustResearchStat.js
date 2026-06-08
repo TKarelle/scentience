@@ -2,13 +2,14 @@
  * Bandeau statistique Project Proust — source unique (page recherche + The Science).
  */
 export const PROUST_RESEARCH_STAT = {
-  eyebrow: "Project Proust — early findings",
+  eyebrow: "The Proust Project",
   value: "95%",
   statLine:
-    "of respondents have experienced a memory triggered by scent.",
+    "have relived a moment — sudden, whole — triggered by scent alone.",
+  headline: "If a smell has ever stopped you in your tracks, you are not alone.",
   hook:
-    "If a smell has ever stopped you in your tracks, you are not alone. Share the scent, the place, and the moment — your field note helps us map how odour encodes autobiographical memory.",
-  disclaimer: "*Sourced from internal questionnaire.",
+    "Share the scent, the place, and what came back. Your field note helps us map how odour encodes autobiographical memory — and why one journey deserves one fragrance.",
+  disclaimer: "Sourced from Project Proust questionnaire.",
   ctaLabel: "SHARE MY STORY",
   /** Ancre formulaire sur la page Project Proust. */
   contributeHref: "#proust-contribute",
