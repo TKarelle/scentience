@@ -1,0 +1,52 @@
+/**
+ * Design tokens — palette sémantique (source unique des couleurs du site).
+ *
+ * paper  → fond principal
+ * ink    → texte courant (noir / presque noir)
+ * wine   → titres TLWG, accents, CTA pleins, emphase forte dans le corps
+ * mist   → liens secondaires, touches d’accent bleu-gris
+ */
+
+:root {
+  --color-paper: #f4efe4;
+  --color-ink: #120d0a;
+  --color-wine: #6b1a1a;
+  --color-mist: #8aaec4;
+
+  /** Texte sur fond wine (CTA, boutons pleins) */
+  --color-on-wine: var(--color-paper);
+
+  --font-typewriter: "TrueTypewriter", monospace;
+  --font-subtitle: "TlwgTypewriter", monospace;
+  --font-body: "Times New Roman", Times, serif;
+
+  --tracking-typewriter: 0.245em;
+  --tracking-subtitle: normal;
+
+  --font-body-weight: 300;
+
+  /** Corps : même noir que --color-ink */
+  --typo-body-color: var(--color-ink);
+
+  /**
+   * Images sections split (Craft, Your Collection, …) — même cadre visuel partout.
+   */
+  --split-media-img-max-h: 520px;
+  --split-media-img-max-w: 28rem;
+}
+
+@font-face {
+  font-family: "TrueTypewriter";
+  src: url("/fonts/TruetypewriterPolyglOTT.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TlwgTypewriter";
+  src: url("/fonts/TlwgTypewriter Bold.ttf") format("truetype");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}

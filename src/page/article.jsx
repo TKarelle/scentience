@@ -1,105 +1,310 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import landingImage from "../image/landing.png";
-import image1 from "../image/1.png";
+import { Link, useParams, useNavigate, useLocation } from "react-router-dom";
 import image2 from "../image/3.png";
-import image3 from "../image/8.png";
-import baliImage from "../image/bali.png";
-import plageImage from "../image/plage.png";
-import sunImage from "../image/sun.png";
+import lemonPerfumeImage from "../image/lemon+perfume.png";
 import memoriesImage from "../image/memories.png";
-import parisImage from "../image/paris.png";
+import SiteFooter from "../components/layout/SiteFooter";
+import SyncPageSeo from "../components/seo/SyncPageSeo";
+import { BrandMark, typewriterFaceClass } from "../components/typography";
+import {
+  ARTICLE_SEO_BY_SLUG,
+  PROUST_ARTICLE_SLUG,
+  absoluteUrl,
+  getArticlePath,
+} from "../config/seoMeta";
 
 // Données d'exemple pour les articles
 const articles = {
-  "bali-honeymoon": {
-    id: "bali-honeymoon",
-    title: "Bali Honeymoon",
-    subtitle: "When Scent Becomes Memory",
-    author: "Sophie Laurent",
-    date: "June 15, 2025",
-    category: "Memory Stories",
-    heroImage: baliImage,
-    excerpt: "A journey through the olfactory memories of a honeymoon in Bali, where each fragrance became a portal to moments of pure bliss.",
+  "the-proust-project-how-scent-encodes-memory-forever": {
+    id: "the-proust-project-how-scent-encodes-memory-forever",
+    title: "The Proust Project: How Scent Encodes Memory Forever",
+    subtitle:
+      "The olfactory nerve connects directly to the amygdala — the seat of emotional memory — in 0.2 seconds.",
+    author: "Scentience Editorial",
+    date: "April 2026",
+    category: "Science",
+    heroImage: memoriesImage,
+    excerpt:
+      "From Swann's Way to the limbic system: why a scent does not document a moment—it replays it in its original purity.",
     content: [
       {
         type: "paragraph",
-        text: "The first spray of 'Bali Sunset' hit my wrist as we stepped onto the beach in Seminyak. It was our first evening together as husband and wife, and I wanted this moment—this exact moment—to be preserved forever. Not just in photographs, but in something more visceral, more immediate.",
+        text: "In 1913, when Marcel Proust published Swann's Way, he wasn't merely reaching for a poetic metaphor. By describing how the taste of a petite madeleine dipped in tea instantly resurrected the entire landscape of his childhood, he laid the foundation for a biological truth that science would take a century to map. What he named was not a simple recollection. It was a neurological collision—intimate proof that a single sensory imprint possesses the power to collapse twenty years of absence in a fraction of a second.",
       },
       {
         type: "paragraph",
-        text: "Scent has a way of bypassing the rational mind. It doesn't ask permission. It doesn't wait for you to remember. It simply transports you. And as the warm, floral notes of frangipani and jasmine mingled with the salty air, I knew I was creating something sacred.",
+        text: 'At Scentience, this intuition is more than an inspiration. It is our raison d\'être: to capture those rare human moments of such intensity that one finds themselves thinking: "I am experiencing something I refuse to forget."',
       },
       {
-        type: "image",
-        src: plageImage,
-        caption: "The beach at Seminyak, where our olfactory journey began.",
-      },
-      {
-        type: "paragraph",
-        text: "Each morning, I would apply the same fragrance. The ritual became as important as the scent itself. Wake up. Open the bottle. Inhale. Apply. And then, step into the day. By the end of our week in Bali, the fragrance had become inseparable from the experience.",
+        type: "heading",
+        level: 2,
+        text: "The Anatomical Privilege of the Limbic System",
       },
       {
         type: "paragraph",
-        text: "A scent is not just a fragrance—it's a time machine. One spray, and I'm back on that beach, watching the sun set over the Indian Ocean.",
+        text: "To understand why scent holds the keys to our most visceral emotions, one must look at the geography of the brain. Our senses do not travel at the same pace, nor by the same routes. Sight, hearing, touch, and taste are first filtered by the thalamus—the brain's grand cognitive relay station—before reaching our consciousness in a rationalized form.",
       },
       {
         type: "paragraph",
-        text: "Now, months later, when stress creeps in or when I simply want to remember, I reach for that bottle. The moment I smell it, I'm there again. Not just remembering, but reliving. The warmth of the sun, the sound of the waves, the feeling of his hand in mine.",
-      },
-      {
-        type: "image",
-        src: sunImage,
-        caption: "Sunset memories captured in fragrance.",
+        text: "Olfaction, however, bypasses all customs.",
       },
       {
         type: "paragraph",
-        text: "This is the power of olfactory memory. It's not nostalgia—it's presence. It's not recollection—it's re-experience. And it's available to anyone willing to create the association.",
+        text: "The olfactory nerve connects directly to the limbic system. In less than 0.2 seconds, the signal reaches the amygdala and the hippocampus—the absolute sanctuaries of emotional memory and long-term recall. There is no cognitive layer to sift the experience, no pre-constructed narrative to dull its impact. It is a raw, immediate dialogue.",
+      },
+      {
+        type: "quote",
+        text: "The olfactory bulb is an integral part of the limbic system, an area so closely tied to the genesis of emotion that it was once called the 'emotional brain'.",
+        author: "Dr. Rachel Herz, Brown University",
+      },
+      {
+        type: "paragraph",
+        text: "This is why a scent does not merely remind you of a moment. It does not document it. It replays it in its original purity.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "The Proustian Effect Put to the Test",
+      },
+      {
+        type: "paragraph",
+        text: "This magnetism of olfactory memory rests on three major empirical pillars, validated by the most rigorous research laboratories:",
+      },
+      {
+        type: "heading",
+        level: 3,
+        text: "Pure Emotional Intensity",
+      },
+      {
+        type: "paragraph",
+        text: 'Research published in the academic journal Chemical Senses highlighted what scientists formally call the "Proustian Memory Effect." Their data proves that reminiscences triggered by scent possess an evocative charge and a personal significance infinitely denser than those generated by images or words. Where an image appeals to the intellect, a fragrance speaks to the body.',
+      },
+      {
+        type: "heading",
+        level: 3,
+        text: "The Indelible Imprint",
+      },
+      {
+        type: "paragraph",
+        text: "For a long time, science believed humans were limited to perceiving 10,000 scents. A landmark study from Rockefeller University shattered this ceiling, revealing that our olfactory system can actually discriminate more than one trillion different stimuli. More crucially: a memory engraved under high emotional tension through the prism of scent proves almost entirely immune to the passage of time. While the brilliance of visual memories fades within months, the olfactory imprint remains intact, waiting in the shadows, ready to be reborn decades later.",
+      },
+      {
+        type: "heading",
+        level: 3,
+        text: "The Clarity of the Initial Instant",
+      },
+      {
+        type: "paragraph",
+        text: "For a memory to be anchored forever, nature demands a very specific alignment of factors: the absolute novelty of the molecule, the intensity of an emotional state, and the singularity of a context. It is at this precise moment that encoding ceases to be passive and becomes an act of pure will.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "The Resolution: From Nostalgia to Scent-Mapping",
+      },
+      {
+        type: "paragraph",
+        text: "Modernity has pushed us to delegate our lives to the retina and the screen. We accumulate digital snapshots, falsely believing that the sheer volume of pixels can arrest the flight of time. But an image freezes a scene and allows its breath to evaporate. Standing before a photograph of a cherished journey, we primarily measure an absence. The image cultivates the mourning of the moment; the fragrance, however, preserves its life.",
+      },
+      {
+        type: "paragraph",
+        text: "This is where photography ends and the Scent-Mapping protocol begins.",
+      },
+      {
+        type: "quote",
+        text: "Photography shows the past. Scent-Mapping allows you to re-inhabit it.",
+        author: "Scentience",
+      },
+      {
+        type: "paragraph",
+        text: "By merging haute parfumerie with neuroscience, Scentience converts fragrance into an intimate technology. By introducing a virgin molecule at the zenith of your emotions—during a suspended journey or a shared moment of grace—we seal the experience.",
+      },
+      {
+        type: "paragraph",
+        text: "When, months or years later, the bottle is reopened in the privacy of your daily life, the illusion vanishes. Before the mind even attempts to analyze the top or base notes, the body remembers. The salt-crusted skin of a late afternoon on a forgotten island, the exact texture of the air, the precise quality of the attention you gave to another: it all returns, raw and lightning-fast.",
+      },
+      {
+        type: "paragraph",
+        text: "Bottling one's life is no longer a romantic wish. It is a sovereign ritual. The choice to refuse the wear and tear of time, and to finally hold the key to one's own eternity.",
+      },
+      {
+        type: "signature",
+        text: "Scentience — As it felt",
       },
     ],
   },
-  "paris-first-kiss": {
-    id: "paris-first-kiss",
-    title: "Paris, First Kiss",
-    subtitle: "The Scent of a Moment",
-    author: "Thomas Dubois",
-    date: "May 22, 2025",
-    category: "Memory Stories",
-    heroImage: parisImage,
-    excerpt: "How a bespoke fragrance became the anchor for a memory that would define a relationship.",
+  "amalfi-coast-golden-hour-building-scent-from-a-coastline": {
+    id: "amalfi-coast-golden-hour-building-scent-from-a-coastline",
+    title: "The Amalfi Coast at Golden Hour: Building a Scent from a Coastline",
+    subtitle:
+      "Sun-warmed lemon, wild rosemary, sea salt at dawn — coordinates, not decoration.",
+    author: "Scentience Editorial",
+    date: "April 2026",
+    category: "Journal",
+    heroImage: lemonPerfumeImage,
+    excerpt:
+      "How the raw materials of a specific place become the olfactory coordinates of a memory that will last a lifetime.",
     content: [
       {
         type: "paragraph",
-        text: "Paris in spring. The city was alive with possibility, and so were we. I had commissioned a bespoke fragrance for this trip—something that would capture the essence of what I hoped would be a transformative week.",
+        text: "Sun-warmed lemon, wild rosemary, the metallic snap of sea salt at dawn: a coastline is not a mood board. It is a set of coordinates. When Scentience builds a formula from a journey, we treat destination as brief — region, season, light, what you refuse to forget.",
       },
       {
         type: "paragraph",
-        text: "The perfumer had crafted something extraordinary: notes of bergamot and blackcurrant, grounded in vetiver and patchouli. It was sophisticated, yet approachable. Complex, yet immediate. Much like the city itself.",
+        text: "Golden hour on the Amalfi coast is a collision of heat, vegetation, and mineral water. The goal is not to quote those notes like a postcard; it is to trap the tension between them so that, years later, one breath restores the hour, not the cliché.",
       },
       {
         type: "paragraph",
-        text: "I didn't know it then, but I was creating a memory anchor. Every spray was a commitment to presence, to being fully in the moment.",
+        text: "That is why the raw materials matter as geography, not as fashion. The olfactory map has to match the emotional map. When they align, the memory does not fade into anecdote — it stays dimensional.",
+      },
+      {
+        type: "signature",
+        text: "Scentience — As it felt",
+      },
+    ],
+  },
+  "why-smell-is-the-only-sense-that-bypasses-the-brains-filter": {
+    id: "why-smell-is-the-only-sense-that-bypasses-the-brains-filter",
+    title: "Why Smell Is the Only Sense That Bypasses the Brain's Filter",
+    subtitle: "Every other sense passes through the thalamus. Smell does not.",
+    author: "Scentience Editorial",
+    date: "April 2026",
+    category: "Science",
+    heroImage: lemonPerfumeImage,
+    excerpt:
+      "Here is what that means for emotional memory — and for why Scentience trusts scent above the feed.",
+    content: [
+      {
+        type: "paragraph",
+        text: "Every other sense passes through the thalamus — the brain's switchboard — where inputs are gated, prioritized, and framed before they reach the cortex. It is a useful filter for survival: not everything deserves a full emotional broadcast.",
       },
       {
         type: "paragraph",
-        text: "The first kiss happened under the Eiffel Tower at sunset. I remember the exact moment—the way the light hit her face, the sound of distant traffic, the feeling of her hand on my arm. And I remember the scent, because I had been wearing it all day.",
+        text: 'Olfaction is the exception. Signals from the nose reach the amygdala and hippocampus with a directness that explains the uncanny "I was there" quality of a sudden smell. You do not debate it; your body accepts it.',
       },
       {
         type: "paragraph",
-        text: "Now, whenever I wear that fragrance, I'm not just reminded of Paris. I'm transported there. The memory is so vivid, so complete, that it feels less like remembering and more like time travel.",
+        text: "For Scentience, that architecture is not trivia. It is the reason we anchor honeymoons, anniversaries, and threshold moments in a unique formula worn only for that chapter. The thalamus cannot sand down what never passed through it.",
+      },
+      {
+        type: "paragraph",
+        text: "Images curate. Scent, handled with intention, can preserve — not every detail, but the emotional truth of a day. That is the filter we choose to bypass on purpose.",
+      },
+      {
+        type: "signature",
+        text: "Scentience — As it felt",
+      },
+    ],
+  },
+  "how-to-choose-the-perfume-for-your-honeymoon": {
+    id: "how-to-choose-the-perfume-for-your-honeymoon",
+    title: "How to Choose the Perfume for Your Honeymoon",
+    subtitle:
+      "Not a guide to notes and accords. A guide to encoding the journey.",
+    author: "Scentience Editorial",
+    date: "April 2026",
+    category: "Journal",
+    heroImage: lemonPerfumeImage,
+    excerpt:
+      "Before the trip becomes a story you tell instead of a moment you feel.",
+    content: [
+      {
+        type: "paragraph",
+        text: "This is not a guide on top notes or heart accords. It is a protocol for encoding. It is about ensuring your journey does not become a story you merely tell, but remains a moment you can forever feel.",
+      },
+      {
+        type: "paragraph",
+        text: "Most honeymoon fragrance advice starts with what you already like. For the purpose of memory, this is a technical error. What matters is the virgin molecule: a fragrance you have never worn, tied exclusively and eternally to the days you are currently living.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "The Scentience Philosophy: The Scent as a Vessel",
+      },
+      {
+        type: "paragraph",
+        text: "At Scentience, we practice a radical inversion of luxury perfumery codes: This is the only perfume you buy before you have ever smelled it.",
+      },
+      {
+        type: "paragraph",
+        text: "Why? Because within The Proust Project, the fragrance is not the object of desire; it is the vehicle of the memory.",
+      },
+      {
+        type: "paragraph",
+        text: "We do not choose a scent for its immediate appeal.",
+      },
+      {
+        type: "paragraph",
+        text: "We choose an imprint for its storage capacity.",
+      },
+      {
+        type: "paragraph",
+        text: "Once ordered, there is no turning back. You will learn to love this fragrance not for its ingredients, but because it will become inseparable from the intensity of your union. The memory was never about the smell itself; it was always about what the smell would come to mean.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "Your Destination is Our Brief",
+      },
+      {
+        type: "paragraph",
+        text: "We do not create based on your habitual tastes; we create based on the geography of your emotion. The landscape becomes the formula.",
+      },
+      {
+        type: "paragraph",
+        text: "A honeymoon on the Amalfi Coast? A milestone anniversary in Kyoto? A night in Marrakech that refused to end?",
+      },
+      {
+        type: "paragraph",
+        text: "When you share your itinerary with us, we begin distilling the raw materials of that specific region, that specific season, and that specific emotional intention. We ask. We listen. We distill.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "The Imprinting Protocol",
+      },
+      {
+        type: "paragraph",
+        text: "The more foreign the fragrance is to your past, the cleaner the imprint will be.",
+      },
+      {
+        type: "paragraph",
+        text: "Immersion: Wear it every single day of the journey. Let it saturate your skin, your linens, and the very air you breathe together.",
+      },
+      {
+        type: "paragraph",
+        text: "The Seal: Upon your return, close the bottle. Reserve it. The honeymoon ends; the anchor does not.",
+      },
+      {
+        type: "paragraph",
+        text: "Reactivation: Later, when life crowds in and the details begin to blur, you will not have to chase the memory. You will simply breathe it.",
+      },
+      {
+        type: "paragraph",
+        text: "This is not mere romance. It is sensory technology. Closing the bottle is an act of closing a chapter to protect it from the wear and tear of time. What we build for you is not a fashion accessory; it is a living archive.",
+      },
+      {
+        type: "paragraph",
+        text: "Choose the moment. We create the imprint.",
+      },
+      {
+        type: "signature",
+        text: "Scentience — As it felt",
       },
     ],
   },
   "why-we-always-wanted-to-bottle-our-memories": {
     id: "why-we-always-wanted-to-bottle-our-memories",
     title: "Why we always wanted to bottle our memories",
-    subtitle: "I once looked at a photo of a trip I loved and felt absolutely nothing.",
+    subtitle:
+      "I once looked at a photo of a trip I loved and felt absolutely nothing.",
     author: "Scentience Editorial",
     date: "February 12, 2026",
     category: "Editorial",
     heroImage: memoriesImage,
+    excerpt:
+      "Why photography stops where scent-mapping begins — and what Rebecca already knew about bottling the instant.",
     content: [
-    
       {
         type: "quote",
         text: "Nothing brings to life again a forgotten memory like fragrance.",
@@ -109,7 +314,8 @@ const articles = {
       {
         type: "video",
         src: "https://youtu.be/rydKd5BUBsI", // URL YouTube
-        quote: "I wish there could be an invention that bottled up memories like perfume.",
+        quote:
+          "I wish there could be an invention that bottled up memories like perfume.",
         author: "Daphne du Maurier, Rebecca",
         poster: image2, // Image de prévisualisation
         isYouTube: true,
@@ -184,7 +390,7 @@ const articles = {
       },
       {
         type: "paragraph",
-        text: "What we feel then is not nostalgia, but an impression of a \"first time\" rediscovered. Time ceases to pass. The emotion was never dulled; it was simply put on hold, preserved from the wear and tear of the gaze.",
+        text: 'What we feel then is not nostalgia, but an impression of a "first time" rediscovered. Time ceases to pass. The emotion was never dulled; it was simply put on hold, preserved from the wear and tear of the gaze.',
       },
       {
         type: "paragraph",
@@ -203,40 +409,55 @@ const articles = {
 };
 
 export default function ArticlePage() {
-  const { slug } = useParams();
+  const { slug: slugFromRoute } = useParams();
+  const location = useLocation();
+  const pathname = location.pathname.replace(/\/$/, "") || "/";
+
+  const slug =
+    slugFromRoute ??
+    (pathname === "/journal/the-proust-project"
+      ? PROUST_ARTICLE_SLUG
+      : undefined);
+
   const navigate = useNavigate();
   const [article, setArticle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simuler un chargement
-    setTimeout(() => {
+    setIsLoading(true);
+    const timer = window.setTimeout(() => {
+      if (!slug) {
+        setArticle(null);
+        setIsLoading(false);
+        return;
+      }
       const foundArticle = articles[slug];
       if (foundArticle) {
         setArticle(foundArticle);
+      } else {
+        setArticle(null);
       }
       setIsLoading(false);
     }, 300);
+    return () => window.clearTimeout(timer);
   }, [slug]);
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-ivory-mist flex items-center justify-center">
-        <div className="text-steel-blue font-light">Loading...</div>
+      <div className="min-h-screen bg-paper flex items-center justify-center">
+        <div className="text-mist font-light">Loading...</div>
       </div>
     );
   }
 
   if (!article) {
     return (
-      <div className="min-h-screen bg-ivory-mist flex items-center justify-center">
+      <div className="min-h-screen bg-paper flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-serif italic text-text-primary mb-4">
-            Article not found
-          </h1>
+          <h1 className="text-2xl typo-title italic mb-4">Article not found</h1>
           <button
             onClick={() => navigate("/")}
-            className="text-sm text-steel-blue hover:text-text-primary underline underline-offset-4"
+            className="text-sm text-mist hover:text-ink underline underline-offset-4"
           >
             Return to home
           </button>
@@ -245,13 +466,30 @@ export default function ArticlePage() {
     );
   }
 
+  const seo = ARTICLE_SEO_BY_SLUG[article.id];
+  const canonicalUrl = absoluteUrl(
+    seo?.canonicalPath ?? getArticlePath(article.id),
+  );
+  const pageTitle = seo?.title ?? `${article.title} | Scentience`;
+  const description =
+    seo?.description ?? article.excerpt ?? article.subtitle ?? "";
+  const keywords = seo?.keywords;
+  const ogType = seo?.ogType ?? "article";
+
   return (
-    <div className="min-h-screen bg-ivory-mist">
+    <div className="min-h-screen bg-paper">
+      <SyncPageSeo
+        title={pageTitle}
+        description={description}
+        keywords={keywords}
+        canonicalUrl={canonicalUrl}
+        ogType={ogType}
+      />
       {/* Header */}
       <Header navigate={navigate} />
 
       {/* Hero Section - Ultra Luxueux */}
-      <section className="relative w-full h-[45vh] min-h-[380px] max-h-[450px] overflow-hidden pt-16">
+      <section className="relative w-full h-[36vh] min-h-[300px] max-h-[300px] overflow-hidden pt-16">
         <div className="absolute inset-0">
           <img
             src={article.heroImage}
@@ -269,14 +507,14 @@ export default function ArticlePage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-10 sm:pb-14">
             <div className="max-w-3xl">
               <div className="mb-2.5">
-                <span className="text-[10px] sm:text-xs text-white/60 font-light tracking-[0.2em] uppercase">
+                <span className="text-[10px] sm:text-xs typo-subtitle text-white/60 font-light">
                   {article.category}
                 </span>
               </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif text-white leading-[1.1] mb-2 font-light tracking-[-0.01em]">
+              <h2 className="typo-title max-w-3xl text-lg leading-snug sm:text-xl lg:text-2xl xl:text-3xl mb-3 text-wine [text-shadow:0_2px_12px_rgba(0,0,0,0.55)]">
                 {article.title}
               </h2>
-              <p className="text-xs sm:text-sm text-white/80 font-light leading-relaxed max-w-2xl">
+              <p className="typo-body-lead max-w-2xl text-paper/95 normal-case">
                 {article.subtitle}
               </p>
             </div>
@@ -287,25 +525,23 @@ export default function ArticlePage() {
       {/* Article Content */}
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 ">
         {/* Article Meta */}
-        <div className="mb-8 pb-4 border-b border-slate-taupe/20">
+        <div className="mb-8 pb-4 border-b border-ink/20">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <div>
-              <p className="text-sm text-text-secondary font-light">
-                By <span className="text-text-primary">{article.author}</span>
+              <p className="text-sm text-ink/70 font-light">
+                By <span className="text-ink">{article.author}</span>
               </p>
             </div>
             <div>
-              <p className="text-sm text-text-secondary font-light">
-                {article.date}
-              </p>
+              <p className="text-sm text-ink/70 font-light">{article.date}</p>
             </div>
           </div>
         </div>
 
         {/* Excerpt - Only show if exists */}
         {article.excerpt && (
-          <div className="mb-12 pb-6 border-b border-slate-taupe/10">
-            <p className="text-sm sm:text-base text-text-secondary leading-relaxed font-light italic max-w-3xl">
+          <div className="mb-12 pb-6 border-b border-ink/10">
+            <p className="typo-body-lead max-w-3xl italic text-ink/85">
               {article.excerpt}
             </p>
           </div>
@@ -317,28 +553,32 @@ export default function ArticlePage() {
             if (block.type === "paragraph") {
               // Détecter si c'est le premier paragraphe après une citation ou vidéo
               const prevBlock = index > 0 ? article.content[index - 1] : null;
-              const isFirstParagraph = index === 0 || 
-                (prevBlock && (prevBlock.type === "quote" || prevBlock.type === "video"));
-              
+              const isFirstParagraph =
+                index === 0 ||
+                (prevBlock &&
+                  (prevBlock.type === "quote" || prevBlock.type === "video"));
+
               return (
                 <p
                   key={index}
-                  className={`text-sm sm:text-base text-text-secondary leading-[1.85] font-light ${
-                    isFirstParagraph ? 'mb-10 first-paragraph' : 'mb-7'
+                  className={`text-sm sm:text-base text-ink/70 leading-[1.85] font-light ${
+                    isFirstParagraph ? "mb-10 first-paragraph" : "mb-7"
                   }`}
                   style={{
-                    letterSpacing: '0.015em',
+                    letterSpacing: "0.015em",
                   }}
                 >
                   {isFirstParagraph && (
-                    <span 
-                      className="float-left text-5xl sm:text-6xl font-serif text-text-primary leading-[0.85] mr-2 mt-1 font-light"
-                      style={{ fontFamily: 'Canela, Cormorant Garamond, serif' }}
+                    <span
+                      className="float-left text-5xl sm:text-6xl typo-title leading-[0.85] mr-2 mt-1 font-light"
+                      style={{
+                        fontFamily: "Canela, Cormorant Garamond, serif",
+                      }}
                     >
                       {block.text.charAt(0)}
                     </span>
                   )}
-                  <span className={isFirstParagraph ? 'block' : ''}>
+                  <span className={isFirstParagraph ? "block" : ""}>
                     {isFirstParagraph ? block.text.slice(1).trim() : block.text}
                   </span>
                 </p>
@@ -348,15 +588,12 @@ export default function ArticlePage() {
               // Opening quote with special styling
               if (block.isOpening) {
                 return (
-                  <blockquote
-                    key={index}
-                    className="my-6 py-4 text-center"
-                  >
+                  <blockquote key={index} className="my-6 py-4 text-center">
                     <div className="max-w-3xl mx-auto">
-                      <p className="text-xl sm:text-2xl lg:text-3xl font-serif italic text-text-primary leading-relaxed mb-2 font-light">
+                      <p className="text-xl sm:text-2xl lg:text-3xl typo-title italic leading-relaxed mb-2 font-light">
                         "{block.text}"
                       </p>
-                      <p className="text-xs text-steel-blue font-light tracking-wide">
+                      <p className="text-xs text-mist font-light tracking-wide">
                         — {block.author}
                       </p>
                     </div>
@@ -367,12 +604,12 @@ export default function ArticlePage() {
               return (
                 <blockquote
                   key={index}
-                  className="border-l-4 border-soft-beige pl-8 py-6 my-12"
+                  className="border-l-4 border-mist/50 pl-8 py-6 my-12"
                 >
-                  <p className="text-xl sm:text-2xl font-serif italic text-text-primary leading-relaxed mb-4 font-light">
+                  <p className="text-xl sm:text-2xl typo-title italic leading-relaxed mb-4 font-light">
                     "{block.text}"
                   </p>
-                  <p className="text-sm text-steel-blue font-light">
+                  <p className="text-sm text-mist font-light">
                     — {block.author}
                   </p>
                 </blockquote>
@@ -385,7 +622,7 @@ export default function ArticlePage() {
               return (
                 <Component
                   key={index}
-                  className="text-xl sm:text-2xl font-serif text-text-primary font-light mt-12 mb-6"
+                  className="text-xl sm:text-2xl typo-title font-light mt-12 mb-6"
                 >
                   {block.text}
                 </Component>
@@ -393,8 +630,8 @@ export default function ArticlePage() {
             }
             if (block.type === "signature") {
               return (
-                <div key={index} className="mt-16 pt-8 border-t border-slate-taupe/20">
-                  <p className="text-lg sm:text-xl font-serif italic text-text-primary font-light text-right">
+                <div key={index} className="mt-16 pt-8 border-t border-ink/20">
+                  <p className="text-lg sm:text-xl typo-title italic font-light text-right">
                     {block.text}
                   </p>
                 </div>
@@ -411,7 +648,7 @@ export default function ArticlePage() {
                     />
                   </div>
                   {block.caption && (
-                    <figcaption className="text-sm text-steel-blue font-light italic text-center">
+                    <figcaption className="text-sm text-mist font-light italic text-center">
                       {block.caption}
                     </figcaption>
                   )}
@@ -422,14 +659,18 @@ export default function ArticlePage() {
               // Convertir l'URL YouTube en format embed si nécessaire
               const getYouTubeEmbedUrl = (url) => {
                 if (!url) return null;
-                if (url.includes('youtube.com/embed/')) return url;
-                if (url.includes('youtu.be/')) {
-                  const videoId = url.split('youtu.be/')[1]?.split('?')[0];
-                  return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+                if (url.includes("youtube.com/embed/")) return url;
+                if (url.includes("youtu.be/")) {
+                  const videoId = url.split("youtu.be/")[1]?.split("?")[0];
+                  return videoId
+                    ? `https://www.youtube.com/embed/${videoId}`
+                    : null;
                 }
-                if (url.includes('youtube.com/watch?v=')) {
-                  const videoId = url.split('watch?v=')[1]?.split('&')[0];
-                  return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+                if (url.includes("youtube.com/watch?v=")) {
+                  const videoId = url.split("watch?v=")[1]?.split("&")[0];
+                  return videoId
+                    ? `https://www.youtube.com/embed/${videoId}`
+                    : null;
                 }
                 return null;
               };
@@ -442,7 +683,7 @@ export default function ArticlePage() {
                     {/* Bordure élégante */}
                     <div className="absolute inset-0 border border-white/10 z-10 pointer-events-none" />
                     <div className="absolute inset-[1px] border border-black/20 z-10 pointer-events-none" />
-                    
+
                     {youtubeEmbedUrl ? (
                       <div className="relative w-full h-full">
                         <iframe
@@ -495,7 +736,7 @@ export default function ArticlePage() {
                             </div>
                             {/* Citation élégante */}
                             <blockquote className="space-y-4">
-                              <p className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-serif italic text-white leading-relaxed font-light">
+                              <p className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl typo-title italic text-white leading-relaxed font-light">
                                 "{block.quote}"
                               </p>
                               <p className="text-sm sm:text-base text-white/80 font-light tracking-wide">
@@ -518,17 +759,17 @@ export default function ArticlePage() {
                   {youtubeEmbedUrl && block.quote && (
                     <div className="mt-10 px-4 sm:px-8 text-center">
                       <blockquote className="max-w-3xl mx-auto">
-                        <p className="text-lg sm:text-xl font-serif italic text-text-primary leading-relaxed mb-3 font-light">
+                        <p className="text-lg sm:text-xl typo-title italic leading-relaxed mb-3 font-light">
                           "{block.quote}"
                         </p>
-                        <p className="text-xs sm:text-sm text-steel-blue font-light tracking-wide">
+                        <p className="text-xs sm:text-sm text-mist font-light tracking-wide">
                           — {block.author}
                         </p>
                       </blockquote>
                     </div>
                   )}
                   {block.caption && !youtubeEmbedUrl && (
-                    <figcaption className="text-sm text-steel-blue font-light italic text-center mt-6 px-4">
+                    <figcaption className="text-sm text-mist font-light italic text-center mt-6 px-4">
                       {block.caption}
                     </figcaption>
                   )}
@@ -539,34 +780,60 @@ export default function ArticlePage() {
           })}
         </div>
 
-        {/* CTA Section - Style éditorial luxueux */}
-        <div className="mt-32 pt-20 border-t border-slate-taupe/10">
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-xl sm:text-2xl font-serif text-text-primary mb-5 font-light">
-              Create Your Own Memory
-            </h2>
-            <p className="text-xs sm:text-sm text-text-secondary mb-8 font-light leading-relaxed">
-              Every moment deserves its own scent. Discover how to create
-              olfactory memories that will last a lifetime.
+        {/* CTA — bande wine, pleine largeur */}
+        <div
+          className="relative left-1/2 mt-24 w-screen max-w-none -translate-x-1/2 overflow-hidden bg-wine px-6 py-16 sm:mt-32 sm:px-8 sm:py-20 lg:px-12"
+          aria-labelledby="article-cta-heading"
+        >
+          <div
+            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/[0.08] via-transparent to-black/[0.16]"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-paper/30 to-transparent"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-paper/18 to-transparent"
+            aria-hidden
+          />
+
+          <div className="relative mx-auto max-w-3xl text-center">
+            <p className="font-subtitle text-[10px] uppercase tracking-[0.22em] text-paper/50">
+              Before it lives only in photographs
             </p>
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                navigate("/");
-              }}
-              className="inline-block border border-text-primary/30 px-10 py-3.5 text-xs sm:text-sm font-light text-text-primary hover:border-text-primary hover:bg-text-primary hover:text-white transition-all duration-300 tracking-wide"
+            <h2
+              id="article-cta-heading"
+              className={`${typewriterFaceClass} mt-5 text-2xl font-normal normal-case leading-[1.2] text-paper sm:text-3xl sm:leading-tight`}
             >
-              Explore Our Collection
-            </a>
+              Give your next memory a scent only you can reopen.
+            </h2>
+            <p className="typo-typewriter-on-wine mx-auto mt-5 max-w-md text-paper/85">
+              One formula for that journey—worn, then sealed—until a single
+              breath puts you back inside the moment.
+            </p>
+            <div className="mt-10 flex flex-col items-center gap-6 sm:flex-row sm:justify-center sm:gap-10">
+              <Link
+                to="/"
+                className="cta-parchment inline-flex tracking-wide transition-opacity hover:opacity-90"
+              >
+                Explore Scentience
+              </Link>
+              <Link
+                to="/the-process"
+                className={`${typewriterFaceClass} text-sm font-normal normal-case text-paper/70 underline decoration-paper/35 underline-offset-[6px] transition-colors hover:text-paper hover:decoration-paper/55`}
+              >
+                How Scent-Mapping works
+              </Link>
+            </div>
           </div>
         </div>
       </article>
 
       {/* Related Articles - Style luxueux et réduit */}
-      <section className="bg-ivory-mist py-16 sm:py-20 border-t border-slate-taupe/10">
+      <section className="bg-paper py-16 sm:py-20 border-t border-ink/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-lg sm:text-xl lg:text-2xl font-serif text-text-primary text-center mb-10 font-light tracking-wide">
+          <h2 className="text-lg sm:text-xl lg:text-2xl typo-title text-center mb-10 font-light">
             More Stories
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
@@ -577,7 +844,9 @@ export default function ArticlePage() {
                 <article
                   key={relatedArticle.id}
                   className="group cursor-pointer"
-                  onClick={() => navigate(`/article/${relatedArticle.id}`)}
+                  onClick={() =>
+                    navigate(getArticlePath(relatedArticle.id))
+                  }
                 >
                   <div className="flex items-start gap-4">
                     {/* Image réduite */}
@@ -590,13 +859,13 @@ export default function ArticlePage() {
                     </div>
                     {/* Content */}
                     <div className="flex-1 min-w-0 space-y-2">
-                      <p className="text-[10px] text-steel-blue font-light uppercase tracking-[0.15em]">
+                      <p className="text-[10px] typo-subtitle text-mist font-light">
                         {relatedArticle.category}
                       </p>
-                      <h3 className="text-sm sm:text-base font-serif text-text-primary font-light group-hover:text-text-primary/70 transition-colors leading-tight">
+                      <h3 className="text-sm sm:text-base typo-title font-light group-hover:text-wine/70 transition-colors leading-tight">
                         {relatedArticle.title}
                       </h3>
-                      <p className="text-xs text-text-secondary font-light line-clamp-2 leading-relaxed">
+                      <p className="text-xs text-ink/70 font-light line-clamp-2 leading-relaxed">
                         {relatedArticle.excerpt}
                       </p>
                     </div>
@@ -608,7 +877,7 @@ export default function ArticlePage() {
       </section>
 
       {/* Footer */}
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }
@@ -629,165 +898,31 @@ function Header({ navigate }) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-ivory-mist/95 backdrop-blur-md border-b border-slate-taupe/10"
-          : "bg-transparent backdrop-blur-md border-b border-slate-taupe/10"
+          ? "bg-paper/95 backdrop-blur-md border-b border-ink/10"
+          : "bg-transparent backdrop-blur-md border-b border-ink/10"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <nav
+        className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 ${typewriterFaceClass}`}
+      >
         <div className="flex items-center justify-between">
           <button
             onClick={() => navigate("/")}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 text-left"
           >
             <div className="flex flex-col">
-              <span
-                className={`text-lg font-serif italic transition-colors ${
-                  isScrolled
-                    ? "text-text-primary"
-                    : "text-text-primary"
-                }`}
-              >
-                Scentience Original
-              </span>
-              <span
-                className={`text-xs font-sans transition-colors ${
-                  isScrolled
-                    ? "text-steel-blue"
-                    : "text-steel-blue"
-                }`}
-              >
-                x Project Proust
-              </span>
+              <BrandMark className="text-lg">Scentience</BrandMark>
             </div>
           </button>
 
           <button
-            onClick={() => navigate("/")}
-            className="text-sm font-sans text-steel-blue hover:text-text-primary transition-colors"
+            onClick={() => navigate("/journal")}
+            className="text-sm text-mist hover:text-ink transition-colors"
           >
-            ← Back to Stories
+            ← Back to journal
           </button>
         </div>
       </nav>
     </header>
-  );
-}
-
-/* ---------------- Footer ---------------- */
-function Footer() {
-  return (
-    <footer className="bg-steel-blue text-ivory-mist py-12 sm:py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="sr-only">Footer Navigation</h2>
-        
-        {/* Main Content - Aligned horizontally */}
-        <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 md:gap-12 mb-8">
-          {/* Brand Section */}
-          <div className="flex-shrink-0">
-            <div className="flex flex-col mb-2">
-              <span className="text-xl sm:text-2xl font-serif italic text-ivory-mist font-light">
-                Scentience
-              </span>
-              <span className="text-xs font-sans text-ivory-mist/70 font-light mt-1">
-                x Project Proust
-              </span>
-            </div>
-            <p className="text-xs text-ivory-mist/60 font-light tracking-wide">
-              Scent. Event. Memory.
-            </p>
-          </div>
-
-          {/* Links Grid */}
-          <div className="grid grid-cols-3 gap-8 md:gap-12 flex-1">
-            <div>
-              <h3 className="font-light mb-4 text-xs uppercase tracking-wider text-ivory-mist/80">
-                About
-              </h3>
-              <ul className="space-y-2 text-xs text-ivory-mist/60 font-light">
-                <li>
-                  <a
-                    href="#proof"
-                    className="hover:text-ivory-mist transition-colors"
-                  >
-                    Our Story
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#collection"
-                    className="hover:text-ivory-mist transition-colors"
-                  >
-                    Products
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#how-it-works"
-                    className="hover:text-ivory-mist transition-colors"
-                  >
-                    How it Works
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-light mb-4 text-xs uppercase tracking-wider text-ivory-mist/80">
-                Support
-              </h3>
-              <ul className="space-y-2 text-xs text-ivory-mist/60 font-light">
-                <li>
-                  <a
-                    href="#faq"
-                    className="hover:text-ivory-mist transition-colors"
-                  >
-                    FAQ
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-ivory-mist transition-colors">
-                    Contact
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-ivory-mist transition-colors">
-                    Shipping
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-light mb-4 text-xs uppercase tracking-wider text-ivory-mist/80">
-                Legal
-              </h3>
-              <ul className="space-y-2 text-xs text-ivory-mist/60 font-light">
-                <li>
-                  <a href="#" className="hover:text-ivory-mist transition-colors">
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-ivory-mist transition-colors">
-                    Terms of Service
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-ivory-mist transition-colors">
-                    GDPR
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* Copyright */}
-        <div className="border-t border-ivory-mist/20 pt-6">
-          <p className="text-xs text-ivory-mist/50 font-light">
-            © {new Date().getFullYear()} Scentience x Project Proust. All rights
-            reserved.
-          </p>
-        </div>
-      </div>
-    </footer>
   );
 }

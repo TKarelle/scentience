@@ -1,74 +1,373 @@
-/* Typographie luxueuse style machine à écrire - Inspirée d'Aman */
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
-
-/* Canela Font pour les titres élégants */
-@font-face {
-  font-family: 'Canela';
-  src: url('/fonts/Canela-Light.woff2') format('woff2'),
-       url('/fonts/Canela-Light.woff') format('woff');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Canela';
-  src: url('/fonts/Canela-Regular.woff2') format('woff2'),
-       url('/fonts/Canela-Regular.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Canela';
-  src: url('/fonts/Canela-Bold.woff2') format('woff2'),
-       url('/fonts/Canela-Bold.woff') format('woff');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Canela';
-  src: url('/fonts/Canela-LightItalic.woff2') format('woff2'),
-       url('/fonts/Canela-LightItalic.woff') format('woff');
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Canela';
-  src: url('/fonts/Canela-Italic.woff2') format('woff2'),
-       url('/fonts/Canela-Italic.woff') format('woff');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
+@import "./styles/tokens.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  /**
+   * TrueTypewriter : famille + tracking (245‰ → --tracking-typewriter).
+   */
+  .typewriter-face {
+    font-family: var(--font-typewriter);
+    letter-spacing: var(--tracking-typewriter);
+  }
+
+  /**
+   * Titres (TLWG) : capitales, couleur wine.
+   */
+  .typo-title {
+    font-family: var(--font-subtitle);
+    letter-spacing: var(--tracking-subtitle);
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--color-wine);
+  }
+
+  /**
+   * Sous-titres (TLWG) : même logique couleur wine (titres d’appoint dans les blocs).
+   */
+  .typo-subtitle {
+    font-family: var(--font-subtitle);
+    letter-spacing: var(--tracking-subtitle);
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--color-wine);
+  }
+
+  /**
+   * Corps : Times, texte par défaut noir (ink).
+   */
+  .typo-body {
+    font-family: var(--font-body);
+    font-weight: var(--font-body-weight);
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--typo-body-color);
+  }
+
+  /**
+   * Landing — titres / corps récurrents (évite les longues chaînes Tailwind répétées).
+   */
+  .landing-section-title {
+    @apply typo-title mb-20 text-center text-xl font-light sm:mb-24 sm:text-2xl lg:text-3xl;
+  }
+
+  .landing-block-title {
+    @apply typo-title text-xl font-light sm:text-2xl lg:text-3xl;
+  }
+
+  .split-media-heading {
+    @apply typo-title max-w-2xl text-base leading-snug sm:text-lg lg:text-xl xl:text-2xl;
+  }
+
+  .split-media-heading-lg {
+    @apply typo-title text-lg font-light sm:text-xl lg:text-2xl;
+  }
+
+  .typo-typewriter-lead {
+    @apply typewriter-face text-sm font-normal normal-case leading-relaxed text-ink sm:text-base;
+  }
+
+  .typo-typewriter-lead-centered {
+    @apply typo-typewriter-lead mx-auto max-w-xl text-center;
+  }
+
+  .typo-typewriter-lead-max {
+    @apply typo-typewriter-lead max-w-xl;
+  }
+
+  .typo-typewriter-on-wine {
+    @apply typewriter-face text-sm font-normal normal-case leading-relaxed text-paper sm:text-base;
+  }
+
+  .typo-body-lead {
+    @apply typo-body text-sm leading-relaxed sm:text-base;
+  }
+
+  .landing-intro-text {
+    @apply typo-body-lead mt-4;
+    color: color-mix(in srgb, var(--color-ink) 80%, transparent);
+  }
+
+  .landing-muted-text {
+    @apply text-xs font-light leading-relaxed sm:text-sm;
+    color: color-mix(in srgb, var(--color-ink) 70%, transparent);
+  }
+
+  .landing-meta-caption {
+    @apply typo-body mt-1 text-xs;
+    color: color-mix(in srgb, var(--color-ink) 65%, transparent);
+  }
+
+  .hero-card-title {
+    @apply typo-title text-center text-lg font-normal leading-snug text-wine sm:text-xl;
+  }
+
+  .hero-carousel-headline {
+    @apply typewriter-face grid max-w-xl place-items-center text-3xl font-normal normal-case leading-tight text-paper drop-shadow-[0_1px_3px_rgba(0,0,0,0.65)] sm:text-4xl [&>*]:col-start-1 [&>*]:row-start-1;
+  }
+
+  .philosophy-card-title {
+    @apply typo-subtitle text-sm leading-snug sm:text-base;
+  }
+
+  .philosophy-quote {
+    @apply typewriter-face mx-auto mt-12 max-w-xl px-2 text-center text-base font-normal normal-case leading-snug text-paper drop-shadow-[0_2px_8px_rgba(0,0,0,0.75)] sm:mt-16 sm:text-lg;
+  }
+
+  /** Les `p` ont corps + couleur ink en base — aligner sur la citation. */
+  .philosophy-quote p {
+    color: var(--color-paper);
+    font-family: inherit;
+    letter-spacing: inherit;
+  }
+
+  .banner-wine-title {
+    @apply typo-title text-center text-xs leading-snug tracking-wide text-paper sm:text-sm lg:text-base;
+  }
+
+  .journey-card-title {
+    @apply typo-title text-center text-xs leading-snug tracking-wide text-paper sm:text-sm;
+  }
+
+  .proof-trust-quote {
+    @apply typo-title mb-3 text-lg font-light italic leading-relaxed sm:text-xl;
+  }
+
+  .waiting-list-modal-title {
+    @apply typo-title text-xl font-light sm:text-2xl;
+  }
+
+  /**
+   * CTA plein : fond wine, texte paper (couleurs tokens).
+   */
+  .cta-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-wine);
+    background-color: var(--color-wine);
+    color: var(--color-on-wine);
+    padding: 0.875rem 2.5rem;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    font-weight: 300;
+    transition-property: opacity, border-color, background-color, color;
+    transition-duration: 300ms;
+  }
+
+  @media (min-width: 640px) {
+    .cta-primary {
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+    }
+  }
+
+  .cta-primary:hover:not(:disabled) {
+    opacity: 0.92;
+  }
+
+  .cta-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .cta-primary.w-full {
+    width: 100%;
+  }
+
+  /**
+   * CTA fond parchemin (texte foncé, TLWG caps) — ex. REGISTER YOUR JOURNEY.
+   */
+  .cta-parchment {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-ink);
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    padding: 0.875rem 1.5rem;
+    font-family: var(--font-subtitle);
+    letter-spacing: var(--tracking-subtitle);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    transition-property: opacity, border-color, background-color;
+    transition-duration: 300ms;
+  }
+
+  @media (min-width: 640px) {
+    .cta-parchment {
+      font-size: 0.8125rem;
+    }
+  }
+
+  .cta-parchment:hover:not(:disabled) {
+    opacity: 0.92;
+  }
+
+  .cta-parchment:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /**
+   * Liens header landing : TrueTypewriter + espacement typewriter (245‰), pas gras, wine.
+   */
+  .nav-link-landing {
+    font-family: var(--font-typewriter);
+    letter-spacing: var(--tracking-typewriter);
+    font-weight: 400;
+    font-style: normal;
+    color: var(--color-wine);
+    transition-property: color, opacity;
+    transition-duration: 200ms;
+  }
+
+  .nav-link-landing:hover {
+    opacity: 0.85;
+  }
+
+  /**
+   * Fonds carte vitrée : ~50 % couleur + transparent (plus léger qu’avant).
+   * color-mix assure un rendu correct avec les variables --color-*.
+   */
+  .card-fill-paper {
+    background-color: color-mix(in srgb, var(--color-paper) 50%, transparent);
+  }
+
+  .card-fill-white {
+    background-color: color-mix(in srgb, #ffffff 50%, transparent);
+  }
+
+  .card-fill-mist {
+    background-color: color-mix(in srgb, var(--color-mist) 50%, transparent);
+  }
+
+  .card-fill-ink {
+    background-color: color-mix(in srgb, var(--color-ink) 50%, transparent);
+  }
+
+  .card-fill-wine {
+    background-color: color-mix(in srgb, var(--color-wine) 50%, transparent);
+  }
+
+  /**
+   * Cadre photo unique pour les sections split (Craft, Your Collection, …).
+   */
+  .split-media-figure {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: min(var(--split-media-img-max-w), 100%);
+    height: min(var(--split-media-img-max-h), 65vh);
+    max-height: var(--split-media-img-max-h);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 1024px) {
+    .split-media-figure {
+      height: var(--split-media-img-max-h);
+    }
+  }
+
+  /** Libellés journal : « Science · cover story », « Most popular », « More from… » */
+  .journal-section-kicker {
+    font-family: var(--font-subtitle);
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-size: 10px;
+    line-height: 1.5;
+    color: var(--color-wine);
+  }
+
+  /** Citation magazine — journal index */
+  .journal-pull-quote {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-wine);
+    line-height: 1.65;
+    letter-spacing: 0.02em;
+    font-size: 1.0625rem;
+  }
+
+  @media (min-width: 640px) {
+    .journal-pull-quote {
+      font-size: 1.1875rem;
+    }
+  }
+
+  /** Citation sur fond wine — texte parchemin */
+  .journal-pull-quote-banner {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-paper);
+    line-height: 1.65;
+    letter-spacing: 0.02em;
+    font-size: 1.0625rem;
+  }
+
+  @media (min-width: 640px) {
+    .journal-pull-quote-banner {
+      font-size: 1.1875rem;
+    }
+  }
+}
+
 @layer base {
+  html {
+    @apply antialiased;
+  }
+
   body {
-    @apply font-mono text-text-primary bg-ivory-mist;
-    letter-spacing: 0.01em;
+    font-family: var(--font-body);
+    font-weight: var(--font-body-weight);
+    color: var(--color-ink);
+    background-color: var(--color-paper);
   }
-  
-  h1 {
-    @apply font-serif italic;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-subtitle);
+    font-weight: 400;
+    letter-spacing: var(--tracking-subtitle);
+    text-transform: uppercase;
+    color: var(--color-wine);
   }
-  
-  h2, h3, h4, h5, h6 {
-    @apply font-serif;
+
+  p {
+    font-family: var(--font-body);
+    font-weight: var(--font-body-weight);
+    color: var(--color-ink);
   }
-  
-  /* Style machine à écrire luxueux pour le texte */
-  p, span, div, a, button, input, textarea, select {
-    font-family: 'Courier Prime', 'IBM Plex Mono', 'Courier New', monospace;
+
+  /** « Titres » dans le flux du paragraphe : emphase = wine */
+  p strong,
+  p b,
+  .typo-body strong,
+  .typo-body b {
+    font-weight: 300;
+    color: var(--color-wine);
+  }
+
+  section[id] {
+    scroll-margin-top: 6rem;
+  }
+
+  b,
+  strong {
+    font-weight: 300;
+    color: var(--color-wine);
   }
 }
 
@@ -104,13 +403,11 @@
     background: radial-gradient(circle, var(--tw-gradient-stops));
   }
 
-  /* Style luxueux pour les paragraphes d'article */
   .first-paragraph {
     text-indent: 0;
     text-align: justify;
   }
 
-  /* Espacement élégant entre sections */
   article p + blockquote,
   article blockquote + p,
   article figure + p,
@@ -118,7 +415,6 @@
     margin-top: 2.5rem;
   }
 
-  /* Style pour les paragraphes dans les articles */
   article p {
     orphans: 3;
     widows: 3;
@@ -129,7 +425,6 @@
     -ms-hyphens: auto;
   }
 
-  /* Espacement élégant entre paragraphes */
   article p + p {
     margin-top: 1.5rem;
   }
