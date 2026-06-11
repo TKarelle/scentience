@@ -1,14 +1,14 @@
 import {
-  WAITING_LIST_CTA_LABEL,
-  WAITING_LIST_STATUS,
-} from "./waitingListMessaging";
+  PRE_ORDER_CTA_LABEL,
+  PRE_ORDER_STATUS,
+} from "./preOrderMessaging";
 
-/** Texte carte CTA hero — statut / CTA alignés sur waitingListMessaging.js */
+/** Texte carte CTA hero — statut / CTA alignés sur preOrderMessaging.js */
 export const LANDING_HERO_COPY = {
   card: {
     title: "Some moments deserve to last forever.",
-    status: WAITING_LIST_STATUS,
-    body: "Leave us your journey. We'll be in touch when a space opens.",
-    ctaLabel: WAITING_LIST_CTA_LABEL,
+    status: PRE_ORDER_STATUS,
+    body: "Commission your journey-built fragrance — composed from your brief, one formula that exists only for you.",
+    ctaLabel: PRE_ORDER_CTA_LABEL,
   },
 };

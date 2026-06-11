@@ -3,7 +3,7 @@ import bottleImg from "../../image/bottle.png";
 import SectionLogoWatermark from "../layout/SectionLogoWatermark";
 import SplitMediaSection from "./SplitMediaSection";
 
-export default function CraftPitchSection({ onOpenWaitingList }) {
+export default function CraftPitchSection() {
   const copy = CRAFT_PITCH_COPY;
 
   const subtitle = (
@@ -24,8 +24,7 @@ export default function CraftPitchSection({ onOpenWaitingList }) {
       description={copy.description}
       reverse={false}
       headingCentered
-      showWaitingListCta
-      onWaitingListClick={onOpenWaitingList}
+      showPreOrderCta
     />
   );
 }

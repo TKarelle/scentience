@@ -5,13 +5,14 @@
  * consomment le même tableau via `SHARED_STORIES_COPY.stories`.
  */
 export const SHARED_STORIES_COPY = {
-  title: "They share their stories",
+  eyebrow: "In their own words",
+  title: "What scent brings you back?",
   subtitle:
     "Just the smell that pulled someone back into a room they thought they'd lost.",
   stories: [
     {
       id: "nan",
-      name: "James, 52",
+      name: "James",
       place: "Norwich",
       excerpt:
         "My nan wore the same violet drugstore scent for thirty years. When we cleared her flat I twisted the cap once and I wasn't sad—I was eight again, on her stair carpet, holding her hand.",
@@ -31,6 +32,6 @@ export const SHARED_STORIES_COPY = {
         "I met my wife at a crowded birthday twenty years ago—rain outside, wet coats everywhere. I'd forgotten what she was wearing until I smelled it again. My chest went tight like it was the first hello.",
     },
   ],
-  proustTag: "Proust moment",
-  ctaLabel: "SHARE MY STORY",
+  storyTag: "Client story",
+  ctaLabel: "WHAT'S YOUR MADELEINE?",
 };

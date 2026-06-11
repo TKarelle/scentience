@@ -9,6 +9,7 @@ export const PHILOSOPHY_SECTION_COPY = {
   ],
   quote: {
     line1: "One fragrance for one journey.",
-  
+    line2: "Empty of meaning.",
+    line3: "Until you wear it.",
   },
 };

@@ -7,7 +7,7 @@ import { PROUST_MADELEINE_SEO, absoluteUrl } from "../config/seoMeta";
 import { PROUST_MADELEINE_PAGE_COPY } from "../config/proustMadeleineResearch";
 import { SHARED_STORIES_COPY } from "../config/landingSharedStories";
 import SharedStoryCard from "../components/landing/SharedStoryCard";
-import ProustResearchStatBanner from "../components/proust/ProustResearchStatBanner";
+import ScienceKeyStats from "../components/science/ScienceKeyStats";
 import {
   FORM_INPUT_CLASS,
   FORM_LABEL_CLASS,
@@ -23,7 +23,7 @@ function buildMailtoHref({
   scent,
   excerpt,
   consent,
-  proustTag,
+  storyTag,
 }) {
   const body = [
     "--- Project Proust story (same fields as site cards) ---",
@@ -38,7 +38,7 @@ function buildMailtoHref({
     excerpt || "(not provided)",
     "",
     "Label on every card (fixed on site):",
-    proustTag,
+    storyTag,
     "",
     "Consent:",
     consent ? "yes" : "no",
@@ -82,7 +82,7 @@ export default function ProustMadeleineResearchPage() {
         scent: scent.trim(),
         excerpt: excerpt.trim(),
         consent,
-        proustTag: SHARED_STORIES_COPY.proustTag,
+        storyTag: SHARED_STORIES_COPY.storyTag,
       });
       window.location.href = href;
     },
@@ -99,7 +99,7 @@ export default function ProustMadeleineResearchPage() {
       />
 
       <article className="relative isolate bg-paper">
-        {/* Hero — bag.png, titres, CTA centré, bandeau wine */}
+        {/* Hero — bag.png, titres, CTA centré, bannière chiffres clés */}
         <header className="relative flex min-h-[min(88vh,44rem)] flex-col border-b border-wine/15 sm:min-h-[min(90vh,48rem)]">
           <div className="absolute inset-0 z-0">
             <img
@@ -140,11 +140,11 @@ export default function ProustMadeleineResearchPage() {
               </a>
             </div>
           </div>
-
-          <ProustResearchStatBanner className="relative z-10" />
         </header>
 
-        {/* Field stories — mêmes cartes que « They share their stories » */}
+        <ScienceKeyStats />
+
+        {/* Field stories — mêmes cartes que la section shared stories (landing) */}
         <section
           className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-20"
           aria-labelledby="proust-stories-heading"

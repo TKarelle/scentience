@@ -1,5 +1,4 @@
 import { ANNIVERSARY_SUBSCRIPTION_COPY } from "../../config/landingAnniversarySubscription";
-import { WAITING_LIST_CTA_LABEL } from "../../config/waitingListMessaging";
 import anniversaryImg from "../../image/anniverssaire.png";
 import SplitMediaSection from "./SplitMediaSection";
 
@@ -18,7 +17,7 @@ export default function AnniversarySubscriptionSection() {
       titleClassName="split-media-heading-lg"
       description={description}
       reverse={false}
-      cta={{ label: WAITING_LIST_CTA_LABEL, href: "#waitlist" }}
+      showPreOrderCta
     />
   );
 }

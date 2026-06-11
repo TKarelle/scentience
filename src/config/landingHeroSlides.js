@@ -1,5 +1,5 @@
-import justMarriedImg from "../image/justmarried.png";
 import hotelImg from "../image/hotel.png";
+import justMarriedImg from "../image/justmarried.png";
 import natureImg from "../image/nature.png";
 
 /**

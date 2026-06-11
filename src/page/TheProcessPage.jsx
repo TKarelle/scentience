@@ -6,9 +6,8 @@ import SectionLogoWatermark from "../components/layout/SectionLogoWatermark";
 import ProcessFaqSection from "../components/process/ProcessFaqSection";
 import SiteChrome from "../components/layout/SiteChrome";
 import SyncPageSeo from "../components/seo/SyncPageSeo";
-import { useWaitingListModal } from "../context/WaitingListModalContext";
+import PreOrderCtaLink from "../components/cta/PreOrderCtaLink";
 import { THE_PROCESS_SEO, absoluteUrl } from "../config/seoMeta";
-import { WAITING_LIST_CTA_LABEL } from "../config/waitingListMessaging";
 import {
   THE_PROCESS_AMYGDALA_QUOTE,
   THE_PROCESS_HERO,
@@ -32,7 +31,6 @@ function ProcessStepColumn({ n, title, body }) {
 }
 
 function TheProcessMain() {
-  const { openWaitingList } = useWaitingListModal();
   const hero = THE_PROCESS_HERO;
   const ingredients = THE_PROCESS_INGREDIENTS;
   const label = THE_PROCESS_LABEL;
@@ -86,13 +84,7 @@ function TheProcessMain() {
             ))}
           </div>
           <div className="flex justify-center border-t border-wine/25 px-4 py-12 sm:py-14">
-            <button
-              type="button"
-              onClick={openWaitingList}
-              className="cta-primary max-w-md px-12 tracking-wide"
-            >
-              {WAITING_LIST_CTA_LABEL}
-            </button>
+            <PreOrderCtaLink className="max-w-md px-12 tracking-wide" />
           </div>
         </div>
       </section>

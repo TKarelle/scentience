@@ -1,30 +1,32 @@
+import { Link } from "react-router-dom";
 import { SHARED_STORIES_COPY } from "../../config/landingSharedStories";
 import SharedStoryCard from "./SharedStoryCard";
 
 /**
- * Shared story cards (placeholder copy in config) + CTA.
+ * Témoignages clients — fond distinct, cartes citation.
  */
-export default function SharedStoriesSection({ onShareStoryClick }) {
+export default function SharedStoriesSection() {
   const copy = SHARED_STORIES_COPY;
 
   return (
     <section
       id="shared-stories"
-      className="border-t border-ink/10 bg-paper py-20 sm:py-24 lg:py-28"
+      className="shared-stories-section"
       aria-labelledby="shared-stories-heading"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <header className="mx-auto mb-14 max-w-2xl text-center sm:mb-16">
+      <div className="shared-stories-section__inner mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <header className="shared-stories-section__header mx-auto max-w-2xl text-center">
+          <p className="shared-stories-section__eyebrow">{copy.eyebrow}</p>
           <h2
             id="shared-stories-heading"
-            className="landing-block-title"
+            className="landing-block-title mt-3"
           >
             {copy.title}
           </h2>
           <p className="landing-intro-text">{copy.subtitle}</p>
         </header>
 
-        <div className="grid gap-8 md:grid-cols-3 md:gap-6 lg:gap-10">
+        <div className="shared-stories-section__grid mt-14 sm:mt-16">
           {copy.stories.map((story) => (
             <SharedStoryCard
               key={story.id}
@@ -36,13 +38,12 @@ export default function SharedStoriesSection({ onShareStoryClick }) {
         </div>
 
         <div className="mt-14 flex justify-center sm:mt-16">
-          <button
-            type="button"
+          <Link
+            to="/science/what-is-your-proust-madeleine"
             className="cta-primary max-w-sm px-10 tracking-wide"
-            onClick={() => onShareStoryClick?.()}
           >
             {copy.ctaLabel}
-          </button>
+          </Link>
         </div>
       </div>
     </section>

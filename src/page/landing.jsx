@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import AnniversarySubscriptionSection from "../components/landing/AnniversarySubscriptionSection";
 import CraftPitchSection from "../components/landing/CraftPitchSection";
 import FAQSection from "../components/landing/FAQSection";
 import JourneyWaitSection from "../components/landing/JourneyWaitSection";
@@ -13,12 +12,9 @@ import YourCollectionSection from "../components/landing/YourCollectionSection";
 import SiteChrome from "../components/layout/SiteChrome";
 import SyncPageSeo from "../components/seo/SyncPageSeo";
 import { HOME_PAGE_SEO, absoluteUrl } from "../config/seoMeta";
-import { useWaitingListModal } from "../context/WaitingListModalContext";
 
-/** Contenu sous `SiteChrome` — accès au contexte modal liste d’attente. */
 function LandingMain() {
   const location = useLocation();
-  const { openWaitingList } = useWaitingListModal();
 
   useEffect(() => {
     const raw = location.hash.replace(/^#/, "");
@@ -34,9 +30,9 @@ function LandingMain() {
 
   return (
     <main>
-      <LandingHero onOpenWaitingList={openWaitingList} />
+      <LandingHero />
 
-      <CraftPitchSection onOpenWaitingList={openWaitingList} />
+      <CraftPitchSection />
 
       <PhilosophySection />
 
@@ -44,11 +40,9 @@ function LandingMain() {
 
       <NotForEveryoneSection />
 
-      <SharedStoriesSection onShareStoryClick={openWaitingList} />
+      <SharedStoriesSection />
 
       <JourneyWaitSection />
-
-      <AnniversarySubscriptionSection />
 
       <ProofTrustSection />
 

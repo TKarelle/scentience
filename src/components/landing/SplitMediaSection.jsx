@@ -1,5 +1,5 @@
-import WaitingListCtaButton from "../waitingList/WaitingListCtaButton";
-import WaitingListStatus from "../waitingList/WaitingListStatus";
+import PreOrderCtaLink from "../cta/PreOrderCtaLink";
+import PreOrderStatus from "../cta/PreOrderStatus";
 
 const cx = (...p) => p.filter(Boolean).join(" ");
 
@@ -14,8 +14,7 @@ export default function SplitMediaSection({
   subtitle,
   description,
   reverse = false,
-  showWaitingListCta = false,
-  onWaitingListClick,
+  showPreOrderCta = false,
   figureClassName,
   cta,
   /** Colonne texte : sur desktop, `top` = contenu en haut (sans `headingCentered`) ; `center` = centré verticalement dans la hauteur de la photo. Avec `headingCentered`, le bloc est toujours centré verticalement face à l’image. */
@@ -102,18 +101,17 @@ export default function SplitMediaSection({
           {descriptionBlock}
         </div>
       )}
-      {showWaitingListCta && (
+      {showPreOrderCta && (
         <div
           className={cx(
             "flex flex-col gap-4",
             headingCentered && "items-center text-center",
           )}
         >
-          <WaitingListStatus
+          <PreOrderStatus
             className={headingCentered ? "text-center" : undefined}
           />
-          <WaitingListCtaButton
-            onClick={onWaitingListClick}
+          <PreOrderCtaLink
             className={cx(
               "w-full sm:w-auto",
               headingCentered ? "sm:self-center" : "sm:self-start",

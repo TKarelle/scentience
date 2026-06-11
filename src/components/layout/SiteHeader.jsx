@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import logoPaperNav from "../../image/logopaper-transparent.png";
 import { LANDING_PRIMARY_NAV } from "../../config/landingNav";
 import MenuIcon from "../icons/MenuIcon";
-import WaitingListCtaButton from "../waitingList/WaitingListCtaButton";
 import { BrandMark } from "../typography";
 
 function navItemKey(item) {
@@ -35,8 +34,9 @@ function NavLinks({ className, linkClassName, onNavigate }) {
 
 /**
  * Barre de navigation landing : fond paper fixe, liens TrueTypewriter + tracking, wine.
+ * Pre-order accessible uniquement via les CTA de page (pas dans la nav).
  */
-export default function SiteHeader({ onOpenWaitingList }) {
+export default function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const closeMobile = useCallback(() => setMobileOpen(false), []);
@@ -103,14 +103,6 @@ export default function SiteHeader({ onOpenWaitingList }) {
             className="flex flex-col gap-1"
             linkClassName="nav-link-landing font-normal text-sm block py-3 border-b border-ink/10 last:border-0"
             onNavigate={closeMobile}
-          />
-          <WaitingListCtaButton
-            fullWidth
-            className="mt-4"
-            onClick={() => {
-              onOpenWaitingList?.();
-              closeMobile();
-            }}
           />
         </div>
       )}

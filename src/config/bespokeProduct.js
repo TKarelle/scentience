@@ -15,7 +15,7 @@ export const BESPOKE_PRODUCT = {
   /** Sous les preuves sociales — explique le questionnaire (pas de faux avis). */
   personalisationPitch: {
     lead: "No catalogue — your formula is built from your answers.",
-    body: "Personalise & Order walks you through ten guided screens — one at a time. Your journey first, then scent preferences, a full review, and email to confirm.",
+    body: "Personalise & Pre-order walks you through ten guided screens — one at a time. Your journey first, then scent preferences, a full review, and email to confirm.",
     steps: [
       "Journey → label names, destination & date",
       "7 scent questions · review · email to confirm",
@@ -36,7 +36,7 @@ export const BESPOKE_PRODUCT = {
     pages: 20,
   },
 
-  purchaseCta: "PERSONALISE & ORDER",
+  purchaseCta: "PERSONALISE & PRE-ORDER",
 
   socialProof: {
     commissionsCount: 247,

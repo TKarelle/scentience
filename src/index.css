@@ -130,12 +130,302 @@
     color: color-mix(in srgb, var(--color-ink) 65%, transparent);
   }
 
+  /** Shared stories — bandeau témoignages (fond distinct du reste de la page). */
+  .shared-stories-section {
+    border-top: 1px solid color-mix(in srgb, var(--color-wine) 14%, transparent);
+    background-color: color-mix(in srgb, var(--color-wine) 5%, var(--color-paper));
+    padding-block: 5rem;
+  }
+
+  @media (min-width: 640px) {
+    .shared-stories-section {
+      padding-block: 6rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .shared-stories-section {
+      padding-block: 7rem;
+    }
+  }
+
+  .shared-stories-section__eyebrow {
+    @apply font-subtitle text-[10px] uppercase tracking-[0.22em] text-wine sm:text-xs;
+  }
+
+  .shared-stories-section__grid {
+    @apply grid gap-6 md:grid-cols-3 md:gap-5 lg:gap-8;
+  }
+
+  .story-card {
+    @apply relative flex flex-col p-6 sm:p-7;
+    border: 1px solid color-mix(in srgb, var(--color-wine) 14%, transparent);
+    background-color: var(--color-paper);
+    box-shadow: 0 10px 28px color-mix(in srgb, var(--color-ink) 7%, transparent);
+  }
+
+  .story-card__quote-mark {
+    @apply typo-title pointer-events-none absolute right-5 top-3 text-5xl font-light leading-none sm:right-6 sm:top-4 sm:text-6xl;
+    color: color-mix(in srgb, var(--color-wine) 14%, transparent);
+  }
+
+  .story-card__tag {
+    @apply font-subtitle text-[10px] uppercase tracking-[0.18em] text-mist;
+  }
+
+  .story-card__excerpt {
+    @apply typo-body-lead mt-4 flex-1 text-sm leading-relaxed sm:text-base;
+    color: color-mix(in srgb, var(--color-ink) 88%, transparent);
+  }
+
+  .story-card__excerpt p {
+    font-style: italic;
+  }
+
+  .story-card__footer {
+    @apply mt-6 flex items-center gap-3 border-t pt-5;
+    border-color: color-mix(in srgb, var(--color-wine) 12%, transparent);
+  }
+
+  .story-card__avatar {
+    @apply font-subtitle flex h-10 w-10 shrink-0 items-center justify-center text-sm uppercase tracking-wide;
+    background-color: color-mix(in srgb, var(--color-wine) 10%, var(--color-paper));
+    color: var(--color-wine);
+    border: 1px solid color-mix(in srgb, var(--color-wine) 18%, transparent);
+  }
+
+  .story-card__name {
+    @apply font-subtitle block text-xs uppercase tracking-wide text-wine;
+  }
+
+  .story-card__place {
+    @apply landing-meta-caption mt-0.5;
+  }
+
   .hero-card-title {
     @apply typo-title text-center text-lg font-normal leading-snug text-wine sm:text-xl;
   }
 
   .hero-carousel-headline {
     @apply typewriter-face grid max-w-xl place-items-center text-3xl font-normal normal-case leading-tight text-paper drop-shadow-[0_1px_3px_rgba(0,0,0,0.65)] sm:text-4xl [&>*]:col-start-1 [&>*]:row-start-1;
+  }
+
+  /** Hero landing — carrousel + carte pre-order. */
+  .hero-section {
+    @apply relative isolate min-h-[min(100vh,56rem)] overflow-hidden;
+  }
+
+  .hero-section__media {
+    @apply absolute inset-0 z-0;
+  }
+
+  .hero-section__slide {
+    @apply absolute inset-0 z-0 opacity-0 transition-opacity duration-[900ms] ease-out;
+  }
+
+  .hero-section__slide--active {
+    @apply z-[1] opacity-100;
+  }
+
+  .hero-section__image {
+    @apply h-full w-full object-cover;
+  }
+
+  .hero-section__scrim {
+    @apply absolute inset-0 z-[2] bg-black/35 sm:bg-black/30;
+  }
+
+  .hero-section__dots {
+    @apply absolute bottom-7 left-1/2 z-30 -translate-x-1/2 sm:bottom-10;
+  }
+
+  .hero-section__layout {
+    @apply relative z-10 flex min-h-[min(100vh,56rem)] flex-col lg:block;
+  }
+
+  .hero-section__headline-wrap {
+    @apply flex flex-1 flex-col items-center justify-center px-4 pb-16 pt-28 text-center md:pb-20 md:pt-32 lg:absolute lg:inset-0 lg:flex lg:pb-12 lg:pt-28;
+  }
+
+  .hero-section__card {
+    @apply mx-4 mb-10 w-full max-w-[22rem] shrink-0 self-center p-8 sm:mx-6 sm:p-10 lg:absolute lg:right-0 lg:top-1/2 lg:z-20 lg:mx-0 lg:mb-0 lg:w-[min(100%,22rem)] lg:-translate-y-1/2 lg:self-auto lg:p-8 xl:p-10;
+  }
+
+  /** The Science — bannière chiffres clés (wine, hauteur réduite). */
+  .science-stats-banner {
+    @apply bg-wine py-7 sm:py-8;
+  }
+
+  .science-stats-banner__grid {
+    @apply grid grid-cols-2 gap-x-4 gap-y-6 sm:gap-x-6 lg:grid-cols-4 lg:gap-y-0;
+  }
+
+  @media (min-width: 1024px) {
+    .science-stats-banner__item:not(:first-child) {
+      border-left: 1px solid color-mix(in srgb, var(--color-paper) 16%, transparent);
+      padding-left: 1.75rem;
+    }
+
+    .science-stats-banner__item:not(:last-child) {
+      padding-right: 1.75rem;
+    }
+  }
+
+  .science-stats-banner__value {
+    @apply typewriter-face text-2xl font-normal normal-case leading-none text-paper sm:text-3xl;
+  }
+
+  .science-stats-banner__label {
+    @apply mt-2 text-xs leading-snug sm:mt-2.5 sm:text-sm;
+    color: color-mix(in srgb, var(--color-paper) 88%, transparent);
+  }
+
+  .science-stats-banner__source {
+    @apply font-subtitle mt-2 text-[9px] uppercase tracking-[0.14em] sm:text-[10px];
+    color: color-mix(in srgb, var(--color-paper) 48%, transparent);
+  }
+
+  /** The Science — trois piliers (bandeau mist Scentience). */
+  .science-pillars {
+    @apply py-14 sm:py-16 lg:py-20;
+    background-color: color-mix(in srgb, var(--color-mist) 38%, var(--color-paper));
+    border-top: 1px solid color-mix(in srgb, var(--color-mist) 55%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-mist) 55%, transparent);
+  }
+
+  .science-pillars__eyebrow {
+    @apply font-subtitle text-[10px] uppercase tracking-[0.22em] text-wine;
+  }
+
+  .science-pillars__heading {
+    @apply typo-title mt-3 text-xl font-light text-wine sm:text-2xl lg:text-3xl;
+  }
+
+  .science-pillars__grid {
+    @apply mt-10 grid grid-cols-1 sm:mt-12 md:grid-cols-3;
+    border-top: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+  }
+
+  .science-pillars__cell {
+    @apply flex flex-col px-6 py-10 sm:px-8 sm:py-11 lg:px-10 lg:py-12;
+    border-top: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+  }
+
+  @media (min-width: 768px) {
+    .science-pillars__cell {
+      border-top: none;
+    }
+
+    .science-pillars__cell + .science-pillars__cell {
+      border-left: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+    }
+  }
+
+  .science-pillars__index {
+    @apply font-subtitle text-[10px] uppercase tracking-[0.2em] text-wine;
+  }
+
+  .science-pillars__title {
+    @apply typo-title mt-4 text-base font-normal leading-snug text-ink sm:text-lg;
+  }
+
+  .science-pillars__body {
+    @apply typo-body-lead mt-4 max-w-sm text-sm sm:text-base;
+    color: color-mix(in srgb, var(--color-ink) 82%, transparent);
+  }
+
+  /** The Science — peer-reviewed (fond teinté + lignes alternées). */
+  .science-peer-research {
+    @apply py-16 sm:py-20 lg:py-24;
+    background-color: color-mix(in srgb, var(--color-wine) 5%, var(--color-paper));
+    border-top: 1px solid color-mix(in srgb, var(--color-wine) 14%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-wine) 14%, transparent);
+  }
+
+  .science-peer-research__header {
+    @apply border-b pb-6 sm:pb-8;
+    border-color: color-mix(in srgb, var(--color-ink) 15%, transparent);
+  }
+
+  .science-peer-research__title {
+    @apply typo-title text-base font-light uppercase leading-snug tracking-[0.08em] text-ink sm:text-lg lg:text-xl;
+  }
+
+  .science-peer-research__list {
+    @apply mt-0 divide-y;
+    --tw-divide-opacity: 1;
+    border-color: color-mix(in srgb, var(--color-ink) 10%, transparent);
+  }
+
+  .science-peer-research__list > li + li {
+    border-top: 1px solid color-mix(in srgb, var(--color-ink) 10%, transparent);
+  }
+
+  .science-peer-research__row {
+    @apply grid grid-cols-1 gap-4 px-3 py-8 sm:grid-cols-[4.5rem_minmax(0,1fr)] sm:gap-x-8 sm:px-4 sm:py-10 lg:grid-cols-[5.5rem_minmax(0,1fr)_9rem] lg:items-start lg:gap-x-10 lg:px-5;
+  }
+
+  .science-peer-research__row:nth-child(even) {
+    background-color: color-mix(in srgb, var(--color-paper) 72%, transparent);
+  }
+
+  .science-peer-research__year {
+    @apply typo-title text-2xl font-light leading-none text-wine sm:text-3xl;
+  }
+
+  .science-peer-research__study-title {
+    @apply typo-title block text-base font-normal leading-snug text-ink transition-colors hover:text-wine sm:text-lg;
+  }
+
+  a.science-peer-research__study-title {
+    @apply underline underline-offset-4;
+    text-decoration-color: color-mix(in srgb, var(--color-wine) 25%, transparent);
+  }
+
+  a.science-peer-research__study-title:hover {
+    text-decoration-color: color-mix(in srgb, var(--color-wine) 60%, transparent);
+  }
+
+  .science-peer-research__description {
+    @apply typo-body-lead mt-3 text-sm leading-relaxed sm:text-base;
+    color: color-mix(in srgb, var(--color-ink) 78%, transparent);
+  }
+
+  .science-peer-research__category {
+    @apply font-subtitle text-[10px] uppercase tracking-[0.18em] text-wine sm:col-start-2 lg:col-start-3 lg:pt-1 lg:text-right;
+  }
+
+  .science-scent-mapping .split-media-figure {
+    border: 1px solid color-mix(in srgb, var(--color-wine) 18%, transparent);
+    box-shadow: 0 18px 40px color-mix(in srgb, var(--color-ink) 8%, transparent);
+  }
+
+  /** The Science — CTA final (wine). */
+  .science-closing {
+    @apply bg-wine px-4 py-16 sm:px-6 sm:py-20 lg:py-24;
+  }
+
+  .science-closing__title {
+    @apply typo-title-on-wine text-xl font-light leading-snug sm:text-2xl lg:text-3xl;
+  }
+
+  .science-closing__subtitle {
+    @apply typo-typewriter-on-wine mt-5 text-sm sm:text-base;
+  }
+
+  .science-closing__actions {
+    @apply mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row;
+  }
+
+  .science-closing__secondary {
+    @apply cta-parchment inline-flex justify-center rounded-none px-10 text-center text-xs uppercase tracking-[0.16em] sm:px-12 sm:text-sm;
+    background-color: transparent;
+    border: 1px solid color-mix(in srgb, var(--color-paper) 45%, transparent);
+    color: var(--color-paper);
+  }
+
+  .science-closing__secondary:hover {
+    background-color: color-mix(in srgb, var(--color-paper) 10%, transparent);
   }
 
   /**

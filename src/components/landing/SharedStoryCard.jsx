@@ -1,39 +1,44 @@
 import { SHARED_STORIES_COPY } from "../../config/landingSharedStories";
-import { Card } from "../ui";
 
 const cx = (...p) => p.filter(Boolean).join(" ");
 
+function storyInitial(name) {
+  const trimmed = name.trim();
+  if (!trimmed) return "?";
+  return trimmed.charAt(0).toUpperCase();
+}
+
 /**
- * Carte témoignage — même marqueup que la section « They share their stories » (landing).
+ * Carte témoignage — citation + auteur (landing & page Proust).
  */
 export default function SharedStoryCard({
   name,
   place,
   excerpt,
   className = "",
-  proustTag = SHARED_STORIES_COPY.proustTag,
+  storyTag = SHARED_STORIES_COPY.storyTag,
 }) {
   return (
-    <Card
-      as="article"
-      tone="paper"
-      className={cx("flex flex-col p-6 shadow-sm sm:p-8", className)}
-    >
-      <p
-        aria-hidden
-        className="font-subtitle mb-3 text-[10px] uppercase tracking-wider text-mist"
-      >
-        {proustTag}
-      </p>
-      <blockquote className="typo-body-lead flex-1 italic">
-        &ldquo;{excerpt}&rdquo;
+    <article className={cx("story-card", className)}>
+      <span className="story-card__quote-mark" aria-hidden>
+        &ldquo;
+      </span>
+
+      <p className="story-card__tag">{storyTag}</p>
+
+      <blockquote className="story-card__excerpt">
+        <p>{excerpt}</p>
       </blockquote>
-      <footer className="mt-6 pt-4">
-        <p className="font-subtitle text-xs uppercase tracking-wide text-wine">
-          {name}
-        </p>
-        <p className="landing-meta-caption">{place}</p>
+
+      <footer className="story-card__footer">
+        <span className="story-card__avatar" aria-hidden>
+          {storyInitial(name)}
+        </span>
+        <div className="min-w-0">
+          <cite className="story-card__name not-italic">{name}</cite>
+          <p className="story-card__place">{place}</p>
+        </div>
       </footer>
-    </Card>
+    </article>
   );
 }

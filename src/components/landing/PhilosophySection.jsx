@@ -40,7 +40,8 @@ export default function PhilosophySection() {
 
             <blockquote className="philosophy-quote philosophy-quote--on-paper">
               <p>{quote.line1}</p>
-              <p className="mt-3">{quote.line2}</p>
+              {quote.line2 ? <p className="mt-3">{quote.line2}</p> : null}
+              {quote.line3 ? <p className="mt-3">{quote.line3}</p> : null}
             </blockquote>
           </div>
         </div>

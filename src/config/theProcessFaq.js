@@ -64,10 +64,10 @@ export const THE_PROCESS_FAQ_ITEMS = [
     ],
   },
   {
-    id: "waiting-list",
-    question: "How do I start or join the waiting list?",
+    id: "pre-order",
+    question: "How do I commission Original Bespoke?",
     answerParagraphs: [
-      "Use the waiting list on the site to register your interest. We use it to open consultations fairly as capacity allows and to keep you informed when your turn approaches.",
+      "Pre-orders are open on the site. Choose Original Bespoke, complete the guided questionnaire — journey details first, then your scent brief — and place your order by email. We compose your formula from your answers and ship within the week.",
     ],
   },
 ];

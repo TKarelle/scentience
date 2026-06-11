@@ -9,6 +9,4 @@ export const YOUR_COLLECTION_COPY = {
     "Over time, your collection becomes something no photograph album can be: a biography written in scent.",
     '“Every great journey deserves its own scent. Every great life deserves a library.”',
   ],
-  ctaLabel: "ORIGINAL BESPOKE",
-  ctaHref: "/product/original-bespoke",
 };
