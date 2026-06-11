@@ -41,7 +41,7 @@ function TheScienceMain() {
         <div className="absolute inset-0 z-0">
           <img
             src={noteHeroImg}
-            alt="The science of scent and memory — Scentience"
+            alt="The science of scent and memory — MADELEINE"
             className="h-full w-full object-cover object-center"
             decoding="async"
           />
@@ -106,7 +106,7 @@ function TheScienceMain() {
         titleClassName="split-media-heading-lg"
         image={{
           src: bottleImg,
-          alt: "Scentience bespoke bottle — a physical archive of memory",
+          alt: "MADELEINE bespoke bottle — a physical archive of memory",
         }}
         overlay={<SectionLogoWatermark variant="paper" />}
         reverse

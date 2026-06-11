@@ -1,7 +1,4 @@
-import {
-  PRE_ORDER_CTA_LABEL,
-  PRE_ORDER_STATUS,
-} from "./preOrderMessaging";
+import { PRE_ORDER_CTA_LABEL, PRE_ORDER_STATUS } from "./preOrderMessaging";
 
 /** Texte carte CTA hero — statut / CTA alignés sur preOrderMessaging.js */
 export const LANDING_HERO_COPY = {

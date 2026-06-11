@@ -4,6 +4,7 @@ import {
   formatPrice,
   getBespokePrice,
 } from "../../config/bespokeProduct";
+import { trackEvent } from "../../lib/analytics";
 
 const ProductBuyContext = createContext(null);
 
@@ -77,7 +78,10 @@ export function ProductBuyCheckout({ className = "" }) {
 
       <button
         type="button"
-        onClick={onPersonalise}
+        onClick={() => {
+          trackEvent("cta_personalise_open", { location: "/product/original-bespoke" });
+          onPersonalise();
+        }}
         className="cta-primary mt-6 w-full rounded-none tracking-[0.14em]"
       >
         {product.purchaseCta}

@@ -1,5 +1,9 @@
 @import "./styles/tokens.css";
 
+html {
+  scroll-padding-top: 5.5rem;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -285,7 +289,7 @@
     color: color-mix(in srgb, var(--color-paper) 48%, transparent);
   }
 
-  /** The Science — trois piliers (bandeau mist Scentience). */
+  /** The Science — trois piliers (bandeau mist MADELEINE). */
   .science-pillars {
     @apply py-14 sm:py-16 lg:py-20;
     background-color: color-mix(in srgb, var(--color-mist) 38%, var(--color-paper));
@@ -1092,5 +1096,138 @@
 
   article p + p {
     margin-top: 1.5rem;
+  }
+
+  /** Cookie consent — bandeau wine opaque, accent mist. */
+  .cookie-banner {
+    @apply fixed bottom-0 left-0 right-0 z-[90];
+    padding: 0 1rem 1rem;
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .cookie-banner__shell {
+    @apply mx-auto max-w-5xl overflow-hidden;
+    background-color: var(--color-wine);
+    border: 1px solid color-mix(in srgb, var(--color-paper) 22%, transparent);
+    box-shadow:
+      0 -16px 48px color-mix(in srgb, var(--color-ink) 28%, transparent),
+      0 0 0 1px color-mix(in srgb, var(--color-ink) 8%, transparent);
+  }
+
+  .cookie-banner__stripe {
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      var(--color-mist) 0%,
+      var(--color-mist) 42%,
+      color-mix(in srgb, var(--color-paper) 35%, var(--color-wine)) 42%,
+      color-mix(in srgb, var(--color-paper) 35%, var(--color-wine)) 100%
+    );
+  }
+
+  .cookie-banner__inner {
+    @apply grid grid-cols-1 gap-6 px-6 py-6 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center sm:gap-8 sm:px-8 sm:py-7 lg:px-10;
+  }
+
+  .cookie-banner__index {
+    @apply font-subtitle hidden text-[10px] uppercase tracking-[0.22em] sm:block;
+    color: color-mix(in srgb, var(--color-mist) 92%, var(--color-paper));
+  }
+
+  .cookie-banner__eyebrow {
+    @apply typewriter-face text-[10px] font-normal uppercase sm:text-xs;
+    color: color-mix(in srgb, var(--color-mist) 88%, var(--color-paper));
+  }
+
+  .cookie-banner__title {
+    @apply typo-title-on-wine mt-2 text-sm font-light leading-snug sm:text-base lg:text-lg;
+  }
+
+  .cookie-banner__body {
+    @apply mt-3 text-xs leading-relaxed sm:text-sm;
+    color: color-mix(in srgb, var(--color-paper) 86%, transparent);
+  }
+
+  .cookie-banner__link {
+    @apply text-paper underline underline-offset-4 transition-opacity hover:opacity-80;
+    text-decoration-color: color-mix(in srgb, var(--color-mist) 55%, transparent);
+  }
+
+  .cookie-banner__actions {
+    @apply flex shrink-0 flex-col gap-3 sm:items-end;
+  }
+
+  .cookie-banner__cta {
+    @apply cta-parchment w-full rounded-none px-8 text-xs tracking-[0.16em] sm:w-auto sm:min-w-[12rem] sm:text-sm;
+    border-color: var(--color-paper);
+    background-color: var(--color-paper);
+    color: var(--color-wine);
+    font-family: var(--font-subtitle);
+    font-weight: 400;
+  }
+
+  .cookie-banner__cta:hover {
+    opacity: 1;
+    background-color: color-mix(in srgb, var(--color-paper) 92%, var(--color-mist));
+  }
+
+  /** Page Contact — formulaire seul, panneau paper + accent wine. */
+  .contact-page {
+    @apply min-h-screen bg-paper pb-28 pt-28 sm:pb-32 sm:pt-32;
+  }
+
+  .contact-page__inner {
+    @apply mx-auto max-w-lg px-4 sm:px-6 lg:px-8;
+  }
+
+  .contact-page__eyebrow {
+    @apply font-subtitle text-[10px] uppercase tracking-[0.22em] text-wine;
+  }
+
+  .contact-page__title {
+    @apply typo-title mt-3 text-xl font-light sm:text-2xl lg:text-3xl;
+  }
+
+  .contact-page__title--sm {
+    @apply text-lg sm:text-xl;
+  }
+
+  .contact-page__intro {
+    @apply typo-body-lead mx-auto mt-4 max-w-md text-sm sm:text-base;
+    color: color-mix(in srgb, var(--color-ink) 78%, transparent);
+  }
+
+  .contact-page__form,
+  .contact-page__success {
+    @apply mt-10 overflow-hidden;
+    border: 1px solid color-mix(in srgb, var(--color-wine) 18%, transparent);
+    background-color: var(--color-paper);
+    box-shadow: 0 20px 48px color-mix(in srgb, var(--color-ink) 8%, transparent);
+  }
+
+  .contact-page__form {
+    @apply space-y-5 px-6 py-8 sm:px-10 sm:py-10;
+    border-top: 3px solid var(--color-wine);
+  }
+
+  .contact-page__form-grid {
+    @apply grid grid-cols-1 gap-5 sm:grid-cols-2;
+  }
+
+  .contact-page__error {
+    @apply text-sm text-wine;
+  }
+
+  .contact-page__submit {
+    @apply mt-2;
+  }
+
+  .contact-page__success {
+    @apply px-6 py-10 text-center sm:px-10 sm:py-12;
+    border-top: 3px solid color-mix(in srgb, var(--color-mist) 70%, var(--color-wine));
+  }
+
+  .contact-page__back {
+    @apply mt-8 inline-block text-sm text-wine underline underline-offset-4;
   }
 }

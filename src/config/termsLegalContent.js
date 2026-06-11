@@ -6,7 +6,7 @@ export const TERMS_DOCUMENT_TITLE =
   "GDPR Disclosure – User-Generated Content, Research Use & Product Terms";
 
 export const TERMS_INTRO =
-  "Scentience provides personalised fragrance products and offers users the option to submit written content (e.g. blog posts, reflections, or personal accounts) describing memories associated with scent or experiences using Scentience products.";
+  "MADELEINE provides personalised fragrance products and offers users the option to submit written content (e.g. blog posts, reflections, or personal accounts) describing memories associated with scent or experiences using MADELEINE products.";
 
 /** @typedef {{ type: 'p', text: string } | { type: 'ul', items: string[] } | { type: 'contact' }} TermsBlock */
 
@@ -20,7 +20,7 @@ export const TERMS_SECTIONS = [
     blocks: [
       {
         type: "p",
-        text: "All Scentience fragrances are developed in accordance with applicable industry safety standards and guidelines (including IFRA compliance where relevant) and are tested for consumer use.",
+        text: "All MADELEINE fragrances are developed in accordance with applicable industry safety standards and guidelines (including IFRA compliance where relevant) and are tested for consumer use.",
       },
       { type: "p", text: "Users must:" },
       {
@@ -33,7 +33,7 @@ export const TERMS_SECTIONS = [
       },
       {
         type: "p",
-        text: "By purchasing and using Scentience products, users acknowledge that individual reactions to fragrance may vary.",
+        text: "By purchasing and using MADELEINE products, users acknowledge that individual reactions to fragrance may vary.",
       },
     ],
   },
@@ -48,7 +48,7 @@ export const TERMS_SECTIONS = [
       {
         type: "ul",
         items: [
-          "Display on Scentience platforms (e.g. website or blog)",
+          "Display on MADELEINE platforms (e.g. website or blog)",
           "Internal product development and service improvement",
           "Research purposes, including the study of autobiographical memory, emotional association, and olfactory perception",
         ],
@@ -110,7 +110,7 @@ export const TERMS_SECTIONS = [
       },
       {
         type: "p",
-        text: "Where anonymisation is selected, Scentience will take reasonable steps to remove identifying information before publication or data sharing.",
+        text: "Where anonymisation is selected, MADELEINE will take reasonable steps to remove identifying information before publication or data sharing.",
       },
       { type: "p", text: "Demographic data will be:" },
       {
@@ -145,16 +145,39 @@ export const TERMS_SECTIONS = [
     ],
   },
   {
+    id: "shipping",
+    heading: "Shipping & delivery",
+    blocks: [
+      {
+        type: "p",
+        text: "Original Bespoke orders include free standard shipping to the UK and EU.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Composed to order after your questionnaire and payment are received",
+          "Dispatch typically within 5–7 business days once your formula enters production",
+          "Tracked parcel · delivery address confirmed by email after checkout",
+          "International shipping outside the UK/EU may be available on request — contact us before ordering",
+        ],
+      },
+      {
+        type: "p",
+        text: "You will receive email updates when your order is confirmed and when your parcel ships.",
+      },
+    ],
+  },
+  {
     id: "returns",
     heading: "7. Returns & Product Positioning",
     blocks: [
       {
         type: "p",
-        text: "Due to the personalised and bespoke nature of Scentience fragrances, all sales are final and non-returnable.",
+        text: "Due to the personalised and bespoke nature of MADELEINE fragrances, all sales are final and non-returnable.",
       },
       {
         type: "p",
-        text: "Scentience products are designed not solely as conventional perfumes, but as tools to support the formation of new memories and emotional associations. Research suggests that more novel or unfamiliar scents may strengthen memory encoding. As such, individual preference for the scent itself may vary and does not constitute a fault.",
+        text: "MADELEINE products are designed not solely as conventional perfumes, but as tools to support the formation of new memories and emotional associations. Research suggests that more novel or unfamiliar scents may strengthen memory encoding. As such, individual preference for the scent itself may vary and does not constitute a fault.",
       },
       {
         type: "p",
@@ -195,7 +218,29 @@ export const TERMS_SECTIONS = [
     blocks: [
       {
         type: "p",
-        text: "Scentience implements appropriate technical and organisational measures to protect personal data in accordance with applicable data protection laws.",
+        text: "MADELEINE implements appropriate technical and organisational measures to protect personal data in accordance with applicable data protection laws.",
+      },
+    ],
+  },
+  {
+    id: "cookies",
+    heading: "Cookies & local storage",
+    blocks: [
+      {
+        type: "p",
+        text: "MADELEINE uses a small number of cookies and similar technologies to operate the website and remember your preferences.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Essential cookies required for site functionality",
+          "Local storage to remember your cookie consent choice",
+          "We do not use third-party advertising cookies at this time",
+        ],
+      },
+      {
+        type: "p",
+        text: "You can clear cookies and local storage at any time through your browser settings. For questions about data processing, see the sections above or contact us.",
       },
     ],
   },
@@ -220,4 +265,4 @@ export const TERMS_SECTIONS = [
   },
 ];
 
-export const TERMS_CONTACT_EMAIL = "Info@scentience.uk";
+export const TERMS_CONTACT_EMAIL = "Info@madeleine.uk";

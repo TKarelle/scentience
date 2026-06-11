@@ -3,9 +3,9 @@ import { Link, useParams, useNavigate, useLocation } from "react-router-dom";
 import image2 from "../image/3.png";
 import lemonPerfumeImage from "../image/lemon+perfume.png";
 import memoriesImage from "../image/memories.png";
-import SiteFooter from "../components/layout/SiteFooter";
+import SiteChrome from "../components/layout/SiteChrome";
 import SyncPageSeo from "../components/seo/SyncPageSeo";
-import { BrandMark, typewriterFaceClass } from "../components/typography";
+import { typewriterFaceClass } from "../components/typography";
 import {
   ARTICLE_SEO_BY_SLUG,
   PROUST_ARTICLE_SLUG,
@@ -20,7 +20,7 @@ const articles = {
     title: "The Proust Project: How Scent Encodes Memory Forever",
     subtitle:
       "The olfactory nerve connects directly to the amygdala — the seat of emotional memory — in 0.2 seconds.",
-    author: "Scentience Editorial",
+    author: "MADELEINE Editorial",
     date: "April 2026",
     category: "Science",
     heroImage: memoriesImage,
@@ -33,7 +33,7 @@ const articles = {
       },
       {
         type: "paragraph",
-        text: 'At Scentience, this intuition is more than an inspiration. It is our raison d\'être: to capture those rare human moments of such intensity that one finds themselves thinking: "I am experiencing something I refuse to forget."',
+        text: 'At MADELEINE, this intuition is more than an inspiration. It is our raison d\'être: to capture those rare human moments of such intensity that one finds themselves thinking: "I am experiencing something I refuse to forget."',
       },
       {
         type: "heading",
@@ -113,11 +113,11 @@ const articles = {
       {
         type: "quote",
         text: "Photography shows the past. Scent-Mapping allows you to re-inhabit it.",
-        author: "Scentience",
+        author: "MADELEINE",
       },
       {
         type: "paragraph",
-        text: "By merging haute parfumerie with neuroscience, Scentience converts fragrance into an intimate technology. By introducing a virgin molecule at the zenith of your emotions—during a suspended journey or a shared moment of grace—we seal the experience.",
+        text: "By merging haute parfumerie with neuroscience, MADELEINE converts fragrance into an intimate technology. By introducing a virgin molecule at the zenith of your emotions—during a suspended journey or a shared moment of grace—we seal the experience.",
       },
       {
         type: "paragraph",
@@ -129,7 +129,7 @@ const articles = {
       },
       {
         type: "signature",
-        text: "Scentience — As it felt",
+        text: "MADELEINE — As it felt",
       },
     ],
   },
@@ -138,7 +138,7 @@ const articles = {
     title: "The Amalfi Coast at Golden Hour: Building a Scent from a Coastline",
     subtitle:
       "Sun-warmed lemon, wild rosemary, sea salt at dawn — coordinates, not decoration.",
-    author: "Scentience Editorial",
+    author: "MADELEINE Editorial",
     date: "April 2026",
     category: "Journal",
     heroImage: lemonPerfumeImage,
@@ -147,19 +147,42 @@ const articles = {
     content: [
       {
         type: "paragraph",
-        text: "Sun-warmed lemon, wild rosemary, the metallic snap of sea salt at dawn: a coastline is not a mood board. It is a set of coordinates. When Scentience builds a formula from a journey, we treat destination as brief — region, season, light, what you refuse to forget.",
+        text: "A coastline is not a mood board. It is a set of coordinates — latitude, season, hour of light, the vegetation that grows in that specific salt wind. When MADELEINE composes from a journey, the destination is the brief. The formula is the map.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "Geography as raw material",
       },
       {
         type: "paragraph",
-        text: "Golden hour on the Amalfi coast is a collision of heat, vegetation, and mineral water. The goal is not to quote those notes like a postcard; it is to trap the tension between them so that, years later, one breath restores the hour, not the cliché.",
+        text: "The Amalfi Coast carries its own olfactory signature long before perfumery names it. The Sfusato Amalfitano — the coast's protected lemon — is not generic citrus: it is thick-skinned, high in essential oil, bred for terraced cliffs where the Tyrrhenian Sea reflects heat back into the groves. Wild rosemary and maquis herbs grow in the same stone seams. Sea spray leaves a mineral trace on skin at dawn that no studio accord can invent from scratch.",
       },
       {
         type: "paragraph",
-        text: "That is why the raw materials matter as geography, not as fashion. The olfactory map has to match the emotional map. When they align, the memory does not fade into anecdote — it stays dimensional.",
+        text: "Golden hour here is a collision of three temperatures: sun on lemon peel, cool shadow in cypress alleys, and the metallic snap of salt when the wind turns. Scent-Mapping does not quote those notes like a postcard. It traps the tension between them — so that years later, one inhalation restores the hour, not the cliché.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "From itinerary to imprint",
+      },
+      {
+        type: "paragraph",
+        text: "Your questionnaire tells us where you are going and what you want to carry. We read region and season as compositional constraints — which botanicals belong to that shore, which emotional register matches the light you describe. The goal is alignment: an olfactory map that matches the emotional map of the trip.",
+      },
+      {
+        type: "paragraph",
+        text: "When geography and intention align, the memory does not flatten into anecdote. It stays dimensional — the way a place felt when you were inside it, not when you narrate it later. That is the difference between wearing a fragrance you already loved and commissioning one that exists only for this chapter.",
+      },
+      {
+        type: "quote",
+        text: "We do not choose a scent for its immediate appeal. We choose an imprint for its storage capacity.",
+        author: "MADELEINE",
       },
       {
         type: "signature",
-        text: "Scentience — As it felt",
+        text: "MADELEINE — As it felt",
       },
     ],
   },
@@ -167,32 +190,59 @@ const articles = {
     id: "why-smell-is-the-only-sense-that-bypasses-the-brains-filter",
     title: "Why Smell Is the Only Sense That Bypasses the Brain's Filter",
     subtitle: "Every other sense passes through the thalamus. Smell does not.",
-    author: "Scentience Editorial",
+    author: "MADELEINE Editorial",
     date: "April 2026",
     category: "Science",
     heroImage: lemonPerfumeImage,
     excerpt:
-      "Here is what that means for emotional memory — and for why Scentience trusts scent above the feed.",
+      "Here is what that means for emotional memory — and for why MADELEINE trusts scent above the feed.",
     content: [
       {
         type: "paragraph",
-        text: "Every other sense passes through the thalamus — the brain's switchboard — where inputs are gated, prioritized, and framed before they reach the cortex. It is a useful filter for survival: not everything deserves a full emotional broadcast.",
+        text: "Sight, sound, and touch share a gate. Smell does not. That anatomical exception is why MADELEINE trusts scent above the feed — and why a single breath can return you to a room you thought you had lost.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "The thalamic relay — and the exception",
       },
       {
         type: "paragraph",
-        text: 'Olfaction is the exception. Signals from the nose reach the amygdala and hippocampus with a directness that explains the uncanny "I was there" quality of a sudden smell. You do not debate it; your body accepts it.',
+        text: "Most sensory signals pass through the thalamus before reaching conscious awareness. The thalamus prioritises, frames, and filters — a useful survival mechanism. Not every stimulus deserves a full emotional broadcast.",
       },
       {
         type: "paragraph",
-        text: "For Scentience, that architecture is not trivia. It is the reason we anchor honeymoons, anniversaries, and threshold moments in a unique formula worn only for that chapter. The thalamus cannot sand down what never passed through it.",
+        text: "Olfactory input is different. Neurons from the olfactory bulb project directly to the piriform cortex, amygdala, and hippocampus — structures central to emotion and episodic memory. There is no mandatory stop at the switchboard. The signal arrives with an immediacy other senses cannot match.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "What the research shows",
       },
       {
         type: "paragraph",
-        text: "Images curate. Scent, handled with intention, can preserve — not every detail, but the emotional truth of a day. That is the filter we choose to bypass on purpose.",
+        text: 'Peer-reviewed work on odour-evoked autobiographical memory — including studies by Chu and Downes and subsequent meta-analyses — consistently finds that smell-triggered recollections carry stronger emotional charge and sensory vividness than those cued by words or images. Researchers describe this as the formal "Proustian" effect: not nostalgia as story, but re-experiencing as sensation.',
+      },
+      {
+        type: "paragraph",
+        text: "Brain-imaging studies reinforce the mechanism. Odour cues activate the amygdala and hippocampal regions associated with emotional salience and memory encoding — often with less prefrontal mediation than visual cues. You do not debate a sudden smell; your body accepts it.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "Why this matters for a bespoke formula",
+      },
+      {
+        type: "paragraph",
+        text: "For MADELEINE, this architecture is the product brief. We anchor threshold journeys — honeymoons, anniversaries, departures — in a fragrance worn only for that chapter. A dedicated scent creates a clean associative line: this molecule means this moment. The thalamus never gets the chance to sand it down.",
+      },
+      {
+        type: "paragraph",
+        text: "Photography curates the past into composition. Scent, handled with intention, can preserve the emotional truth of a day — not every detail, but the weight of being there. That is the filter we choose to bypass on purpose.",
       },
       {
         type: "signature",
-        text: "Scentience — As it felt",
+        text: "MADELEINE — As it felt",
       },
     ],
   },
@@ -201,7 +251,7 @@ const articles = {
     title: "How to Choose the Perfume for Your Honeymoon",
     subtitle:
       "Not a guide to notes and accords. A guide to encoding the journey.",
-    author: "Scentience Editorial",
+    author: "MADELEINE Editorial",
     date: "April 2026",
     category: "Journal",
     heroImage: lemonPerfumeImage,
@@ -219,11 +269,11 @@ const articles = {
       {
         type: "heading",
         level: 2,
-        text: "The Scentience Philosophy: The Scent as a Vessel",
+        text: "The MADELEINE Philosophy: The Scent as a Vessel",
       },
       {
         type: "paragraph",
-        text: "At Scentience, we practice a radical inversion of luxury perfumery codes: This is the only perfume you buy before you have ever smelled it.",
+        text: "At MADELEINE, we practice a radical inversion of luxury perfumery codes: This is the only perfume you buy before you have ever smelled it.",
       },
       {
         type: "paragraph",
@@ -289,7 +339,7 @@ const articles = {
       },
       {
         type: "signature",
-        text: "Scentience — As it felt",
+        text: "MADELEINE — As it felt",
       },
     ],
   },
@@ -298,7 +348,7 @@ const articles = {
     title: "Why we always wanted to bottle our memories",
     subtitle:
       "I once looked at a photo of a trip I loved and felt absolutely nothing.",
-    author: "Scentience Editorial",
+    author: "MADELEINE Editorial",
     date: "February 12, 2026",
     category: "Editorial",
     heroImage: memoriesImage,
@@ -398,11 +448,11 @@ const articles = {
       },
       {
         type: "paragraph",
-        text: "It is in this space—invisible, silent, profoundly intimate—that Scentience carves its vision: That of dethroning the image in favor of sensation, and finally putting our memories into a bottle.",
+        text: "It is in this space—invisible, silent, profoundly intimate—that MADELEINE carves its vision: That of dethroning the image in favor of sensation, and finally putting our memories into a bottle.",
       },
       {
         type: "signature",
-        text: "Scentience — As it felt",
+        text: "MADELEINE — As it felt",
       },
     ],
   },
@@ -444,25 +494,27 @@ export default function ArticlePage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-paper flex items-center justify-center">
-        <div className="text-mist font-light">Loading...</div>
-      </div>
+      <SiteChrome>
+        <main className="flex min-h-[60vh] items-center justify-center bg-paper pb-24 pt-28">
+          <p className="text-mist font-light">Loading...</p>
+        </main>
+      </SiteChrome>
     );
   }
 
   if (!article) {
     return (
-      <div className="min-h-screen bg-paper flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl typo-title italic mb-4">Article not found</h1>
-          <button
-            onClick={() => navigate("/")}
-            className="text-sm text-mist hover:text-ink underline underline-offset-4"
+      <SiteChrome>
+        <main className="flex min-h-[60vh] flex-col items-center justify-center bg-paper px-4 pb-24 pt-28 text-center">
+          <h1 className="typo-title mb-4 text-2xl font-light">Article not found</h1>
+          <Link
+            to="/journal"
+            className="text-sm text-wine underline underline-offset-4"
           >
-            Return to home
-          </button>
-        </div>
-      </div>
+            Back to the journal
+          </Link>
+        </main>
+      </SiteChrome>
     );
   }
 
@@ -470,14 +522,14 @@ export default function ArticlePage() {
   const canonicalUrl = absoluteUrl(
     seo?.canonicalPath ?? getArticlePath(article.id),
   );
-  const pageTitle = seo?.title ?? `${article.title} | Scentience`;
+  const pageTitle = seo?.title ?? `${article.title} | MADELEINE`;
   const description =
     seo?.description ?? article.excerpt ?? article.subtitle ?? "";
   const keywords = seo?.keywords;
   const ogType = seo?.ogType ?? "article";
 
   return (
-    <div className="min-h-screen bg-paper">
+    <SiteChrome>
       <SyncPageSeo
         title={pageTitle}
         description={description}
@@ -485,11 +537,20 @@ export default function ArticlePage() {
         canonicalUrl={canonicalUrl}
         ogType={ogType}
       />
-      {/* Header */}
-      <Header navigate={navigate} />
+      <article className="bg-paper">
+        <div className="border-b border-ink/10 bg-paper pt-24 sm:pt-28">
+          <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
+            <Link
+              to="/journal"
+              className="text-sm text-wine underline underline-offset-4 transition-opacity hover:opacity-80"
+            >
+              ← The journal
+            </Link>
+          </div>
+        </div>
 
-      {/* Hero Section - Ultra Luxueux */}
-      <section className="relative w-full h-[36vh] min-h-[300px] max-h-[300px] overflow-hidden pt-16">
+      {/* Hero Section */}
+      <section className="relative h-[36vh] min-h-[300px] max-h-[300px] w-full overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={article.heroImage}
@@ -817,7 +878,7 @@ export default function ArticlePage() {
                 to="/"
                 className="cta-parchment inline-flex tracking-wide transition-opacity hover:opacity-90"
               >
-                Explore Scentience
+                Explore MADELEINE
               </Link>
               <Link
                 to="/the-process"
@@ -844,9 +905,7 @@ export default function ArticlePage() {
                 <article
                   key={relatedArticle.id}
                   className="group cursor-pointer"
-                  onClick={() =>
-                    navigate(getArticlePath(relatedArticle.id))
-                  }
+                  onClick={() => navigate(getArticlePath(relatedArticle.id))}
                 >
                   <div className="flex items-start gap-4">
                     {/* Image réduite */}
@@ -876,53 +935,7 @@ export default function ArticlePage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <SiteFooter />
-    </div>
-  );
-}
-
-/* ---------------- Header ---------------- */
-function Header({ navigate }) {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-paper/95 backdrop-blur-md border-b border-ink/10"
-          : "bg-transparent backdrop-blur-md border-b border-ink/10"
-      }`}
-    >
-      <nav
-        className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 ${typewriterFaceClass}`}
-      >
-        <div className="flex items-center justify-between">
-          <button
-            onClick={() => navigate("/")}
-            className="flex items-center gap-2 text-left"
-          >
-            <div className="flex flex-col">
-              <BrandMark className="text-lg">Scentience</BrandMark>
-            </div>
-          </button>
-
-          <button
-            onClick={() => navigate("/journal")}
-            className="text-sm text-mist hover:text-ink transition-colors"
-          >
-            ← Back to journal
-          </button>
-        </div>
-      </nav>
-    </header>
+      </article>
+    </SiteChrome>
   );
 }

@@ -20,9 +20,27 @@ export const BESPOKE_ORDER_STEPS = [
 ];
 
 export const BESPOKE_ORDER_CONFIRMATION = {
-  title: "Almost done",
-  body: "Your email app will open with your order summary. Tap send to confirm your commission.",
+  title: "Redirecting to payment",
+  body: "You will be taken to our secure Stripe checkout to complete your pre-order.",
   closeLabel: "Close",
+};
+
+export const ORDER_CONFIRMATION_COPY = {
+  loadingEyebrow: "Confirming payment",
+  loadingTitle: "One moment…",
+  errorEyebrow: "Order issue",
+  errorTitle: "We could not confirm your order",
+  missingSession: "No payment session was found. Please try again from the product page.",
+  pendingPayment: "Payment is still pending. If you completed checkout, wait a moment and refresh.",
+  loadError: "Something went wrong while loading your confirmation.",
+  successEyebrow: "Pre-order confirmed",
+  successTitle: "Thank you — your commission is underway",
+  successBody:
+    "Payment received. A confirmation email is on its way with your order reference and next steps.",
+  successEmailNote:
+    "Didn't receive it within a few minutes? Check your spam folder or contact Info@madeleine.uk with your reference below.",
+  nextSteps:
+    "Your fragrance is composed to order after we review your brief. Standard delivery is 5–7 business days from dispatch.",
 };
 
 export const BESPOKE_JOURNEY_FIELDS = {
@@ -64,5 +82,5 @@ export const BESPOKE_SCENT_FIELDS = {
   },
 };
 
-export const BESPOKE_ORDER_EMAIL = "Info@scentience.uk";
+export const BESPOKE_ORDER_EMAIL = "Info@madeleine.uk";
 export const BESPOKE_ORDER_SUBJECT = "[Order] Original Bespoke";

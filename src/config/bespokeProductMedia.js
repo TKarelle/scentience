@@ -7,12 +7,12 @@ export const BESPOKE_PRODUCT_MEDIA = [
   {
     type: "image",
     src: bottleImg,
-    alt: "Original Bespoke — 30 ml Scentience bottle",
+    alt: "Original Bespoke — 30 ml MADELEINE bottle",
   },
   {
     type: "image",
     src: bottlePaperImg,
-    alt: "The memory journal ritual — Scentience bottle after the journey",
+    alt: "The memory journal ritual — MADELEINE bottle after the journey",
   },
   {
     type: "image",

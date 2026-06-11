@@ -17,7 +17,7 @@ export default function PhilosophySection() {
         <div className="philosophy-section__image-wrap">
           <img
             src={albumImg}
-            alt="Scentience honeymoon album — bespoke bottle, gold cap, memory journal open on sunlit pages"
+            alt="MADELEINE honeymoon album — bespoke bottle, gold cap, memory journal open on sunlit pages"
             className="philosophy-section__image"
             loading="lazy"
             decoding="async"

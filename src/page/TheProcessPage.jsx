@@ -131,7 +131,7 @@ function TheProcessMain() {
         titleClassName="split-media-heading-lg"
         image={{
           src: bottlePaperImg,
-          alt: "Scentience bottle beside the memory journal after a journey",
+          alt: "MADELEINE bottle beside the memory journal after a journey",
         }}
         overlay={<SectionLogoWatermark variant="paper" />}
         reverse

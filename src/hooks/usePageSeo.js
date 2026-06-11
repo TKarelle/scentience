@@ -43,6 +43,7 @@ export function usePageSeo({
   canonicalUrl,
   ogType = "website",
   ogImage,
+  noindex = false,
 }) {
   useEffect(() => {
     document.title = title;
@@ -50,6 +51,12 @@ export function usePageSeo({
     upsertMetaByName("title", title);
     upsertMetaByName("description", description);
     if (keywords) upsertMetaByName("keywords", keywords);
+    if (noindex) {
+      upsertMetaByName("robots", "noindex, nofollow");
+    } else {
+      const robots = document.querySelector('meta[name="robots"]');
+      if (robots) robots.remove();
+    }
 
     upsertCanonical(canonicalUrl);
 
@@ -61,12 +68,12 @@ export function usePageSeo({
     upsertMetaByProperty("og:title", title);
     upsertMetaByProperty("og:description", description);
     upsertMetaByProperty("og:image", image);
-    upsertMetaByProperty("og:site_name", "Scentience");
+    upsertMetaByProperty("og:site_name", "MADELEINE");
 
     upsertMetaByProperty("twitter:card", "summary_large_image");
     upsertMetaByProperty("twitter:url", canonicalUrl);
     upsertMetaByProperty("twitter:title", title);
     upsertMetaByProperty("twitter:description", description);
     upsertMetaByProperty("twitter:image", image);
-  }, [title, description, keywords, canonicalUrl, ogType, ogImage]);
+  }, [title, description, keywords, canonicalUrl, ogType, ogImage, noindex]);
 }

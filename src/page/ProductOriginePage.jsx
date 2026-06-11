@@ -23,9 +23,9 @@ function buildProductJsonLd(product) {
   return JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Product",
-    name: `Scentience ${product.name}`,
+    name: `MADELEINE ${product.name}`,
     description: product.description,
-    brand: { "@type": "Brand", name: "Scentience" },
+    brand: { "@type": "Brand", name: "MADELEINE" },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: product.socialProof.rating,

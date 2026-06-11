@@ -43,7 +43,7 @@ export default function NotForEveryoneSection() {
       <div className="relative w-full">
         <img
           src={sprayImg}
-          alt="Vaporisation d’un parfum Scentience sur la peau — geste et brume dorée"
+          alt="Vaporisation d’un parfum MADELEINE sur la peau — geste et brume dorée"
           className="max-h-[min(85vh,52rem)] w-full object-cover object-center"
           loading="lazy"
           decoding="async"

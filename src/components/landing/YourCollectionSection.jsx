@@ -30,7 +30,7 @@ export default function YourCollectionSection() {
       overlay={<SectionLogoWatermark variant="paper" />}
       image={{
         src: libraryImg,
-        alt: "Étagère Scentience — flacons gravés de souvenirs, Kyoto, Rome, bougie et carte",
+        alt: "Étagère MADELEINE — flacons gravés de souvenirs, Kyoto, Rome, bougie et carte",
       }}
       title={copy.title}
       titleClassName="split-media-heading-lg"

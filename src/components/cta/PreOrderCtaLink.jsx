@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   PRE_ORDER_CTA_LABEL,
   PRE_ORDER_PATH,
 } from "../../config/preOrderMessaging";
+import { trackEvent } from "../../lib/analytics";
 
 const cx = (...p) => p.filter(Boolean).join(" ");
 
@@ -13,13 +14,24 @@ export default function PreOrderCtaLink({
   fullWidth = false,
   variant = "primary",
   className = "",
+  trackLocation,
+  onClick,
 }) {
+  const location = useLocation();
   const variantClass =
     variant === "parchment" ? "cta-parchment" : "cta-primary";
+
+  function handleClick(e) {
+    trackEvent("cta_pre_order", {
+      location: trackLocation ?? location.pathname,
+    });
+    onClick?.(e);
+  }
 
   return (
     <Link
       to={to}
+      onClick={handleClick}
       className={cx(
         variantClass,
         "max-w-sm rounded-none text-xs uppercase tracking-wide sm:text-sm",

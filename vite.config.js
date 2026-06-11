@@ -25,10 +25,18 @@ function injectStaticSiteOrigin(siteOrigin) {
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   const siteOrigin = (
-    env.VITE_SITE_ORIGIN || "https://scentience.uk"
+    env.VITE_SITE_ORIGIN || "https://madeleine.uk"
   ).replace(/\/$/, "");
 
   return {
     plugins: [react(), injectStaticSiteOrigin(siteOrigin)],
+    server: {
+      proxy: {
+        "/api": {
+          target: "http://localhost:4242",
+          changeOrigin: true,
+        },
+      },
+    },
   };
 });

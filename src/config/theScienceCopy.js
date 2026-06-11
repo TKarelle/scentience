@@ -34,7 +34,7 @@ export const THE_SCIENCE_SCENT_MAPPING = {
   subtitle: "Photography shows the past. Scent-Mapping lets you re-inhabit it.",
   paragraphs: [
     "Modernity delegates memory to the retina. We accumulate pixels, believing volume can arrest time — yet an image freezes a scene and lets its breath evaporate.",
-    "Scentience merges haute parfumerie with neuroscience. At the zenith of your emotion — a honeymoon, an anniversary, a night that refuses to end — we introduce a virgin molecule to seal the experience. One formula. One journey. Never replicated.",
+    "MADELEINE merges haute parfumerie with neuroscience. At the zenith of your emotion — a honeymoon, an anniversary, a night that refuses to end — we introduce a virgin molecule to seal the experience. One formula. One journey. Never replicated.",
   ],
   processCta: { to: "/the-process", label: "See the five steps" },
 };

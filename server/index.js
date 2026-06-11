@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import Stripe from "stripe";
+import { sendContactEmails, sendOrderConfirmationEmails } from "./email.js";
 import { loadOrder, markOrderPaid, saveOrder } from "./store.js";
 
 dotenv.config();
@@ -36,8 +37,9 @@ function buildLineItems({ withJournal, totalGbp }) {
         currency: "gbp",
         unit_amount: Math.round(baseGbp * 100),
         product_data: {
-          name: "Scentience Original Bespoke",
-          description: "30 ml bespoke fragrance composed from your questionnaire",
+          name: "MADELEINE Original Bespoke",
+          description:
+            "30 ml bespoke fragrance composed from your questionnaire",
         },
       },
       quantity: 1,
@@ -48,7 +50,9 @@ function buildLineItems({ withJournal, totalGbp }) {
     items.push({
       price_data: {
         currency: "gbp",
-        unit_amount: Math.round((JOURNAL_ADD_ON_GBP - BUNDLE_DISCOUNT_GBP) * 100),
+        unit_amount: Math.round(
+          (JOURNAL_ADD_ON_GBP - BUNDLE_DISCOUNT_GBP) * 100,
+        ),
         product_data: {
           name: "Memory journal (20 pp.)",
           description: "Bundle add-on for your Original Bespoke order",
@@ -62,7 +66,9 @@ function buildLineItems({ withJournal, totalGbp }) {
 }
 
 function isValidEmail(email) {
-  return typeof email === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+  return (
+    typeof email === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())
+  );
 }
 
 function validateCheckoutBody(body) {
@@ -70,7 +76,11 @@ function validateCheckoutBody(body) {
   if (!answers || typeof answers !== "object") {
     return "Missing questionnaire answers.";
   }
-  if (!answers.labelNames?.trim() || !answers.journey?.trim() || !answers.journeyDate) {
+  if (
+    !answers.labelNames?.trim() ||
+    !answers.journey?.trim() ||
+    !answers.journeyDate
+  ) {
     return "Journey details are incomplete.";
   }
   if (!isValidEmail(answers.email)) {
@@ -99,7 +109,11 @@ app.post(
     let event;
 
     try {
-      event = stripe.webhooks.constructEvent(req.body, signature, webhookSecret);
+      event = stripe.webhooks.constructEvent(
+        req.body,
+        signature,
+        webhookSecret,
+      );
     } catch (err) {
       console.error("Webhook signature verification failed:", err.message);
       return res.status(400).send(`Webhook Error: ${err.message}`);
@@ -110,6 +124,7 @@ app.post(
       const orderId = session.metadata?.orderId;
       if (orderId) {
         markOrderPaid(orderId, session.id);
+        await sendOrderConfirmationEmails(orderId);
       }
     }
 
@@ -126,6 +141,47 @@ app.use(express.json({ limit: "1mb" }));
 
 app.get("/api/health", (_req, res) => {
   res.json({ ok: true });
+});
+
+function isValidContactEmail(email) {
+  return typeof email === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+}
+
+app.post("/api/contact", async (req, res) => {
+  const { name, email, subject, message } = req.body ?? {};
+
+  if (!name?.trim() || name.trim().length < 2) {
+    return res.status(400).json({ error: "Please enter your name." });
+  }
+  if (!isValidContactEmail(email)) {
+    return res.status(400).json({ error: "Please enter a valid email." });
+  }
+  if (!subject?.trim() || subject.trim().length < 3) {
+    return res.status(400).json({ error: "Please enter a subject." });
+  }
+  if (!message?.trim() || message.trim().length < 10) {
+    return res.status(400).json({ error: "Please write a longer message." });
+  }
+
+  try {
+    const result = await sendContactEmails({
+      name: name.trim(),
+      email: email.trim(),
+      subject: subject.trim(),
+      message: message.trim(),
+    });
+
+    if (!result.sent) {
+      return res.status(503).json({
+        error: "Unable to send your message right now. Please try again shortly.",
+      });
+    }
+
+    res.json({ ok: true });
+  } catch (err) {
+    console.error("Contact form error:", err);
+    res.status(500).json({ error: "Something went wrong. Please try again." });
+  }
 });
 
 app.post("/api/checkout", async (req, res) => {
@@ -157,7 +213,9 @@ app.post("/api/checkout", async (req, res) => {
     res.json({ url: session.url, sessionId: session.id, orderId });
   } catch (err) {
     console.error("Checkout session error:", err);
-    res.status(500).json({ error: "Unable to start checkout. Please try again." });
+    res
+      .status(500)
+      .json({ error: "Unable to start checkout. Please try again." });
   }
 });
 
@@ -179,15 +237,24 @@ app.get("/api/checkout/session", async (req, res) => {
       markOrderPaid(order.orderId, session.id);
     }
 
+    const refreshed = loadOrder(order.orderId) ?? order;
+    let emailSent = refreshed.confirmationEmailSent ?? false;
+
+    if (session.payment_status === "paid" && !emailSent) {
+      const result = await sendOrderConfirmationEmails(order.orderId);
+      emailSent = result.sent || result.already;
+    }
+
     res.json({
       paymentStatus: session.payment_status,
-      email: session.customer_details?.email ?? order.answers?.email,
-      totalGbp: order.totalGbp,
-      withJournal: order.withJournal,
-      labelNames: order.answers?.labelNames,
-      journey: order.answers?.journey,
-      journeyDate: order.answers?.journeyDate,
-      orderId: order.orderId,
+      email: session.customer_details?.email ?? refreshed.answers?.email,
+      emailSent,
+      totalGbp: refreshed.totalGbp,
+      withJournal: refreshed.withJournal,
+      labelNames: refreshed.answers?.labelNames,
+      journey: refreshed.answers?.journey,
+      journeyDate: refreshed.answers?.journeyDate,
+      orderId: refreshed.orderId,
     });
   } catch (err) {
     console.error("Session retrieve error:", err);
@@ -196,6 +263,6 @@ app.get("/api/checkout/session", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Scentience API listening on http://localhost:${PORT}`);
+  console.log(`MADELEINE API listening on http://localhost:${PORT}`);
   console.log(`Client URL: ${CLIENT_URL}`);
 });

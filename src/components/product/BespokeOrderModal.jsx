@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useId, useRef, useState } from "react";
-import CloseIcon from "../icons/CloseIcon";
-import { BESPOKE_PRODUCT, formatPrice } from "../../config/bespokeProduct";
+import { BESPOKE_PRODUCT } from "../../config/bespokeProduct";
 import { BESPOKE_ORDER_CONFIRMATION } from "../../config/bespokeOrderForm";
 import {
   BESPOKE_DESTINATION_COUNTRIES,
   BESPOKE_QUESTIONNAIRE_STEPS,
 } from "../../config/bespokeQuestionnaire";
-import { buildBespokeOrderMailto } from "../../lib/buildBespokeOrderMailto";
+import { trackEvent } from "../../lib/analytics";
+import { createCheckoutSession } from "../../lib/createCheckoutSession";
 import { FORM_INPUT_CLASS, FORM_LABEL_CLASS } from "../../lib/formInputClass";
 import {
   createInitialQuestionnaireAnswers,
@@ -32,20 +32,21 @@ export default function BespokeOrderModal({
   const bodyRef = useRef(null);
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState(createInitialQuestionnaireAnswers);
-  const [ordered, setOrdered] = useState(false);
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
+  const [checkoutError, setCheckoutError] = useState("");
   const [attempted, setAttempted] = useState(false);
 
   const resetAll = useCallback(() => {
     setStep(0);
     setAnswers(createInitialQuestionnaireAnswers());
-    setOrdered(false);
+    setCheckoutLoading(false);
+    setCheckoutError("");
     setAttempted(false);
   }, []);
 
   const handleClose = useCallback(() => {
-    if (ordered) resetAll();
     onClose();
-  }, [ordered, onClose, resetAll]);
+  }, [onClose]);
 
   useEffect(() => {
     if (!open) return;
@@ -91,17 +92,26 @@ export default function BespokeOrderModal({
     setAnswers((prev) => ({ ...prev, ...updates }));
   }
 
-  function goNext() {
+  async function goNext() {
     setAttempted(true);
     if (!stepValid) return;
     if (isLast) {
-      const href = buildBespokeOrderMailto({
-        answers,
-        withJournal,
-        totalEur,
-      });
-      window.location.href = href;
-      setOrdered(true);
+      setCheckoutError("");
+      setCheckoutLoading(true);
+      trackEvent("cta_checkout_start", { location: "questionnaire" });
+      try {
+        const { url } = await createCheckoutSession({
+          answers,
+          withJournal,
+          totalGbp: totalEur,
+        });
+        window.location.href = url;
+      } catch (err) {
+        setCheckoutLoading(false);
+        setCheckoutError(
+          err.message || "Checkout could not be started. Please try again.",
+        );
+      }
       return;
     }
     setStep((s) => s + 1);
@@ -269,100 +279,81 @@ export default function BespokeOrderModal({
         aria-labelledby={`${formId}-modal-title`}
         onClick={(e) => e.stopPropagation()}
       >
-        {!ordered && (
-          <QuestionnaireOrderStrip
-            productName={product.name}
-            totalEur={totalEur}
-            withJournal={withJournal}
-            onClose={handleClose}
-          />
-        )}
+        <QuestionnaireOrderStrip
+          productName={product.name}
+          totalEur={totalEur}
+          withJournal={withJournal}
+          onClose={handleClose}
+        />
 
         <div className="shrink-0 border-b border-wine/10 px-6 pb-5 pt-5 sm:px-10 sm:pt-6">
-          {ordered && (
-            <div className="mb-4 flex justify-end">
-              <button
-                type="button"
-                onClick={handleClose}
-                className="p-1 text-ink/60 hover:text-ink"
-                aria-label="Close"
-              >
-                <CloseIcon className="h-5 w-5" />
-              </button>
-            </div>
-          )}
-
-          {!ordered && <QuestionnaireProgress stepIndex={step} />}
+          <QuestionnaireProgress stepIndex={step} />
 
           <h2
             id={`${formId}-modal-title`}
             className="waiting-list-modal-title mt-5"
           >
-            {ordered ? BESPOKE_ORDER_CONFIRMATION.title : current.title}
+            {checkoutLoading ? BESPOKE_ORDER_CONFIRMATION.title : current.title}
           </h2>
-          {!ordered && (
-            <p
-              id={`${formId}-modal-desc`}
-              className="typo-body-lead mt-2 text-sm text-ink/80"
-            >
-              {current.subtitle}
-            </p>
-          )}
+          <p
+            id={`${formId}-modal-desc`}
+            className="typo-body-lead mt-2 text-sm text-ink/80"
+          >
+            {checkoutLoading
+              ? BESPOKE_ORDER_CONFIRMATION.body
+              : current.subtitle}
+          </p>
         </div>
 
-        {ordered ? (
-          <div className="px-6 py-8 text-center sm:px-10">
-            <p className="typo-body-lead text-sm text-ink/88">
-              {BESPOKE_ORDER_CONFIRMATION.body}
-            </p>
-            <button
-              type="button"
-              onClick={handleClose}
-              className="cta-primary mt-8 rounded-none px-10 tracking-wide"
-            >
-              {BESPOKE_ORDER_CONFIRMATION.closeLabel}
-            </button>
-          </div>
-        ) : (
-          <form
-            onSubmit={handleSubmit}
-            className="flex min-h-0 flex-1 flex-col"
-            noValidate
-            aria-describedby={`${formId}-modal-desc`}
+        <form
+          onSubmit={handleSubmit}
+          className="flex min-h-0 flex-1 flex-col"
+          noValidate
+          aria-describedby={`${formId}-modal-desc`}
+        >
+          <div
+            ref={bodyRef}
+            className="questionnaire-modal__body min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 py-5 sm:px-10 sm:py-6"
           >
-            <div
-              ref={bodyRef}
-              className="questionnaire-modal__body min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 py-5 sm:px-10 sm:py-6"
-            >
-              <div key={current.id} className="questionnaire-step-enter">
-                {renderStep()}
-              </div>
+            <div key={current.id} className="questionnaire-step-enter">
+              {renderStep()}
             </div>
-
-            <div className="shrink-0 flex gap-3 border-t border-wine/10 bg-paper px-6 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-10">
-              {step > 0 && (
-                <button
-                  type="button"
-                  onClick={goBack}
-                  className="cta-parchment flex-1 rounded-none tracking-wide"
-                >
-                  Back
-                </button>
-              )}
-              <button
-                type="submit"
-                disabled={!stepValid}
-                className="cta-primary flex-1 rounded-none tracking-[0.14em] disabled:cursor-not-allowed disabled:opacity-45"
+            {checkoutError && (
+              <p
+                className="mt-4 text-sm text-wine"
+                role="alert"
               >
-                {isLast
-                  ? "Place order"
+                {checkoutError}
+              </p>
+            )}
+          </div>
+
+          <div className="shrink-0 flex gap-3 border-t border-wine/10 bg-paper px-6 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-10">
+            {step > 0 && (
+              <button
+                type="button"
+                onClick={goBack}
+                disabled={checkoutLoading}
+                className="cta-parchment flex-1 rounded-none tracking-wide disabled:opacity-45"
+              >
+                Back
+              </button>
+            )}
+            <button
+              type="submit"
+              disabled={!stepValid || checkoutLoading}
+              className="cta-primary flex-1 rounded-none tracking-[0.14em] disabled:cursor-not-allowed disabled:opacity-45"
+            >
+              {checkoutLoading
+                ? "Redirecting…"
+                : isLast
+                  ? "Pay & pre-order"
                   : current.type === "summary"
                     ? "Looks good"
                     : "Continue"}
-              </button>
-            </div>
-          </form>
-        )}
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

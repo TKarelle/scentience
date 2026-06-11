@@ -19,7 +19,7 @@ export default function JourneyWaitSection() {
       <div className="absolute inset-0 z-0">
         <img
           src={danseImg}
-          alt="Couple dansant — atmosphère Scentience"
+          alt="Couple dansant — atmosphère MADELEINE"
           className="h-full w-full object-cover"
           loading="lazy"
           decoding="async"

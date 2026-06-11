@@ -1,9 +1,9 @@
 /** FAQ landing — même schéma que `theProcessFaq` (`answer` ou `answerParagraphs`). */
 
-export const LANDING_PAGE_CANONICAL = "https://scentience.com/";
+export const LANDING_PAGE_CANONICAL = "https://madeleine.uk/";
 
 export const LANDING_FAQ_INTRO =
-  "Quick answers on personalized perfume, scent and memory, safety, and how Scentience fits your milestones.";
+  "Quick answers on personalized perfume, scent and memory, safety, and how MADELEINE fits your milestones.";
 
 export const LANDING_FAQ_ITEMS = [
   {
@@ -16,7 +16,7 @@ export const LANDING_FAQ_ITEMS = [
     id: "forget-perfume-details",
     question: "What if I forget what the perfume was?",
     answer:
-      "All your scent profiles are stored securely in your account. You can access your fragrance information at any time through your multi-sensory diary.",
+      "Your order confirmation email includes your journey details and formula reference. Keep your MADELEINE bottle and optional memory journal together — the label and journal anchor the scent to the moment.",
   },
   {
     id: "guaranteed-to-work",
@@ -34,6 +34,6 @@ export const LANDING_FAQ_ITEMS = [
     id: "gap-year-or-other-moments",
     question: "Could I use this for my gap year?",
     answer:
-      "Absolutely! Scentience is perfect for any significant life moment you want to preserve - whether it's a honeymoon, gap year, anniversary, or any other memorable experience.",
+      "Absolutely! MADELEINE is perfect for any significant life moment you want to preserve - whether it's a honeymoon, gap year, anniversary, or any other memorable experience.",
   },
 ];

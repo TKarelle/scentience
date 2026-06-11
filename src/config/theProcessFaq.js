@@ -1,9 +1,11 @@
+import { SITE_ORIGIN } from "./seoMeta";
+
 /** FAQ page « The process » — contenu visible + données structurées JSON-LD (cohérent avec theProcessCopy). */
 
-export const THE_PROCESS_PAGE_CANONICAL = "https://scentience.com/the-process";
+export const THE_PROCESS_PAGE_CANONICAL = `${SITE_ORIGIN}/the-process`;
 
 export const THE_PROCESS_FAQ_INTRO =
-  "Clear answers about how Scentience turns your journey into a one-of-a-kind fragrance — for search, readers, and assistants.";
+  "Clear answers about how MADELEINE turns your journey into a one-of-a-kind fragrance — for search, readers, and assistants.";
 
 /**
  * @typedef {{ id: string, question: string, answerParagraphs: string[] }} ProcessFaqItem
@@ -35,7 +37,7 @@ export const THE_PROCESS_FAQ_ITEMS = [
   },
   {
     id: "consultation",
-    question: "What happens during the Scentience consultation?",
+    question: "What happens during the MADELEINE consultation?",
     answerParagraphs: [
       "You complete your brief on the website: destination, emotions, note preferences, and the raw materials of the place. We read every answer and shape your unique formula around the trip — not a catalogue.",
     ],
@@ -53,7 +55,7 @@ export const THE_PROCESS_FAQ_ITEMS = [
     question: "How does smell connect to memory and emotion?",
     answerParagraphs: [
       "Smell is routed differently from other senses: it links straight to the amygdala, central to emotional memory, without the same cognitive filtering as vision or language.",
-      "That is why a single note can feel like teleportation — the feeling returns whole. Scentience uses that biology intentionally as part of Project Proust.",
+      "That is why a single note can feel like teleportation — the feeling returns whole. MADELEINE uses that biology intentionally as part of Project Proust.",
     ],
   },
   {

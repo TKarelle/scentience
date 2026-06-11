@@ -10,7 +10,7 @@ export const PROUST_MADELEINE_PAGE_COPY = {
     titleLine1: "HAS A SCENT EVER BROUGT BACK A MEMORY ?",
     titleLine2: "",
     tagline:
-      "At Scentience our purpose is to contribute to the rich literature on the Proust Phenomenon, know as involuntary autobiographical memory. We intend to gather survey data about people’s smell memories to better understand how episodic memory is encoded ",
+      "At MADELEINE our purpose is to contribute to the rich literature on the Proust Phenomenon, know as involuntary autobiographical memory. We intend to gather survey data about people’s smell memories to better understand how episodic memory is encoded ",
     ctaLabel: "SHARE MY STORY",
     ctaHref: "#proust-contribute",
   },
@@ -37,11 +37,11 @@ export const PROUST_MADELEINE_PAGE_COPY = {
           "Where were you? What returned — a room, a face, a whole journey?",
       },
       consent:
-        "I agree Scentience may contact me about research use. I have read the",
+        "I agree MADELEINE may contact me about research use. I have read the",
     },
     excerptMinChars: 20,
     submitLabel: "Send via email",
-    emailTo: "Info@scentience.uk",
+    emailTo: "Info@madeleine.uk",
     emailSubject: "[Project Proust] Story",
   },
 

@@ -51,7 +51,7 @@ function LandingMain() {
   );
 }
 
-export default function ScentienceLanding() {
+export default function MADELEINELanding() {
   return (
     <SiteChrome>
       <SyncPageSeo

@@ -10,7 +10,7 @@ export const THE_PROCESS_STEPS = [
     n: 1,
     title: "The trip is getting ready",
     body:
-      "The destination is chosen. Order your Scentience bottle before you leave — the formula begins with the journey ahead.",
+      "The destination is chosen. Order your MADELEINE bottle before you leave — the formula begins with the journey ahead.",
   },
   {
     n: 2,

@@ -16,7 +16,7 @@ export default function CraftPitchSection() {
       overlay={<SectionLogoWatermark variant="paper" />}
       image={{
         src: bottleImg,
-        alt: "Origine — parfum Scentience sur socle minéral",
+        alt: "Origine — parfum MADELEINE sur socle minéral",
       }}
       title={copy.title}
       titleClassName="split-media-heading-lg"

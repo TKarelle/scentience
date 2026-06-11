@@ -1,6 +1,6 @@
 /** Section « craft » — image + texte (SplitMediaSection). */
 export const CRAFT_PITCH_COPY = {
-  title: "SCENTIENCE — BESPOKE PERFUME FOR YOUR NEXT JOURNEY.",
+  title: "MADELEINE — BESPOKE PERFUME FOR YOUR NEXT JOURNEY.",
   subtitle:
     "Designed for your weddings, your honeymoons, your holidays, your milestones.",
   description:

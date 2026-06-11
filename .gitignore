@@ -12,6 +12,8 @@ node_modules 2
 dist
 dist-ssr
 *.local
+.env
+server/data/
 package-lock 2.json
 
 # Editor directories and files

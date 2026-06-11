@@ -13,16 +13,10 @@ function NavLinks({ className, linkClassName, onNavigate }) {
   return (
     <ul className={className}>
       {LANDING_PRIMARY_NAV.map((item) => {
-        const to = item.hash
-          ? { pathname: item.to, hash: item.hash }
-          : item.to;
+        const to = item.hash ? { pathname: item.to, hash: item.hash } : item.to;
         return (
           <li key={navItemKey(item)}>
-            <Link
-              to={to}
-              className={linkClassName}
-              onClick={onNavigate}
-            >
+            <Link to={to} className={linkClassName} onClick={onNavigate}>
               {item.label}
             </Link>
           </li>
@@ -52,7 +46,7 @@ export default function SiteHeader() {
       >
         <Link
           to="/"
-          aria-label="Scentience — Home"
+          aria-label="MADELEINE — Home"
           className="relative inline-flex shrink-0 items-center rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-wine/35 focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
           onClick={closeMobile}
         >
@@ -72,7 +66,7 @@ export default function SiteHeader() {
               as="span"
               className="relative z-10 block text-lg tracking-[0.14em] sm:text-xl sm:tracking-[0.16em]"
             >
-              Scentience
+              MADELEINE
             </BrandMark>
           </span>
         </Link>

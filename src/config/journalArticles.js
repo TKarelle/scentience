@@ -39,7 +39,7 @@ export const JOURNAL_ENTRIES_ALL = [
     slug: "why-smell-is-the-only-sense-that-bypasses-the-brains-filter",
     title: "Why Smell Is the Only Sense That Bypasses the Brain's Filter",
     excerpt:
-      "Every other sense passes through the thalamus. Smell does not. Here is what that means for memory — and for Scentience.",
+      "Every other sense passes through the thalamus. Smell does not. Here is what that means for memory — and for MADELEINE.",
     date: "April 2026",
     category: "Science",
     image: lemonPerfumeImage,

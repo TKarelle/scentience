@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { INSTAGRAM_URL } from "../../config/siteSocial";
 import { BrandMark } from "../typography";
 import SectionLogoWatermark from "./SectionLogoWatermark";
 
@@ -16,12 +17,20 @@ export default function SiteFooter() {
           <div className="flex-shrink-0">
             <div className="flex flex-col mb-2">
               <BrandMark className="text-xl sm:text-2xl text-paper">
-                Scentience
+                MADELEINE
               </BrandMark>
             </div>
             <p className="text-xs text-paper/60 font-light tracking-wide">
               Scent. Event. Memory.
             </p>
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-block text-xs text-paper/60 underline underline-offset-4 transition-colors hover:text-paper"
+            >
+              Instagram
+            </a>
           </div>
 
           <div className="grid grid-cols-3 gap-8 md:gap-12 flex-1">
@@ -78,17 +87,17 @@ export default function SiteFooter() {
                   </Link>
                 </li>
                 <li>
-                  <a
-                    href="mailto:Info@scentience.uk"
-                    className="hover:text-paper transition-colors"
-                  >
+                  <Link to="/contact" className="hover:text-paper transition-colors">
                     Contact
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-paper transition-colors">
+                  <Link
+                    to="/terms#shipping"
+                    className="hover:text-paper transition-colors"
+                  >
                     Shipping
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -112,7 +121,7 @@ export default function SiteFooter() {
 
         <div className=" pt-6">
           <p className="text-xs text-paper font-light">
-            © {new Date().getFullYear()} Scentience . All rights reserved.
+            © {new Date().getFullYear()} MADELEINE . All rights reserved.
           </p>
         </div>
       </div>
