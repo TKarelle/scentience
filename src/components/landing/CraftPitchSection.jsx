@@ -1,5 +1,6 @@
 import { CRAFT_PITCH_COPY } from "../../config/landingCraftPitch";
 import bottleImg from "../../image/bottle.png";
+import bottleHoverImg from "../../image/bottle2.png";
 import SectionLogoWatermark from "../layout/SectionLogoWatermark";
 import SplitMediaSection from "./SplitMediaSection";
 
@@ -16,6 +17,7 @@ export default function CraftPitchSection() {
       overlay={<SectionLogoWatermark variant="paper" />}
       image={{
         src: bottleImg,
+        hoverSrc: bottleHoverImg,
         alt: "Origine — parfum MADELEINE sur socle minéral",
       }}
       title={copy.title}

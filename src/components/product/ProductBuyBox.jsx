@@ -82,7 +82,7 @@ export function ProductBuyCheckout({ className = "" }) {
           trackEvent("cta_personalise_open", { location: "/product/original-bespoke" });
           onPersonalise();
         }}
-        className="cta-primary mt-6 w-full rounded-none tracking-[0.14em]"
+        className="cta-pill mt-6 w-full"
       >
         {product.purchaseCta}
       </button>

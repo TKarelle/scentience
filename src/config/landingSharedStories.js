@@ -5,10 +5,7 @@
  * consomment le même tableau via `SHARED_STORIES_COPY.stories`.
  */
 export const SHARED_STORIES_COPY = {
-  eyebrow: "In their own words",
   title: "What scent brings you back?",
-  subtitle:
-    "Just the smell that pulled someone back into a room they thought they'd lost.",
   stories: [
     {
       id: "nan",
@@ -32,6 +29,5 @@ export const SHARED_STORIES_COPY = {
         "I met my wife at a crowded birthday twenty years ago—rain outside, wet coats everywhere. I'd forgotten what she was wearing until I smelled it again. My chest went tight like it was the first hello.",
     },
   ],
-  storyTag: "Client story",
   ctaLabel: "WHAT'S YOUR MADELEINE?",
 };

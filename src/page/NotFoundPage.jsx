@@ -26,7 +26,7 @@ export default function NotFoundPage() {
           Original Bespoke.
         </p>
         <div className="mt-10 flex w-full max-w-xs flex-col gap-4">
-          <PreOrderCtaLink fullWidth className="rounded-none tracking-wide" />
+          <PreOrderCtaLink fullWidth />
           <Link
             to="/"
             className="text-sm text-wine underline underline-offset-4"

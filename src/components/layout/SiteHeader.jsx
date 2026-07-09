@@ -47,7 +47,7 @@ export default function SiteHeader() {
         <Link
           to="/"
           aria-label="MADELEINE — Home"
-          className="relative inline-flex shrink-0 items-center rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-wine/35 focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
+          className="relative inline-flex shrink-0 items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-wine/35 focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
           onClick={closeMobile}
         >
           <span className="relative inline-block">

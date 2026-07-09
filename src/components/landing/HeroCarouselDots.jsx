@@ -26,7 +26,7 @@ export default function HeroCarouselDots({
           aria-selected={i === activeIndex}
           tabIndex={i === activeIndex ? 0 : -1}
           className={cx(
-            "flex min-h-11 min-w-11 items-center justify-center rounded-sm transition-opacity duration-300",
+            "flex min-h-11 min-w-11 items-center justify-center transition-opacity duration-300",
             i === activeIndex
               ? "opacity-100"
               : "opacity-45 hover:opacity-80",

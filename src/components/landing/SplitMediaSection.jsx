@@ -29,7 +29,30 @@ export default function SplitMediaSection({
   /** Ancrage (ex. `collection` pour la nav). */
   id,
 }) {
-  const figure = (
+  const figure = image.hoverSrc ? (
+    <figure
+      className={cx(
+        "split-media-figure split-media-figure--hover-swap",
+        figureClassName,
+      )}
+    >
+      <img
+        src={image.src}
+        alt={image.alt}
+        className="split-media-figure__default h-full w-full object-cover"
+        loading="lazy"
+        decoding="async"
+      />
+      <img
+        src={image.hoverSrc}
+        alt=""
+        aria-hidden
+        className="split-media-figure__hover h-full w-full object-cover"
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+  ) : (
     <figure className={cx("split-media-figure", figureClassName)}>
       <img
         src={image.src}
@@ -49,7 +72,7 @@ export default function SplitMediaSection({
     );
 
   const ctaClasses = cx(
-    "cta-primary inline-flex max-w-sm justify-center rounded-none text-xs uppercase tracking-wide sm:text-sm",
+    "cta-pill max-w-sm",
     headingCentered ? "mx-auto sm:self-center" : "sm:self-start",
   );
 

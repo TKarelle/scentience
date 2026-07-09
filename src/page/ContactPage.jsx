@@ -145,7 +145,7 @@ export default function ContactPage() {
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="cta-primary contact-page__submit w-full rounded-none tracking-[0.14em] disabled:opacity-50"
+                className="cta-pill contact-page__submit w-full disabled:opacity-50"
               >
                 {status === "sending"
                   ? copy.form.sendingLabel

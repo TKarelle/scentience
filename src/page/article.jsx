@@ -876,7 +876,7 @@ export default function ArticlePage() {
             <div className="mt-10 flex flex-col items-center gap-6 sm:flex-row sm:justify-center sm:gap-10">
               <Link
                 to="/"
-                className="cta-parchment inline-flex tracking-wide transition-opacity hover:opacity-90"
+                className="cta-pill cta-pill--on-wine"
               >
                 Explore MADELEINE
               </Link>

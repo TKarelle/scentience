@@ -134,7 +134,7 @@ export default function ProustMadeleineResearchPage() {
             <div className="flex flex-1 flex-col items-center justify-center py-14 sm:py-16 lg:py-20">
               <a
                 href={hero.ctaHref}
-                className="cta-parchment rounded-none px-12 py-4 text-xs uppercase tracking-[0.18em] sm:px-14 sm:text-sm sm:tracking-[0.2em]"
+                className="cta-pill cta-pill--on-wine"
               >
                 {hero.ctaLabel}
               </a>
@@ -289,7 +289,7 @@ export default function ProustMadeleineResearchPage() {
                   <button
                     type="submit"
                     disabled={!canSubmit}
-                    className="cta-primary w-full rounded-none py-3 text-xs uppercase tracking-[0.14em] disabled:cursor-not-allowed disabled:opacity-45 sm:w-auto sm:px-10"
+                    className="cta-pill w-full disabled:cursor-not-allowed disabled:opacity-45 sm:w-auto"
                   >
                     {form.submitLabel}
                   </button>
@@ -298,7 +298,7 @@ export default function ProustMadeleineResearchPage() {
             </div>
 
             <div className="flex flex-col justify-between gap-8 lg:col-span-7">
-              <div className="overflow-hidden rounded-sm border border-wine/12">
+              <div className="overflow-hidden border border-wine/12">
                 <img
                   src={bottleImg}
                   alt=""

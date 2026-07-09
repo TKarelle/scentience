@@ -65,10 +65,7 @@ function TheScienceMain() {
             {hero.subtitle}
           </p>
           <div className="mt-10">
-            <PreOrderCtaLink
-              variant="parchment"
-              className="rounded-none px-10 tracking-[0.16em] sm:px-12"
-            />
+            <PreOrderCtaLink className="w-full max-w-xs sm:w-auto" />
           </div>
         </div>
       </header>
@@ -146,12 +143,12 @@ function TheScienceMain() {
           <p className="science-closing__subtitle">{closing.subtitle}</p>
           <div className="science-closing__actions">
             <PreOrderCtaLink
-              variant="parchment"
-              className="w-full max-w-xs rounded-none tracking-wide sm:w-auto"
+              variant="on-wine"
+              className="w-full max-w-xs sm:w-auto"
             />
             <Link
               to="/the-process"
-              className="science-closing__secondary w-full max-w-xs sm:w-auto"
+              className="cta-pill cta-pill--on-wine w-full max-w-xs sm:w-auto"
             >
               The process
             </Link>

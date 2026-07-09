@@ -134,76 +134,166 @@ html {
     color: color-mix(in srgb, var(--color-ink) 65%, transparent);
   }
 
-  /** Shared stories — bandeau témoignages (fond distinct du reste de la page). */
+  /** Shared stories — fond wine, cartes blanches. */
   .shared-stories-section {
-    border-top: 1px solid color-mix(in srgb, var(--color-wine) 14%, transparent);
-    background-color: color-mix(in srgb, var(--color-wine) 5%, var(--color-paper));
-    padding-block: 5rem;
+    background-color: var(--color-wine);
+    padding-block: 3.5rem;
   }
 
   @media (min-width: 640px) {
     .shared-stories-section {
-      padding-block: 6rem;
+      padding-block: 4rem;
     }
   }
 
   @media (min-width: 1024px) {
     .shared-stories-section {
-      padding-block: 7rem;
+      padding-block: 4.5rem;
     }
   }
 
-  .shared-stories-section__eyebrow {
-    @apply font-subtitle text-[10px] uppercase tracking-[0.22em] text-wine sm:text-xs;
+  .shared-stories-section__title {
+    @apply typo-title-on-wine text-xl font-light sm:text-2xl lg:text-3xl;
   }
 
   .shared-stories-section__grid {
-    @apply grid gap-6 md:grid-cols-3 md:gap-5 lg:gap-8;
+    @apply grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6;
   }
 
   .story-card {
-    @apply relative flex flex-col p-6 sm:p-7;
-    border: 1px solid color-mix(in srgb, var(--color-wine) 14%, transparent);
-    background-color: var(--color-paper);
-    box-shadow: 0 10px 28px color-mix(in srgb, var(--color-ink) 7%, transparent);
+    @apply flex flex-col p-5 sm:p-6;
+    border: none;
+    background-color: #fff;
+    box-shadow: 0 10px 36px color-mix(in srgb, var(--color-ink) 18%, transparent);
+    transition:
+      transform 220ms ease,
+      box-shadow 220ms ease;
   }
 
-  .story-card__quote-mark {
-    @apply typo-title pointer-events-none absolute right-5 top-3 text-5xl font-light leading-none sm:right-6 sm:top-4 sm:text-6xl;
-    color: color-mix(in srgb, var(--color-wine) 14%, transparent);
-  }
-
-  .story-card__tag {
-    @apply font-subtitle text-[10px] uppercase tracking-[0.18em] text-mist;
+  .story-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 44px color-mix(in srgb, var(--color-ink) 22%, transparent);
   }
 
   .story-card__excerpt {
-    @apply typo-body-lead mt-4 flex-1 text-sm leading-relaxed sm:text-base;
-    color: color-mix(in srgb, var(--color-ink) 88%, transparent);
+    @apply typo-body-lead flex-1 text-sm leading-[1.62] sm:text-[0.95rem];
+    color: color-mix(in srgb, var(--color-ink) 86%, transparent);
   }
 
   .story-card__excerpt p {
-    font-style: italic;
+    font-style: normal;
   }
 
   .story-card__footer {
-    @apply mt-6 flex items-center gap-3 border-t pt-5;
-    border-color: color-mix(in srgb, var(--color-wine) 12%, transparent);
+    @apply mt-4 pt-0;
   }
 
-  .story-card__avatar {
-    @apply font-subtitle flex h-10 w-10 shrink-0 items-center justify-center text-sm uppercase tracking-wide;
-    background-color: color-mix(in srgb, var(--color-wine) 10%, var(--color-paper));
+  .story-card__attribution {
+    @apply font-subtitle block text-[11px] uppercase tracking-[0.14em] text-wine sm:text-xs;
+  }
+
+  /** Discover tabs — Philosophie · Collection · How it Works. */
+  .discover-tabs-section {
+    background-color: var(--color-paper);
+  }
+
+  .discover-tabs-section__quote {
+    @apply mx-auto max-w-4xl text-center;
+  }
+
+  .discover-tabs-section__layout {
+    @apply grid gap-6 lg:grid-cols-2 lg:gap-8;
+  }
+
+  .discover-tabs-section__panel {
+    @apply flex h-[30rem] flex-col p-6 sm:h-[32rem] sm:p-8 lg:h-[34rem] lg:p-9;
+    background-color: color-mix(in srgb, var(--color-mist) 38%, var(--color-paper));
+  }
+
+  .discover-tabs-section__tabs {
+    @apply mb-6 shrink-0 flex flex-wrap gap-x-5 gap-y-2 sm:gap-x-7;
+  }
+
+  .discover-tabs-section__tab {
+    @apply font-subtitle text-[10px] uppercase tracking-[0.16em] transition-colors sm:text-[11px];
+    color: color-mix(in srgb, var(--color-ink) 48%, transparent);
+  }
+
+  .discover-tabs-section__tab:hover {
+    color: color-mix(in srgb, var(--color-ink) 72%, transparent);
+  }
+
+  .discover-tabs-section__tab--active {
     color: var(--color-wine);
-    border: 1px solid color-mix(in srgb, var(--color-wine) 18%, transparent);
   }
 
-  .story-card__name {
-    @apply font-subtitle block text-xs uppercase tracking-wide text-wine;
+  .discover-tabs-section__content {
+    @apply flex flex-1 flex-col;
   }
 
-  .story-card__place {
-    @apply landing-meta-caption mt-0.5;
+  .discover-tabs-section__panels {
+    @apply relative min-h-0 flex-1;
+  }
+
+  .discover-tabs-section__panel-view {
+    @apply absolute inset-0 flex flex-col;
+  }
+
+  .discover-tabs-section__panel-view[hidden] {
+    display: none;
+  }
+
+  .discover-tabs-section__panel-body {
+    @apply min-h-0 flex-1 overflow-y-auto pr-1;
+  }
+
+  .discover-tabs-section__title {
+    @apply split-media-heading-lg;
+  }
+
+  .discover-tabs-section__body {
+    @apply mt-5 space-y-4;
+  }
+
+  .discover-tabs-section__steps {
+    @apply mt-5 list-none space-y-5 sm:mt-6 sm:space-y-6;
+  }
+
+  .discover-tabs-section__step-title {
+    @apply typo-title mb-2 flex flex-wrap items-baseline gap-x-2.5 text-sm leading-snug sm:text-base;
+  }
+
+  .discover-tabs-section__step-num {
+    @apply font-body text-2xl font-light tabular-nums leading-none text-wine sm:text-3xl;
+    text-transform: none;
+  }
+
+  .discover-tabs-section__actions {
+    @apply shrink-0 pt-6;
+  }
+
+  .discover-tabs-section__media {
+    @apply relative h-[18rem] overflow-hidden sm:h-[22rem] lg:h-[34rem];
+  }
+
+  .discover-tabs-section__image {
+    @apply h-full w-full object-cover;
+    animation: discover-tab-image-in 360ms ease;
+  }
+
+  @keyframes discover-tab-image-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .discover-tabs-section__image {
+      animation: none;
+    }
   }
 
   .hero-card-title {
@@ -211,7 +301,16 @@ html {
   }
 
   .hero-carousel-headline {
-    @apply typewriter-face grid max-w-xl place-items-center text-3xl font-normal normal-case leading-tight text-paper drop-shadow-[0_1px_3px_rgba(0,0,0,0.65)] sm:text-4xl [&>*]:col-start-1 [&>*]:row-start-1;
+    @apply flex max-w-[23rem] flex-col items-start gap-4 text-left sm:max-w-[27rem] lg:max-w-[31rem];
+  }
+
+  .hero-carousel-headline__main {
+    @apply typewriter-face text-[1.95rem] font-normal normal-case leading-[1.22] tracking-[0.08em] text-wine sm:text-[2.35rem] lg:text-[2.7rem];
+    text-shadow: 0 1px 0 rgba(244, 239, 228, 0.25);
+  }
+
+  .hero-carousel-headline__sub {
+    @apply typo-subtitle text-sm text-mist sm:text-base lg:text-lg;
   }
 
   /** Hero landing — carrousel + carte pre-order. */
@@ -236,7 +335,7 @@ html {
   }
 
   .hero-section__scrim {
-    @apply absolute inset-0 z-[2] bg-black/35 sm:bg-black/30;
+    @apply absolute inset-0 z-[2] bg-transparent;
   }
 
   .hero-section__dots {
@@ -248,7 +347,7 @@ html {
   }
 
   .hero-section__headline-wrap {
-    @apply flex flex-1 flex-col items-center justify-center px-4 pb-16 pt-28 text-center md:pb-20 md:pt-32 lg:absolute lg:inset-0 lg:flex lg:pb-12 lg:pt-28;
+    @apply flex flex-1 flex-col items-start justify-center px-6 pb-16 pt-28 text-left md:px-10 md:pb-20 md:pt-32 lg:absolute lg:inset-0 lg:flex lg:px-14 lg:pb-12 lg:pt-28 xl:px-20;
   }
 
   .hero-section__card {
@@ -421,17 +520,6 @@ html {
     @apply mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row;
   }
 
-  .science-closing__secondary {
-    @apply cta-parchment inline-flex justify-center rounded-none px-10 text-center text-xs uppercase tracking-[0.16em] sm:px-12 sm:text-sm;
-    background-color: transparent;
-    border: 1px solid color-mix(in srgb, var(--color-paper) 45%, transparent);
-    color: var(--color-paper);
-  }
-
-  .science-closing__secondary:hover {
-    background-color: color-mix(in srgb, var(--color-paper) 10%, transparent);
-  }
-
   /**
    * Our Philosophy — album pleine largeur, hauteur auto (cadrage dans l’asset).
    */
@@ -441,45 +529,67 @@ html {
     background-color: var(--color-paper);
   }
 
+  .philosophy-section__quote-bar {
+    @apply absolute inset-x-0 top-5 z-20 px-4 text-center sm:top-8 sm:px-6;
+    pointer-events: none;
+  }
+
+  .philosophy-section__quote-bar > * {
+    pointer-events: auto;
+  }
+
+  @media (min-width: 1280px) {
+    .philosophy-section__quote-bar {
+      top: 3rem;
+    }
+  }
+
   .philosophy-section__stage {
     position: relative;
     width: 100%;
+    height: 100vh;
+    height: 100svh;
+    max-height: 100vh;
+    max-height: 100svh;
+    overflow: hidden;
   }
 
   .philosophy-section__image-wrap {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
     line-height: 0;
   }
 
   .philosophy-section__image {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: 62% center;
   }
 
-  /** Mobile — rogne le fondu blanc gauche, texte sous l’image. */
+  /** Mobile — texte en bas de l’image, dans le viewport. */
   @media (max-width: 1023px) {
-    .philosophy-section__stage {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .philosophy-section__image-wrap {
-      overflow: hidden;
-      width: 100%;
-    }
-
     .philosophy-section__image {
-      width: 172%;
-      max-width: none;
-      margin-left: -38%;
+      object-position: 68% 42%;
     }
 
     .philosophy-section__pin {
-      position: static;
-      z-index: 1;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 10;
       display: block;
       width: 100%;
-      padding: 2.5rem 1.25rem 3rem;
+      padding: 2rem 1.25rem 2.25rem;
+      background: linear-gradient(
+        to top,
+        var(--color-paper) 0%,
+        color-mix(in srgb, var(--color-paper) 92%, transparent) 38%,
+        transparent 100%
+      );
     }
 
     .philosophy-section__sheet {
@@ -489,11 +599,15 @@ html {
 
   @media (min-width: 640px) and (max-width: 1023px) {
     .philosophy-section__pin {
-      padding: 3rem 2rem 3.5rem;
+      padding: 2.5rem 2rem 2.75rem;
     }
   }
 
   @media (min-width: 1024px) {
+    .philosophy-section__image {
+      object-position: 58% center;
+    }
+
     .philosophy-section__pin {
       position: absolute;
       inset: 0;
@@ -504,6 +618,7 @@ html {
       max-width: 32rem;
       padding: 3.5rem 2.5rem;
       pointer-events: none;
+      background: none;
     }
 
     .philosophy-section__pin > * {
@@ -531,39 +646,69 @@ html {
 
   @media (min-width: 1024px) {
     .philosophy-section__sheet {
-      max-width: 22rem;
+      max-width: 26rem;
     }
   }
 
   @media (min-width: 1280px) {
     .philosophy-section__sheet {
-      max-width: 24rem;
+      max-width: 28rem;
     }
   }
 
-  .philosophy-card-title {
-    @apply typo-subtitle text-sm leading-snug sm:text-base;
+  .philosophy-section__body {
+    @apply mt-6 space-y-4;
   }
 
-  .philosophy-quote {
-    @apply typewriter-face mx-auto mt-12 max-w-xl px-2 text-center text-base font-normal normal-case leading-snug text-paper drop-shadow-[0_2px_8px_rgba(0,0,0,0.75)] sm:mt-16 sm:text-lg;
-  }
-
-  .philosophy-quote p {
-    color: var(--color-paper);
-    font-family: inherit;
-    letter-spacing: inherit;
-  }
-
-  /** Citation sur fondu blanc (album) — même face, lisibilité ink. */
-  .philosophy-quote--on-paper {
-    @apply mx-0 mt-10 max-w-sm px-0 text-left text-sm sm:mt-12 sm:text-base;
-    color: color-mix(in srgb, var(--color-ink) 88%, transparent);
+  /** Citation philosophie — en tête de section, centrée, une ligne. */
+  .philosophy-quote--featured {
+    @apply mx-auto max-w-4xl text-center;
     filter: none;
   }
 
-  .philosophy-quote--on-paper p {
-    color: inherit;
+  .philosophy-quote--featured p {
+    color: var(--color-ink);
+  }
+
+  .philosophy-quote__line {
+    @apply typewriter-face m-0 min-h-[1.15em] text-center text-[1.35rem] font-normal normal-case leading-[1.25] tracking-[0.035em] sm:text-[1.65rem] lg:text-[1.85rem];
+    color: var(--color-ink);
+  }
+
+  .philosophy-quote__keyword {
+    color: var(--color-wine);
+    font-size: 1.08em;
+  }
+
+  .philosophy-quote__cursor {
+    display: inline-block;
+    width: 2px;
+    height: 0.84em;
+    margin-left: 4px;
+    background-color: var(--color-wine);
+    vertical-align: baseline;
+    transform: translateY(0.08em);
+    animation: philosophy-cursor-blink 0.95s step-end infinite;
+  }
+
+  .philosophy-quote__cursor--hold {
+    animation: philosophy-cursor-blink 1.15s step-end infinite;
+  }
+
+  @keyframes philosophy-cursor-blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .philosophy-quote__cursor {
+      display: none;
+    }
   }
 
   /** Bandeau 95 % — tout le texte en paper sur wine (jamais ink). */
@@ -739,77 +884,58 @@ html {
   }
 
   /**
-   * CTA plein : fond wine, texte paper (couleurs tokens).
+   * CTA pill — seul élément arrondi du design system (option A éditoriale).
    */
-  .cta-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--color-wine);
-    background-color: var(--color-wine);
+  .cta-pill {
+    @apply font-subtitle inline-flex items-center justify-center rounded-full border px-8 py-3 text-[11px] uppercase tracking-[0.16em] transition-colors sm:px-10 sm:text-xs;
+    border-color: var(--color-wine);
     color: var(--color-on-wine);
-    padding: 0.875rem 2.5rem;
-    font-size: 0.75rem;
-    line-height: 1.25rem;
-    font-weight: 300;
-    transition-property: opacity, border-color, background-color, color;
-    transition-duration: 300ms;
+    background-color: var(--color-wine);
   }
 
-  @media (min-width: 640px) {
-    .cta-primary {
-      font-size: 0.875rem;
-      line-height: 1.25rem;
-    }
+  .cta-pill:hover:not(:disabled) {
+    background-color: color-mix(in srgb, var(--color-wine) 88%, var(--color-ink));
+    border-color: color-mix(in srgb, var(--color-wine) 88%, var(--color-ink));
   }
 
-  .cta-primary:hover:not(:disabled) {
-    opacity: 0.92;
-  }
-
-  .cta-primary:disabled {
+  .cta-pill:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }
 
-  .cta-primary.w-full {
+  .cta-pill.w-full {
     width: 100%;
   }
 
-  /**
-   * CTA fond parchemin (texte foncé, TLWG caps) — ex. REGISTER YOUR JOURNEY.
-   */
+  /** CTA pill sur panneau bleu (fond blanc). */
+  .cta-pill--on-mist {
+    border-color: color-mix(in srgb, var(--color-wine) 28%, transparent);
+    color: var(--color-wine);
+    background-color: #fff;
+  }
+
+  .cta-pill--on-mist:hover:not(:disabled) {
+    background-color: color-mix(in srgb, var(--color-paper) 88%, #fff);
+  }
+
+  /** CTA pill sur fond wine ou image sombre. */
+  .cta-pill--on-wine {
+    border-color: color-mix(in srgb, var(--color-paper) 55%, transparent);
+    color: var(--color-wine);
+    background-color: #fff;
+  }
+
+  .cta-pill--on-wine:hover:not(:disabled) {
+    background-color: color-mix(in srgb, var(--color-paper) 90%, #fff);
+  }
+
+  /** Alias rétrocompat — même rendu que cta-pill. */
+  .cta-primary {
+    @apply cta-pill;
+  }
+
   .cta-parchment {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--color-ink);
-    background-color: var(--color-paper);
-    color: var(--color-ink);
-    padding: 0.875rem 1.5rem;
-    font-family: var(--font-subtitle);
-    letter-spacing: var(--tracking-subtitle);
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    line-height: 1.25rem;
-    font-weight: 400;
-    transition-property: opacity, border-color, background-color;
-    transition-duration: 300ms;
-  }
-
-  @media (min-width: 640px) {
-    .cta-parchment {
-      font-size: 0.8125rem;
-    }
-  }
-
-  .cta-parchment:hover:not(:disabled) {
-    opacity: 0.92;
-  }
-
-  .cta-parchment:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+    @apply cta-pill;
   }
 
   /**
@@ -865,6 +991,36 @@ html {
     max-height: var(--split-media-img-max-h);
     overflow: hidden;
     flex-shrink: 0;
+  }
+
+  .split-media-figure--hover-swap {
+    position: relative;
+  }
+
+  .split-media-figure--hover-swap img {
+    position: absolute;
+    inset: 0;
+    transition: opacity 280ms ease;
+  }
+
+  .split-media-figure--hover-swap .split-media-figure__hover {
+    opacity: 0;
+  }
+
+  .split-media-figure--hover-swap:hover .split-media-figure__default,
+  .split-media-figure--hover-swap:focus-within .split-media-figure__default {
+    opacity: 0;
+  }
+
+  .split-media-figure--hover-swap:hover .split-media-figure__hover,
+  .split-media-figure--hover-swap:focus-within .split-media-figure__hover {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .split-media-figure--hover-swap img {
+      transition: none;
+    }
   }
 
   /** Galerie PDP — miniatures gauche + média principal (Le Labo). */
@@ -1158,17 +1314,7 @@ html {
   }
 
   .cookie-banner__cta {
-    @apply cta-parchment w-full rounded-none px-8 text-xs tracking-[0.16em] sm:w-auto sm:min-w-[12rem] sm:text-sm;
-    border-color: var(--color-paper);
-    background-color: var(--color-paper);
-    color: var(--color-wine);
-    font-family: var(--font-subtitle);
-    font-weight: 400;
-  }
-
-  .cookie-banner__cta:hover {
-    opacity: 1;
-    background-color: color-mix(in srgb, var(--color-paper) 92%, var(--color-mist));
+    @apply cta-pill cta-pill--on-wine w-full sm:w-auto sm:min-w-[12rem];
   }
 
   /** Page Contact — formulaire seul, panneau paper + accent wine. */

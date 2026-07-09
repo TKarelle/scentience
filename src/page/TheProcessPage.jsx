@@ -84,7 +84,7 @@ function TheProcessMain() {
             ))}
           </div>
           <div className="flex justify-center border-t border-wine/25 px-4 py-12 sm:py-14">
-            <PreOrderCtaLink className="max-w-md px-12 tracking-wide" />
+            <PreOrderCtaLink className="max-w-md" />
           </div>
         </div>
       </section>

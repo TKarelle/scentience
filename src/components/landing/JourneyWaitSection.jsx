@@ -40,9 +40,9 @@ export default function JourneyWaitSection() {
           <div className="mt-8">
             <PreOrderCtaLink
               fullWidth
-              variant="parchment"
+              variant="on-wine"
               label={copy.ctaLabel}
-              className="w-full tracking-wide"
+              className="w-full"
             />
           </div>
         </Card>

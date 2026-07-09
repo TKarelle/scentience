@@ -19,7 +19,9 @@ export default function PreOrderCtaLink({
 }) {
   const location = useLocation();
   const variantClass =
-    variant === "parchment" ? "cta-parchment" : "cta-primary";
+    variant === "on-wine" || variant === "parchment-on-wine"
+      ? "cta-pill cta-pill--on-wine"
+      : "cta-pill";
 
   function handleClick(e) {
     trackEvent("cta_pre_order", {
@@ -34,7 +36,7 @@ export default function PreOrderCtaLink({
       onClick={handleClick}
       className={cx(
         variantClass,
-        "max-w-sm rounded-none text-xs uppercase tracking-wide sm:text-sm",
+        "max-w-sm",
         fullWidth && "mx-auto w-full",
         className,
       )}

@@ -33,6 +33,9 @@
    */
   --split-media-img-max-h: 520px;
   --split-media-img-max-w: 28rem;
+
+  /** Rayons UI — option A : conteneurs droits ; seuls les CTA restent en pill. */
+  --radius-ui: 0;
 }
 
 @font-face {

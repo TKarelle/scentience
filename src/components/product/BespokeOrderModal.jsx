@@ -273,7 +273,7 @@ export default function BespokeOrderModal({
       onClick={handleClose}
     >
       <div
-        className="flex max-h-[92dvh] w-full max-w-lg flex-col overflow-hidden bg-paper shadow-xl sm:max-h-[90dvh] sm:rounded-none"
+        className="flex max-h-[92dvh] w-full max-w-lg flex-col overflow-hidden rounded-none bg-paper shadow-xl sm:max-h-[90dvh]"
         role="dialog"
         aria-modal="true"
         aria-labelledby={`${formId}-modal-title`}
@@ -334,7 +334,7 @@ export default function BespokeOrderModal({
                 type="button"
                 onClick={goBack}
                 disabled={checkoutLoading}
-                className="cta-parchment flex-1 rounded-none tracking-wide disabled:opacity-45"
+                className="cta-pill flex-1 disabled:opacity-45"
               >
                 Back
               </button>
@@ -342,7 +342,7 @@ export default function BespokeOrderModal({
             <button
               type="submit"
               disabled={!stepValid || checkoutLoading}
-              className="cta-primary flex-1 rounded-none tracking-[0.14em] disabled:cursor-not-allowed disabled:opacity-45"
+              className="cta-pill flex-1 disabled:cursor-not-allowed disabled:opacity-45"
             >
               {checkoutLoading
                 ? "Redirecting…"

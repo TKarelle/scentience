@@ -1,9 +1,7 @@
-import { Link } from "react-router-dom";
 import { NOT_FOR_EVERYONE_COPY } from "../../config/landingNotForEveryone";
-import sprayImg from "../../image/spray.png";
 
 /**
- * Bandeau wine (titre TLWG, lignes TrueTypewriter), puis photo spray pleine largeur.
+ * Bandeau wine (titre TLWG, lignes TrueTypewriter).
  */
 export default function NotForEveryoneSection() {
   const copy = NOT_FOR_EVERYONE_COPY;
@@ -37,24 +35,6 @@ export default function NotForEveryoneSection() {
               </p>
             ))}
           </div>
-        </div>
-      </div>
-
-      <div className="relative w-full">
-        <img
-          src={sprayImg}
-          alt="Vaporisation d’un parfum MADELEINE sur la peau — geste et brume dorée"
-          className="max-h-[min(85vh,52rem)] w-full object-cover object-center"
-          loading="lazy"
-          decoding="async"
-        />
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center p-4">
-          <Link
-            to="/the-process"
-            className="cta-parchment pointer-events-auto min-w-[12rem] max-w-sm px-8 text-center shadow-lg"
-          >
-            {copy.ctaLabel}
-          </Link>
         </div>
       </div>
     </section>

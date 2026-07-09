@@ -3,13 +3,16 @@
  */
 export const PHILOSOPHY_SECTION_COPY = {
   title: "OUR PHILOSOPHY— THE PROUST PROJECT",
-  /** Paragraphes corps (Times). Ajouter des spans rouges dans le composant si besoin. */
   bodyParagraphs: [
-    "The only perfume you buy before you smell it - created for what it will carry forever. A blank canvas upon which you can give meaning to the scent through association with your experience. ",
+    "The only perfume you buy before you smell it - created for what it will carry forever. A blank canvas upon which you can give meaning to the scent through association with your experience.",
   ],
   quote: {
-    line1: "One fragrance for one journey.",
-    line2: "Empty of meaning.",
-    line3: "Until you wear it.",
+    parts: [
+      { text: "Empty of ", accent: false },
+      { text: "meaning", accent: true },
+      { text: ", Until you ", accent: false },
+      { text: "wear", accent: true },
+      { text: " it.", accent: false },
+    ],
   },
 };

@@ -68,7 +68,7 @@ export default function ProustResearchStatBanner({
               <StatCta
                 href={ctaHref}
                 label={copy.ctaLabel}
-                className="cta-parchment inline-flex rounded-none px-12 py-4 text-xs uppercase tracking-[0.18em] sm:px-14 sm:text-sm sm:tracking-[0.2em]"
+                className="cta-pill cta-pill--on-wine"
               />
             </div>
           )}

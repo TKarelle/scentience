@@ -84,7 +84,7 @@ export default function OrderConfirmationPage() {
                 {state.message}
               </p>
               <div className="mt-10 flex flex-col items-center gap-4">
-                <PreOrderCtaLink className="w-full max-w-xs rounded-none tracking-wide" />
+                <PreOrderCtaLink className="w-full max-w-xs" />
                 <Link
                   to="/"
                   className="text-sm text-wine underline underline-offset-4"
@@ -178,7 +178,7 @@ export default function OrderConfirmationPage() {
               <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                 <Link
                   to="/the-process"
-                  className="cta-parchment w-full max-w-xs rounded-none tracking-wide sm:w-auto"
+                  className="cta-pill w-full max-w-xs sm:w-auto"
                 >
                   The process
                 </Link>
