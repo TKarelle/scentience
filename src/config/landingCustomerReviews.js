@@ -1,6 +1,6 @@
-import celebrationImg from "../image/celebration.jpg";
-import danseImg from "../image/danse.png";
-import justMarriedImg from "../image/justmarried.png";
+import celebrationImg from "../image/celebration.webp";
+import danseImg from "../image/danse.webp";
+import justMarriedImg from "../image/justmarried.webp";
 import { BESPOKE_PRODUCT } from "./bespokeProduct";
 import { PRE_ORDER_CTA_LABEL, PRE_ORDER_PATH } from "./preOrderMessaging";
 

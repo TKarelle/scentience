@@ -1,11 +1,27 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/favicon.png?v=1" />
     <link rel="shortcut icon" type="image/png" href="/favicon.png?v=1" />
     <link rel="apple-touch-icon" href="/favicon.png?v=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary display fonts (titles + typewriter) -->
+    <link
+      rel="preload"
+      href="/fonts/TruetypewriterPolyglOTT.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/TlwgTypewriter%20Bold.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
 
     <!-- Primary Meta Tags — defaults for no-JS crawlers; SPA routes override via SyncPageSeo -->
     <title>MADELEINE — bespoke perfume for your next journey | London</title>
@@ -23,7 +39,6 @@
     />
     <meta name="author" content="MADELEINE" />
     <meta name="robots" content="index, follow" />
-    <meta name="language" content="English" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -36,9 +51,13 @@
       property="og:description"
       content="Commission a fragrance built around your journey—honeymoons, anniversaries, moments you refuse to forget. Science-led scent-mapping, IFRA-aligned formulations."
     />
-    <meta property="og:image" content="%VITE_SITE_ORIGIN%/landing.png" />
+    <meta property="og:image" content="%VITE_SITE_ORIGIN%/hero-banner.webp" />
+    <meta
+      property="og:image:alt"
+      content="MADELEINE bespoke fragrance — hero banner"
+    />
     <meta property="og:site_name" content="MADELEINE" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content="en_GB" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -51,61 +70,17 @@
       name="twitter:description"
       content="Commission a fragrance built around your journey—honeymoons, anniversaries, moments you refuse to forget. Science-led scent-mapping, IFRA-aligned formulations."
     />
-    <meta name="twitter:image" content="%VITE_SITE_ORIGIN%/landing.png" />
+    <meta name="twitter:image" content="%VITE_SITE_ORIGIN%/hero-banner.webp" />
+    <meta
+      name="twitter:image:alt"
+      content="MADELEINE bespoke fragrance — hero banner"
+    />
+    <meta name="twitter:site" content="@madeleine" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href="%VITE_SITE_ORIGIN%/" />
-
-    <!-- Structured Data JSON-LD -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "MADELEINE",
-        "url": "%VITE_SITE_ORIGIN%",
-        "logo": "%VITE_SITE_ORIGIN%/logowine-full.png",
-        "description": "Bespoke fragrance and scent-mapping for journeys and milestones you refuse to forget—olfactory memory, IFRA-aligned formulations.",
-        "sameAs": ["https://www.instagram.com/madeleine"]
-      }
-    </script>
-
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Product",
-        "name": "MADELEINE bespoke fragrance",
-        "description": "Custom fragrance encoded for olfactory memory—journeys, honeymoons, and milestone moments.",
-        "brand": {
-          "@type": "Brand",
-          "name": "MADELEINE"
-        },
-        "category": "Personalized Perfume",
-        "offers": {
-          "@type": "Offer",
-          "availability": "https://schema.org/PreOrder",
-          "priceCurrency": "GBP"
-        }
-      }
-    </script>
   </head>
   <body>
-    <!-- Hidden SEO Content -->
-    <div
-      style="
-        position: absolute;
-        left: -9999px;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-      "
-    >
-      <h1>MADELEINE — bespoke perfume for your next journey | London</h1>
-      <p>
-        Custom fragrance, olfactory memory, scent and memory, personalized
-        perfume, honeymoon perfume, memory perfume, bespoke fragrance UK, luxury
-        custom perfume, Proust effect, Scent-Mapping
-      </p>
-    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

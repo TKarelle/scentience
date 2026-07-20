@@ -7,7 +7,7 @@
     "dev": "concurrently -n client,api -c blue,magenta \"vite\" \"node server/index.js\"",
     "dev:client": "vite",
     "dev:api": "node server/index.js",
-    "build": "vite build",
+    "build": "vite build && node scripts/buildPrerenderHtml.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "start:api": "node server/index.js"

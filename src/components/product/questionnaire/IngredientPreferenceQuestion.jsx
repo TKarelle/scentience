@@ -1,4 +1,5 @@
 import { BESPOKE_INGREDIENTS } from "../../../config/bespokeQuestionnaire";
+import { IMAGE_DIMENSIONS } from "../../../config/imageDimensions";
 
 function HeartIcon({ active }) {
   return (
@@ -69,7 +70,11 @@ export default function IngredientPreferenceQuestion({ prefs, onChange }) {
                 <img
                   src={item.image}
                   alt={item.label}
+                  width={IMAGE_DIMENSIONS.ingredient.width}
+                  height={IMAGE_DIMENSIONS.ingredient.height}
                   className="h-full w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <p className="mt-2 font-subtitle text-[10px] uppercase tracking-[0.1em] text-ink/85">

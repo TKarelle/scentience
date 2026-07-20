@@ -2,10 +2,29 @@
  * SEO defaults — English. Override domain with `VITE_SITE_ORIGIN` (no trailing slash).
  */
 
+import { JOURNAL_ENTRIES_ALL } from "./journalArticles";
+
 export const SITE_ORIGIN =
   (typeof import.meta !== "undefined" &&
     import.meta.env?.VITE_SITE_ORIGIN?.replace(/\/$/, "")) ||
   "https://madeleine.uk";
+
+export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/hero-banner.webp`;
+export const PRODUCT_OG_IMAGE = `${SITE_ORIGIN}/logowine-full.png`;
+
+/** Absolute URL for a file in `public/` (e.g. `/landing.png`). */
+export function publicAssetUrl(path) {
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return `${SITE_ORIGIN}${normalized}`;
+}
+
+/** Absolute URL for a Vite-resolved import (e.g. imported PNG → `/assets/…`). */
+export function absoluteAssetUrl(assetPath) {
+  if (!assetPath) return DEFAULT_OG_IMAGE;
+  if (assetPath.startsWith("http")) return assetPath;
+  const normalized = assetPath.startsWith("/") ? assetPath : `/${assetPath}`;
+  return `${SITE_ORIGIN}${normalized}`;
+}
 
 /** Cover article — canonical URL matches marketing slug `/journal/the-proust-project`. */
 export const PROUST_ARTICLE_SLUG =
@@ -77,7 +96,7 @@ export const NOT_FOUND_SEO = {
   title: "Page not found | MADELEINE",
   description: "This page does not exist. Return to MADELEINE or pre-order Original Bespoke.",
   keywords: "MADELEINE",
-  canonicalPath: "/404",
+  canonicalPath: "/",
 };
 
 export const CONTACT_PAGE_SEO = {
@@ -87,6 +106,7 @@ export const CONTACT_PAGE_SEO = {
   keywords:
     "contact MADELEINE, bespoke fragrance UK, madeleine.uk support, pre-order help",
   canonicalPath: "/contact",
+  ogImage: `${SITE_ORIGIN}/hero-banner.webp`,
 };
 
 export const TERMS_PAGE_SEO = {
@@ -96,29 +116,45 @@ export const TERMS_PAGE_SEO = {
   keywords:
     "MADELEINE terms, GDPR, privacy policy, bespoke fragrance returns, IFRA compliance, user content policy, madeleine.uk",
   canonicalPath: "/terms",
+  ogImage: `${SITE_ORIGIN}/hero-banner.webp`,
 };
 
-/** Per-article overrides (`slug` key = key in `articles` map in article.jsx). */
-export const ARTICLE_SEO_BY_SLUG = {
-  [PROUST_ARTICLE_SLUG]: {
-    title:
-      "The Proust Project: How Scent Encodes Memory Forever | MADELEINE",
-    description:
-      "Discover the neuroscience behind olfactory memory. Learn why scent is the most powerful trigger for emotional recall — and how MADELEINE encodes your greatest journeys.",
-    keywords:
-      "olfactory memory, scent and memory, perfume memory, custom fragrance, memory perfume, Proust effect, smell and emotions, luxury custom perfume, bespoke fragrance UK, personalised perfume travel, honeymoon perfume, how scent triggers memories, olfactory memory science",
-    canonicalPath: "/journal/the-proust-project",
-    ogType: "article",
-  },
+const PROUST_ARTICLE_SEO = {
+  title: "The Proust Project: How Scent Encodes Memory Forever | MADELEINE",
+  description:
+    "Discover the neuroscience behind olfactory memory. Learn why scent is the most powerful trigger for emotional recall — and how MADELEINE encodes your greatest journeys.",
+  keywords:
+    "olfactory memory, scent and memory, perfume memory, custom fragrance, memory perfume, Proust effect, smell and emotions, luxury custom perfume, bespoke fragrance UK, personalised perfume travel, honeymoon perfume, how scent triggers memories, olfactory memory science",
+  canonicalPath: "/journal/the-proust-project",
+  ogType: "article",
 };
-
-export function absoluteUrl(path) {
-  const p = path.startsWith("/") ? path : `/${path}`;
-  return `${SITE_ORIGIN}${p}`;
-}
 
 /** Prefer marketing URL when an SEO slug exists (e.g. Proust cover story). */
 export function getArticlePath(slug) {
   if (slug === PROUST_ARTICLE_SLUG) return "/journal/the-proust-project";
   return `/article/${slug}`;
+}
+
+/** Per-article SEO — généré depuis `journalArticles.js` (+ override Proust). */
+export const ARTICLE_SEO_BY_SLUG = Object.fromEntries(
+  JOURNAL_ENTRIES_ALL.map((entry) => {
+    if (entry.slug === PROUST_ARTICLE_SLUG) {
+      return [entry.slug, PROUST_ARTICLE_SEO];
+    }
+    return [
+      entry.slug,
+      {
+        title: `${entry.title} | MADELEINE`,
+        description: entry.seoDescription ?? entry.excerpt,
+        keywords: `MADELEINE, ${entry.category.toLowerCase()}, olfactory memory, scent and memory, custom fragrance, ${entry.title}`,
+        canonicalPath: getArticlePath(entry.slug),
+        ogType: "article",
+      },
+    ];
+  }),
+);
+
+export function absoluteUrl(path) {
+  const p = path.startsWith("/") ? path : `/${path}`;
+  return `${SITE_ORIGIN}${p}`;
 }

@@ -2,7 +2,10 @@ import PreOrderCtaLink from "../cta/PreOrderCtaLink";
 import PreOrderStatus from "../cta/PreOrderStatus";
 import { Card } from "../ui";
 import { LANDING_HERO_COPY } from "../../config/landingHero";
-import bannerImg from "../../image/banner.png";
+import { IMAGE_DIMENSIONS } from "../../config/imageDimensions";
+
+/** LCP hero — served from /public for stable preload URL (see index.html). */
+const HERO_BANNER_SRC = "/hero-banner.webp";
 
 /**
  * Hero avec image fixe et carte pre-order.
@@ -14,8 +17,13 @@ export default function LandingHero() {
     <section className="hero-section" aria-labelledby="landing-hero-heading">
       <div className="hero-section__media">
         <img
-          src={bannerImg}
-          alt="Banner hero Madeleine"
+          src={HERO_BANNER_SRC}
+          alt="MADELEINE bespoke fragrance — hero banner with golden light"
+          width={IMAGE_DIMENSIONS.banner.width}
+          height={IMAGE_DIMENSIONS.banner.height}
+          fetchPriority="high"
+          decoding="async"
+          sizes="100vw"
           className="hero-section__image"
         />
         <div className="hero-section__scrim" aria-hidden />

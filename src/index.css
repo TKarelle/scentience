@@ -4,6 +4,11 @@ html {
   scroll-padding-top: 5.5rem;
 }
 
+html.modal-scroll-lock,
+html.modal-scroll-lock body {
+  overflow: hidden;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -1707,5 +1712,17 @@ html {
 
   .contact-page__back {
     @apply mt-8 inline-block text-sm text-wine underline underline-offset-4;
+  }
+
+  /** Below-fold sections — skip layout/paint until near viewport. */
+  .perf-defer-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 720px;
+  }
+
+  .customer-reviews-section,
+  .discover-tabs-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 640px;
   }
 }

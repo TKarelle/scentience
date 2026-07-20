@@ -29,7 +29,7 @@ export function ProductBuyProvider({ onPersonalise, children }) {
       withJournal,
       setWithJournal,
       total,
-      onPersonalise: () => onPersonalise({ withJournal, totalEur: total }),
+      onPersonalise: () => onPersonalise({ withJournal, totalGbp: total }),
     }),
     [withJournal, total, onPersonalise],
   );
@@ -47,7 +47,6 @@ export function ProductBuyCheckout({ className = "" }) {
   const journalId = useId();
   const { withJournal, setWithJournal, total, onPersonalise } = useProductBuy();
   const { journalAddOnGbp, bundleDiscountGbp } = product.pricing;
-  const showSavings = withJournal && bundleDiscountGbp > 0;
 
   return (
     <div className={className}>
@@ -122,5 +121,3 @@ export function ProductBuyLogistics({ className = "" }) {
     </div>
   );
 }
-
-export { getBespokePrice };

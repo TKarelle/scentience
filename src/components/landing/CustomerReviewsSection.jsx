@@ -8,7 +8,7 @@ import CustomerReviewCard from "./CustomerReviewCard";
  */
 export default function CustomerReviewsSection() {
   const copy = CUSTOMER_REVIEWS_COPY;
-  const { rating, reviewCount, commissionsCount } = copy.aggregate;
+  const { rating } = copy.aggregate;
 
   return (
     <section
@@ -32,7 +32,6 @@ export default function CustomerReviewsSection() {
               ★★★★★
             </span>
             <span className="sr-only">{rating} out of 5 stars. </span>
-           
           </p>
         </header>
 

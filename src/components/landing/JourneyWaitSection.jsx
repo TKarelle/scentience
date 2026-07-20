@@ -1,7 +1,8 @@
 import { JOURNEY_PRE_ORDER_COPY } from "../../config/landingJourneyWait";
+import { IMAGE_DIMENSIONS } from "../../config/imageDimensions";
 import PreOrderCtaLink from "../cta/PreOrderCtaLink";
 import PreOrderStatus from "../cta/PreOrderStatus";
-import danseImg from "../../image/danse.png";
+import danseImg from "../../image/danse.webp";
 import { Card } from "../ui";
 
 /**
@@ -13,13 +14,15 @@ export default function JourneyWaitSection() {
   return (
     <section
       id="pre-order"
-      className="relative isolate flex min-h-[min(100vh,52rem)] items-center justify-center overflow-hidden py-16 sm:py-24"
+      className="relative isolate flex min-h-[min(100vh,52rem)] items-center justify-center overflow-hidden py-16 sm:py-24 perf-defer-section"
       aria-labelledby="journey-pre-order-heading"
     >
       <div className="absolute inset-0 z-0">
         <img
           src={danseImg}
-          alt="Couple dansant — atmosphère MADELEINE"
+          alt="Couple dancing — MADELEINE journey atmosphere"
+          width={IMAGE_DIMENSIONS.danse.width}
+          height={IMAGE_DIMENSIONS.danse.height}
           className="h-full w-full object-cover"
           loading="lazy"
           decoding="async"

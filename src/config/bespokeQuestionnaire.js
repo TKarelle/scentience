@@ -1,17 +1,17 @@
-import citrusImg from "../image/citrus.jpg";
-import coconutImg from "../image/coconut.jpg";
-import incenseImg from "../image/Incense.jpg";
-import lavenderImg from "../image/lavender.jpg";
-import mintImg from "../image/mint.jpg";
-import oudImg from "../image/oud.jpg";
-import patchouliImg from "../image/Patchouli.jpg";
-import pineImg from "../image/pine.jpg";
-import rainImg from "../image/rain.jpg";
-import roseImg from "../image/rose.jpg";
-import sandalwoodImg from "../image/Sandalwood.jpg";
-import smokeImg from "../image/smoke.jpg";
-import teaImg from "../image/tea.jpg";
-import vanillaImg from "../image/Vanilla.jpg";
+import citrusImg from "../image/citrus.webp";
+import coconutImg from "../image/coconut.webp";
+import incenseImg from "../image/Incense.webp";
+import lavenderImg from "../image/lavender.webp";
+import mintImg from "../image/mint.webp";
+import oudImg from "../image/oud.webp";
+import patchouliImg from "../image/Patchouli.webp";
+import pineImg from "../image/pine.webp";
+import rainImg from "../image/rain.webp";
+import roseImg from "../image/rose.webp";
+import sandalwoodImg from "../image/Sandalwood.webp";
+import smokeImg from "../image/smoke.webp";
+import teaImg from "../image/tea.webp";
+import vanillaImg from "../image/Vanilla.webp";
 
 /** Questionnaire Original Bespoke — une question par écran. */
 

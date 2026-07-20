@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import ChevronDownIcon from "../icons/ChevronDownIcon";
+import { normalizeFaqItems } from "../../lib/faqItems";
 
 const cx = (...p) => p.filter(Boolean).join(" ");
 
@@ -19,23 +20,6 @@ function buildFaqPageJsonLd(items, pageUrl) {
       },
     })),
   };
-}
-
-/** Accepte `answerParagraphs` ou une seule chaîne `answer` (landing legacy). */
-export function normalizeFaqItems(items) {
-  return items.map((item, index) => {
-    const id =
-      item.id != null && item.id !== ""
-        ? item.id
-        : `faq-${index}`;
-    const answerParagraphs =
-      Array.isArray(item.answerParagraphs) && item.answerParagraphs.length > 0
-        ? item.answerParagraphs
-        : typeof item.answer === "string"
-          ? [item.answer]
-          : [];
-    return { id, question: item.question, answerParagraphs };
-  });
 }
 
 /**

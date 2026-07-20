@@ -9,11 +9,6 @@ export default [
   },
   {
     files: ["**/*.{js,jsx}"],
-    extends: [
-      js.configs.recommended,
-      reactHooks.configs["recommended-latest"],
-      reactRefresh.configs.vite,
-    ],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
@@ -23,8 +18,35 @@ export default [
         sourceType: "module",
       },
     },
+    plugins: {
+      "react-hooks": reactHooks,
+      "react-refresh": reactRefresh,
+    },
     rules: {
-      "no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
+      ...js.configs.recommended.rules,
+      ...reactHooks.configs.recommended.rules,
+      "react-refresh/only-export-components": [
+        "warn",
+        { allowConstantExport: true },
+      ],
+      "no-unused-vars": [
+        "error",
+        {
+          varsIgnorePattern: "^[A-Z_]",
+          argsIgnorePattern: "^[A-Z_]",
+        },
+      ],
+    },
+  },
+  {
+    files: ["server/**/*.js", "vite.config.js"],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.node,
+      sourceType: "module",
+    },
+    rules: {
+      ...js.configs.recommended.rules,
     },
   },
 ];

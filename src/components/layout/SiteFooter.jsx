@@ -52,7 +52,7 @@ export default function SiteFooter() {
                     to="/science/what-is-your-proust-madeleine"
                     className="hover:text-paper transition-colors"
                   >
-                    The project proust
+                    The Proust Project
                   </Link>
                 </li>
                 <li>

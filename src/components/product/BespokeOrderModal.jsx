@@ -5,6 +5,7 @@ import {
   BESPOKE_DESTINATION_COUNTRIES,
   BESPOKE_QUESTIONNAIRE_STEPS,
 } from "../../config/bespokeQuestionnaire";
+import { useFocusTrap } from "../../hooks/useFocusTrap";
 import { trackEvent } from "../../lib/analytics";
 import { createCheckoutSession } from "../../lib/createCheckoutSession";
 import { FORM_INPUT_CLASS, FORM_LABEL_CLASS } from "../../lib/formInputClass";
@@ -26,10 +27,11 @@ export default function BespokeOrderModal({
   open,
   onClose,
   withJournal,
-  totalEur,
+  totalGbp,
 }) {
   const formId = useId();
   const bodyRef = useRef(null);
+  const dialogRef = useRef(null);
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState(createInitialQuestionnaireAnswers);
   const [checkoutLoading, setCheckoutLoading] = useState(false);
@@ -45,15 +47,16 @@ export default function BespokeOrderModal({
   }, []);
 
   const handleClose = useCallback(() => {
+    resetAll();
     onClose();
-  }, [onClose]);
+  }, [onClose, resetAll]);
 
   useEffect(() => {
     if (!open) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const root = document.documentElement;
+    root.classList.add("modal-scroll-lock");
     return () => {
-      document.body.style.overflow = prev;
+      root.classList.remove("modal-scroll-lock");
     };
   }, [open]);
 
@@ -65,6 +68,8 @@ export default function BespokeOrderModal({
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open, handleClose]);
+
+  useFocusTrap(open, dialogRef);
 
   useEffect(() => {
     if (!open) return;
@@ -103,7 +108,7 @@ export default function BespokeOrderModal({
         const { url } = await createCheckoutSession({
           answers,
           withJournal,
-          totalGbp: totalEur,
+          totalGbp: totalGbp,
         });
         window.location.href = url;
       } catch (err) {
@@ -237,7 +242,7 @@ export default function BespokeOrderModal({
           <QuestionnaireSummary
             answers={answers}
             productName={product.name}
-            totalEur={totalEur}
+            totalGbp={totalGbp}
             withJournal={withJournal}
           />
         );
@@ -273,6 +278,7 @@ export default function BespokeOrderModal({
       onClick={handleClose}
     >
       <div
+        ref={dialogRef}
         className="flex max-h-[92dvh] w-full max-w-lg flex-col overflow-hidden rounded-none bg-paper shadow-xl sm:max-h-[90dvh]"
         role="dialog"
         aria-modal="true"
@@ -281,7 +287,7 @@ export default function BespokeOrderModal({
       >
         <QuestionnaireOrderStrip
           productName={product.name}
-          totalEur={totalEur}
+          totalGbp={totalGbp}
           withJournal={withJournal}
           onClose={handleClose}
         />

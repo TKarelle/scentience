@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { SITE_ORIGIN } from "../config/seoMeta";
+import { DEFAULT_OG_IMAGE, SITE_ORIGIN } from "../config/seoMeta";
 
 function upsertMetaByName(name, content) {
   if (content == null || content === "") return;
@@ -43,6 +43,10 @@ export function usePageSeo({
   canonicalUrl,
   ogType = "website",
   ogImage,
+  ogImageAlt,
+  articlePublishedTime,
+  articleAuthor,
+  articleSection,
   noindex = false,
 }) {
   useEffect(() => {
@@ -51,29 +55,52 @@ export function usePageSeo({
     upsertMetaByName("title", title);
     upsertMetaByName("description", description);
     if (keywords) upsertMetaByName("keywords", keywords);
-    if (noindex) {
-      upsertMetaByName("robots", "noindex, nofollow");
-    } else {
-      const robots = document.querySelector('meta[name="robots"]');
-      if (robots) robots.remove();
-    }
+    upsertMetaByName("robots", noindex ? "noindex, nofollow" : "index, follow");
 
     upsertCanonical(canonicalUrl);
 
-    const image =
-      ogImage || `${SITE_ORIGIN}/landing.png`;
+    const image = ogImage || DEFAULT_OG_IMAGE;
+    const imageAlt = ogImageAlt || title;
 
     upsertMetaByProperty("og:type", ogType);
     upsertMetaByProperty("og:url", canonicalUrl);
     upsertMetaByProperty("og:title", title);
     upsertMetaByProperty("og:description", description);
     upsertMetaByProperty("og:image", image);
+    upsertMetaByProperty("og:image:alt", imageAlt);
     upsertMetaByProperty("og:site_name", "MADELEINE");
+    upsertMetaByProperty("og:locale", "en_GB");
 
-    upsertMetaByProperty("twitter:card", "summary_large_image");
-    upsertMetaByProperty("twitter:url", canonicalUrl);
-    upsertMetaByProperty("twitter:title", title);
-    upsertMetaByProperty("twitter:description", description);
-    upsertMetaByProperty("twitter:image", image);
-  }, [title, description, keywords, canonicalUrl, ogType, ogImage, noindex]);
+    if (ogType === "article") {
+      if (articlePublishedTime) {
+        upsertMetaByProperty("article:published_time", articlePublishedTime);
+      }
+      if (articleAuthor) {
+        upsertMetaByProperty("article:author", articleAuthor);
+      }
+      if (articleSection) {
+        upsertMetaByProperty("article:section", articleSection);
+      }
+    }
+
+    upsertMetaByName("twitter:card", "summary_large_image");
+    upsertMetaByName("twitter:url", canonicalUrl);
+    upsertMetaByName("twitter:title", title);
+    upsertMetaByName("twitter:description", description);
+    upsertMetaByName("twitter:image", image);
+    upsertMetaByName("twitter:image:alt", imageAlt);
+    upsertMetaByName("twitter:site", "@madeleine");
+  }, [
+    title,
+    description,
+    keywords,
+    canonicalUrl,
+    ogType,
+    ogImage,
+    ogImageAlt,
+    articlePublishedTime,
+    articleAuthor,
+    articleSection,
+    noindex,
+  ]);
 }

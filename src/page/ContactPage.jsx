@@ -39,6 +39,8 @@ export default function ContactPage() {
         description={CONTACT_PAGE_SEO.description}
         keywords={CONTACT_PAGE_SEO.keywords}
         canonicalUrl={absoluteUrl(CONTACT_PAGE_SEO.canonicalPath)}
+        ogImage={CONTACT_PAGE_SEO.ogImage}
+        ogImageAlt="MADELEINE bespoke fragrance — hero banner"
       />
       <main className="contact-page">
         <div className="contact-page__inner">

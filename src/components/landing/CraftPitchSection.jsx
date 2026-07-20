@@ -1,6 +1,7 @@
 import { CRAFT_PITCH_COPY } from "../../config/landingCraftPitch";
-import bottleImg from "../../image/bottle.png";
-import bottleHoverImg from "../../image/bottle2.png";
+import { IMAGE_DIMENSIONS } from "../../config/imageDimensions";
+import bottleImg from "../../image/bottle.webp";
+import bottleHoverImg from "../../image/bottle2.webp";
 import SectionLogoWatermark from "../layout/SectionLogoWatermark";
 import SplitMediaSection from "./SplitMediaSection";
 
@@ -18,7 +19,11 @@ export default function CraftPitchSection() {
       image={{
         src: bottleImg,
         hoverSrc: bottleHoverImg,
-        alt: "Origine — parfum MADELEINE sur socle minéral",
+        alt: "MADELEINE bespoke bottle on a mineral plinth",
+        width: IMAGE_DIMENSIONS.bottle.width,
+        height: IMAGE_DIMENSIONS.bottle.height,
+        hoverWidth: IMAGE_DIMENSIONS.bottle2.width,
+        hoverHeight: IMAGE_DIMENSIONS.bottle2.height,
       }}
       title={copy.title}
       titleClassName="split-media-heading-lg"

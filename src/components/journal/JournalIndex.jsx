@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { IMAGE_DIMENSIONS } from "../../config/imageDimensions";
 import {
   getJournalFeatured,
   getJournalGridEntries,
@@ -20,7 +21,7 @@ function ReadArticleLink({ slug, className = "" }) {
 }
 
 /** Liste compacte pour la colonne droite — tient dans ~1 viewport (desktop). */
-function JournalPopularItem({ slug, title, excerpt, date, image }) {
+function JournalPopularItem({ slug, title, excerpt, date, datePublished, image, imageAlt }) {
   return (
     <article className="min-h-0 min-w-0 shrink-0">
       <Link
@@ -30,7 +31,9 @@ function JournalPopularItem({ slug, title, excerpt, date, image }) {
         <div className="h-[3.75rem] w-[2.85rem] shrink-0 overflow-hidden sm:h-[4.25rem] sm:w-[3.15rem] lg:h-[10rem] lg:w-[10rem]">
           <img
             src={image}
-            alt=""
+            alt={imageAlt}
+            width={IMAGE_DIMENSIONS.journalThumb.width}
+            height={IMAGE_DIMENSIONS.journalThumb.height}
             className="h-full w-full object-cover"
             loading="lazy"
             decoding="async"
@@ -47,7 +50,7 @@ function JournalPopularItem({ slug, title, excerpt, date, image }) {
           </div>
           <div className="mt-1.5 flex flex-wrap items-end justify-between gap-1 border-t border-wine/10 pt-1.5">
             <time
-              dateTime={date}
+              dateTime={datePublished}
               className="font-subtitle text-[8px] uppercase tracking-[0.12em] text-wine/90 sm:text-[9px] lg:text-[10px]"
             >
               {date}
@@ -62,7 +65,7 @@ function JournalPopularItem({ slug, title, excerpt, date, image }) {
   );
 }
 
-function JournalRow({ slug, title, excerpt, date, image, compact = false }) {
+function JournalRow({ slug, title, excerpt, date, datePublished, image, imageAlt, compact = false }) {
   return (
     <article>
       <Link
@@ -78,7 +81,9 @@ function JournalRow({ slug, title, excerpt, date, image, compact = false }) {
         >
           <img
             src={image}
-            alt=""
+            alt={imageAlt}
+            width={IMAGE_DIMENSIONS.journalThumb.width}
+            height={IMAGE_DIMENSIONS.journalThumb.height}
             className="aspect-[5/6] h-full w-full object-cover"
             loading="lazy"
             decoding="async"
@@ -107,7 +112,7 @@ function JournalRow({ slug, title, excerpt, date, image, compact = false }) {
           </div>
           <div className="mt-3 flex flex-wrap items-end justify-between gap-2 border-t border-wine/10 pt-3 sm:mt-5 sm:gap-3 sm:pt-4">
             <time
-              dateTime={date}
+              dateTime={datePublished}
               className="font-subtitle text-[10px] uppercase tracking-[0.14em] text-wine/90"
             >
               {date}
@@ -153,7 +158,9 @@ export default function JournalIndex() {
                     title={featured.title}
                     excerpt={featured.excerpt}
                     date={featured.date}
+                    datePublished={featured.datePublished}
                     image={featured.image}
+                    imageAlt={featured.imageAlt}
                     compact={false}
                   />
                 </>
@@ -184,7 +191,9 @@ export default function JournalIndex() {
                     title={item.title}
                     excerpt={item.excerpt}
                     date={item.date}
+                    datePublished={item.datePublished}
                     image={item.image}
+                    imageAlt={item.imageAlt}
                   />
                 ))
               ) : (
@@ -227,7 +236,9 @@ export default function JournalIndex() {
                   title={item.title}
                   excerpt={item.excerpt}
                   date={item.date}
+                  datePublished={item.datePublished}
                   image={item.image}
+                  imageAlt={item.imageAlt}
                 />
               ))}
             </div>

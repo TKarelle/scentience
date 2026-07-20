@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
+import EditorialHero from "../components/editorial/EditorialHero";
 import SplitMediaSection from "../components/landing/SplitMediaSection";
 import SectionLogoWatermark from "../components/layout/SectionLogoWatermark";
 import SiteChrome from "../components/layout/SiteChrome";
 import SyncPageSeo from "../components/seo/SyncPageSeo";
 import PreOrderCtaLink from "../components/cta/PreOrderCtaLink";
-import { THE_SCIENCE_SEO, absoluteUrl } from "../config/seoMeta";
+import { THE_SCIENCE_SEO, absoluteUrl, absoluteAssetUrl } from "../config/seoMeta";
+import { IMAGE_DIMENSIONS } from "../config/imageDimensions";
 import ScienceKeyStats from "../components/science/ScienceKeyStats";
 import SciencePeerResearchSection from "../components/science/SciencePeerResearchSection";
 import {
@@ -13,8 +15,8 @@ import {
   THE_SCIENCE_PILLARS,
   THE_SCIENCE_SCENT_MAPPING,
 } from "../config/theScienceCopy";
-import noteHeroImg from "../image/note.png";
-import bottleImg from "../image/bottle.png";
+import noteHeroImg from "../image/note.webp";
+import bottleImg from "../image/bottle.webp";
 
 function SciencePillar({ n, title, body }) {
   return (
@@ -33,44 +35,17 @@ function TheScienceMain() {
 
   return (
     <article className="bg-paper">
-      {/* Hero — The science */}
-      <header
-        className="relative flex min-h-[min(85vh,48rem)] flex-col justify-end overflow-hidden border-b border-wine/15"
-        aria-labelledby="science-hero-heading"
-      >
-        <div className="absolute inset-0 z-0">
-          <img
-            src={noteHeroImg}
-            alt="The science of scent and memory — MADELEINE"
-            className="h-full w-full object-cover object-center"
-            decoding="async"
-          />
-          <div
-            className="absolute inset-0 bg-gradient-to-b from-paper/25 via-paper/10 to-paper/35"
-            aria-hidden
-          />
-        </div>
-
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-32 lg:px-8 lg:pb-24">
-          <div className="card-fill-paper w-full max-w-3xl px-8 py-10 shadow-xl backdrop-blur-sm sm:px-10 sm:py-12">
-            <p className="typewriter-face text-xs font-normal uppercase tracking-[0.14em] text-ink sm:text-sm">
-              {hero.kicker}
-            </p>
-            <h1
-              id="science-hero-heading"
-              className="typo-title mt-4 max-w-3xl text-xl font-light uppercase leading-snug tracking-[0.06em] text-wine sm:mt-5 sm:text-2xl sm:leading-snug md:text-3xl md:leading-snug lg:text-4xl lg:tracking-[0.05em]"
-            >
-              {hero.title}
-            </h1>
-            <p className="typo-body-lead mt-5 max-w-xl sm:mt-6">
-              {hero.subtitle}
-            </p>
-            <div className="mt-10">
-              <PreOrderCtaLink className="w-full max-w-xs sm:w-auto" />
-            </div>
-          </div>
-        </div>
-      </header>
+      <EditorialHero
+        headingId="science-hero-heading"
+        imageSrc={noteHeroImg}
+        imageAlt="The science of scent and memory — MADELEINE"
+        imageWidth={IMAGE_DIMENSIONS.banner.width}
+        imageHeight={IMAGE_DIMENSIONS.banner.height}
+        kicker={hero.kicker}
+        title={hero.title}
+        subtitle={hero.subtitle}
+        cta={<PreOrderCtaLink className="w-full max-w-xs sm:w-auto" />}
+      />
 
       <ScienceKeyStats />
 
@@ -169,6 +144,8 @@ export default function TheSciencePage() {
         description={THE_SCIENCE_SEO.description}
         keywords={THE_SCIENCE_SEO.keywords}
         canonicalUrl={absoluteUrl(THE_SCIENCE_SEO.canonicalPath)}
+        ogImage={absoluteAssetUrl(noteHeroImg)}
+        ogImageAlt="The science of scent and memory — MADELEINE"
       />
       <TheScienceMain />
     </SiteChrome>

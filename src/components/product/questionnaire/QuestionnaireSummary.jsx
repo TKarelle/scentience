@@ -32,7 +32,7 @@ function SummaryList({ items, empty = "—" }) {
 export default function QuestionnaireSummary({
   answers,
   productName,
-  totalEur,
+  totalGbp,
   withJournal,
 }) {
   const { loved, disliked } = formatIngredientPrefs(answers.ingredientPrefs);
@@ -93,7 +93,7 @@ export default function QuestionnaireSummary({
 
       <SummaryBlock label="Your order">
         <p className="typo-body-lead text-sm text-ink">
-          {productName} · {formatPrice(totalEur)}
+          {productName} · {formatPrice(totalGbp)}
           {withJournal ? " · incl. memory journal" : ""}
         </p>
       </SummaryBlock>

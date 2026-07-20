@@ -1,6 +1,8 @@
+import { absoluteUrl } from "./seoMeta";
+
 /** FAQ landing — alignée Original Bespoke, process & proposition MADELEINE. */
 
-export const LANDING_PAGE_CANONICAL = "https://madeleine.uk/";
+export const LANDING_PAGE_CANONICAL = absoluteUrl("/");
 
 export const LANDING_FAQ_INTRO =
   "Clear answers on Original Bespoke, how scent becomes memory, and what to expect when you commission MADELEINE.";

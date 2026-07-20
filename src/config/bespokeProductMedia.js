@@ -1,7 +1,7 @@
-import bottleImg from "../image/bottle.png";
-import bottleHoverImg from "../image/bottle2.png";
-import bottlePaperImg from "../image/bottle+paper.png";
-import libraryImg from "../image/library.png";
+import bottleImg from "../image/bottle.webp";
+import bottleHoverImg from "../image/bottle2.webp";
+import bottlePaperImg from "../image/bottle+paper.webp";
+import libraryImg from "../image/library.webp";
 
 /** 4 photos + 1 vidéo — `public/product/original-bespoke.mp4` */
 export const BESPOKE_PRODUCT_MEDIA = [

@@ -1,10 +1,8 @@
-import bottlePaperImg from "../image/bottle+paper.png";
-import libraryImg from "../image/library.png";
-import sprayImg from "../image/spray.png";
-import {
-  PRE_ORDER_CTA_LABEL,
-  PRE_ORDER_PATH,
-} from "./preOrderMessaging";
+import bottlePaperImg from "../image/bottle+paper.webp";
+import libraryImg from "../image/library.webp";
+import sprayImg from "../image/spray.webp";
+import { PRE_ORDER_CTA_LABEL, PRE_ORDER_PATH } from "./preOrderMessaging";
+import { THE_PROCESS_STEPS } from "./theProcessCopy";
 
 /**
  * Section découverte — How it Works, Collection, Philosophy (onglets).
@@ -25,32 +23,17 @@ export const DISCOVER_TABS_SECTION = {
       label: "How it Works",
       title: "How it works",
       type: "steps",
-      steps: [
-        {
-          n: 1,
-          title: "Order before you leave",
-          body:
-            "Choose your destination. Your MADELEINE formula begins with the journey ahead — composed before you smell it.",
-        },
-        {
-          n: 2,
-          title: "Wear it on the journey",
-          body:
-            "Live the moment in your bespoke scent — one formula, never replicated. When you return, write in the journal to anchor the memory.",
-        },
-        {
-          n: 3,
-          title: "Encode the memory",
-          body:
-            "Years later, one inhalation — the journey comes back in full.",
-        },
-      ],
+      steps: THE_PROCESS_STEPS.map(({ n, title, shortBody }) => ({
+        n,
+        title,
+        body: shortBody,
+      })),
       image: sprayImg,
-      imageAlt: "Vaporisation d’un parfum MADELEINE — geste et brume dorée",
+      imageAlt: "MADELEINE perfume being sprayed — golden mist and gesture",
       cta: {
         kind: "link",
         href: "/the-process",
-        label: "Read more",
+        label: "See the three steps",
       },
     },
     {
@@ -68,7 +51,7 @@ export const DISCOVER_TABS_SECTION = {
       ],
       image: libraryImg,
       imageAlt:
-        "Étagère MADELEINE — flacons gravés de souvenirs, Kyoto, Rome, bougie et carte",
+        "MADELEINE shelf — engraved bottles from Kyoto, Rome, with candle and map",
       cta: {
         kind: "link",
         href: PRE_ORDER_PATH,

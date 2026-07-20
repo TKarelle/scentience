@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useId, useState } from "react";
 import { EXPERT_QUOTES_COPY } from "../../config/landingExpertQuotes";
-import bottleFondImg from "../../image/bottle+fond.png";
+import { IMAGE_DIMENSIONS } from "../../config/imageDimensions";
+import bottleFondImg from "../../image/bottle+fond.webp";
 
 function ExpertQuoteSlide({ expert }) {
   return (
@@ -9,6 +10,8 @@ function ExpertQuoteSlide({ expert }) {
         <img
           src={expert.photo}
           alt={expert.photoAlt}
+          width={IMAGE_DIMENSIONS.expertPortrait.width}
+          height={IMAGE_DIMENSIONS.expertPortrait.height}
           className="expert-quotes__photo"
           loading="lazy"
           decoding="async"
@@ -72,14 +75,17 @@ export default function ExpertQuotesSection() {
 
   return (
     <section
-      className="expert-quotes-section"
+      className="expert-quotes-section perf-defer-section"
       aria-labelledby="expert-quotes-heading"
     >
       <div className="expert-quotes-section__bg" aria-hidden>
         <img
           src={bottleFondImg}
           alt=""
+          width={IMAGE_DIMENSIONS.bottle.width}
+          height={IMAGE_DIMENSIONS.bottle.height}
           className="expert-quotes-section__bg-image"
+          loading="lazy"
           decoding="async"
         />
         <div className="expert-quotes-section__scrim" />

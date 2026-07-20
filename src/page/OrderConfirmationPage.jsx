@@ -115,7 +115,7 @@ export default function OrderConfirmationPage() {
               <dl className="mt-10 space-y-4 border border-wine/15 bg-paper px-6 py-8 text-left sm:px-8">
                 <div>
                   <dt className="font-subtitle text-[10px] uppercase tracking-[0.18em] text-ink/55">
-                    Label
+                    {copy.orderDetails.label}
                   </dt>
                   <dd className="typo-title mt-1 text-base font-normal">
                     {state.order.labelNames}
@@ -123,7 +123,7 @@ export default function OrderConfirmationPage() {
                 </div>
                 <div>
                   <dt className="font-subtitle text-[10px] uppercase tracking-[0.18em] text-ink/55">
-                    Journey
+                    {copy.orderDetails.journey}
                   </dt>
                   <dd className="typo-body-lead mt-1 text-sm sm:text-base">
                     {state.order.journey}
@@ -137,33 +137,33 @@ export default function OrderConfirmationPage() {
                 </div>
                 <div>
                   <dt className="font-subtitle text-[10px] uppercase tracking-[0.18em] text-ink/55">
-                    Total paid
+                    {copy.orderDetails.totalPaid}
                   </dt>
                   <dd className="typo-title mt-1 text-lg text-wine">
                     {formatPrice(state.order.totalGbp)}
                     {state.order.withJournal && (
                       <span className="typo-body-lead block text-sm font-normal text-ink/70">
-                        incl. memory journal
+                        {copy.orderDetails.journalIncluded}
                       </span>
                     )}
                   </dd>
                 </div>
                 <div>
                   <dt className="font-subtitle text-[10px] uppercase tracking-[0.18em] text-ink/55">
-                    Confirmation email
+                    {copy.orderDetails.confirmationEmail}
                   </dt>
                   <dd className="typo-body-lead mt-1 text-sm sm:text-base">
                     {state.order.email}
                     {state.order.emailSent && (
                       <span className="mt-1 block text-xs text-wine">
-                        Sent — check your inbox
+                        {copy.orderDetails.emailSent}
                       </span>
                     )}
                   </dd>
                 </div>
                 <div>
                   <dt className="font-subtitle text-[10px] uppercase tracking-[0.18em] text-ink/55">
-                    Reference
+                    {copy.orderDetails.reference}
                   </dt>
                   <dd className="font-subtitle mt-1 text-xs uppercase tracking-[0.12em] text-ink/70">
                     {state.order.orderId}

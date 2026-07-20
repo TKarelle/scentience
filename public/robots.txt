@@ -1,12 +1,7 @@
 User-agent: *
 Allow: /
 
-# Sitemap
 Sitemap: __SITE_ORIGIN__/sitemap.xml
 
-# Crawl-delay
-Crawl-delay: 1
-
-# Disallow (if needed in future)
-# Disallow: /admin/
-
+# AI / LLM context file
+# https://madeleine.uk/llms.txt

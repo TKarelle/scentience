@@ -4,82 +4,81 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>__SITE_ORIGIN__/</loc>
-    <lastmod>2025-01-01</lastmod>
+    <loc>https://madeleine.uk/</loc>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>__SITE_ORIGIN__/product/original-bespoke</loc>
+    <loc>https://madeleine.uk/product/original-bespoke</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>__SITE_ORIGIN__/the-process</loc>
+    <loc>https://madeleine.uk/the-process</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>__SITE_ORIGIN__/journal</loc>
+    <loc>https://madeleine.uk/journal</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>__SITE_ORIGIN__/article/why-we-always-wanted-to-bottle-our-memories</loc>
-    <lastmod>2026-05-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>__SITE_ORIGIN__/journal/the-proust-project</loc>
-    <lastmod>2026-05-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.72</priority>
-  </url>
-  <url>
-    <loc>__SITE_ORIGIN__/the-science</loc>
+    <loc>https://madeleine.uk/the-science</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.82</priority>
   </url>
   <url>
-    <loc>__SITE_ORIGIN__/science/what-is-your-proust-madeleine</loc>
+    <loc>https://madeleine.uk/science/what-is-your-proust-madeleine</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
   <url>
-    <loc>__SITE_ORIGIN__/contact</loc>
+    <loc>https://madeleine.uk/contact</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>__SITE_ORIGIN__/terms</loc>
+    <loc>https://madeleine.uk/terms</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.35</priority>
   </url>
   <url>
-    <loc>__SITE_ORIGIN__/article/amalfi-coast-golden-hour-building-scent-from-a-coastline</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://madeleine.uk/journal/the-proust-project</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.72</priority>
+  </url>
+  <url>
+    <loc>https://madeleine.uk/article/why-we-always-wanted-to-bottle-our-memories</loc>
+    <lastmod>2026-02-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.68</priority>
   </url>
   <url>
-    <loc>__SITE_ORIGIN__/article/why-smell-is-the-only-sense-that-bypasses-the-brains-filter</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://madeleine.uk/article/amalfi-coast-golden-hour-building-scent-from-a-coastline</loc>
+    <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.68</priority>
   </url>
   <url>
-    <loc>__SITE_ORIGIN__/article/how-to-choose-the-perfume-for-your-honeymoon</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://madeleine.uk/article/why-smell-is-the-only-sense-that-bypasses-the-brains-filter</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.68</priority>
+  </url>
+  <url>
+    <loc>https://madeleine.uk/article/how-to-choose-the-perfume-for-your-honeymoon</loc>
+    <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.68</priority>
   </url>
 </urlset>
-

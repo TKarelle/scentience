@@ -1,7 +1,9 @@
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import logoPaperNav from "../../image/logopaper-transparent.png";
+import logoPaperNav from "../../image/logopaper-transparent.webp";
+import { IMAGE_DIMENSIONS } from "../../config/imageDimensions";
 import { LANDING_PRIMARY_NAV } from "../../config/landingNav";
+import { useFocusTrap } from "../../hooks/useFocusTrap";
 import MenuIcon from "../icons/MenuIcon";
 import { BrandMark } from "../typography";
 
@@ -32,8 +34,10 @@ function NavLinks({ className, linkClassName, onNavigate }) {
  */
 export default function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const mobileNavRef = useRef(null);
 
   const closeMobile = useCallback(() => setMobileOpen(false), []);
+  useFocusTrap(mobileOpen, mobileNavRef);
 
   const linkDesktop =
     "nav-link-landing font-normal text-sm whitespace-nowrap underline-offset-4 hover:underline";
@@ -55,8 +59,8 @@ export default function SiteHeader() {
               <img
                 src={logoPaperNav}
                 alt=""
-                width={180}
-                height={180}
+                width={IMAGE_DIMENSIONS.logoNav.width}
+                height={IMAGE_DIMENSIONS.logoNav.height}
                 className="h-[3.25rem] w-auto max-w-[7rem] object-contain object-center opacity-[0.82] sm:h-[3.65rem] sm:max-w-[7.5rem] sm:opacity-[0.85]"
                 decoding="async"
                 aria-hidden
@@ -90,6 +94,7 @@ export default function SiteHeader() {
 
       {mobileOpen && (
         <div
+          ref={mobileNavRef}
           id="landing-mobile-nav"
           className="md:hidden border-t border-ink/10 bg-paper px-4 sm:px-6 pb-5 pt-3"
         >

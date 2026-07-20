@@ -6,7 +6,7 @@ import CloseIcon from "../../icons/CloseIcon";
  */
 export default function QuestionnaireOrderStrip({
   productName,
-  totalEur,
+  totalGbp,
   withJournal,
   onClose,
 }) {
@@ -15,7 +15,7 @@ export default function QuestionnaireOrderStrip({
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
           <p className="questionnaire-order-strip__name">{productName}</p>
-          <p className="questionnaire-order-strip__price">{formatPrice(totalEur)}</p>
+          <p className="questionnaire-order-strip__price">{formatPrice(totalGbp)}</p>
           <p className="questionnaire-order-strip__meta">
             {withJournal ? "Incl. memory journal" : "30 ml · bespoke"}
           </p>

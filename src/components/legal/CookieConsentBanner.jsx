@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-const STORAGE_KEY = "madeleine_cookie_consent";
+import {
+  COOKIE_CONSENT_EVENT,
+  COOKIE_CONSENT_KEY,
+} from "../../config/cookieConsent";
 
 export default function CookieConsentBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     try {
-      const stored = localStorage.getItem(STORAGE_KEY);
+      const stored = localStorage.getItem(COOKIE_CONSENT_KEY);
       if (!stored) setVisible(true);
     } catch {
       setVisible(true);
@@ -17,10 +19,11 @@ export default function CookieConsentBanner() {
 
   function accept() {
     try {
-      localStorage.setItem(STORAGE_KEY, "accepted");
+      localStorage.setItem(COOKIE_CONSENT_KEY, "accepted");
     } catch {
       /* ignore */
     }
+    window.dispatchEvent(new Event(COOKIE_CONSENT_EVENT));
     setVisible(false);
   }
 

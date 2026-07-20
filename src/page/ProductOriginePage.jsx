@@ -16,6 +16,7 @@ import { PRODUCT_FAQ_ITEMS } from "../config/productFaq";
 import {
   BESPOKE_PRODUCT_SEO,
   absoluteUrl,
+  PRODUCT_OG_IMAGE,
   SITE_ORIGIN,
 } from "../config/seoMeta";
 
@@ -36,7 +37,7 @@ function buildProductJsonLd(product) {
       url: `${SITE_ORIGIN}${product.path}`,
       priceCurrency: product.pricing.currency,
       price: product.pricing.baseGbp,
-      availability: "https://schema.org/InStock",
+      availability: "https://schema.org/PreOrder",
     },
   });
 }
@@ -61,7 +62,7 @@ function ProductBespokeMain() {
   const [modalOpen, setModalOpen] = useState(false);
   const [orderOpts, setOrderOpts] = useState({
     withJournal: true,
-    totalEur: product.pricing.baseGbp,
+    totalGbp: product.pricing.baseGbp,
   });
 
   const productJsonLd = useMemo(() => buildProductJsonLd(product), [product]);
@@ -87,7 +88,7 @@ function ProductBespokeMain() {
         open={modalOpen}
         onClose={() => setModalOpen(false)}
         withJournal={orderOpts.withJournal}
-        totalEur={orderOpts.totalEur}
+        totalGbp={orderOpts.totalGbp}
       />
 
       <article className="bg-paper pb-16 pt-28 sm:pb-20 sm:pt-32">
@@ -151,6 +152,8 @@ export default function ProductOriginePage() {
         description={BESPOKE_PRODUCT_SEO.description}
         keywords={BESPOKE_PRODUCT_SEO.keywords}
         canonicalUrl={absoluteUrl(BESPOKE_PRODUCT_SEO.canonicalPath)}
+        ogImage={PRODUCT_OG_IMAGE}
+        ogImageAlt="MADELEINE Original Bespoke — bespoke memory fragrance"
       />
       <ProductBespokeMain />
     </SiteChrome>

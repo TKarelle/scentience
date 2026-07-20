@@ -1,8 +1,14 @@
+import { IMAGE_DIMENSIONS } from "../../config/imageDimensions";
+
 const cx = (...p) => p.filter(Boolean).join(" ");
 
 function StarRow({ rating }) {
   return (
-    <div className="review-card__stars" aria-label={`${rating} out of 5 stars`}>
+    <div
+      className="review-card__stars"
+      role="img"
+      aria-label={`${rating} out of 5 stars`}
+    >
       {Array.from({ length: 5 }, (_, i) => (
         <span
           key={i}
@@ -40,6 +46,8 @@ export default function CustomerReviewCard({
         <img
           src={photo}
           alt={photoAlt || name}
+          width={IMAGE_DIMENSIONS.reviewThumb.width}
+          height={IMAGE_DIMENSIONS.reviewThumb.height}
           className="review-card__photo"
           loading="lazy"
           decoding="async"

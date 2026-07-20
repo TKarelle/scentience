@@ -4,7 +4,7 @@
  */
 
 export const PROUST_MADELEINE_PAGE_COPY = {
-  /** Hero plein écran : fond bag.png, titres, CTA paper, bandeau wine. */
+  /** Hero plein écran : fond bag.webp, titres, CTA paper, bandeau wine. */
   hero: {
     kicker: "The Proust Project",
     titleLine1: "HAS A SCENT EVER BROUGT BACK A MEMORY ?",
@@ -17,12 +17,10 @@ export const PROUST_MADELEINE_PAGE_COPY = {
 
   /** Section feed social — stories puis composer. */
   storiesSectionTitle: "Field stories",
-  
 
   storyForm: {
     title: "Share your story",
-    subtitle:
-      "Quick as a comment — a name, a scent, a few lines. That's it.",
+    subtitle: "Quick as a comment — a name, a scent, a few lines. That's it.",
     composerPrompt: "What scent brought you back?",
     fields: {
       name: {

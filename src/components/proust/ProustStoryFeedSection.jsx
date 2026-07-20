@@ -26,7 +26,7 @@ export default function ProustStoryFeedSection({
         {subtitle ? <p className="proust-feed__subtitle">{subtitle}</p> : null}
         <p className="proust-feed__count">
           {sortedStories.length}{" "}
-          {sortedStories.length === 1 ? "story" : "stories"} 
+          {sortedStories.length === 1 ? "story" : "stories"}
         </p>
       </div>
 

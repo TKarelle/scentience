@@ -1,6 +1,7 @@
 import { useId, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { DISCOVER_TABS_SECTION } from "../../config/landingDiscoverTabs";
+import { IMAGE_DIMENSIONS } from "../../config/imageDimensions";
 import { PRE_ORDER_PATH } from "../../config/preOrderMessaging";
 import { trackEvent } from "../../lib/analytics";
 import PhilosophyTypewriterQuote from "./PhilosophyTypewriterQuote";
@@ -141,6 +142,9 @@ export default function DiscoverTabsSection() {
               key={activeTab.id}
               src={activeTab.image}
               alt={activeTab.imageAlt}
+              width={IMAGE_DIMENSIONS.spray.width}
+              height={IMAGE_DIMENSIONS.spray.height}
+              sizes="(min-width: 1024px) 50vw, 0px"
               className="discover-tabs-section__image"
               loading="lazy"
               decoding="async"

@@ -1,16 +1,30 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import CraftPitchSection from "../components/landing/CraftPitchSection";
-import DiscoverTabsSection from "../components/landing/DiscoverTabsSection";
-import FAQSection from "../components/landing/FAQSection";
-import JourneyWaitSection from "../components/landing/JourneyWaitSection";
 import LandingHero from "../components/landing/LandingHero";
-import NotForEveryoneSection from "../components/landing/NotForEveryoneSection";
-import ExpertQuotesSection from "../components/landing/ExpertQuotesSection";
-import CustomerReviewsSection from "../components/landing/CustomerReviewsSection";
 import SiteChrome from "../components/layout/SiteChrome";
 import SyncPageSeo from "../components/seo/SyncPageSeo";
-import { HOME_PAGE_SEO, absoluteUrl } from "../config/seoMeta";
+import LazySectionFallback from "../components/ui/LazySectionFallback";
+import { HOME_PAGE_SEO, absoluteUrl, DEFAULT_OG_IMAGE } from "../config/seoMeta";
+
+const CraftPitchSection = lazy(
+  () => import("../components/landing/CraftPitchSection"),
+);
+const CustomerReviewsSection = lazy(
+  () => import("../components/landing/CustomerReviewsSection"),
+);
+const DiscoverTabsSection = lazy(
+  () => import("../components/landing/DiscoverTabsSection"),
+);
+const NotForEveryoneSection = lazy(
+  () => import("../components/landing/NotForEveryoneSection"),
+);
+const ExpertQuotesSection = lazy(
+  () => import("../components/landing/ExpertQuotesSection"),
+);
+const JourneyWaitSection = lazy(
+  () => import("../components/landing/JourneyWaitSection"),
+);
+const FAQSection = lazy(() => import("../components/landing/FAQSection"));
 
 function LandingMain() {
   const location = useLocation();
@@ -31,19 +45,33 @@ function LandingMain() {
     <main>
       <LandingHero />
 
-      <CraftPitchSection />
+      <Suspense fallback={<LazySectionFallback minHeight="min-h-[32rem]" />}>
+        <CraftPitchSection />
+      </Suspense>
 
-      <CustomerReviewsSection />
+      <Suspense fallback={<LazySectionFallback minHeight="min-h-[24rem]" />}>
+        <CustomerReviewsSection />
+      </Suspense>
 
-      <DiscoverTabsSection />
+      <Suspense fallback={<LazySectionFallback minHeight="min-h-[36rem]" />}>
+        <DiscoverTabsSection />
+      </Suspense>
 
-      <NotForEveryoneSection />
+      <Suspense fallback={<LazySectionFallback minHeight="min-h-[20rem]" />}>
+        <NotForEveryoneSection />
+      </Suspense>
 
-      <ExpertQuotesSection />
+      <Suspense fallback={<LazySectionFallback minHeight="min-h-[40rem]" />}>
+        <ExpertQuotesSection />
+      </Suspense>
 
-      <JourneyWaitSection />
+      <Suspense fallback={<LazySectionFallback minHeight="min-h-[52rem]" />}>
+        <JourneyWaitSection />
+      </Suspense>
 
-      <FAQSection />
+      <Suspense fallback={<LazySectionFallback minHeight="min-h-[28rem]" />}>
+        <FAQSection />
+      </Suspense>
     </main>
   );
 }
@@ -56,6 +84,8 @@ export default function MADELEINELanding() {
         description={HOME_PAGE_SEO.description}
         keywords={HOME_PAGE_SEO.keywords}
         canonicalUrl={absoluteUrl(HOME_PAGE_SEO.canonicalPath)}
+        ogImage={DEFAULT_OG_IMAGE}
+        ogImageAlt="MADELEINE bespoke fragrance — hero banner"
       />
       <LandingMain />
     </SiteChrome>

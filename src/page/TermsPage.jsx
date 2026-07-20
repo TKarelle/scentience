@@ -48,6 +48,8 @@ export default function TermsPage() {
         description={TERMS_PAGE_SEO.description}
         keywords={TERMS_PAGE_SEO.keywords}
         canonicalUrl={absoluteUrl(TERMS_PAGE_SEO.canonicalPath)}
+        ogImage={TERMS_PAGE_SEO.ogImage}
+        ogImageAlt="MADELEINE bespoke fragrance — hero banner"
       />
       <main className="min-h-screen bg-paper pb-24 pt-28 sm:pt-32">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">

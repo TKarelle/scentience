@@ -1,7 +1,62 @@
+import { useState } from "react";
 import PreOrderCtaLink from "../cta/PreOrderCtaLink";
 import PreOrderStatus from "../cta/PreOrderStatus";
 
 const cx = (...p) => p.filter(Boolean).join(" ");
+
+function MediaImage({ src, alt, className, width, height, loading = "lazy", sizes }) {
+  return (
+    <img
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      sizes={sizes}
+      className={className}
+      loading={loading}
+      decoding="async"
+    />
+  );
+}
+
+function HoverSwapFigure({ image, figureClassName }) {
+  const [hoverReady, setHoverReady] = useState(false);
+
+  function enableHover() {
+    if (!image.hoverSrc || hoverReady) return;
+    setHoverReady(true);
+  }
+
+  return (
+    <figure
+      className={cx(
+        "split-media-figure split-media-figure--hover-swap",
+        figureClassName,
+      )}
+      onMouseEnter={enableHover}
+      onFocus={enableHover}
+    >
+      <MediaImage
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+        sizes="(min-width: 1024px) 28rem, 100vw"
+        className="split-media-figure__default h-full w-full object-cover"
+      />
+      {hoverReady && image.hoverSrc ? (
+        <MediaImage
+          src={image.hoverSrc}
+          alt=""
+          width={image.hoverWidth ?? image.width}
+          height={image.hoverHeight ?? image.height}
+          className="split-media-figure__hover h-full w-full object-cover"
+          loading="lazy"
+        />
+      ) : null}
+    </figure>
+  );
+}
 
 /**
  * Bloc mobile-first : média + texte (Your collection, Craft, Process ingredients/label, etc.).
@@ -17,49 +72,23 @@ export default function SplitMediaSection({
   showPreOrderCta = false,
   figureClassName,
   cta,
-  /** Colonne texte : sur desktop, `top` = contenu en haut (sans `headingCentered`) ; `center` = centré verticalement dans la hauteur de la photo. Avec `headingCentered`, le bloc est toujours centré verticalement face à l’image. */
   contentVerticalAlign = "center",
-  /** Titre + sous-titre centrés dans la colonne (le corps reste lisible en dessous). */
   headingCentered = false,
-  /** `id` du titre — `aria-labelledby` sur la section si renseigné. */
   titleId,
-  /** Calque décoratif (ex. filigrane page Process). */
   overlay = null,
   className = "",
-  /** Ancrage (ex. `collection` pour la nav). */
   id,
 }) {
   const figure = image.hoverSrc ? (
-    <figure
-      className={cx(
-        "split-media-figure split-media-figure--hover-swap",
-        figureClassName,
-      )}
-    >
-      <img
-        src={image.src}
-        alt={image.alt}
-        className="split-media-figure__default h-full w-full object-cover"
-        loading="lazy"
-        decoding="async"
-      />
-      <img
-        src={image.hoverSrc}
-        alt=""
-        aria-hidden
-        className="split-media-figure__hover h-full w-full object-cover"
-        loading="lazy"
-        decoding="async"
-      />
-    </figure>
+    <HoverSwapFigure image={image} figureClassName={figureClassName} />
   ) : (
     <figure className={cx("split-media-figure", figureClassName)}>
-      <img
+      <MediaImage
         src={image.src}
         alt={image.alt}
+        width={image.width}
+        height={image.height}
         className="h-full w-full object-cover"
-        loading="lazy"
-        decoding="async"
       />
     </figure>
   );
@@ -78,38 +107,33 @@ export default function SplitMediaSection({
 
   const titleDefaultClass = "split-media-heading";
 
-  /** Desktop : colonne texte = hauteur de la ligne (souvent celle de la photo), contenu centré sauf si explicitement top. */
   const textColumnJustify =
     headingCentered || contentVerticalAlign !== "top"
       ? "lg:justify-center"
       : "lg:justify-start";
 
-  const headingBlock =
-    headingCentered ? (
-      <div className="w-full space-y-3">
-        <h2
-          id={titleId}
-          className={cx(
-            titleClassName ?? titleDefaultClass,
-            "w-full text-center",
-          )}
-        >
-          {title}
-        </h2>
-        {subtitle != null && (
-          <div className="flex w-full justify-center">
-            <div className="min-w-0 max-w-xl">{subtitle}</div>
-          </div>
-        )}
-      </div>
-    ) : (
-      <>
-        <h2 id={titleId} className={titleClassName ?? titleDefaultClass}>
-          {title}
-        </h2>
-        {subtitle != null && <div className="min-w-0">{subtitle}</div>}
-      </>
-    );
+  const headingBlock = headingCentered ? (
+    <div className="w-full space-y-3">
+      <h2
+        id={titleId}
+        className={cx(titleClassName ?? titleDefaultClass, "w-full text-center")}
+      >
+        {title}
+      </h2>
+      {subtitle != null && (
+        <div className="flex w-full justify-center">
+          <div className="min-w-0 max-w-xl">{subtitle}</div>
+        </div>
+      )}
+    </div>
+  ) : (
+    <>
+      <h2 id={titleId} className={titleClassName ?? titleDefaultClass}>
+        {title}
+      </h2>
+      {subtitle != null && <div className="min-w-0">{subtitle}</div>}
+    </>
+  );
 
   const contentInner = (
     <div className="flex flex-col gap-6 lg:gap-8">
@@ -174,9 +198,7 @@ export default function SplitMediaSection({
   );
 
   const sectionProps =
-    titleId != null && titleId !== ""
-      ? { "aria-labelledby": titleId }
-      : {};
+    titleId != null && titleId !== "" ? { "aria-labelledby": titleId } : {};
 
   return (
     <section

@@ -1,6 +1,7 @@
-import logoPaper from "../../image/logopaper-transparent.png";
-import logoWine from "../../image/logowine-transparent.png";
-import logoBlack from "../../image/logoblack-transparent.png";
+import logoPaper from "../../image/logopaper-transparent.webp";
+import logoWine from "../../image/logowine-transparent.webp";
+import logoBlack from "../../image/logoblack-transparent.webp";
+import { IMAGE_DIMENSIONS } from "../../config/imageDimensions";
 
 const SRC = {
   paper: logoPaper,
@@ -34,6 +35,8 @@ export default function SectionLogoWatermark({
       <img
         src={src}
         alt=""
+        width={IMAGE_DIMENSIONS.logoNav.width}
+        height={IMAGE_DIMENSIONS.logoNav.height}
         className={imgClassName ?? defaultImg}
         loading="lazy"
         decoding="async"

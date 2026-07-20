@@ -41,6 +41,15 @@ export const ORDER_CONFIRMATION_COPY = {
     "Didn't receive it within a few minutes? Check your spam folder or contact Info@madeleine.uk with your reference below.",
   nextSteps:
     "Your fragrance is composed to order after we review your brief. Standard delivery is 5–7 business days from dispatch.",
+  orderDetails: {
+    label: "Label",
+    journey: "Journey",
+    totalPaid: "Total paid",
+    journalIncluded: "incl. memory journal",
+    confirmationEmail: "Confirmation email",
+    emailSent: "Sent — check your inbox",
+    reference: "Reference",
+  },
 };
 
 export const BESPOKE_JOURNEY_FIELDS = {
