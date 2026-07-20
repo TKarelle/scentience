@@ -8,7 +8,7 @@ import bannerImg from "../../image/banner.png";
  * Hero avec image fixe et carte pre-order.
  */
 export default function LandingHero() {
-  const { card } = LANDING_HERO_COPY;
+  const { headline, card } = LANDING_HERO_COPY;
 
   return (
     <section className="hero-section" aria-labelledby="landing-hero-heading">
@@ -25,17 +25,26 @@ export default function LandingHero() {
         <div className="hero-section__headline-wrap">
           <h1 id="landing-hero-heading" className="hero-carousel-headline">
             <span className="hero-carousel-headline__main">
-              Your best moments deserve a bespoke scent.
+              {headline.lead}
+              <span className="hero-carousel-headline__keep">
+                {headline.keepBefore}
+                <span className="hero-carousel-headline__highlight">
+                  {headline.highlight}
+                </span>
+                {headline.keepAfter}
+              </span>
             </span>
-            <span className="hero-carousel-headline__sub">
-              Let&apos;s create it.
-            </span>
+            <span className="hero-carousel-headline__sub">{headline.sub}</span>
           </h1>
+        </div>
+
+        <div className="hero-section__cta-mobile lg:hidden">
+          <PreOrderCtaLink fullWidth variant="on-wine" />
         </div>
 
         <Card
           as="aside"
-          className="hero-section__card"
+          className="hero-section__card hidden lg:block"
           aria-label="Pre-order Original Bespoke"
         >
           <div className="space-y-5">

@@ -23,7 +23,7 @@ export const HOME_PAGE_SEO = {
 export const JOURNAL_INDEX_SEO = {
   title: "The journal | MADELEINE",
   description:
-    "Essays and science on scent, memory, and travel—from virgin molecules to Scent-Mapping. Stories from the olfactory library.",
+    "Articles and science on scent, memory, and travel—from virgin molecules to Scent-Mapping. Stories from the olfactory library.",
   keywords:
     "MADELEINE journal, olfactory memory, scent and memory, perfume memory, custom fragrance stories",
   canonicalPath: "/journal",
@@ -41,7 +41,7 @@ export const THE_PROCESS_SEO = {
 export const BESPOKE_PRODUCT_SEO = {
   title: "Original Bespoke — 30 ml memory fragrance | MADELEINE",
   description:
-    "Original Bespoke: 30 ml journey-built formula, optional 20-page journal, from £100. Free delivery · 5–7 business days. 247+ commissions · 4.9★.",
+    "Original Bespoke: 30 ml journey-built formula, optional 20-page journal, from £100. Free UK delivery · 5–7 business days. 247+ commissions · 4.9★.",
   keywords:
     "MADELEINE Original Bespoke, bespoke fragrance 30ml, memory perfume, custom fragrance UK, honeymoon perfume, personalized perfume, luxury custom perfume",
   canonicalPath: "/product/original-bespoke",

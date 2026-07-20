@@ -6,8 +6,8 @@ import FAQSection from "../components/landing/FAQSection";
 import JourneyWaitSection from "../components/landing/JourneyWaitSection";
 import LandingHero from "../components/landing/LandingHero";
 import NotForEveryoneSection from "../components/landing/NotForEveryoneSection";
-import ProofTrustSection from "../components/landing/ProofTrustSection";
-import SharedStoriesSection from "../components/landing/SharedStoriesSection";
+import ExpertQuotesSection from "../components/landing/ExpertQuotesSection";
+import CustomerReviewsSection from "../components/landing/CustomerReviewsSection";
 import SiteChrome from "../components/layout/SiteChrome";
 import SyncPageSeo from "../components/seo/SyncPageSeo";
 import { HOME_PAGE_SEO, absoluteUrl } from "../config/seoMeta";
@@ -33,15 +33,15 @@ function LandingMain() {
 
       <CraftPitchSection />
 
-      <SharedStoriesSection />
+      <CustomerReviewsSection />
 
       <DiscoverTabsSection />
 
       <NotForEveryoneSection />
 
-      <JourneyWaitSection />
+      <ExpertQuotesSection />
 
-      <ProofTrustSection />
+      <JourneyWaitSection />
 
       <FAQSection />
     </main>

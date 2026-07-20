@@ -52,20 +52,22 @@ function TheScienceMain() {
         </div>
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-32 lg:px-8 lg:pb-24">
-          <p className="typewriter-face text-xs font-normal uppercase tracking-[0.14em] text-ink sm:text-sm">
-            {hero.kicker}
-          </p>
-          <h1
-            id="science-hero-heading"
-            className="typo-title mt-4 max-w-3xl text-xl font-light uppercase leading-snug tracking-[0.06em] text-wine sm:mt-5 sm:text-2xl sm:leading-snug md:text-3xl md:leading-snug lg:text-4xl lg:tracking-[0.05em]"
-          >
-            {hero.title}
-          </h1>
-          <p className="typewriter-face mt-5 max-w-xl text-sm font-normal normal-case leading-relaxed text-ink/88 sm:mt-6 sm:text-base">
-            {hero.subtitle}
-          </p>
-          <div className="mt-10">
-            <PreOrderCtaLink className="w-full max-w-xs sm:w-auto" />
+          <div className="card-fill-paper w-full max-w-3xl px-8 py-10 shadow-xl backdrop-blur-sm sm:px-10 sm:py-12">
+            <p className="typewriter-face text-xs font-normal uppercase tracking-[0.14em] text-ink sm:text-sm">
+              {hero.kicker}
+            </p>
+            <h1
+              id="science-hero-heading"
+              className="typo-title mt-4 max-w-3xl text-xl font-light uppercase leading-snug tracking-[0.06em] text-wine sm:mt-5 sm:text-2xl sm:leading-snug md:text-3xl md:leading-snug lg:text-4xl lg:tracking-[0.05em]"
+            >
+              {hero.title}
+            </h1>
+            <p className="typo-body-lead mt-5 max-w-xl sm:mt-6">
+              {hero.subtitle}
+            </p>
+            <div className="mt-10">
+              <PreOrderCtaLink className="w-full max-w-xs sm:w-auto" />
+            </div>
           </div>
         </div>
       </header>

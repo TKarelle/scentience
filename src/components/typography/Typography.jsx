@@ -22,17 +22,3 @@ export function BrandMark({
     </Tag>
   );
 }
-
-/** Sous-titre TLWG (ex. ligne sous le logo) */
-export function Subtitle({
-  as: Tag = "p",
-  className = "",
-  children,
-  ...props
-}) {
-  return (
-    <Tag className={cx("typo-subtitle", className)} {...props}>
-      {children}
-    </Tag>
-  );
-}

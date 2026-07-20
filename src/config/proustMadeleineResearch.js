@@ -1,6 +1,6 @@
 /**
  * The Project Proust — page éditoriale / recherche.
- * Les cartes témoignages réutilisent `SHARED_STORIES_COPY.stories` (source unique).
+ * Field stories : `SHARED_STORIES_COPY.stories` (indépendant des avis landing).
  */
 
 export const PROUST_MADELEINE_PAGE_COPY = {
@@ -15,39 +15,42 @@ export const PROUST_MADELEINE_PAGE_COPY = {
     ctaHref: "#proust-contribute",
   },
 
-  /** Titre de section ; le contenu des cartes = `SHARED_STORIES_COPY.stories`. */
+  /** Section feed social — stories puis composer. */
   storiesSectionTitle: "Field stories",
+  
 
   storyForm: {
     title: "Share your story",
     subtitle:
-      "Three fields — same structure as the field stories above. A few lines are enough.",
+      "Quick as a comment — a name, a scent, a few lines. That's it.",
+    composerPrompt: "What scent brought you back?",
     fields: {
       name: {
         label: "Your name",
-        placeholder: "e.g. Elena — or first name only",
+        placeholder: "First name or nickname",
       },
       scent: {
         label: "The scent",
-        placeholder: "e.g. violet soap, rain on hot pavement, his cedar cologne…",
+        placeholder: "e.g. violet soap, rain on pavement…",
       },
       story: {
         label: "What came back",
         placeholder:
-          "Where were you? What returned — a room, a face, a whole journey?",
+          "What scent hit you — and where did it take you? A room, a face, a whole journey…",
       },
       consent:
         "I agree MADELEINE may contact me about research use. I have read the",
     },
     excerptMinChars: 20,
-    submitLabel: "Send via email",
+    excerptMaxChars: 280,
+    submitLabel: "Share story",
     emailTo: "Info@madeleine.uk",
     emailSubject: "[Project Proust] Story",
   },
 
   crossLinks: {
     science: { to: "/the-science", label: "The science" },
-    essay: {
+    article: {
       to: "/journal/the-proust-project",
       label: "Long read: The Proust Project",
     },

@@ -1,5 +1,8 @@
 import lemonPerfumeImage from "../image/lemon+perfume.png";
-import memoriesImage from "../image/memories.png";
+import libraryImage from "../image/library.png";
+import albumImage from "../image/album.png";
+import scienceImage from "../image/science.png";
+import justMarriedImage from "../image/justmarried.png";
 
 /**
  * Source unique des fiches journal (slug alignés sur `page/article.jsx`).
@@ -15,7 +18,7 @@ export const JOURNAL_ENTRIES_ALL = [
       "From Swann's Way to the limbic system: Proust named a neurological collision—proof that scent replays memory in its original purity, not as document.",
     date: "April 2026",
     category: "Science",
-    image: memoriesImage,
+    image: libraryImage,
   },
   {
     slug: "why-we-always-wanted-to-bottle-our-memories",
@@ -24,7 +27,7 @@ export const JOURNAL_ENTRIES_ALL = [
       "I once looked at a photo of a trip I loved and felt absolutely nothing. Images preserved the forms, but allowed the breath to evaporate — until scent-mapping offered another path.",
     date: "February 12, 2026",
     category: "Editorial",
-    image: memoriesImage,
+    image: albumImage,
   },
   {
     slug: "amalfi-coast-golden-hour-building-scent-from-a-coastline",
@@ -42,7 +45,7 @@ export const JOURNAL_ENTRIES_ALL = [
       "Every other sense passes through the thalamus. Smell does not. Here is what that means for memory — and for MADELEINE.",
     date: "April 2026",
     category: "Science",
-    image: lemonPerfumeImage,
+    image: scienceImage,
   },
   {
     slug: "how-to-choose-the-perfume-for-your-honeymoon",
@@ -51,7 +54,7 @@ export const JOURNAL_ENTRIES_ALL = [
       "Not notes or accords—a protocol for encoding. Your preference matters less than the virgin molecule and the geography of your emotion.",
     date: "April 2026",
     category: "Journal",
-    image: lemonPerfumeImage,
+    image: justMarriedImage,
   },
 ];
 
@@ -95,13 +98,7 @@ export function getJournalGridEntries() {
 
 export const JOURNAL_INTRO =
   "On memory, travel, and the moments worth encoding. " +
-  "Essays, science, and stories from the olfactory library.";
+  "Articles, science, and stories from the olfactory library.";
 
 export const JOURNAL_PULL_QUOTE =
   "I know exactly what that hotel room smelled like. I just can't remember the name of the street.";
-
-/** @deprecated Utiliser `getJournalFeatured()` — conservé pour imports externes éventuels */
-export const JOURNAL_FEATURED = getJournalFeatured();
-
-/** @deprecated Utiliser `getJournalPopularEntries()` */
-export const JOURNAL_SIDEBAR_ESSAYS = getJournalPopularEntries();

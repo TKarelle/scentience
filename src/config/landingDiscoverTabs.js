@@ -7,7 +7,7 @@ import {
 } from "./preOrderMessaging";
 
 /**
- * Section découverte — Philosophie, Collection, How it Works (onglets).
+ * Section découverte — How it Works, Collection, Philosophy (onglets).
  */
 export const DISCOVER_TABS_SECTION = {
   quote: {
@@ -21,20 +21,36 @@ export const DISCOVER_TABS_SECTION = {
   },
   tabs: [
     {
-      id: "philosophy",
-      label: "Our Philosophy",
-      title: "OUR PHILOSOPHY— THE PROUST PROJECT",
-      type: "prose",
-      paragraphs: [
-        "The only perfume you buy before you smell it - created for what it will carry forever. A blank canvas upon which you can give meaning to the scent through association with your experience.",
+      id: "process",
+      label: "How it Works",
+      title: "How it works",
+      type: "steps",
+      steps: [
+        {
+          n: 1,
+          title: "Order before you leave",
+          body:
+            "Choose your destination. Your MADELEINE formula begins with the journey ahead — composed before you smell it.",
+        },
+        {
+          n: 2,
+          title: "Wear it on the journey",
+          body:
+            "Live the moment in your bespoke scent — one formula, never replicated. When you return, write in the journal to anchor the memory.",
+        },
+        {
+          n: 3,
+          title: "Encode the memory",
+          body:
+            "Years later, one inhalation — the journey comes back in full.",
+        },
       ],
-      image: bottlePaperImg,
-      imageAlt:
-        "MADELEINE bottle beside the memory journal — bespoke fragrance ritual",
+      image: sprayImg,
+      imageAlt: "Vaporisation d’un parfum MADELEINE — geste et brume dorée",
       cta: {
         kind: "link",
-        href: "/science/what-is-your-proust-madeleine",
-        label: "WHAT'S YOUR MADELEINE?",
+        href: "/the-process",
+        label: "Read more",
       },
     },
     {
@@ -60,36 +76,20 @@ export const DISCOVER_TABS_SECTION = {
       },
     },
     {
-      id: "process",
-      label: "How it Works",
-      title: "How it works",
-      type: "steps",
-      steps: [
-        {
-          n: 1,
-          title: "Order before you leave",
-          body:
-            "Choose your destination. Your MADELEINE formula begins with the journey ahead — composed before you smell it.",
-        },
-        {
-          n: 2,
-          title: "Wear it on the journey",
-          body:
-            "Live the moment in your bespoke scent. One formula, worn once, never replicated.",
-        },
-        {
-          n: 3,
-          title: "Encode the memory",
-          body:
-            "Journal when you return. Years later, one inhalation — the journey comes back in full.",
-        },
+      id: "philosophy",
+      label: "Our Philosophy",
+      title: "OUR PHILOSOPHY— THE PROUST PROJECT",
+      type: "prose",
+      paragraphs: [
+        "Based on the Proust Phenomenon, scent has a unique ability to evoke vivid, emotional memories. We create bespoke perfumes designed for one purpose: to accompany life's most meaningful moments. Each fragrance is crafted to be worn only for a single occasion, becoming a lasting reminder of the memories made.",
       ],
-      image: sprayImg,
-      imageAlt: "Vaporisation d’un parfum MADELEINE — geste et brume dorée",
+      image: bottlePaperImg,
+      imageAlt:
+        "MADELEINE bottle beside the memory journal — bespoke fragrance ritual",
       cta: {
         kind: "link",
-        href: "/the-process",
-        label: "Read more",
+        href: "/science/what-is-your-proust-madeleine",
+        label: "WHAT'S YOUR MADELEINE?",
       },
     },
   ],

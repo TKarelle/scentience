@@ -36,7 +36,7 @@ export const THE_SCIENCE_SCENT_MAPPING = {
     "Modernity delegates memory to the retina. We accumulate pixels, believing volume can arrest time — yet an image freezes a scene and lets its breath evaporate.",
     "MADELEINE merges haute parfumerie with neuroscience. At the zenith of your emotion — a honeymoon, an anniversary, a night that refuses to end — we introduce a virgin molecule to seal the experience. One formula. One journey. Never replicated.",
   ],
-  processCta: { to: "/the-process", label: "See the five steps" },
+  processCta: { to: "/the-process", label: "See the three steps" },
 };
 
 export const THE_SCIENCE_CLOSING_CTA = {

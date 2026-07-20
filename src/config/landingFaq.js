@@ -1,39 +1,51 @@
-/** FAQ landing — même schéma que `theProcessFaq` (`answer` ou `answerParagraphs`). */
+/** FAQ landing — alignée Original Bespoke, process & proposition MADELEINE. */
 
 export const LANDING_PAGE_CANONICAL = "https://madeleine.uk/";
 
 export const LANDING_FAQ_INTRO =
-  "Quick answers on personalized perfume, scent and memory, safety, and how MADELEINE fits your milestones.";
+  "Clear answers on Original Bespoke, how scent becomes memory, and what to expect when you commission MADELEINE.";
 
 export const LANDING_FAQ_ITEMS = [
   {
-    id: "dedicated-scent-for-memory",
-    question: "Why don't I use my own perfume?",
+    id: "what-is-original-bespoke",
+    question: "What is Original Bespoke?",
     answer:
-      "Using a dedicated scent creates a unique memory association that's exclusive to your special moment. This ensures the fragrance becomes intrinsically linked to your honeymoon memories.",
+      "Original Bespoke is a 30 ml fragrance composed exclusively from your questionnaire — one formula for one journey, never replicated. You commission it before you leave; we build it from your destination, moment, and scent preferences.",
   },
   {
-    id: "forget-perfume-details",
-    question: "What if I forget what the perfume was?",
+    id: "buy-before-smell",
+    question: "Why do I buy the perfume before I smell it?",
     answer:
-      "Your order confirmation email includes your journey details and formula reference. Keep your MADELEINE bottle and optional memory journal together — the label and journal anchor the scent to the moment.",
+      "Because the scent is meant to be empty of meaning until you wear it on the journey. A blank canvas creates a clean memory association with that moment alone — not with a shop trial or everyday wear.",
   },
   {
-    id: "guaranteed-to-work",
-    question: "Is it guaranteed to work?",
+    id: "how-it-works",
+    question: "How does the process work?",
     answer:
-      "While individual experiences may vary, research shows that scent-memory associations are one of the strongest memory triggers. We provide guidance on how to create these associations effectively.",
+      "Order before you leave, complete the guided brief (journey first, then scent preferences), wear your formula through the trip, and optionally write in the memory journal when you return. Years later, one inhalation can bring the whole journey back — the same three steps as on How it Works.",
   },
   {
-    id: "safe-with-children",
-    question: "Is it safe for use with children?",
+    id: "formula-unique",
+    question: "Is my fragrance really unique?",
     answer:
-      "Our perfumes follow IFRA/UE/UK compliance standards. We recommend patch testing and consulting with a healthcare professional if you have concerns about children using fragrances.",
+      "Yes. Each composition is built for one person and one journey. It is not a catalogue scent and will not be sold or remade for anyone else.",
   },
   {
-    id: "gap-year-or-other-moments",
-    question: "Could I use this for my gap year?",
+    id: "who-for",
+    question: "Who is MADELEINE for?",
     answer:
-      "Absolutely! MADELEINE is perfect for any significant life moment you want to preserve - whether it's a honeymoon, gap year, anniversary, or any other memorable experience.",
+      "For people who want to preserve a specific chapter — honeymoons, weddings, anniversaries, milestone trips — not everyday compliments. One moment. One scent. Forever.",
+  },
+  {
+    id: "memory-journal",
+    question: "What is the memory journal?",
+    answer:
+      "An optional 20-page journal that travels with your bottle. After the journey, you write what photographs cannot hold. The memory is encoded twice: in the fragrance you wore, and in your own words.",
+  },
+  {
+    id: "price-shipping-returns",
+    question: "What about price, shipping, and returns?",
+    answer:
+      "Original Bespoke starts from £100 for 30 ml; the memory journal is an optional add-on. Shipping is free to the UK, typically 5–7 business days from dispatch. Because each formula is made to order from your brief, returns and exchanges are not accepted once production begins.",
   },
 ];

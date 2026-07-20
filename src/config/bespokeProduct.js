@@ -47,8 +47,8 @@ export const BESPOKE_PRODUCT = {
   delivery: {
     heading: "Home delivery",
     bullets: [
-      "Free standard shipping on every Original Bespoke order",
-      "5–7 business days from dispatch (UK & EU)",
+      "Free standard shipping to the UK on every Original Bespoke order",
+      "5–7 business days from dispatch (UK)",
       "Tracked parcel · composed to order after your brief is received",
     ],
   },

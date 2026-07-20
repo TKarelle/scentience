@@ -87,10 +87,7 @@ export default function DiscoverTabsSection() {
       aria-labelledby={`${baseId}-quote`}
     >
       <div className="discover-tabs-section__inner mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
-        <div
-          id={`${baseId}-quote`}
-          className="discover-tabs-section__quote"
-        >
+        <div id={`${baseId}-quote`} className="discover-tabs-section__quote">
           <PhilosophyTypewriterQuote parts={quote.parts} />
         </div>
 

@@ -150,7 +150,7 @@ export const TERMS_SECTIONS = [
     blocks: [
       {
         type: "p",
-        text: "Original Bespoke orders include free standard shipping to the UK and EU.",
+        text: "Original Bespoke orders include free standard shipping to the UK.",
       },
       {
         type: "ul",

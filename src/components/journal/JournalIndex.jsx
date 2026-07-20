@@ -8,13 +8,13 @@ import {
 } from "../../config/journalArticles";
 import { getArticlePath } from "../../config/seoMeta";
 
-function ReadEssayLink({ slug, className = "" }) {
+function ReadArticleLink({ slug, className = "" }) {
   return (
     <Link
       to={getArticlePath(slug)}
       className={`font-subtitle text-[10px] uppercase tracking-[0.16em] text-wine transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-wine/35 ${className}`}
     >
-      Read the essay →
+      Read the article →
     </Link>
   );
 }
@@ -53,7 +53,7 @@ function JournalPopularItem({ slug, title, excerpt, date, image }) {
               {date}
             </time>
             <span className="font-subtitle text-[8px] uppercase tracking-[0.14em] text-wine sm:text-[9px] lg:text-[10px]">
-              Read the essay →
+              Read the article →
             </span>
           </div>
         </div>
@@ -113,7 +113,7 @@ function JournalRow({ slug, title, excerpt, date, image, compact = false }) {
               {date}
             </time>
             <span className="font-subtitle text-[10px] uppercase tracking-[0.16em] text-wine">
-              Read the essay →
+              Read the article →
             </span>
           </div>
         </div>
@@ -192,7 +192,7 @@ export default function JournalIndex() {
                   <p className="typo-typewriter-lead text-sm leading-relaxed text-ink/75">
                     Popular picks will appear here.
                   </p>
-                  {featured ? <ReadEssayLink slug={featured.slug} /> : null}
+                  {featured ? <ReadArticleLink slug={featured.slug} /> : null}
                 </>
               )}
             </div>

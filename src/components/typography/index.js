@@ -1,1 +1,1 @@
-export { BrandMark, Subtitle, typewriterFaceClass } from "./Typography.jsx";
+export { BrandMark, typewriterFaceClass } from "./Typography.jsx";

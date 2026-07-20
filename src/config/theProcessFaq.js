@@ -1,11 +1,11 @@
 import { SITE_ORIGIN } from "./seoMeta";
 
-/** FAQ page « The process » — contenu visible + données structurées JSON-LD (cohérent avec theProcessCopy). */
+/** FAQ page « The process » — alignée 3 étapes, Original Bespoke & journal optionnel. */
 
 export const THE_PROCESS_PAGE_CANONICAL = `${SITE_ORIGIN}/the-process`;
 
 export const THE_PROCESS_FAQ_INTRO =
-  "Clear answers about how MADELEINE turns your journey into a one-of-a-kind fragrance — for search, readers, and assistants.";
+  "Clear answers on the three steps, how your formula is composed, and what Original Bespoke includes.";
 
 /**
  * @typedef {{ id: string, question: string, answerParagraphs: string[] }} ProcessFaqItem
@@ -14,62 +14,63 @@ export const THE_PROCESS_FAQ_INTRO =
 /** @type {ProcessFaqItem[]} */
 export const THE_PROCESS_FAQ_ITEMS = [
   {
-    id: "five-steps",
-    question: "What are the five steps from order to encoded memory?",
+    id: "three-steps",
+    question: "What are the three steps?",
     answerParagraphs: [
-      "Order your bottle before you leave, complete your consultation online (emotions, local raw materials, preferences), wear your bespoke fragrance through the journey, write in the memory journal when you return, and keep an encoded memory — years later, a single inhalation can bring the whole journey back.",
+      "1 — Order before you leave: commission Original Bespoke and complete the guided questionnaire (journey first, then scent preferences). Your formula is composed before you smell it.",
+      "2 — Wear it on the journey: live the moment in your bespoke scent — one formula, never replicated. Optionally write in the memory journal when you return.",
+      "3 — Encode the memory: years later, one inhalation can bring the whole journey back.",
+    ],
+  },
+  {
+    id: "buy-before-smell",
+    question: "Why is the perfume composed before I smell it?",
+    answerParagraphs: [
+      "So the scent stays empty of meaning until you wear it on the journey. That blank canvas creates a clean memory association with that moment alone — not with a shop trial or everyday wear.",
     ],
   },
   {
     id: "how-fragrance-created",
-    question: "How is my personalized fragrance actually created?",
+    question: "How is my fragrance actually created?",
     answerParagraphs: [
-      "We treat your destination and moment as the creative brief. Raw materials are chosen to reflect that place, season, and emotional intention — not a catalogue pick list.",
-      "Your formula is distilled once for you; the work is listening, composing, and refining until the scent matches the memory you want to preserve.",
+      "Your destination and moment are the brief. We compose from your questionnaire answers — emotions, note preferences, and materials inspired by the place and season — not from a catalogue.",
+      "The formula is distilled once for you and never remade for anyone else.",
     ],
   },
   {
     id: "formula-unique",
-    question: "Is my formula truly unique — will it ever be sold to someone else?",
+    question: "Is my formula truly unique?",
     answerParagraphs: [
       "Yes. Each composition is built for one journey and one person. It will not be replicated or offered to anyone else.",
     ],
   },
   {
     id: "consultation",
-    question: "What happens during the MADELEINE consultation?",
+    question: "What is the questionnaire?",
     answerParagraphs: [
-      "You complete your brief on the website: destination, emotions, note preferences, and the raw materials of the place. We read every answer and shape your unique formula around the trip — not a catalogue.",
+      "A guided brief on the site: journey details (names, destination, date), then scent preferences. You review your answers and confirm by email. We shape your Original Bespoke formula from that brief alone.",
     ],
   },
   {
     id: "memory-journal",
-    question: "What is the memory journal ritual?",
+    question: "Do I need the memory journal?",
     answerParagraphs: [
-      "After your journey, you write in the journal — anchoring what photographs cannot hold in your own hand.",
-      "The memory is encoded twice: in the bespoke fragrance you wore through the trip, and in the words you leave on the page.",
-    ],
-  },
-  {
-    id: "smell-and-memory",
-    question: "How does smell connect to memory and emotion?",
-    answerParagraphs: [
-      "Smell is routed differently from other senses: it links straight to the amygdala, central to emotional memory, without the same cognitive filtering as vision or language.",
-      "That is why a single note can feel like teleportation — the feeling returns whole. MADELEINE uses that biology intentionally as part of Project Proust.",
+      "No — it is optional. The 20-page journal can travel with your bottle so you can write what photographs cannot hold after the journey.",
+      "With the journal, the memory is encoded twice: in the fragrance you wore, and in your own words.",
     ],
   },
   {
     id: "who-for",
     question: "Who is this process for?",
     answerParagraphs: [
-      "It is for people who want a serious, bespoke fragrance tied to a specific life chapter — honeymoons, anniversaries, milestones, or nights that refuse to end — not mass-market personalization.",
+      "For people who want a bespoke fragrance tied to a specific life chapter — honeymoons, weddings, anniversaries, milestone trips — not everyday compliments or mass-market personalization.",
     ],
   },
   {
     id: "pre-order",
     question: "How do I commission Original Bespoke?",
     answerParagraphs: [
-      "Pre-orders are open on the site. Choose Original Bespoke, complete the guided questionnaire — journey details first, then your scent brief — and place your order by email. We compose your formula from your answers and ship within the week.",
+      "Pre-orders are open. Choose Original Bespoke, complete the questionnaire, and confirm your order. We compose your formula from your answers. Free shipping to the UK — typically 5–7 business days from dispatch. Made to order: returns are not accepted once production begins.",
     ],
   },
 ];

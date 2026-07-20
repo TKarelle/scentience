@@ -1,6 +1,5 @@
 import sprayHero from "../image/spray.png";
 import ingredientImg from "../image/ingedient.png";
-import bottlePaperImg from "../image/bottle+paper.png";
 import SplitMediaSection from "../components/landing/SplitMediaSection";
 import SectionLogoWatermark from "../components/layout/SectionLogoWatermark";
 import ProcessFaqSection from "../components/process/ProcessFaqSection";
@@ -9,10 +8,9 @@ import SyncPageSeo from "../components/seo/SyncPageSeo";
 import PreOrderCtaLink from "../components/cta/PreOrderCtaLink";
 import { THE_PROCESS_SEO, absoluteUrl } from "../config/seoMeta";
 import {
-  THE_PROCESS_AMYGDALA_QUOTE,
+  THE_PROCESS_HELEN_KELLER_QUOTE,
   THE_PROCESS_HERO,
   THE_PROCESS_INGREDIENTS,
-  THE_PROCESS_LABEL,
   THE_PROCESS_STEPS,
 } from "../config/theProcessCopy";
 
@@ -33,14 +31,12 @@ function ProcessStepColumn({ n, title, body }) {
 function TheProcessMain() {
   const hero = THE_PROCESS_HERO;
   const ingredients = THE_PROCESS_INGREDIENTS;
-  const label = THE_PROCESS_LABEL;
   const steps = THE_PROCESS_STEPS;
 
   return (
     <>
-      {/* Hero — même hiérarchie typo que la carte Craft (titre split-media scale, sous-texte typewriter) */}
-      <section
-        className="relative flex min-h-[min(85vh,52rem)] items-start justify-center px-4 pb-16 pt-24 sm:pt-28 lg:pt-32"
+      <header
+        className="relative flex min-h-[min(85vh,48rem)] flex-col justify-end overflow-hidden border-b border-wine/15"
         aria-labelledby="process-hero-heading"
       >
         <div className="absolute inset-0 z-0">
@@ -48,38 +44,45 @@ function TheProcessMain() {
             src={sprayHero}
             alt=""
             className="h-full w-full object-cover object-center"
+            decoding="async"
           />
           <div
-            className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/25 to-amber-950/20"
+            className="absolute inset-0 bg-gradient-to-b from-paper/25 via-paper/10 to-paper/35"
             aria-hidden
           />
         </div>
-        <div className="card-fill-paper relative z-10 w-full max-w-2xl px-8 py-12 text-center shadow-xl backdrop-blur-sm sm:px-12 sm:py-14">
-          <h1 id="process-hero-heading" className="split-media-heading">
-            {hero.title}
-          </h1>
-          <p className="typo-typewriter-lead-max mx-auto mt-6 text-center normal-case">
-            {hero.subtitle}
-          </p>
-        </div>
-      </section>
 
-      {/* 5 étapes */}
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-32 lg:px-8 lg:pb-24">
+          <div className="card-fill-paper w-full max-w-3xl px-8 py-10 shadow-xl backdrop-blur-sm sm:px-10 sm:py-12">
+            <p className="typewriter-face text-xs font-normal uppercase tracking-[0.14em] text-ink sm:text-sm">
+              {hero.kicker}
+            </p>
+            <h1
+              id="process-hero-heading"
+              className="typo-title mt-4 max-w-3xl text-xl font-light uppercase leading-snug tracking-[0.06em] text-wine sm:mt-5 sm:text-2xl sm:leading-snug md:text-3xl md:leading-snug lg:text-4xl lg:tracking-[0.05em]"
+            >
+              {hero.title}
+            </h1>
+            <p className="typo-body-lead mt-5 max-w-xl sm:mt-6">
+              {hero.subtitle}
+            </p>
+            <div className="mt-10">
+              <PreOrderCtaLink className="w-full max-w-xs sm:w-auto" />
+            </div>
+          </div>
+        </div>
+      </header>
+
       <section
         className="border-t border-wine/20 bg-paper"
         aria-labelledby="process-steps-heading"
       >
         <h2 id="process-steps-heading" className="sr-only">
-          Five steps
+          Three steps
         </h2>
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 divide-y divide-wine/25 md:grid-cols-3 md:divide-x md:divide-y-0 md:border-b md:border-wine/25">
-            {steps.slice(0, 3).map((s) => (
-              <ProcessStepColumn key={s.n} {...s} />
-            ))}
-          </div>
-          <div className="grid grid-cols-1 divide-y divide-wine/25 md:grid-cols-2 md:divide-x md:divide-y-0">
-            {steps.slice(3, 5).map((s) => (
+            {steps.map((s) => (
               <ProcessStepColumn key={s.n} {...s} />
             ))}
           </div>
@@ -89,18 +92,29 @@ function TheProcessMain() {
         </div>
       </section>
 
-      {/* Bandeau noir */}
-      <section className="relative isolate overflow-hidden bg-black py-20 sm:py-28 lg:py-32">
+      <section className="relative isolate overflow-hidden bg-black py-10 sm:py-12 lg:py-14">
         <SectionLogoWatermark
           variant="black"
           imgClassName="h-auto w-[min(95vw,40rem)] max-h-[min(85vh,34rem)] object-contain opacity-[0.11] brightness-0 invert sm:opacity-[0.1]"
         />
-        <p className="typewriter-face relative z-10 mx-auto max-w-4xl px-6 text-center text-[11px] font-normal uppercase leading-relaxed tracking-[0.14em] text-paper sm:text-xs sm:tracking-[0.16em] md:text-sm">
-          {THE_PROCESS_AMYGDALA_QUOTE}
-        </p>
+        <blockquote className="relative z-10 mx-auto max-w-3xl px-6 text-center">
+          <p
+            className="font-subtitle text-base font-light italic leading-snug tracking-normal normal-case sm:text-lg"
+            style={{ color: "var(--color-paper)" }}
+          >
+            &ldquo;{THE_PROCESS_HELEN_KELLER_QUOTE.text}&rdquo;
+          </p>
+          <p
+            className="mt-2.5 text-xs font-light tracking-wide sm:text-sm"
+            style={{
+              color: "color-mix(in srgb, var(--color-paper) 78%, transparent)",
+            }}
+          >
+            {THE_PROCESS_HELEN_KELLER_QUOTE.attribution}
+          </p>
+        </blockquote>
       </section>
 
-      {/* The ingredients — même bloc split que Your collection */}
       <SplitMediaSection
         titleId="process-ingredients-heading"
         title={ingredients.title}
@@ -120,32 +134,6 @@ function TheProcessMain() {
             <p className="typo-typewriter-lead pt-2 text-wine">
               {ingredients.closing}
             </p>
-          </>
-        }
-      />
-
-      {/* The ritual — journal */}
-      <SplitMediaSection
-        titleId="process-label-heading"
-        title={label.title}
-        titleClassName="split-media-heading-lg"
-        image={{
-          src: bottlePaperImg,
-          alt: "MADELEINE bottle beside the memory journal after a journey",
-        }}
-        overlay={<SectionLogoWatermark variant="paper" />}
-        reverse
-        headingCentered
-        subtitle={
-          <p className="typo-typewriter-lead-centered">{label.subtitle}</p>
-        }
-        description={
-          <>
-            {label.paragraphs.map((text, i) => (
-              <p key={i} className="typo-body-lead">
-                {text}
-              </p>
-            ))}
           </>
         }
       />
