@@ -21,7 +21,15 @@ function ReadArticleLink({ slug, className = "" }) {
 }
 
 /** Liste compacte pour la colonne droite — tient dans ~1 viewport (desktop). */
-function JournalPopularItem({ slug, title, excerpt, date, datePublished, image, imageAlt }) {
+function JournalPopularItem({
+  slug,
+  title,
+  excerpt,
+  date,
+  datePublished,
+  image,
+  imageAlt,
+}) {
   return (
     <article className="min-h-0 min-w-0 shrink-0">
       <Link
@@ -65,7 +73,16 @@ function JournalPopularItem({ slug, title, excerpt, date, datePublished, image, 
   );
 }
 
-function JournalRow({ slug, title, excerpt, date, datePublished, image, imageAlt, compact = false }) {
+function JournalRow({
+  slug,
+  title,
+  excerpt,
+  date,
+  datePublished,
+  image,
+  imageAlt,
+  compact = false,
+}) {
   return (
     <article>
       <Link

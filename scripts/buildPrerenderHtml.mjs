@@ -17,14 +17,32 @@ function escapeAttr(value) {
     .replace(/</g, "&lt;");
 }
 
-function upsertMetaProperty(html, property, content) {
-  if (!content) return html;
-  const tag = `<meta property="${property}" content="${escapeAttr(content)}" />`;
+/** Remplace une balise meta (single ou multi-ligne) par attribut name ou property. */
+function replaceMetaTag(html, { name, property, content }) {
+  if (content == null || content === "") return html;
+  const attr = name ? "name" : "property";
+  const key = name || property;
+  const escapedKey = key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const pattern = new RegExp(
-    `<meta property="${property.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}" content="[^"]*"\\s*/>`,
+    `<meta\\s+(?:[^>\\n]*\\n\\s*)*${attr}="${escapedKey}"\\s*(?:\\n\\s*)*content="[^"]*"\\s*(?:\\n\\s*)*/>`,
   );
+  const tag = `<meta ${attr}="${key}" content="${escapeAttr(content)}" />`;
   if (pattern.test(html)) return html.replace(pattern, tag);
   return html.replace("</head>", `    ${tag}\n  </head>`);
+}
+
+function replaceLinkTag(html, rel, href) {
+  const escapedRel = rel.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const pattern = new RegExp(
+    `<link\\s+(?:[^>\\n]*\\n\\s*)*rel="${escapedRel}"\\s*(?:\\n\\s*)*href="[^"]*"\\s*(?:\\n\\s*)*/>`,
+  );
+  const tag = `<link rel="${rel}" href="${escapeAttr(href)}" />`;
+  if (pattern.test(html)) return html.replace(pattern, tag);
+  return html.replace("</head>", `    ${tag}\n  </head>`);
+}
+
+function upsertMetaProperty(html, property, content) {
+  return replaceMetaTag(html, { property, content });
 }
 
 function applyPageSeo(template, page) {
@@ -32,77 +50,49 @@ function applyPageSeo(template, page) {
   const ogImage = page.ogImage;
   const ogImageAlt = page.ogImageAlt || page.title;
   const ogType = page.ogType || "website";
-  const robots = page.noindex ? "noindex, nofollow" : "index, follow";
 
-  let html = template;
-  const replacements = [
-    [/<title>[^<]*<\/title>/, `<title>${escapeAttr(page.title)}</title>`],
-    [
-      /name="title" content="[^"]*"/,
-      `name="title" content="${escapeAttr(page.title)}"`,
-    ],
-    [
-      /name="description" content="[^"]*"/,
-      `name="description" content="${escapeAttr(page.description)}"`,
-    ],
-    [
-      /name="keywords" content="[^"]*"/,
-      `name="keywords" content="${escapeAttr(page.keywords || "")}"`,
-    ],
-    [/name="robots" content="[^"]*"/, `name="robots" content="${robots}"`],
-    [
-      /property="og:type" content="[^"]*"/,
-      `property="og:type" content="${escapeAttr(ogType)}"`,
-    ],
-    [
-      /property="og:url" content="[^"]*"/,
-      `property="og:url" content="${escapeAttr(canonicalUrl)}"`,
-    ],
-    [
-      /property="og:title" content="[^"]*"/,
-      `property="og:title" content="${escapeAttr(page.title)}"`,
-    ],
-    [
-      /property="og:description" content="[^"]*"/,
-      `property="og:description" content="${escapeAttr(page.description)}"`,
-    ],
-    [
-      /property="og:image" content="[^"]*"/,
-      `property="og:image" content="${escapeAttr(ogImage)}"`,
-    ],
-    [
-      /property="og:image:alt" content="[^"]*"/,
-      `property="og:image:alt" content="${escapeAttr(ogImageAlt)}"`,
-    ],
-    [
-      /name="twitter:url" content="[^"]*"/,
-      `name="twitter:url" content="${escapeAttr(canonicalUrl)}"`,
-    ],
-    [
-      /name="twitter:title" content="[^"]*"/,
-      `name="twitter:title" content="${escapeAttr(page.title)}"`,
-    ],
-    [
-      /name="twitter:description" content="[^"]*"/,
-      `name="twitter:description" content="${escapeAttr(page.description)}"`,
-    ],
-    [
-      /name="twitter:image" content="[^"]*"/,
-      `name="twitter:image" content="${escapeAttr(ogImage)}"`,
-    ],
-    [
-      /name="twitter:image:alt" content="[^"]*"/,
-      `name="twitter:image:alt" content="${escapeAttr(ogImageAlt)}"`,
-    ],
-    [
-      /rel="canonical" href="[^"]*"/,
-      `rel="canonical" href="${escapeAttr(canonicalUrl)}"`,
-    ],
-  ];
+  let html = template.replace(
+    /<title>[^<]*<\/title>/,
+    `<title>${escapeAttr(page.title)}</title>`,
+  );
 
-  for (const [pattern, replacement] of replacements) {
-    html = html.replace(pattern, replacement);
-  }
+  html = replaceMetaTag(html, { name: "title", content: page.title });
+  html = replaceMetaTag(html, {
+    name: "description",
+    content: page.description,
+  });
+  html = replaceMetaTag(html, {
+    name: "keywords",
+    content: page.keywords || "",
+  });
+  html = replaceMetaTag(html, {
+    name: "robots",
+    content: page.noindex ? "noindex, nofollow" : "index, follow",
+  });
+  html = replaceMetaTag(html, { property: "og:type", content: ogType });
+  html = replaceMetaTag(html, { property: "og:url", content: canonicalUrl });
+  html = replaceMetaTag(html, { property: "og:title", content: page.title });
+  html = replaceMetaTag(html, {
+    property: "og:description",
+    content: page.description,
+  });
+  html = replaceMetaTag(html, { property: "og:image", content: ogImage });
+  html = replaceMetaTag(html, {
+    property: "og:image:alt",
+    content: ogImageAlt,
+  });
+  html = replaceMetaTag(html, { name: "twitter:url", content: canonicalUrl });
+  html = replaceMetaTag(html, { name: "twitter:title", content: page.title });
+  html = replaceMetaTag(html, {
+    name: "twitter:description",
+    content: page.description,
+  });
+  html = replaceMetaTag(html, { name: "twitter:image", content: ogImage });
+  html = replaceMetaTag(html, {
+    name: "twitter:image:alt",
+    content: ogImageAlt,
+  });
+  html = replaceLinkTag(html, "canonical", canonicalUrl);
 
   if (ogType === "article") {
     html = upsertMetaProperty(

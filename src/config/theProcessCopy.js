@@ -24,8 +24,7 @@ export const THE_PROCESS_STEPS = [
   {
     n: 3,
     title: "Encode the memory",
-    shortBody:
-      "Years later, one inhalation — the journey comes back in full.",
+    shortBody: "Years later, one inhalation — the journey comes back in full.",
     body: "In twenty years, a single inhalation is enough. The journey comes back in full. The Proust Project — accomplished.",
   },
 ];

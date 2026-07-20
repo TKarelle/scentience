@@ -7,7 +7,11 @@ import ProcessFaqSection from "../components/process/ProcessFaqSection";
 import SiteChrome from "../components/layout/SiteChrome";
 import SyncPageSeo from "../components/seo/SyncPageSeo";
 import PreOrderCtaLink from "../components/cta/PreOrderCtaLink";
-import { THE_PROCESS_SEO, absoluteUrl, absoluteAssetUrl } from "../config/seoMeta";
+import {
+  THE_PROCESS_SEO,
+  absoluteUrl,
+  absoluteAssetUrl,
+} from "../config/seoMeta";
 import { IMAGE_DIMENSIONS } from "../config/imageDimensions";
 import {
   THE_PROCESS_HELEN_KELLER_QUOTE,

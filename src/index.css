@@ -315,7 +315,12 @@ html.modal-scroll-lock body {
   }
 
   .expert-quotes__affiliation {
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-family:
+      system-ui,
+      -apple-system,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
     @apply text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-wine;
   }
 
@@ -340,7 +345,12 @@ html.modal-scroll-lock body {
 
   .expert-quotes__attribution {
     @apply mt-3 text-[0.6875rem] leading-relaxed sm:text-xs;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-family:
+      system-ui,
+      -apple-system,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
     color: color-mix(in srgb, var(--color-ink) 52%, transparent);
   }
 
@@ -349,7 +359,12 @@ html.modal-scroll-lock body {
   }
 
   .expert-quotes__nav-btn {
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-family:
+      system-ui,
+      -apple-system,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
     @apply text-xs font-medium uppercase tracking-[0.12em] text-wine transition-opacity hover:opacity-70;
   }
 
@@ -367,7 +382,12 @@ html.modal-scroll-lock body {
   }
 
   .expert-quotes__counter {
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-family:
+      system-ui,
+      -apple-system,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
     @apply text-xs tabular-nums;
     color: color-mix(in srgb, var(--color-ink) 48%, transparent);
   }
@@ -459,11 +479,19 @@ html.modal-scroll-lock body {
   }
 
   .proust-post__avatar--blend {
-    background: linear-gradient(145deg, var(--color-wine) 40%, var(--color-mist));
+    background: linear-gradient(
+      145deg,
+      var(--color-wine) 40%,
+      var(--color-mist)
+    );
   }
 
   .proust-composer__avatar {
-    background: linear-gradient(145deg, color-mix(in srgb, var(--color-ink) 72%, transparent), var(--color-ink));
+    background: linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--color-ink) 72%, transparent),
+      var(--color-ink)
+    );
   }
 
   .proust-post__body {
@@ -560,7 +588,9 @@ html.modal-scroll-lock body {
     border-radius: calc(var(--proust-feed-radius) - 0.35rem);
     background: color-mix(in srgb, var(--color-paper) 55%, #fff);
     border: 1px solid color-mix(in srgb, var(--color-ink) 8%, transparent);
-    transition: border-color 160ms ease, box-shadow 160ms ease;
+    transition:
+      border-color 160ms ease,
+      box-shadow 160ms ease;
   }
 
   .proust-composer__textarea-wrap:focus-within {
@@ -596,7 +626,9 @@ html.modal-scroll-lock body {
     border-radius: calc(var(--proust-feed-radius) - 0.35rem);
     background: color-mix(in srgb, var(--color-paper) 40%, #fff);
     border: 1px solid color-mix(in srgb, var(--color-ink) 8%, transparent);
-    transition: border-color 160ms ease, box-shadow 160ms ease;
+    transition:
+      border-color 160ms ease,
+      box-shadow 160ms ease;
   }
 
   .proust-composer__input:focus {
@@ -676,7 +708,11 @@ html.modal-scroll-lock body {
 
   .discover-tabs-section__panel {
     @apply flex h-[30rem] flex-col p-6 sm:h-[32rem] sm:p-8 lg:h-[34rem] lg:p-9;
-    background-color: color-mix(in srgb, var(--color-mist) 38%, var(--color-paper));
+    background-color: color-mix(
+      in srgb,
+      var(--color-mist) 38%,
+      var(--color-paper)
+    );
   }
 
   .discover-tabs-section__tabs {
@@ -860,7 +896,8 @@ html.modal-scroll-lock body {
 
   @media (min-width: 1024px) {
     .science-stats-banner__item:not(:first-child) {
-      border-left: 1px solid color-mix(in srgb, var(--color-paper) 16%, transparent);
+      border-left: 1px solid
+        color-mix(in srgb, var(--color-paper) 16%, transparent);
       padding-left: 1.75rem;
     }
 
@@ -886,9 +923,14 @@ html.modal-scroll-lock body {
   /** The Science — trois piliers (bandeau mist MADELEINE). */
   .science-pillars {
     @apply py-14 sm:py-16 lg:py-20;
-    background-color: color-mix(in srgb, var(--color-mist) 38%, var(--color-paper));
+    background-color: color-mix(
+      in srgb,
+      var(--color-mist) 38%,
+      var(--color-paper)
+    );
     border-top: 1px solid color-mix(in srgb, var(--color-mist) 55%, transparent);
-    border-bottom: 1px solid color-mix(in srgb, var(--color-mist) 55%, transparent);
+    border-bottom: 1px solid
+      color-mix(in srgb, var(--color-mist) 55%, transparent);
   }
 
   .science-pillars__eyebrow {
@@ -915,7 +957,8 @@ html.modal-scroll-lock body {
     }
 
     .science-pillars__cell + .science-pillars__cell {
-      border-left: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+      border-left: 1px solid
+        color-mix(in srgb, var(--color-ink) 12%, transparent);
     }
   }
 
@@ -935,9 +978,14 @@ html.modal-scroll-lock body {
   /** The Science — peer-reviewed (fond teinté + lignes alternées). */
   .science-peer-research {
     @apply py-16 sm:py-20 lg:py-24;
-    background-color: color-mix(in srgb, var(--color-wine) 5%, var(--color-paper));
+    background-color: color-mix(
+      in srgb,
+      var(--color-wine) 5%,
+      var(--color-paper)
+    );
     border-top: 1px solid color-mix(in srgb, var(--color-wine) 14%, transparent);
-    border-bottom: 1px solid color-mix(in srgb, var(--color-wine) 14%, transparent);
+    border-bottom: 1px solid
+      color-mix(in srgb, var(--color-wine) 14%, transparent);
   }
 
   .science-peer-research__header {
@@ -977,11 +1025,19 @@ html.modal-scroll-lock body {
 
   a.science-peer-research__study-title {
     @apply underline underline-offset-4;
-    text-decoration-color: color-mix(in srgb, var(--color-wine) 25%, transparent);
+    text-decoration-color: color-mix(
+      in srgb,
+      var(--color-wine) 25%,
+      transparent
+    );
   }
 
   a.science-peer-research__study-title:hover {
-    text-decoration-color: color-mix(in srgb, var(--color-wine) 60%, transparent);
+    text-decoration-color: color-mix(
+      in srgb,
+      var(--color-wine) 60%,
+      transparent
+    );
   }
 
   .science-peer-research__description {
@@ -1085,7 +1141,8 @@ html.modal-scroll-lock body {
 
   .questionnaire-order-strip {
     flex-shrink: 0;
-    border-bottom: 1px solid color-mix(in srgb, var(--color-wine) 12%, transparent);
+    border-bottom: 1px solid
+      color-mix(in srgb, var(--color-wine) 12%, transparent);
     background: linear-gradient(
       180deg,
       color-mix(in srgb, var(--color-wine) 5%, var(--color-paper)) 0%,
@@ -1208,7 +1265,11 @@ html.modal-scroll-lock body {
   }
 
   .cta-pill:hover:not(:disabled) {
-    background-color: color-mix(in srgb, var(--color-wine) 88%, var(--color-ink));
+    background-color: color-mix(
+      in srgb,
+      var(--color-wine) 88%,
+      var(--color-ink)
+    );
     border-color: color-mix(in srgb, var(--color-wine) 88%, var(--color-ink));
   }
 
@@ -1643,7 +1704,11 @@ html.modal-scroll-lock body {
 
   .cookie-banner__link {
     @apply text-paper underline underline-offset-4 transition-opacity hover:opacity-80;
-    text-decoration-color: color-mix(in srgb, var(--color-mist) 55%, transparent);
+    text-decoration-color: color-mix(
+      in srgb,
+      var(--color-mist) 55%,
+      transparent
+    );
   }
 
   .cookie-banner__actions {
@@ -1707,7 +1772,8 @@ html.modal-scroll-lock body {
 
   .contact-page__success {
     @apply px-6 py-10 text-center sm:px-10 sm:py-12;
-    border-top: 3px solid color-mix(in srgb, var(--color-mist) 70%, var(--color-wine));
+    border-top: 3px solid
+      color-mix(in srgb, var(--color-mist) 70%, var(--color-wine));
   }
 
   .contact-page__back {
