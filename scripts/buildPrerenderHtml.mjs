@@ -6,6 +6,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { createServer } from "vite";
+import { writeSeoStaticFiles } from "./sitemapUtils.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
@@ -142,6 +143,8 @@ async function main() {
   }));
   await vite.close();
 
+  writeSeoStaticFiles(distDir, siteOrigin);
+
   for (const page of pages) {
     const html = applyPageSeo(template, page);
     const relativeDir =
@@ -153,7 +156,9 @@ async function main() {
     fs.writeFileSync(path.join(outDir, "index.html"), html);
   }
 
-  console.log(`Prerender SEO: ${pages.length} HTML shells written to dist/`);
+  console.log(
+    `Prerender SEO: ${pages.length} HTML shells + sitemap/robots written to dist/`,
+  );
 }
 
 main().catch((error) => {
