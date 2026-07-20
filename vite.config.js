@@ -15,6 +15,9 @@ function injectStaticSiteOrigin(siteOrigin) {
 
   return {
     name: "inject-static-site-origin",
+    transformIndexHtml(html) {
+      return withSiteOrigin(html);
+    },
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
         const pathname = req.url?.split("?")[0];
