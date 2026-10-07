@@ -119,9 +119,20 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <div className=" pt-6">
+        <div className="pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <p className="text-xs text-paper font-light">
             © {new Date().getFullYear()} MADELEINE . All rights reserved.
+          </p>
+          <p className="text-xs text-paper/60 font-light">
+            Created by{" "}
+            <a
+              href="https://www.kopio.eu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-4 transition-colors hover:text-paper"
+            >
+              Karelle de Kopio
+            </a>
           </p>
         </div>
       </div>
