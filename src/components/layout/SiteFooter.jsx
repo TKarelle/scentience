@@ -123,7 +123,7 @@ export default function SiteFooter() {
           <p className="text-xs text-paper font-light">
             © {new Date().getFullYear()} MADELEINE . All rights reserved.
           </p>
-          <p className="text-xs text-paper/60 font-light">
+          <p className="text-xs text-paper font-light">
             Created by{" "}
             <a
               href="https://www.kopio.eu/"
