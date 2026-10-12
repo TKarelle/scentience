@@ -54,7 +54,7 @@ export const BESPOKE_PRODUCT = {
   },
 
   returns: {
-    note: "Made to order from your brief — returns and exchanges are not accepted.",
+    note: "Personalised & made to order — no 14-day cooling-off once paid; no returns for change of mind.",
   },
 
   detailPanels: [
@@ -69,14 +69,14 @@ export const BESPOKE_PRODUCT = {
     },
     {
       id: "returns",
-      title: "Bespoke — no returns",
+      title: "Sale & withdrawal",
       paragraphs: [
-        "Original Bespoke is composed exclusively for you from your questionnaire. It cannot be restocked or resold — returns and exchanges are not possible once production begins.",
+        "Your brief today is not a paid order — commissions open next month. Once you pay, Original Bespoke is composed exclusively from your questionnaire. As a personalised product, the statutory 14-day right of withdrawal does not apply. It cannot be restocked or resold — returns and exchanges are not possible once production begins.",
       ],
       bullets: [
         "Personal preference for the scent is not a defect",
         "IFRA / EU / UK compliant · batch tracked",
-        "Statutory rights apply in case of safety issues — see Terms & privacy",
+        "Statutory rights apply for faulty or unsafe goods — see Terms",
       ],
     },
   ],

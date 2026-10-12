@@ -44,13 +44,15 @@ function TabPanelContent({ tab }) {
           <ol className="discover-tabs-section__steps">
             {tab.steps.map((step) => (
               <li key={step.n} className="discover-tabs-section__step">
-                <h3 className="discover-tabs-section__step-title">
-                  <span className="discover-tabs-section__step-num">
-                    {step.n}
-                  </span>
-                  {step.title}
-                </h3>
-                <p className="typo-body-lead">{step.body}</p>
+                <span className="discover-tabs-section__step-num" aria-hidden>
+                  {step.n}
+                </span>
+                <div className="discover-tabs-section__step-copy">
+                  <h3 className="discover-tabs-section__step-title">
+                    {step.title}
+                  </h3>
+                  <p className="discover-tabs-section__step-body">{step.body}</p>
+                </div>
               </li>
             ))}
           </ol>

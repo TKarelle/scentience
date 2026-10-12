@@ -25,6 +25,14 @@ export const BESPOKE_ORDER_CONFIRMATION = {
   closeLabel: "Close",
 };
 
+/** Écran final du questionnaire — brief terminé, ouverture le mois prochain. */
+export const BESPOKE_JOURNEY_COMPLETE = {
+  eyebrow: "Journey complete",
+  title: "Your brief is with us",
+  body: "Thank you — every detail of your journey is safely recorded. Original Bespoke commissions open next month. We'll reach you when the doors open.",
+  closeLabel: "Close",
+};
+
 export const ORDER_CONFIRMATION_COPY = {
   loadingEyebrow: "Confirming payment",
   loadingTitle: "One moment…",

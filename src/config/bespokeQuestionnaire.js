@@ -219,7 +219,7 @@ export const BESPOKE_QUESTIONNAIRE_STEPS = [
     id: "contact",
     shortLabel: "Send",
     title: "Almost done",
-    subtitle: "Enter your email — your order summary opens ready to send.",
+    subtitle: "Leave your email — we'll let you know when commissions open next month.",
     type: "contact",
   },
 ];

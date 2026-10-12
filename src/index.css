@@ -707,7 +707,7 @@ html.modal-scroll-lock body {
   }
 
   .discover-tabs-section__panel {
-    @apply flex h-[30rem] flex-col p-6 sm:h-[32rem] sm:p-8 lg:h-[34rem] lg:p-9;
+    @apply flex min-h-[28rem] flex-col p-6 sm:min-h-[30rem] sm:p-8 lg:min-h-[34rem] lg:p-9;
     background-color: color-mix(
       in srgb,
       var(--color-mist) 38%,
@@ -716,7 +716,7 @@ html.modal-scroll-lock body {
   }
 
   .discover-tabs-section__tabs {
-    @apply mb-6 shrink-0 flex w-full gap-1 border-b pb-0;
+    @apply mb-5 shrink-0 flex w-full gap-1 border-b pb-0 sm:mb-6;
     border-color: color-mix(in srgb, var(--color-wine) 18%, transparent);
   }
 
@@ -751,11 +751,11 @@ html.modal-scroll-lock body {
   }
 
   .discover-tabs-section__panels {
-    @apply relative min-h-0 flex-1;
+    @apply relative flex min-h-0 flex-1 flex-col;
   }
 
   .discover-tabs-section__panel-view {
-    @apply absolute inset-0 flex flex-col;
+    @apply flex flex-1 flex-col;
   }
 
   .discover-tabs-section__panel-view[hidden] {
@@ -763,7 +763,15 @@ html.modal-scroll-lock body {
   }
 
   .discover-tabs-section__panel-body {
-    @apply min-h-0 flex-1 overflow-y-auto pr-1;
+    @apply flex-1 overflow-y-auto overscroll-contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .discover-tabs-section__panel-body::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
   }
 
   .discover-tabs-section__title {
@@ -775,24 +783,53 @@ html.modal-scroll-lock body {
   }
 
   .discover-tabs-section__steps {
-    @apply mt-5 list-none space-y-5 sm:mt-6 sm:space-y-6;
+    @apply mt-5 list-none space-y-0 sm:mt-6;
   }
 
-  .discover-tabs-section__step-title {
-    @apply typo-title mb-2 flex flex-wrap items-baseline gap-x-2.5 text-sm leading-snug sm:text-base;
+  .discover-tabs-section__step {
+    @apply relative grid grid-cols-[2.25rem_minmax(0,1fr)] gap-x-3 pb-5 last:pb-0 sm:grid-cols-[2.75rem_minmax(0,1fr)] sm:gap-x-4 sm:pb-6;
+  }
+
+  .discover-tabs-section__step:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    top: 1.85rem;
+    bottom: 0.15rem;
+    left: 0.7rem;
+    width: 1px;
+    background-color: color-mix(in srgb, var(--color-wine) 28%, transparent);
+  }
+
+  @media (min-width: 640px) {
+    .discover-tabs-section__step:not(:last-child)::before {
+      left: 0.85rem;
+      top: 2.1rem;
+    }
   }
 
   .discover-tabs-section__step-num {
-    @apply font-body text-2xl font-light tabular-nums leading-none text-wine sm:text-3xl;
+    @apply relative z-[1] font-body text-[1.65rem] font-light tabular-nums leading-none text-wine sm:text-[1.9rem];
     text-transform: none;
   }
 
+  .discover-tabs-section__step-copy {
+    @apply min-w-0 pt-0.5;
+  }
+
+  .discover-tabs-section__step-title {
+    @apply typo-title text-[0.9375rem] leading-snug sm:text-base;
+  }
+
+  .discover-tabs-section__step-body {
+    @apply typo-body-lead mt-1.5 text-[0.8125rem] leading-relaxed sm:mt-2 sm:text-sm;
+  }
+
   .discover-tabs-section__actions {
-    @apply shrink-0 pt-6;
+    @apply shrink-0 pt-5 sm:pt-6;
   }
 
   .discover-tabs-section__media {
-    @apply relative hidden overflow-hidden lg:block lg:h-[34rem];
+    @apply relative hidden overflow-hidden lg:block lg:min-h-[34rem] lg:self-stretch;
   }
 
   .discover-tabs-section__image {

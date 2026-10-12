@@ -11,20 +11,20 @@ export const THE_PROCESS_STEPS = [
     n: 1,
     title: "Order before you leave",
     shortBody:
-      "Choose your destination. Your MADELEINE formula begins with the journey ahead — composed before you smell it.",
+      "Your formula begins with the journey ahead — composed before you smell it.",
     body: "The destination is chosen. Order your MADELEINE bottle and complete your consultation online — emotions, raw materials, preferences. Your formula begins with the journey ahead, composed before you smell it.",
   },
   {
     n: 2,
     title: "Wear it on the journey",
     shortBody:
-      "Live the moment in your bespoke scent — one formula, never replicated. When you return, write in the journal to anchor the memory.",
+      "One formula, never replicated. Journal the memory when you return.",
     body: "Live in the moment while wearing your bespoke perfume — one formula, never replicated. When the journey has truly ended, write in the journal. Anchor what photographs cannot hold in your own hand.",
   },
   {
     n: 3,
     title: "Encode the memory",
-    shortBody: "Years later, one inhalation — the journey comes back in full.",
+    shortBody: "Years later, one inhalation — the journey returns in full.",
     body: "In twenty years, a single inhalation is enough. The journey comes back in full. The Proust Project — accomplished.",
   },
 ];

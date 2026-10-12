@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { BESPOKE_PRODUCT } from "../../config/bespokeProduct";
-import { BESPOKE_ORDER_CONFIRMATION } from "../../config/bespokeOrderForm";
+import { BESPOKE_JOURNEY_COMPLETE } from "../../config/bespokeOrderForm";
 import {
   BESPOKE_DESTINATION_COUNTRIES,
   BESPOKE_QUESTIONNAIRE_STEPS,
 } from "../../config/bespokeQuestionnaire";
 import { useFocusTrap } from "../../hooks/useFocusTrap";
 import { trackEvent } from "../../lib/analytics";
-import { createCheckoutSession } from "../../lib/createCheckoutSession";
 import { FORM_INPUT_CLASS, FORM_LABEL_CLASS } from "../../lib/formInputClass";
 import {
   createInitialQuestionnaireAnswers,
@@ -34,15 +34,13 @@ export default function BespokeOrderModal({
   const dialogRef = useRef(null);
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState(createInitialQuestionnaireAnswers);
-  const [checkoutLoading, setCheckoutLoading] = useState(false);
-  const [checkoutError, setCheckoutError] = useState("");
+  const [complete, setComplete] = useState(false);
   const [attempted, setAttempted] = useState(false);
 
   const resetAll = useCallback(() => {
     setStep(0);
     setAnswers(createInitialQuestionnaireAnswers());
-    setCheckoutLoading(false);
-    setCheckoutError("");
+    setComplete(false);
     setAttempted(false);
   }, []);
 
@@ -72,7 +70,7 @@ export default function BespokeOrderModal({
   useFocusTrap(open, dialogRef);
 
   useEffect(() => {
-    if (!open) return;
+    if (!open || complete) return;
     const stepType = BESPOKE_QUESTIONNAIRE_STEPS[step]?.type;
     const t = window.setTimeout(() => {
       if (step === 0) {
@@ -84,7 +82,7 @@ export default function BespokeOrderModal({
       setAttempted(false);
     }, 40);
     return () => window.clearTimeout(t);
-  }, [open, step, formId]);
+  }, [open, step, formId, complete]);
 
   if (!open) return null;
 
@@ -92,31 +90,18 @@ export default function BespokeOrderModal({
   const product = BESPOKE_PRODUCT;
   const stepValid = isQuestionnaireStepValid(step, answers);
   const isLast = step === BESPOKE_QUESTIONNAIRE_STEPS.length - 1;
+  const completeCopy = BESPOKE_JOURNEY_COMPLETE;
 
   function patchAnswers(updates) {
     setAnswers((prev) => ({ ...prev, ...updates }));
   }
 
-  async function goNext() {
+  function goNext() {
     setAttempted(true);
     if (!stepValid) return;
     if (isLast) {
-      setCheckoutError("");
-      setCheckoutLoading(true);
-      trackEvent("cta_checkout_start", { location: "questionnaire" });
-      try {
-        const { url } = await createCheckoutSession({
-          answers,
-          withJournal,
-          totalGbp: totalGbp,
-        });
-        window.location.href = url;
-      } catch (err) {
-        setCheckoutLoading(false);
-        setCheckoutError(
-          err.message || "Checkout could not be started. Please try again.",
-        );
-      }
+      trackEvent("questionnaire_complete", { location: "questionnaire" });
+      setComplete(true);
       return;
     }
     setStep((s) => s + 1);
@@ -248,22 +233,44 @@ export default function BespokeOrderModal({
         );
       case "contact":
         return (
-          <div>
-            <label htmlFor={`${formId}-email`} className={FORM_LABEL_CLASS}>
-              Email for order confirmation
-            </label>
-            <input
-              id={`${formId}-email`}
-              type="email"
-              inputMode="email"
-              value={answers.email}
-              onChange={(e) => patchAnswers({ email: e.target.value })}
-              placeholder="you@example.com"
-              autoComplete="email"
-              enterKeyHint="done"
-              className={FORM_INPUT_CLASS}
-              aria-invalid={attempted && !stepValid}
-            />
+          <div className="space-y-4">
+            <div>
+              <label htmlFor={`${formId}-email`} className={FORM_LABEL_CLASS}>
+                Email
+              </label>
+              <input
+                id={`${formId}-email`}
+                type="email"
+                inputMode="email"
+                value={answers.email}
+                onChange={(e) => patchAnswers({ email: e.target.value })}
+                placeholder="you@example.com"
+                autoComplete="email"
+                enterKeyHint="done"
+                className={FORM_INPUT_CLASS}
+                aria-invalid={attempted && !stepValid}
+              />
+            </div>
+            <p className="typo-body-lead text-xs text-ink/65">
+              This saves your brief only — no payment yet. When commissions open,
+              sale and withdrawal terms apply. See{" "}
+              <Link
+                to="/terms#terms-of-sale"
+                className="text-wine underline underline-offset-4"
+                onClick={handleClose}
+              >
+                terms of sale
+              </Link>{" "}
+              and{" "}
+              <Link
+                to="/terms#withdrawal"
+                className="text-wine underline underline-offset-4"
+                onClick={handleClose}
+              >
+                right of withdrawal
+              </Link>
+              .
+            </p>
           </div>
         );
       default:
@@ -292,74 +299,92 @@ export default function BespokeOrderModal({
           onClose={handleClose}
         />
 
-        <div className="shrink-0 border-b border-wine/10 px-6 pb-5 pt-5 sm:px-10 sm:pt-6">
-          <QuestionnaireProgress stepIndex={step} />
-
-          <h2
-            id={`${formId}-modal-title`}
-            className="waiting-list-modal-title mt-5"
-          >
-            {checkoutLoading ? BESPOKE_ORDER_CONFIRMATION.title : current.title}
-          </h2>
-          <p
-            id={`${formId}-modal-desc`}
-            className="typo-body-lead mt-2 text-sm text-ink/80"
-          >
-            {checkoutLoading
-              ? BESPOKE_ORDER_CONFIRMATION.body
-              : current.subtitle}
-          </p>
-        </div>
-
-        <form
-          onSubmit={handleSubmit}
-          className="flex min-h-0 flex-1 flex-col"
-          noValidate
-          aria-describedby={`${formId}-modal-desc`}
-        >
+        {complete ? (
           <div
-            ref={bodyRef}
-            className="questionnaire-modal__body min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 py-5 sm:px-10 sm:py-6"
+            className="questionnaire-step-enter flex min-h-0 flex-1 flex-col px-6 py-10 text-center sm:px-10 sm:py-12"
+            role="status"
           >
-            <div key={current.id} className="questionnaire-step-enter">
-              {renderStep()}
-            </div>
-            {checkoutError && (
-              <p
-                className="mt-4 text-sm text-wine"
-                role="alert"
-              >
-                {checkoutError}
-              </p>
-            )}
-          </div>
-
-          <div className="shrink-0 flex gap-3 border-t border-wine/10 bg-paper px-6 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-10">
-            {step > 0 && (
+            <p className="font-subtitle text-[10px] uppercase tracking-[0.22em] text-wine">
+              {completeCopy.eyebrow}
+            </p>
+            <h2
+              id={`${formId}-modal-title`}
+              className="waiting-list-modal-title mt-5"
+            >
+              {completeCopy.title}
+            </h2>
+            <p className="typo-body-lead mx-auto mt-5 max-w-sm text-sm text-ink/80 sm:text-base">
+              {completeCopy.body}
+            </p>
+            <div className="mt-auto pt-10">
               <button
                 type="button"
-                onClick={goBack}
-                disabled={checkoutLoading}
-                className="cta-pill flex-1 disabled:opacity-45"
+                onClick={handleClose}
+                className="cta-pill w-full"
               >
-                Back
+                {completeCopy.closeLabel}
               </button>
-            )}
-            <button
-              type="submit"
-              disabled={!stepValid || checkoutLoading}
-              className="cta-pill flex-1 disabled:cursor-not-allowed disabled:opacity-45"
-            >
-              {checkoutLoading
-                ? "Redirecting…"
-                : isLast
-                  ? "Pay & pre-order"
-                  : current.type === "summary"
-                    ? "Looks good"
-                    : "Continue"}
-            </button>
+            </div>
           </div>
-        </form>
+        ) : (
+          <>
+            <div className="shrink-0 border-b border-wine/10 px-6 pb-5 pt-5 sm:px-10 sm:pt-6">
+              <QuestionnaireProgress stepIndex={step} />
+
+              <h2
+                id={`${formId}-modal-title`}
+                className="waiting-list-modal-title mt-5"
+              >
+                {current.title}
+              </h2>
+              <p
+                id={`${formId}-modal-desc`}
+                className="typo-body-lead mt-2 text-sm text-ink/80"
+              >
+                {current.subtitle}
+              </p>
+            </div>
+
+            <form
+              onSubmit={handleSubmit}
+              className="flex min-h-0 flex-1 flex-col"
+              noValidate
+              aria-describedby={`${formId}-modal-desc`}
+            >
+              <div
+                ref={bodyRef}
+                className="questionnaire-modal__body min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 py-5 sm:px-10 sm:py-6"
+              >
+                <div key={current.id} className="questionnaire-step-enter">
+                  {renderStep()}
+                </div>
+              </div>
+
+              <div className="shrink-0 flex gap-3 border-t border-wine/10 bg-paper px-6 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-10">
+                {step > 0 && (
+                  <button
+                    type="button"
+                    onClick={goBack}
+                    className="cta-pill flex-1"
+                  >
+                    Back
+                  </button>
+                )}
+                <button
+                  type="submit"
+                  disabled={!stepValid}
+                  className="cta-pill flex-1 disabled:cursor-not-allowed disabled:opacity-45"
+                >
+                  {isLast
+                    ? "Complete"
+                    : current.type === "summary"
+                      ? "Looks good"
+                      : "Continue"}
+                </button>
+              </div>
+            </form>
+          </>
+        )}
       </div>
     </div>
   );

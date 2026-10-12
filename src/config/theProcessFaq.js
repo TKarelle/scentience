@@ -70,7 +70,7 @@ export const THE_PROCESS_FAQ_ITEMS = [
     id: "pre-order",
     question: "How do I commission Original Bespoke?",
     answerParagraphs: [
-      "Pre-orders are open. Choose Original Bespoke, complete the questionnaire, and confirm your order. We compose your formula from your answers. Free shipping to the UK — typically 5–7 business days from dispatch. Made to order: returns are not accepted once production begins.",
+      "Complete the guided questionnaire now to record your brief — paid commissions open next month. When sales begin, confirm and pay at checkout; we compose your formula from your answers. Free shipping to the UK — typically 5–7 business days from dispatch. Made to order and personalised: the 14-day cooling-off right does not apply once payment is taken, and returns are not accepted once production begins.",
     ],
   },
 ];

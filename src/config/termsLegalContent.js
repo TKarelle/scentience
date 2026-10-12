@@ -3,10 +3,10 @@
  */
 
 export const TERMS_DOCUMENT_TITLE =
-  "GDPR Disclosure – User-Generated Content, Research Use & Product Terms";
+  "Terms of Sale, Withdrawal, Privacy & Product Conditions";
 
 export const TERMS_INTRO =
-  "MADELEINE provides personalised fragrance products and offers users the option to submit written content (e.g. blog posts, reflections, or personal accounts) describing memories associated with scent or experiences using MADELEINE products.";
+  "MADELEINE provides personalised fragrance products and offers users the option to submit written content (e.g. blog posts, reflections, or personal accounts) describing memories associated with scent or experiences using MADELEINE products. These pages set out our terms of sale, right of withdrawal for bespoke goods, shipping and returns, product safety, and how we handle personal data under the GDPR.";
 
 /** @typedef {{ type: 'p', text: string } | { type: 'ul', items: string[] } | { type: 'contact' }} TermsBlock */
 
@@ -145,8 +145,35 @@ export const TERMS_SECTIONS = [
     ],
   },
   {
+    id: "terms-of-sale",
+    heading: "7. Terms of Sale",
+    blocks: [
+      {
+        type: "p",
+        text: "These terms apply to commissions of Original Bespoke and related options (such as the memory journal) sold by MADELEINE.",
+      },
+      {
+        type: "p",
+        text: "Completing the guided questionnaire and leaving your email records your scent brief only. It does not create a paid order or a binding purchase. Paid commissions open next month; you will be invited to confirm and pay when sales begin.",
+      },
+      {
+        type: "ul",
+        items: [
+          "A contract of sale is formed only when payment is successfully completed at checkout and we confirm your order by email",
+          "Prices are shown in GBP and include applicable taxes unless stated otherwise",
+          "Each Original Bespoke fragrance is composed to order from your questionnaire answers and is unique to your commission",
+          "We may decline or cancel an order if payment fails, details are incomplete, or we cannot fulfil the commission safely or lawfully",
+        ],
+      },
+      {
+        type: "p",
+        text: "Until payment is taken, you may ask us to update or delete your brief by contacting us at the address below.",
+      },
+    ],
+  },
+  {
     id: "shipping",
-    heading: "Shipping & delivery",
+    heading: "8. Shipping & delivery",
     blocks: [
       {
         type: "p",
@@ -168,12 +195,38 @@ export const TERMS_SECTIONS = [
     ],
   },
   {
-    id: "returns",
-    heading: "7. Returns & Product Positioning",
+    id: "withdrawal",
+    heading: "9. Right of Withdrawal (Cooling-off)",
     blocks: [
       {
         type: "p",
-        text: "Due to the personalised and bespoke nature of MADELEINE fragrances, all sales are final and non-returnable.",
+        text: "Under UK consumer law, you may normally cancel most distance contracts within 14 days without giving a reason. That statutory cooling-off right does not apply to goods made to your specifications or clearly personalised.",
+      },
+      {
+        type: "p",
+        text: "Original Bespoke is composed exclusively from your questionnaire (journey, emotions, preferences, and notes). Once you place a paid order, you expressly acknowledge that the fragrance is personalised for you and that the 14-day right of withdrawal does not apply.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Before payment: you may close the questionnaire or ask us to delete your brief — no purchase has been made",
+          "After payment and before production begins: contact us promptly if you need to correct order details; we will help where still practical",
+          "Once production has begun: the commission cannot be cancelled, returned, or exchanged for change of mind or scent preference",
+        ],
+      },
+      {
+        type: "p",
+        text: "This does not affect your statutory rights if goods are faulty, not as described, or unsafe.",
+      },
+    ],
+  },
+  {
+    id: "returns",
+    heading: "10. Returns & Product Positioning",
+    blocks: [
+      {
+        type: "p",
+        text: "Because each formula is made to order and cannot be restocked or resold, paid Original Bespoke sales are final. Returns and exchanges are not accepted for change of mind or personal preference for the scent.",
       },
       {
         type: "p",
@@ -181,23 +234,23 @@ export const TERMS_SECTIONS = [
       },
       {
         type: "p",
-        text: "This does not affect your statutory rights in the case of defective or unsafe products.",
+        text: "If you believe a product is defective or unsafe, contact us without delay. Your statutory rights remain unaffected.",
       },
     ],
   },
   {
     id: "retention",
-    heading: "8. Data Retention",
+    heading: "11. Data Retention",
     blocks: [
       {
         type: "p",
-        text: "Content and associated data will be retained only for as long as necessary for the purposes outlined above, unless deletion is requested.",
+        text: "Content and associated data will be retained only for as long as necessary for the purposes outlined above, unless deletion is requested. Questionnaire briefs collected before paid commissions open are kept so we can invite you when sales begin, unless you ask us to delete them sooner.",
       },
     ],
   },
   {
     id: "user-rights",
-    heading: "9. User Rights",
+    heading: "12. User Rights",
     blocks: [
       { type: "p", text: "Users have the right to:" },
       {
@@ -214,7 +267,7 @@ export const TERMS_SECTIONS = [
   },
   {
     id: "safeguards",
-    heading: "10. Safeguards",
+    heading: "13. Safeguards",
     blocks: [
       {
         type: "p",
@@ -246,7 +299,7 @@ export const TERMS_SECTIONS = [
   },
   {
     id: "acknowledgement",
-    heading: "11. Acknowledgement",
+    heading: "14. Acknowledgement",
     blocks: [
       {
         type: "p",
@@ -257,7 +310,8 @@ export const TERMS_SECTIONS = [
         items: [
           "They understand how their data may be used",
           "They have read and will follow product safety instructions and warnings",
-          "They acknowledge the personalised nature of the product and the no-returns policy",
+          "They understand that completing the brief is not a paid order until checkout when commissions open",
+          "They acknowledge the personalised nature of Original Bespoke, the absence of the 14-day withdrawal right once a paid order is placed, and the no-returns policy for change of mind",
           "They consent to data processing in accordance with this policy",
         ],
       },

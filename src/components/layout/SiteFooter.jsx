@@ -114,6 +114,22 @@ export default function SiteFooter() {
                     Terms, privacy &amp; GDPR
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    to="/terms#terms-of-sale"
+                    className="hover:text-paper transition-colors"
+                  >
+                    Terms of sale
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/terms#withdrawal"
+                    className="hover:text-paper transition-colors"
+                  >
+                    Right of withdrawal
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>

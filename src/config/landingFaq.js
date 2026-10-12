@@ -48,6 +48,6 @@ export const LANDING_FAQ_ITEMS = [
     id: "price-shipping-returns",
     question: "What about price, shipping, and returns?",
     answer:
-      "Original Bespoke starts from £100 for 30 ml; the memory journal is an optional add-on. Shipping is free to the UK, typically 5–7 business days from dispatch. Because each formula is made to order from your brief, returns and exchanges are not accepted once production begins.",
+      "Original Bespoke starts from £100 for 30 ml; the memory journal is an optional add-on. Shipping is free to the UK, typically 5–7 business days from dispatch. Completing the brief now is not a paid order — commissions open next month. Because each formula is made to order and personalised, the 14-day right of withdrawal does not apply once you pay, and returns or exchanges are not accepted once production begins. Faulty or unsafe goods remain covered by your statutory rights — see Terms.",
   },
 ];

@@ -112,9 +112,9 @@ export const CONTACT_PAGE_SEO = {
 export const TERMS_PAGE_SEO = {
   title: "Terms, privacy & GDPR | MADELEINE",
   description:
-    "Product safety, user-generated content, research use, data processing under GDPR, returns policy for bespoke fragrances, and how to contact MADELEINE.",
+    "Terms of sale, right of withdrawal for personalised fragrance, shipping, returns, product safety, GDPR, and how to contact MADELEINE.",
   keywords:
-    "MADELEINE terms, GDPR, privacy policy, bespoke fragrance returns, IFRA compliance, user content policy, madeleine.uk",
+    "MADELEINE terms of sale, right of withdrawal, cooling-off, GDPR, privacy policy, bespoke fragrance returns, IFRA compliance, madeleine.uk",
   canonicalPath: "/terms",
   ogImage: `${SITE_ORIGIN}/hero-banner.webp`,
 };
